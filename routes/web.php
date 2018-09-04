@@ -17,4 +17,8 @@ Route::get('/', function () {
 
 //进入后台
 Route::get('/admin','AdminController@index');
-Route::get('/admin/index','AdminController@show');
+
+//后台用户管理
+Route::resource('user','UserController');
+//后台用户安全页面
+Route::get('/user/{id}/anquan','UserController@anquan');
