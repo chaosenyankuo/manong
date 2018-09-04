@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 //进入后台
 Route::get('/admin','AdminController@index');
+Route::get('/admin/index','AdminController@show');
