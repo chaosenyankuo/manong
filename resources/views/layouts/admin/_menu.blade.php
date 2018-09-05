@@ -12,6 +12,18 @@
     </ul>
 </li>
 <li>
+    <a href="#" class="waves-effect waves-dark">
+        <i class="fa fa-sitemap"></i> 地址管理<span class="fa arrow"></span>
+    </a>
+    <ul class="nav nav-second-level">
+        <li>
+            <a href="/uaddress/create">地址添加</a>
+        </li>
+        <li>
+            <a href="/uaddress">地址列表</a>
+        </li>
+    </ul>
+</li>
     <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i>商品管理<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
         <li>
