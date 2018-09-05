@@ -7,10 +7,9 @@
     <title>@yield('title')</title>
     <!-- 生日三级联动 -->
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <script src="c="http://www.jq22.com/jquery/jquery-1.10.2.js"></"></script>
-    <link rel="stylesheet" type="text/css" href="/time/me/shijian.css"/>
-    <script src="/time/me/jquery.min.js"></"></script>
-
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" type="text/css" href="/shijian.css" />
+    <script src="/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/assets/materialize/css/materialize.min.css" media="screen,projection" />
     <!-- Bootstrap Styles-->
@@ -175,6 +174,7 @@
                 <div>
                     <strong>John Doe</strong>
                     <span class="pull-right text-muted">
+
                         <em>Today</em>
                     </span>
                 </div>
@@ -186,6 +186,8 @@
                 <div>
                     <strong>John Smith</strong>
                     <span class="pull-right text-muted">
+
+
                         <em>Yesterday</em>
                     </span>
                 </div>
@@ -198,6 +200,8 @@
                     <div>
                         <strong>John Smith</strong>
                         <span class="pull-right text-muted">
+
+
                             <em>Yesterday</em>
                         </span>
                     </div>
@@ -207,12 +211,12 @@
             <li class="divider"></li>
             <li>
                 <a class="text-center" href="#">
+
                     <strong>Read All Messages</strong>
                     <i class="fa fa-angle-right"></i>
                 </a>
             </li>
         </ul>
-
         <!--/. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
@@ -220,7 +224,7 @@
                     <li>
                         <a class="active-menu waves-effect waves-dark" href="/admin"><i class="fa fa-dashboard"></i>操作菜单</a>
                     </li>
-                    @include('layouts.admin._menu')                   
+                    @include('layouts.admin._menu')
                     @include('layouts.admin.zuo')
                 </ul>
             </div>

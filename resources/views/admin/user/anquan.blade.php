@@ -1,4 +1,4 @@
-@extends('layouts.admin') @section('title','用户安全设置') @section('content')
+ @extends('layouts.admin') @section('title','用户安全设置') @section('content')
 <div class="col-lg-12">
     <div class="card">
         <div class="card-action">
