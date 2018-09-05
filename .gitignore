@@ -1,10 +1,12 @@
 /node_modules
 /public/hot
 /public/storage
+/public/uploads
 /storage/*.key
 /vendor
 /.idea
 /.vagrant
+/public/uploads
 Homestead.json
 Homestead.yaml
 npm-debug.log
