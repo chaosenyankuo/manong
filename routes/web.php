@@ -17,3 +17,12 @@ Route::get('/', function () {
 
 //进入后台
 Route::get('/admin','AdminController@index');
+
+//友情链接
+Route::resource('link','LinkController');
+
+//商品标签
+Route::resource('/ptag','PtagController');
+
+//商品评价
+Route::resource('comment','CommentController');
