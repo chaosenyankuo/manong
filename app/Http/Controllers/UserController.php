@@ -41,7 +41,6 @@ class UserController extends Controller
      */
     public function store(Request $req)
     {
-        //
         $users = new User;
 
         $users -> nickname = $req->nickname;
@@ -57,7 +56,7 @@ class UserController extends Controller
             $users -> image = '/'.$req->image->store('uploads/'.date('Ymd'));
         }else{
             $users -> image = '/uploads/1.jpg';
-        }
+        } 
 
         if($users -> save()){
             return redirect('/user')->with('success', '添加用户成功');

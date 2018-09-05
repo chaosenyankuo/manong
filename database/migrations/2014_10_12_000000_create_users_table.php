@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->integer('sex')->comment('性别')->nullable();
             $table->string('paypwd')->comment('支付密码')->nullable();
             $table->string('birthday')->comment('生日')->nullable();
-            $table->integer('phone')->comment('电话')->nullable();
+            $table->char('phone')->comment('电话')->nullable();
             $table->string('email')->comment('邮箱')->nullable();
             $table->string('image')->comment('头像')->nullable();
             $table->string('loginpwd')->comment('登录密码')->nullable();
