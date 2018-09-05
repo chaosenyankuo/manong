@@ -4,11 +4,23 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    
+    <!-- 生日 start -->
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
-    <link rel="stylesheet" type="text/css" href="/shijian.css"/>
-    <script src="/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/time/shijian.css"/>
+    <script src="/time/jquery.min.js"></script>
+    <!-- 生日 end -->
+
+    <!-- 地址 start -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://www.jq22.com/jquery/bootstrap-3.3.4.css" rel="stylesheet">
+    <script src="http://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+    <script src="/dizhi/js/distpicker.data.js"></script>
+    <script src="/dizhi/js/distpicker.js"></script>
+    <script src="/dizhi/js/main.js"></script>
+    <!-- 地址 end -->
 
     <title>@yield('title')</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -28,7 +40,16 @@
 
 <body>
     <div id="wrapper">
-        @include('layouts.admin.top')
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+               
+                <a class="navbar-brand waves-effect waves-dark" href="/admin"><i class="large material-icons">track_changes</i> <strong>码农</strong></a>
+                <div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
+            </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b>John Doe</b> <i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
+        </nav>
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
             <li><a href="#"><i class="fa fa-user fa-fw"></i> My Profile</a>
@@ -43,7 +64,7 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     
-                    @include('layouts.admin.zuo')
+                    @include('layouts.admin._menu')
 
 
                 </ul>

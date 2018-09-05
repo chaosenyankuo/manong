@@ -20,5 +20,6 @@ Route::get('/admin','AdminController@index');
 
 //后台用户管理
 Route::resource('user','UserController');
-//后台用户安全页面
-Route::get('/user/{id}/anquan','UserController@anquan');
+
+//后台订单管理
+Route::resource('uaddress','UaddressController');

@@ -4,7 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class uaddress extends Model
+class Uaddress extends Model
 {
     //
+    public function user()
+    {
+    	return $this -> belongsTo('App\User');
+    }
 }
