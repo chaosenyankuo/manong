@@ -2,12 +2,57 @@
 
 namespace App\Http\Controllers;
 
+use App\Setting;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function index()
-    {
-    	return view('admin');
-    }
+   /**
+	* 后台首页
+	*/
+	public function index()
+	{
+		return view('admin');
+	}
+
+
+	/**
+	 * 网站设置页面
+	 */
+	public function setting()
+	{
+		//读取表中的数据
+		$setting = setting::first();
+
+		return view('admin.setting', compact('setting'));
+	}
+
+	/**
+	 * 网站设置
+	 */
+	public function update(Request $request)
+	{
+		$setting = setting::first();
+
+		if(!$setting){
+			$setting = new setting;
+		}
+
+		$setting -> title = $request->title;
+		$setting -> keywords = $request->keywords;
+		$setting -> description = $request->description;
+		
+		$setting -> banquan = $request->banquan;
+		
+		$setting -> domain = $request->domain;
+		$setting -> logo = $request->input('logo', 'https://picsum.photos/400/300?image=2');
+
+		if($setting->save()){
+			return back()->with('success','设置成功');
+		}else{
+			return back()->with('error','设置失败!!');
+		}
+		
+	}
+    
 }
