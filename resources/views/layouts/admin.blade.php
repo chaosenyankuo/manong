@@ -4,6 +4,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" type="text/css" href="/shijian.css" />
+    <script src="/jquery.min.js"></script>
     <title>@yield('title')</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/assets/materialize/css/materialize.min.css" media="screen,projection" />
@@ -30,7 +34,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand waves-effect waves-dark" href="/admin"><i class="large material-icons">track_changes</i> <strong>target</strong></a>
+                <a class="navbar-brand waves-effect waves-dark" href="/admin"><i class="large material-icons">track_changes</i> <strong>MaNong</strong></a>
                 <div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
             </div>
             <ul class="nav navbar-top-links navbar-right">
@@ -169,8 +173,9 @@
                 <div>
                     <strong>John Doe</strong>
                     <span class="pull-right text-muted">
-                                        <em>Today</em>
-                                    </span>
+
+                        <em>Today</em>
+                    </span>
                 </div>
                 <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</p>
                 </a>
@@ -180,8 +185,10 @@
                 <div>
                     <strong>John Smith</strong>
                     <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
+
+
+                        <em>Yesterday</em>
+                    </span>
                 </div>
                 <p>Lorem Ipsum has been the industry's standard dummy text ever since an kwilnw...</p>
                 </a>
@@ -192,8 +199,10 @@
                     <div>
                         <strong>John Smith</strong>
                         <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
+
+
+                            <em>Yesterday</em>
+                        </span>
                     </div>
                     <p>Lorem Ipsum has been the industry's standard dummy text ever since the...</p>
                 </a>
@@ -201,9 +210,10 @@
             <li class="divider"></li>
             <li>
                 <a class="text-center" href="#">
-                                <strong>Read All Messages</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
+
+                    <strong>Read All Messages</strong>
+                    <i class="fa fa-angle-right"></i>
+                </a>
             </li>
         </ul>
         <!--/. NAV TOP  -->
@@ -214,6 +224,7 @@
                         <a class="active-menu waves-effect waves-dark" href="/admin"><i class="fa fa-dashboard"></i>操作菜单</a>
                     </li>
                     @include('layouts.admin._menu')
+                    @include('layouts.admin.zuo')
                 </ul>
             </div>
         </nav>
@@ -227,33 +238,25 @@
                             <div class="card-content" style="text-align: center;line-height:95px;color:white">
                                 <h3>{{Session::get('success')}} </h3>
                             </div>
-                            <div class="card-action" style="text-align: center;color:white">
-                                <strong>success</strong>
-                            </div>
                         </div>
                     </div>
                 </div>
-                @endif
-
-                @if(Session::has('error'))
+                @endif @if(Session::has('error'))
                 <div class="col-xs-12" id="xiaoshi" style="padding:10px;">
                     <div class="card horizontal cardIcon waves-effect waves-dark">
                         <div class="card-stacked red">
                             <div class="card-content" style="text-align: center;line-height:95px;color:white">
                                 <h3>{{Session::get('error')}} </h3>
                             </div>
-                            <div class="card-action" style="text-align: center;color:white">
-                                <strong>error</strong>
-                            </div>
                         </div>
                     </div>
                 </div>
                 @endif
-                <h1 class="page-header">
+                <h2 class="page-header">
                             @section('title')
                             欢迎回到后台
                             @show
-                </h1>
+                </h2>
             </div>
             @section('content')
             <div id="page-inner">
@@ -516,9 +519,9 @@
     <!-- Custom Js -->
     <script src="/assets/js/custom-scripts.js"></script>
     <script>
-        setTimeout(function(){
-            $('#xiaoshi').css('display','none');
-        }, 2000)
+    setTimeout(function() {
+        $('#xiaoshi').css('display', 'none');
+    }, 2000)
     </script>
 </body>
 
