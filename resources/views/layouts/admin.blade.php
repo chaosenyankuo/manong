@@ -228,7 +228,7 @@
                     <li>
                         <a class="active-menu waves-effect waves-dark" href="/admin"><i class="fa fa-dashboard"></i>操作菜单</a>
                     </li>
-                    @include('layouts.admin._menu') @include('layouts.admin.zuo')
+                    @include('layouts.admin._menu')
                 </ul>
             </div>
         </nav>
@@ -497,7 +497,7 @@
                     </ul>
                 </div>
                 <footer>
-                    <p>All right reserved. Template WebThemez.com. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>>
+                    <p>All right reserved. Template WebThemez.com. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
                 </footer>
             </div>
             @show

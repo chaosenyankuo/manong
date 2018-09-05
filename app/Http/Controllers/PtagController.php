@@ -17,7 +17,7 @@ class PtagController extends Controller
     {
         $ptags = Ptag::orderBy('id','asc')
        
-            ->where('ptname','like', '%'.request()->ptname.'%')
+            ->where('ptname','like', '%'.request()->keywords.'%')
             ->paginate(3);
         
         return view('admin.ptag.index', ['ptags'=>$ptags]);
