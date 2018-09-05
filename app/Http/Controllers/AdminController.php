@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+
    /**
 	* 后台首页
 	*/

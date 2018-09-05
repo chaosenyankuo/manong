@@ -19,6 +19,16 @@ Route::get('/', function () {
 //后台登陆
 Route::get('/admin','AdminController@index');
 
+
+//友情链接
+Route::resource('link','LinkController');
+
+//商品标签
+Route::resource('/ptag','PtagController');
+
+//商品评价
+Route::resource('comment','CommentController');
+
 //后台设置
 Route::get('/admin/setting', 'AdminController@setting');
 Route::post('/admin/setting', 'AdminController@update');

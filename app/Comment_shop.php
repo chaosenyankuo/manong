@@ -1,11 +1,10 @@
-
 <?php
 
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Zhifu extends Model
+class Comment_shop extends Model
 {
     //
 }

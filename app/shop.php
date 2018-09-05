@@ -9,6 +9,12 @@ class Shop extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
+
+    public function comment()
+    {
+    	return $this -> hasMany('App\comment');
+    }
+    
 	//n商品对1分类
     public function cate()
     {
@@ -18,5 +24,6 @@ class Shop extends Model
     public function tags()
     {
     	return $this->belongsToMany('App\Tag');
+
     }
 }
