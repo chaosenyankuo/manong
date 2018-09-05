@@ -26,6 +26,6 @@ class CreateShopTagTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shop_tags');
+        Schema::dropIfExists('shop_tag');
     }
 }

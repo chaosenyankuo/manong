@@ -4,13 +4,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <title>@yield('title')</title>
+    <!-- 生日三级联动 -->
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
     <link rel="stylesheet" type="text/css" href="/shijian.css" />
     <script src="/jquery.min.js"></script>
-
-    <title>@yield('title')</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/assets/materialize/css/materialize.min.css" media="screen,projection" />
     <!-- Bootstrap Styles-->
@@ -36,9 +35,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
                 <a class="navbar-brand waves-effect waves-dark" href="/admin"><i class="large material-icons">track_changes</i> <strong>MaNong</strong></a>
-
                 <div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
             </div>
             <ul class="nav navbar-top-links navbar-right">
@@ -181,7 +178,6 @@
 
                         <em>Today</em>
                     </span>
-
                 </div>
                 <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</p>
                 </a>
@@ -196,7 +192,6 @@
 
                         <em>Yesterday</em>
                     </span>
-
                 </div>
                 <p>Lorem Ipsum has been the industry's standard dummy text ever since an kwilnw...</p>
                 </a>
@@ -212,7 +207,6 @@
 
                             <em>Yesterday</em>
                         </span>
-
                     </div>
                     <p>Lorem Ipsum has been the industry's standard dummy text ever since the...</p>
                 </a>
@@ -225,7 +219,6 @@
                     <strong>Read All Messages</strong>
                     <i class="fa fa-angle-right"></i>
                 </a>
-
             </li>
         </ul>
         <!--/. NAV TOP  -->
@@ -235,10 +228,7 @@
                     <li>
                         <a class="active-menu waves-effect waves-dark" href="/admin"><i class="fa fa-dashboard"></i>操作菜单</a>
                     </li>
-                    @include('layouts.admin._menu')
-
-                    @include('layouts.admin.zuo')
-
+                    @include('layouts.admin._menu') @include('layouts.admin.zuo')
                 </ul>
             </div>
         </nav>
@@ -252,7 +242,6 @@
                             <div class="card-content" style="text-align: center;line-height:95px;color:white">
                                 <h3>{{Session::get('success')}} </h3>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -534,11 +523,9 @@
     <!-- Custom Js -->
     <script src="/assets/js/custom-scripts.js"></script>
     <script>
-
     setTimeout(function() {
         $('#xiaoshi').css('display', 'none');
     }, 2000)
-
     </script>
 </body>
 
