@@ -46,7 +46,7 @@
     <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
             <div class="navbar-header">
-                <a class="navbar-brand waves-effect waves-dark" href="/admin"><i class="large material-icons">track_changes</i> <strong>码农</strong></a>
+                <a class="navbar-brand waves-effect waves-dark" href="/admin"><i class="large material-icons">track_changes</i> <strong>MaNong</strong></a>
                 <div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
             </div>
             <ul class="nav navbar-top-links navbar-right">
@@ -59,9 +59,11 @@
         </nav>
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
+
             <li><a href="/admin/logout"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
             </li>
             <li><a href="/admin/setting"><i class="fa fa-sign-out fa-fw"></i> 设置</a>
+
             </li>
         </ul>
         <ul id="dropdown2" class="dropdown-content w250">
@@ -239,6 +241,7 @@
                         <a class="active-menu waves-effect waves-dark" href="/admin"><i class="fa fa-dashboard"></i>操作菜单</a>
                     </li>
                     @include('layouts.admin._menu')
+
                 </ul>
             </div>
         </nav>

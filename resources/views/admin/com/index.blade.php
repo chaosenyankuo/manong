@@ -1,4 +1,4 @@
-@extends('layouts.admin') @section('title','商品列表') @section('title') 商品列表 @endsection @section('content')
+@extends('layouts.admin') @section('title','好中差列表') @section('title') 好中差列表 @endsection @section('content')
 <div class="col-md-12">
     <!-- Advanced Tables -->
     <div class="card">
@@ -7,14 +7,14 @@
                 <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
                     <div class="row">
                         <div class="col-sm-6">
-                            <form action="/shop" method="POST">
-                                <a href="/shop/create" class="btn btn-waring dropdown-toggle">添加</a>
+                            <form action="/com" method="POST">
+                                <a href="/com/create" class="btn btn-waring dropdown-toggle">添加</a>
                                 <button class="btn btn-danger dropdown-toggle">删除</button>
                                 {{csrf_field()}} {{method_field('DELETE')}}
                             </form>
                         </div>
                         <div class="col-sm-6">
-                            <form action="/shop" method="get">
+                            <form action="/com" method="get">
                                 <div id="dataTables-example_filter" class="dataTables_filter">
                                     <label>Search:
                                         <input type="search" class="form-control input-sm" aria-controls="dataTables-example" name="keywords" value="{{request()->keywords}}">
@@ -28,54 +28,29 @@
                             <tr role="row">
                                 <th>
                                     <center>
-                                        <input type="checkbox" id="test9999999">
-                                        <label for="test9999999" style="margin-bottom:-10px"></label>
+                                    <input type="checkbox" id="test9999999" >
+                                    <label for="test9999999" style="margin-bottom:-10px"></label>
                                     </center>
                                 </th>
                                 <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column ascending" style="width: 245.012px;">ID</th>
-                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 377.012px;">商品名称</th>
-                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 377.012px;">商品价格</th>
-                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 377.012px;">商品图片</th>
-                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 377.012px;">商品口味</th>
-                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 377.012px;">商品库存</th>
-                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 377.012px;">是否推荐</th>
-                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 377.012px;">商品分类</th>
-                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 377.012px;">商品标签</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 377.012px;">好中差名</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 341.012px;">操作</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($shops as $v)
+                            @foreach($coms as $v)
                             <tr class="gradeA odd">
-                                <td class="center">
-                                        <input type="checkbox" id="test.{{$v['id']}}">
-                                        <label for="test.{{$v['id']}}" style="margin-bottom:-10px"></label>
+                                <td>
+                                    <center>
+                                    <input type="checkbox" id="test{{$v['id']}}">
+                                    <label for="test{{$v['id']}}" style="margin-bottom:-10px"></label>
+                                    </center>
                                 </td>
-                                <td class="center">{{$v['id']}}</td>
-                                <td class="center">{{$v['sname']}}</td>
-                                <td class="center">{{$v['sprice']}}</td>
-                                <td class="center"><img data-src="{{$v['simage']}}" width="30" height="30" alt=""></td>
-                                <td class="center">{{$v['sflavor']}}</td>
-                                <td class="center">{{$v['scount']}}</td>
-                                <td class="center">
-                                    @if($v['recom'] == 1)
-                                            是
-                                    @endif
-                                    @if($v['recom'] == 0)
-                                            否
-                                    @endif
-                                </td>
-                                <td class=" ">{{$v->cate->cname}}</td>
+                                <td class="sorting_1">{{$v['id']}}</td>
+                                <td class=" ">{{$v['name']}}</td>
                                 <td class=" ">
-                                    @foreach($tags as $vv)
-                                    @if(in_array($vv->id,$v->tags->pluck('id')->toArray()))
-                                        {{$vv['tname']}}
-                                    @endif
-                                    @endforeach
-                                </td>
-                                <td class=" ">
-                                    <form action="/shop/{{$v['id']}}" method="POST">
-                                        <a href="/shop/{{$v['id']}}/edit">
+                                    <form action="/com/{{$v['id']}}" method="POST">
+                                        <a href="/com/{{$v['id']}}/edit">
                                             <button class="btn-primary btn-min" type="button">修改</button>
                                         </a>
                                         <button class="btn-danger btn-min">删除</button>
@@ -141,7 +116,7 @@
                     </style>
                     <div class="row">
                         <div class="col-sm-6">
-                            {{$shops->appends(request()->all())->links()}}
+                            {{$coms->appends(request()->all())->links()}}
                         </div>
                     </div>
                 </div>

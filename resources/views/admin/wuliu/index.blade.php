@@ -64,9 +64,6 @@
                             @endforeach
                     </table>
                     <div class="row">
-                        <div class="col-sm-6">
-                            <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">Showing 1 to 10 of 57 entries</div>
-                        </div>
                     </div>
                 </div>
             </div>

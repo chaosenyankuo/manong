@@ -45,7 +45,7 @@
                                 <td class=" ">
                                     @if($v->sex == '1') 男 @elseif($v->sex == '2') 女 @else 保密 @endif
                                 </td>
-                                <td class=" "><img src="{{$v -> image}}" alt="" width="50" height="30"></td>
+                                <td class=" "><img data-src="{{$v -> image}}" alt="" width="50" height="30"></td>
                                 <td class="center ">{{$v-> birthday}}</td>
                                 <td class="center ">{{$v-> email}}</td>
                                 <td class="center ">{{$v -> created_at}}</td>
