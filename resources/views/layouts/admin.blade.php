@@ -244,7 +244,7 @@
             </div>
         </nav>
         <!-- /. NAV SIDE  -->
-        <div id="page-wrapper" style="position: relative;left:0px;top:-600px;">
+        <div id="page-wrapper" style="position: relative;left:0px;top:-650px;">
             <div class="header">
                 @if(Session::has('success'))
                 <div class="col-xs-12" id="xiaoshi" style="padding:10px;">
@@ -268,9 +268,9 @@
                 </div>
                 @endif
                 <h2 class="page-header">
-                            @section('title')
-                            欢迎回到后台
-                            @show
+                    @section('title')
+                    欢迎回到后台
+                    @show
                 </h2>
             </div>
             @section('content')

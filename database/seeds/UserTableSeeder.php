@@ -3,6 +3,7 @@
 use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserTableSeeder extends Seeder
 {
@@ -18,7 +19,7 @@ class UserTableSeeder extends Seeder
         	$user -> uname = $faker -> name;
         	$user -> nickname = $faker -> name;
         	$user -> paypwd = str_random(6);
-        	$user -> loginpwd = str_random(6);
+        	$user -> loginpwd = Hash::make('123123');
         	$user -> birthday = rand(1995,2000);
         	$user -> phone = rand(10000,200000);
         	$user -> email = str_random(15);
