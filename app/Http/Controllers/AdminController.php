@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Setting;
 use App\User;
+
+use Illuminate\Foundation\Testing\Concerns\session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Foundation\Testing\Concerns\session;
+
 
 
 class AdminController extends Controller
@@ -20,7 +22,6 @@ class AdminController extends Controller
 
 	public function dologin(Request $request)
 	{	
-
 
 		//获取用户的数据
 		$user = User::where('nickname', $request->nickname)->first();
@@ -89,5 +90,4 @@ class AdminController extends Controller
 		}
 		
 	}
-    
 }

@@ -52,8 +52,9 @@
                                 <td class="center">{{$v['name']}}</td>
                                 <td class="center">{{$v['url']}}</td>
                                 <td>
-                                    <a href="/link/{{$v['id']}}/edit" style="float:left " class="waves-effect waves-light btn">编辑</a>
                                     <form action="/link/{{$v['id']}}" method="post">
+                                    <a href="/link/{{$v['id']}}/edit" style="float:left " class="waves-effect waves-light btn">编辑</a>
+                                    
                                         {{method_field('DELETE')}} {{csrf_field()}}
                                         <button class="btn btn-danger dropdown-toggle">删除</button>
                                     </form>

@@ -24,7 +24,7 @@ class CommentController extends Controller
             // echo 'aaaa';
             $comments = Comment::orderBy('id','asc')
                 ->where('content','like', '%'.request()->keywords.'%')
-                ->get();
+                ->paginate(5);
         return view('admin.comment.index',compact('comments','users','shops','ptags'));
     }
 
