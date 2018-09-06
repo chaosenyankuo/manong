@@ -40,9 +40,10 @@
                         <tbody>
                             @foreach($cates as $v)
                             <tr class="gradeA odd">
-                                <td><center>
-                                    <input type="checkbox" id="test.{{$v['id']}}">
-                                    <label for="test.{{$v['id']}}" style="margin-bottom:-10px"></label>
+                                <td>
+                                    <center>
+                                    <input type="checkbox" id="test{{$v['id']}}">
+                                    <label for="test{{$v['id']}}" style="margin-bottom:-10px"></label>
                                     </center>
                                 </td>
                                 <td class="sorting_1">{{$v['id']}}</td>

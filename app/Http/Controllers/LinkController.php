@@ -16,10 +16,8 @@ class LinkController extends Controller
     {
         
        $links = Link::orderBy('id','asc')
-       
-            ->where('name','like', '%'.request()->name.'%')
+            ->where('name','like', '%'.request()->keywords.'%')
             ->paginate(3);
-        
         return view('admin.link.index', ['links'=>$links]);
     }
 

@@ -116,7 +116,7 @@ class UserController extends Controller
 
         if($req->lpass){
             if(Hash::check($req->lpass,$user->loginpwd)){
-                $user -> loginpwd = $req -> loginpwd;
+                $user -> loginpwd = Hash::make($req -> loginpwd);
             }else{
                 return back()->with('error','修改登录密码失败');
             }
@@ -145,14 +145,5 @@ class UserController extends Controller
         }else{
             return back()->with('error','删除用户失败');
         }
-    }
-
-    /**
-     * 安全页面
-     */
-    public function anquan($id)
-    {
-        $user = User::findOrFail($id);
-        return view('admin/user/anquan',['user'=>$user]);
     }
 }

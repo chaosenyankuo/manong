@@ -70,20 +70,18 @@ class AdminController extends Controller
 	public function update(Request $request)
 	{
 		$setting = setting::first();
-
 		if(!$setting){
 			$setting = new setting;
 		}
-
 		$setting -> title = $request->title;
 		$setting -> keywords = $request->keywords;
-		$setting -> description = $request->description;
-		
-		$setting -> banquan = $request->banquan;
-		
+		$setting -> description = $request->description;		
+		$setting -> banquan = $request->banquan;		
 		$setting -> domain = $request->domain;
-		$setting -> logo = $request->input('logo', 'https://picsum.photos/400/300?image=2');
-
+		$setting -> close = $request->close;
+		if($request->hasFile('logo')){
+            $setting->logo = '/'.$request->logo->store('uploads/'.date('Ymd'));
+        }
 		if($setting->save()){
 			return back()->with('success','设置成功');
 		}else{
