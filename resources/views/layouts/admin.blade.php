@@ -46,7 +46,7 @@
     <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
             <div class="navbar-header">
-                <a class="navbar-brand waves-effect waves-dark" href="/admin"><i class="large material-icons">track_changes</i> <strong>码农</strong></a>
+                <a class="navbar-brand waves-effect waves-dark" href="/admin"><i class="large material-icons">track_changes</i> <strong>MaNong</strong></a>
                 <div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
             </div>
             <ul class="nav navbar-top-links navbar-right">
