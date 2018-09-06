@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\User;
 use App\Wuliu;
 use App\Zhifu;
 use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class DingdanController extends Controller
     {       
          //读取支付信息
         $zhifu = zhifu::all();
-        
+      
         $wuliu = wuliu::all();
 
         //读取物流信息

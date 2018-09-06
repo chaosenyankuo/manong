@@ -23,4 +23,9 @@ class Order extends Model
     {
     	return $this->belongsTo('App\Zhifu');
     }
+
+    public function User()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

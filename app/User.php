@@ -27,13 +27,18 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+  
+
+
     public function uaddress()
     {
         return $this->hasMany('App\Uaddress');
     }
 
+
     public function comment()
     {
         return $this->hasMany('App\Comment');
     }
+
 }

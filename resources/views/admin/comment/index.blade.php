@@ -63,6 +63,7 @@
                     <div class="row">
                         <div class="am-cf">
                             <div class="am-fr">
+                                {{ $comments->appends(request()->all())->links() }}
                             </div>
                         </div>
                     </div>
