@@ -1,0 +1,5 @@
+﻿文件下载网址  =>  文件保存路径
+http://demo.cssmoban.com/cssthemes4/tpez_4_qd/css/style/images/about:blank  =>  D:\安装包\仿站\仿站小工具 V3.0\demo.cssmoban.com\images\b9ec6f4703174b08964ae0aac3e00536.gif
+http://demo.cssmoban.com/cssthemes4/tpez_4_qd/css/style/images/page4_5.png  =>  D:\安装包\仿站\仿站小工具 V3.0\demo.cssmoban.com\images\page4_5.png
+http://demo.cssmoban.com/cssthemes4/tpez_4_qd/css/style/images/com_0.png  =>  D:\安装包\仿站\仿站小工具 V3.0\demo.cssmoban.com\images\com_0.png
+http://demo.cssmoban.com/cssthemes4/tpez_4_qd/css/style/images/com_0_star.png  =>  D:\安装包\仿站\仿站小工具 V3.0\demo.cssmoban.com\images\com_0_star.png

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Zhifu;
-use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
+use App\Zhifu;
 class ZhifuController extends Controller
 {
     /**

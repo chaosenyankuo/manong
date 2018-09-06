@@ -24,11 +24,11 @@
     <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> 商品标签管理<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
        	 <li>
-            <a href="/tag/create">商品标签添加</a>
+            <a href="/ptag/create">商品标签添加</a>
         </li>
 
         <li>
-            <a href="/tag">商品标签列表</a>
+            <a href="/ptag">商品标签列表</a>
         </li>
     </ul>
 </li>
