@@ -15,10 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//登陆页面
-Route::get('/admin/login', 'AdminController@login');
-//登陆操作
-Route::post('/admin/login', 'AdminController@dologin');
+
 //退出登录
 Route::get('/admin/logout', 'AdminController@logout');
 
@@ -32,16 +29,7 @@ Route::post('/admin/login', 'AdminController@dologin');
 
 
 //后台路由
-Route::group(['middleware'=>'login'],function(){
-
-//后台登陆
-Route::get('/admin','AdminController@index');
-
-
-//退出登录
-Route::get('/admin/logout', 'AdminController@logout');
-
-Route::group(['middleware'=>'login'],function(){
+// Route::group(['middleware'=>'login'],function(){
 	//友情链接
 	Route::resource('link','LinkController');
 
@@ -55,15 +43,10 @@ Route::group(['middleware'=>'login'],function(){
 	Route::resource('comment','CommentController');
 
 
-//网站设置
-Route::get('/admin/setting', 'AdminController@setting');
-Route::post('/admin/setting', 'AdminController@update');
-
-	//后台设置
+	//网站设置
 	Route::get('/admin/setting', 'AdminController@setting');
 	Route::post('/admin/setting', 'AdminController@update');
-
-
+	
 	//物流管理
 	Route::resource('wuliu', 'WuliuController');
 
@@ -83,13 +66,6 @@ Route::post('/admin/setting', 'AdminController@update');
 	//分类管理
 	Route::resource('cate','CateController');
 
-
-
-
-//地址管理
-Route::resource('uaddress','UaddressController');
-
-
 	//包装管理
 	Route::resource('pack','PackController');
 
@@ -97,16 +73,11 @@ Route::resource('uaddress','UaddressController');
 	//标签管理
 	Route::resource('tag','TagController');
 
-	
-
 	//用户管理
 	Route::resource('user','UserController');
 
 	//地址管理
 	Route::resource('uaddress','UaddressController');
 		
-
-		
-
-});
+// });
 
