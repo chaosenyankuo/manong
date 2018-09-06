@@ -24,6 +24,7 @@
         </li>
     </ul>
 </li>
+<li>
     <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i>商品管理<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
         <li>
@@ -83,6 +84,17 @@
         </li>
         <li>
             <a href="/ptag">商品评论标签列表</a>
+        </li>
+    </ul>
+</li>
+<li>
+    <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> 好中差管理<span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li>
+            <a href="/com/create">好中差添加</a>
+        </li>
+        <li>
+            <a href="/com">好中差列表</a>
         </li>
     </ul>
 </li>

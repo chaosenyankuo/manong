@@ -45,6 +45,9 @@ Route::resource('dingdan','DingdanController');
 //商品管理
 Route::resource('shop','ShopController');
 
+//好中差管理
+Route::resource('com','ComController');
+
 //分类管理
 Route::resource('cate','CateController');
 

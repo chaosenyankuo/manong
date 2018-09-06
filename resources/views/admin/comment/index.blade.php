@@ -33,8 +33,8 @@
                                     </center>
                                 </th>
                                 <th class="center">id</th>
-                                <th class=" center">用户id</th>
-                                <th class=" center ">商品id</th>
+                                <th class=" center">用户名</th>
+                                <th class=" center ">商品名</th>
                                 <th class="center">评论内容</th>
                                 <th class="center">操作</th>
                             </tr>

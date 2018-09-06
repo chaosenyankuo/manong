@@ -1,75 +1,75 @@
 @extends('layouts.admin') @section('title','地址列表') @section('content')
-<div id="page-wrapper">
-    <div class="header">
-        <h1 class="page-header">地址列表</h1>
-    </div>
-    <div id="page-inner">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-action">
-                    地址列表
-                </div>
-                <div class="card-content">
-                    <div class="table-responsive">
-                        <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-content">
+            <div class="table-responsive">
+                <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <form action="/uaddress" method="POST">
+                                <a href="/uaddress/create" class="btn btn-waring dropdown-toggle">添加</a>
+                                <button class="btn btn-danger dropdown-toggle">删除</button>
+                                {{csrf_field()}} {{method_field('DELETE')}}
+                            </form>
+                        </div>
+                        <div class="col-sm-6">
                             <form action="/uaddress" method="get">
                                 <div id="dataTables-example_filter" class="dataTables_filter">
-                                    <label>搜索:
+                                    <label>Search:
                                         <input type="search" class="form-control input-sm" aria-controls="dataTables-example" name="keywords" value="{{request()->keywords}}">
                                     </label>
-                                    <button class="waves-effect waves-light ">搜索</button>
                                 </div>
                             </form>
-                            <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
-                                <thead>
-                                    <tr role="row">
-                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column ascending">ID</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">用户</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">电话</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">地址</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">详细地址</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">创建时间</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">操作</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($uaddress as $v)
-                                        <tr class="gradeA odd">
-                                            <td class="center ">{{$v -> id}}</td>
-                                            <td class="center ">{{$v -> user -> uname}}</td>
-                                            <td class=" ">{{$v -> uphone}}</td>
-                                            <td class=" ">{{$v -> address}}</td>
-                                            <td class="center ">{{$v-> xadress}}</td>
-                                            <td class="center ">{{$v -> created_at}}</td>
-                                            <td class="center ">
-                                                <a href="/uaddress/{{$v -> id}}/edit" class="waves-effect waves-light ">编辑</a>
-                                                <form action="/uaddress/{{$v -> id}}" method="post">
-                                                    {{csrf_field()}}
-                                                    {{method_field('DELETE')}}
-                                                    <button>删除</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <style>
-                                #a > ul{
-                                    float:right;
-                                }
-                            </style>
-                            <div class="row">
-                                <div id="a" class="col-sm-6" style="float:right;margin-right:0px;">
-                                    {{$uaddress -> links()}}
-                                </div>
-                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column ascending">ID</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">用户</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">电话</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">地址</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">详细地址</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">创建时间</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($uaddress as $v)
+                            <tr class="gradeA odd">
+                                <td class="center ">{{$v -> id}}</td>
+                                <td class="center ">{{$v -> user -> uname}}</td>
+                                <td class=" ">{{$v -> uphone}}</td>
+                                <td class=" ">{{$v -> address}}</td>
+                                <td class="center ">{{$v-> xadress}}</td>
+                                <td class="center ">{{$v -> created_at}}</td>
+                                <td class="center ">
+                                    <form action="/uaddress/{{$v -> id}}" method="post">
+                                        <a href="/uaddress/{{$v['id']}}/edit">
+                                            <button class="btn-primary btn-min" type="button">修改</button>
+                                        </a>
+                                        {{csrf_field()}} {{method_field('DELETE')}}
+                                        <button class="btn-danger btn-min">删除</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <style>
+                    #a>ul {
+                        float: right;
+                    }
+                    </style>
+                    <div class="row">
+                        <div id="a" class="col-sm-6" style="float:right;margin-right:0px;">
+                            {{$uaddress -> links()}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- /. PAGE INNER  -->
 </div>
 <!-- /. PAGE WRAPPER  -->
 @endsection

@@ -81,7 +81,7 @@
     </div>
 </div>
 <!-- /. PAGE WRAPPER  -->
-<script src="/jquer_shijian.js?ver=1" type="text/javascript" charset="utf-8"></script>
+<script src="/time/jquer_shijian.js?ver=1" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 $("#input4").shijian({
     startYear: 1960,
