@@ -23,7 +23,6 @@ class AdminController extends Controller
 	public function dologin(Request $request)
 	{	
 
-
 		//获取用户的数据
 		$user = User::where('nickname', $request->nickname)->first();
 		
@@ -87,6 +86,7 @@ class AdminController extends Controller
 		
 	}
 
+
 	/**
 	 * 退出登陆
 	 */
@@ -95,4 +95,5 @@ class AdminController extends Controller
 		$request->session()->flush();
 		return redirect('/admin/login')->with('success','退出成功');
 	}
+
 }

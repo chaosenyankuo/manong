@@ -16,8 +16,6 @@ Route::get('/', function () {
 });
 
 
-//退出登录
-Route::get('/admin/logout', 'AdminController@logout');
 
 
 //登陆页面
@@ -27,11 +25,13 @@ Route::get('/admin/login', 'AdminController@login');
 Route::post('/admin/login', 'AdminController@dologin');
 
 
+//退出登录
+Route::get('/admin/logout', 'AdminController@logout');
+
+
 
 //后台路由
-// Route::group(['middleware'=>'login'],function(){
-	//友情链接
-	Route::resource('link','LinkController');
+Route::group(['middleware'=>'login'],function(){
 
 	//后台主页
 	Route::get('/admin','AdminController@index');
@@ -46,7 +46,8 @@ Route::post('/admin/login', 'AdminController@dologin');
 	//网站设置
 	Route::get('/admin/setting', 'AdminController@setting');
 	Route::post('/admin/setting', 'AdminController@update');
-	
+
+
 	//物流管理
 	Route::resource('wuliu', 'WuliuController');
 
@@ -78,6 +79,9 @@ Route::post('/admin/login', 'AdminController@dologin');
 
 	//地址管理
 	Route::resource('uaddress','UaddressController');
+
+	//友情链接
+	Route::resource('link','LinkController');
 		
-// });
+});
 
