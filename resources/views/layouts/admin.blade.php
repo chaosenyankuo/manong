@@ -54,9 +54,11 @@
         </nav>
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
-            <li><a href="/admin/logout"><i class="fa fa-sign-out fa-fw"></i>退出登录</a>
+
+            <li><a href="/admin/setting"><i class="fa fa-sign-out fa-fw"></i> 设置</a>
+            <li><a href="/admin/logout"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
             </li>
-            <li><a href="/admin/setting"><i class="fa fa-sign-out fa-fw"></i>网站设置</a>
+
             </li>
         </ul>
         <ul id="dropdown2" class="dropdown-content w250">

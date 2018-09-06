@@ -24,10 +24,8 @@ Route::post('/admin/login', 'AdminController@dologin');
 //退出登录
 Route::get('/admin/logout', 'AdminController@logout');
 
-Route::group(['middleware'=>'login'],function(){
-	//友情链接
-	Route::resource('link','LinkController');
 
+Route::group(['middleware'=>'login'],function(){
 	//后台主页
 	Route::get('/admin','AdminController@index');
 		
@@ -37,9 +35,10 @@ Route::group(['middleware'=>'login'],function(){
 	//商品评价
 	Route::resource('comment','CommentController');
 
-	//后台设置
+	//网站设置
 	Route::get('/admin/setting', 'AdminController@setting');
 	Route::post('/admin/setting', 'AdminController@update');
+
 
 	//物流管理
 	Route::resource('wuliu', 'WuliuController');
@@ -70,4 +69,8 @@ Route::group(['middleware'=>'login'],function(){
 
 	//地址管理
 	Route::resource('uaddress','UaddressController');
+
+	//友情链接
+	Route::resource('link','LinkController');
 });
+
