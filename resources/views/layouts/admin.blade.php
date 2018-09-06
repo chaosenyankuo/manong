@@ -42,16 +42,14 @@
                 <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown4"><i class="fa fa-envelope fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown3"><i class="fa fa-tasks fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown2"><i class="fa fa-bell fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b>John Doe</b> <i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b>{{Session::get('nickname')}}</b> <i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
         </nav>
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
-            <li><a href="#"><i class="fa fa-user fa-fw"></i> My Profile</a>
+            <li><a href="/admin/logout"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
             </li>
-            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-            </li>
-            <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+            <li><a href="/admin/setting"><i class="fa fa-sign-out fa-fw"></i> 设置</a>
             </li>
         </ul>
         <ul id="dropdown2" class="dropdown-content w250">
