@@ -1,70 +1,26 @@
 <li>
-    <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> 友情链接管理<span class="fa arrow"></span></a>
+    <a href="#" class="waves-effect waves-dark">
+        <i class="fa fa-sitemap"></i> 用户管理<span class="fa arrow"></span>
+    </a>
     <ul class="nav nav-second-level">
         <li>
-            <a href="/link/create">友情链接添加</a>
+            <a href="/user/create">用户添加</a>
         </li>
         <li>
-            <a href="/link">友情链接列表</a>
-        </li>
-    </ul>
-</li>
-
-<li>
-    <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> 商品评论管理<span class="fa arrow"></span></a>
-    <ul class="nav nav-second-level">
-       
-        <li>
-            <a href="/comment">商品评论列表</a>
-        </li>
-    </ul>
-</li>
-
-<li>
-    <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> 商品标签管理<span class="fa arrow"></span></a>
-    <ul class="nav nav-second-level">
-       	 <li>
-            <a href="/tag/create">商品标签添加</a>
-        </li>
-
-        <li>
-            <a href="/tag">商品标签列表</a>
+            <a href="/user">用户列表</a>
         </li>
     </ul>
 </li>
 <li>
-    <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i>订单管理<span class="fa arrow"></span></a>
+    <a href="#" class="waves-effect waves-dark">
+        <i class="fa fa-sitemap"></i> 地址管理<span class="fa arrow"></span>
+    </a>
     <ul class="nav nav-second-level">
         <li>
-            <a href="/dingdan/create">订单添加</a>
+            <a href="/uaddress/create">地址添加</a>
         </li>
         <li>
-            <a href="/dingdan">订单列表</a>
-        </li>
-    </ul>
-</li>
-<li>
-    <a href="/admin/setting" class="waves-effect waves-dark"><i class="fa fa-edit"></i>网站设置</a>
-</li>
-<li>
-    <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> 物流管理<span class="fa arrow"></span></a>
-    <ul class="nav nav-second-level">
-        <li>
-            <a href="/wuliu/create">物流公司添加</a>
-        </li>
-        <li>
-            <a href="/wuliu">物流公司列表</a>
-        </li>
-    </ul>
-</li>
-<li>
-    <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> 支付管理<span class="fa arrow"></span></a>
-    <ul class="nav nav-second-level">
-        <li>
-            <a href="/zhifu/create">合作公司添加</a>
-        </li>
-        <li>
-            <a href="/zhifu">合作公司列表</a>
+            <a href="/uaddress">地址列表</a>
         </li>
     </ul>
 </li>
@@ -112,4 +68,69 @@
         </li>
     </ul>
 </li>
-
+<li>
+    <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> 商品评论管理<span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li>
+            <a href="/comment">商品评论列表</a>
+        </li>
+    </ul>
+</li>
+<li>
+    <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> 商品评论标签管理<span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li>
+            <a href="/ptag/create">商品评论标签添加</a>
+        </li>
+        <li>
+            <a href="/ptag">商品评论标签列表</a>
+        </li>
+    </ul>
+</li>
+<li>
+    <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i>订单管理<span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li>
+            <a href="/dingdan/create">订单添加</a>
+        </li>
+        <li>
+            <a href="/dingdan">订单列表</a>
+        </li>
+    </ul>
+</li>
+<li>
+    <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> 物流管理<span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li>
+            <a href="/wuliu/create">物流公司添加</a>
+        </li>
+        <li>
+            <a href="/wuliu">物流公司列表</a>
+        </li>
+    </ul>
+</li>
+<li>
+    <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> 支付管理<span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li>
+            <a href="/zhifu/create">合作公司添加</a>
+        </li>
+        <li>
+            <a href="/zhifu">合作公司列表</a>
+        </li>
+    </ul>
+</li>
+<li>
+    <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> 友情链接管理<span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li>
+            <a href="/link/create">友情链接添加</a>
+        </li>
+        <li>
+            <a href="/link">友情链接列表</a>
+        </li>
+    </ul>
+</li>
+<li>
+    <a href="/admin/setting" class="waves-effect waves-dark"><i class="fa fa-edit"></i>网站设置</a>
+</li>

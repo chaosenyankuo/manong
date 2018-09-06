@@ -67,10 +67,10 @@ Route::resource('pack','PackController');
 //标签管理
 Route::resource('tag','TagController');
 
-//后台用户管理
+//用户管理
 Route::resource('user','UserController');
 
-//后台用户安全页面
-Route::get('/user/{id}/anquan','UserController@anquan');
-});
+
+//地址管理
+Route::resource('uaddress','UaddressController');
 

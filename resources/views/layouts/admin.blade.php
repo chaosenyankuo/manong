@@ -4,12 +4,29 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@yield('title')</title>
-    <!-- 生日三级联动 -->
+
+    <!-- 生日 start -->
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
-    <link rel="stylesheet" type="text/css" href="/shijian.css" />
-    <script src="/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/time/shijian.css" />
+    <script src="/time/jquery.min.js"></script>
+    <!-- 生日 end -->
+
+    <!-- 地址 start -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://www.jq22.com/jquery/bootstrap-3.3.4.css" rel="stylesheet">
+    <script src="http://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+    <script src="/dizhi/js/distpicker.data.js"></script>
+    <script src="/dizhi/js/distpicker.js"></script>
+    <script src="/dizhi/js/main.js"></script>
+    <!-- 地址 end -->
+
+    <!-- 拉动条 start -->
+    <script type="text/javascript" src="/js/scroll.min.js"></script>
+    <!-- 拉动条 end -->
+
+    <title>@yield('title')</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/assets/materialize/css/materialize.min.css" media="screen,projection" />
     <!-- Bootstrap Styles-->
@@ -29,16 +46,11 @@
     <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle waves-effect waves-dark" data-toggle="collapse" data-target=".sidebar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand waves-effect waves-dark" href="/admin"><i class="large material-icons">track_changes</i> <strong>MaNong</strong></a>
+                <a class="navbar-brand waves-effect waves-dark" href="/admin"><i class="large material-icons">track_changes</i> <strong>码农</strong></a>
                 <div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
             </div>
             <ul class="nav navbar-top-links navbar-right">
+
                 <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown4"><i class="fa fa-envelope fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown3"><i class="fa fa-tasks fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown2"><i class="fa fa-bell fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
@@ -220,18 +232,18 @@
             </li>
         </ul>
         <!--/. NAV TOP  -->
-        <nav class="navbar-default navbar-side" role="navigation">
-            <div class="sidebar-collapse">
+        <nav class="navbar-default navbar-side" role="navigation" >
+            <div class="sidebar-collapse" id="scrollbox">
                 <ul class="nav" id="main-menu">
                     <li>
                         <a class="active-menu waves-effect waves-dark" href="/admin"><i class="fa fa-dashboard"></i>操作菜单</a>
                     </li>
-                    @include('layouts.admin._menu') @include('layouts.admin.zuo')
+                    @include('layouts.admin._menu')
                 </ul>
             </div>
         </nav>
         <!-- /. NAV SIDE  -->
-        <div id="page-wrapper">
+        <div id="page-wrapper" style="position: relative;left:0px;top:-600px;">
             <div class="header">
                 @if(Session::has('success'))
                 <div class="col-xs-12" id="xiaoshi" style="padding:10px;">
@@ -494,9 +506,6 @@
                         <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
                     </ul>
                 </div>
-                <footer>
-                    <p>All right reserved. Template WebThemez.com. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>>
-                </footer>
             </div>
             @show
             <!-- /. PAGE INNER  -->
@@ -521,9 +530,10 @@
     <!-- Custom Js -->
     <script src="/assets/js/custom-scripts.js"></script>
     <script>
-    setTimeout(function() {
-        $('#xiaoshi').css('display', 'none');
-    }, 2000)
+        setTimeout(function() {
+            $('#xiaoshi').css('display', 'none');
+        }, 2000);
+        scrollY("#scrollbox");      //单个Y轴
     </script>
 </body>
 

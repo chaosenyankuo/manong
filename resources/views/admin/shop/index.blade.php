@@ -47,19 +47,17 @@
                         <tbody>
                             @foreach($shops as $v)
                             <tr class="gradeA odd">
-                                <td>
-                                    <center>
+                                <td class="center">
                                         <input type="checkbox" id="test.{{$v['id']}}">
                                         <label for="test.{{$v['id']}}" style="margin-bottom:-10px"></label>
-                                    </center>
                                 </td>
-                                <td class="sorting_1">{{$v['id']}}</td>
-                                <td class=" ">{{$v['sname']}}</td>
-                                <td class=" ">{{$v['sprice']}}</td>
-                                <td class=" "><img src="{{$v['simage']}}" width="30" height="30" alt=""></td>
-                                <td class=" ">{{$v['sflavor']}}</td>
-                                <td class=" ">{{$v['scount']}}</td>
-                                <td class=" ">
+                                <td class="center">{{$v['id']}}</td>
+                                <td class="center">{{$v['sname']}}</td>
+                                <td class="center">{{$v['sprice']}}</td>
+                                <td class="center"><img src="{{$v['simage']}}" width="30" height="30" alt=""></td>
+                                <td class="center">{{$v['sflavor']}}</td>
+                                <td class="center">{{$v['scount']}}</td>
+                                <td class="center">
                                     @if($v['recom'] == 1)
                                             是
                                     @endif

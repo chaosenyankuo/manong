@@ -28,7 +28,6 @@
                         <label for="test3">保密</label>
                     </div>
                     <div class="input-field col s6" style="float:right;">
-                        <!-- <input id="last_name" type="text" class="validate" name="birthday"> -->
                         <input type="text" id="input4" placeholder="生日" name="birthday">
                     </div>
                 </div>
@@ -63,7 +62,7 @@
     </div>
 </div>
 <!-- /. PAGE WRAPPER  -->
-<script src="/jquer_shijian.js?ver=1" type="text/javascript" charset="utf-8"></script>
+<script src="/time/jquer_shijian.js?ver=1" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 $("#input4").shijian({
     startYear: 1960,

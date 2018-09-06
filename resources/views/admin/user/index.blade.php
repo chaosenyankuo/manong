@@ -1,20 +1,27 @@
 @extends('layouts.admin') @section('title','用户列表') @section('content')
 <div class="col-lg-12">
     <div class="card">
-        <div class="card-action">
-            用户列表
-        </div>
         <div class="card-content">
             <div class="table-responsive">
                 <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
-                    <form action="/user" method="post">
-                        <div id="dataTables-example_filter" class="dataTables_filter">
-                            <label>搜索:
-                                <input type="search" class="form-control input-sm" aria-controls="dataTables-example" name="keywords" value="{{request()->keywords}}">
-                            </label>
-                            <button class="waves-effect waves-light ">搜索</button>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <form action="/user" method="POST">
+                                <a href="/user/create" class="btn btn-waring dropdown-toggle">添加</a>
+                                <button class="btn btn-danger dropdown-toggle">删除</button>
+                                {{csrf_field()}} {{method_field('DELETE')}}
+                            </form>
                         </div>
-                    </form>
+                        <div class="col-sm-6">
+                            <form action="/user" method="get">
+                                <div id="dataTables-example_filter" class="dataTables_filter">
+                                    <label>Search:
+                                        <input type="search" class="form-control input-sm" aria-controls="dataTables-example" name="keywords" value="{{request()->keywords}}">
+                                    </label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                     <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
                         <thead>
                             <tr role="row">
@@ -44,10 +51,11 @@
                                 <td class="center ">{{$v -> created_at}}</td>
                                 <td class="center ">
                                     <form action="/user/{{$v -> id}}" method="post">
-                                    <a href="/user/{{$v -> id}}/edit"> <button class="btn-primary btn-min" type="button">修改</button></a>
+                                        <a href="/user/{{$v -> id}}/edit">
+                                            <button class="btn-primary btn-min" type="button">修改</button>
+                                        </a>
                                         {{csrf_field()}} {{method_field('DELETE')}}
                                         <button class="btn-danger btn-min">删除</button>
-                                    <a href="/user/{{$v -> id}}/anquan"><button class="btn-success btn-min" type="button">安全</button></a>
                                     </form>
                                 </td>
                             </tr>

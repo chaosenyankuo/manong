@@ -23,7 +23,7 @@ class CommentController extends Controller
             $ptags = ptag::all();
             // echo 'aaaa';
             $comments = Comment::orderBy('id','asc')
-                ->where('com_id','like', '%'.request()->name.'%')
+                ->where('content','like', '%'.request()->keywords.'%')
                 ->get();
         return view('admin.comment.index',compact('comments','users','shops','ptags'));
     }
