@@ -24,6 +24,7 @@
         </li>
     </ul>
 </li>
+<li>
     <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i>商品管理<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
         <li>

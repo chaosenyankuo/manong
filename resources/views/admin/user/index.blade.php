@@ -56,9 +56,6 @@
                                         </a>
                                         {{csrf_field()}} {{method_field('DELETE')}}
                                         <button class="btn-danger btn-min">删除</button>
-                                        <a href="/user/{{$v -> id}}/anquan">
-                                            <button class="btn-success btn-min" type="button">安全</button>
-                                        </a>
                                     </form>
                                 </td>
                             </tr>
