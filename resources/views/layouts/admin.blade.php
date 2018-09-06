@@ -4,12 +4,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!-- 生日 start -->
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
     <link rel="stylesheet" type="text/css" href="/time/shijian.css" />
     <script src="/time/jquery.min.js"></script>
     <!-- 生日 end -->
+
     <!-- 地址 start -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="http://www.jq22.com/jquery/bootstrap-3.3.4.css" rel="stylesheet">
@@ -19,6 +21,11 @@
     <script src="/dizhi/js/distpicker.js"></script>
     <script src="/dizhi/js/main.js"></script>
     <!-- 地址 end -->
+
+    <!-- 拉动条 start -->
+    <script type="text/javascript" src="/js/scroll.min.js"></script>
+    <!-- 拉动条 end -->
+
     <title>@yield('title')</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/assets/materialize/css/materialize.min.css" media="screen,projection" />
@@ -223,8 +230,8 @@
             </li>
         </ul>
         <!--/. NAV TOP  -->
-        <nav class="navbar-default navbar-side" role="navigation">
-            <div class="sidebar-collapse">
+        <nav class="navbar-default navbar-side" role="navigation" >
+            <div class="sidebar-collapse" id="scrollbox">
                 <ul class="nav" id="main-menu">
                     <li>
                         <a class="active-menu waves-effect waves-dark" href="/admin"><i class="fa fa-dashboard"></i>操作菜单</a>
@@ -234,7 +241,7 @@
             </div>
         </nav>
         <!-- /. NAV SIDE  -->
-        <div id="page-wrapper">
+        <div id="page-wrapper" style="position: relative;left:0px;top:-600px;">
             <div class="header">
                 @if(Session::has('success'))
                 <div class="col-xs-12" id="xiaoshi" style="padding:10px;">
@@ -497,9 +504,6 @@
                         <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
                     </ul>
                 </div>
-                <footer>
-                    <p>All right reserved. Template WebThemez.com. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-                </footer>
             </div>
             @show
             <!-- /. PAGE INNER  -->
@@ -524,9 +528,10 @@
     <!-- Custom Js -->
     <script src="/assets/js/custom-scripts.js"></script>
     <script>
-    setTimeout(function() {
-        $('#xiaoshi').css('display', 'none');
-    }, 2000)
+        setTimeout(function() {
+            $('#xiaoshi').css('display', 'none');
+        }, 2000);
+        scrollY("#scrollbox");      //单个Y轴
     </script>
 </body>
 

@@ -45,7 +45,7 @@
                                 <td class="center ">{{$v -> created_at}}</td>
                                 <td class="center ">
                                     <form action="/uaddress/{{$v -> id}}" method="post">
-                                        <a href="/uaddress/{{$v['id']}}/edit">
+                                        <a href="/uaddress/{{$v -> id}}/edit">
                                             <button class="btn-primary btn-min" type="button">修改</button>
                                         </a>
                                         {{csrf_field()}} {{method_field('DELETE')}}
@@ -71,5 +71,4 @@
         </div>
     </div>
 </div>
-<!-- /. PAGE WRAPPER  -->
 @endsection
