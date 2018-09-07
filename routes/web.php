@@ -74,3 +74,58 @@ Route::group(['middleware'=>'login'],function(){
 	Route::resource('link','LinkController');
 });
 
+
+/*
+	前台路由
+ */
+//前台登录
+////前台注册
+Route::get('/home/zhuce', 'ZhuceController@zhuce');
+
+//注册操作
+Route::post('/home/store', 'ZhuceController@store');
+
+//前台登陆页面
+Route::get('/home/login', 'HomeController@login');
+
+//前台登陆操作
+Route::post('/home/dologin', 'HomeController@dologin');
+
+ 
+//前台注册
+Route::get('/home/zhuce', 'ZhuceController@zhuce');
+
+//注册操作
+Route::post('/home/store', 'ZhuceController@store');
+
+//前台登陆页面
+Route::get('/home/login', 'HomeController@login');
+
+//前台登陆操作
+Route::post('/home/dologin', 'HomeController@dologin');
+
+//个人中心
+Route::get('/home/index','GrzxController@index');
+//个人资料
+Route::get('/home/grzl','GrzxController@grzl');
+Route::post('/home/grzl','GrzxController@grzla');
+//个人信息
+Route::get('/home/grxx','GrzxController@grxx');
+//修改个人信息
+Route::post('/home/xggrxx','GrzxController@xggrxx');
+//安全设置
+Route::get('/home/aqsz','GrzxController@aqsz');
+//修改密码
+Route::get('/home/xgma','GrzxController@xgma');
+Route::post('/home/xgmacz','GrzxController@xgmacz');
+//收货地址
+Route::get('/home/shdz','GrzxController@shdz');
+//添加收货地址
+
+//前台末尾
+
+
+//
+
+
+
