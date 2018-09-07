@@ -143,7 +143,7 @@
 					</div>
 				</div>
 				<!--底部-->
-				@include('layouts.home._footer')
+				@include('layouts.home._foot')
 			</div>
 
 			@include('layouts.home._menu')

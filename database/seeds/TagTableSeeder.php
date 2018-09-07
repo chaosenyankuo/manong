@@ -1,7 +1,6 @@
 <?php
 
 use App\Tag;
-use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
 
 
@@ -12,11 +11,12 @@ class TagTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker $faker)
+    public function run()
     {
-        for ($i=0; $i <5 ; $i++) { 
+        for ($i=0; $i <100 ; $i++) { 
         	$tag = new Tag;
-        	$tag -> tname = $faker -> name;
+        	$tag -> tname = str_random(5);
+            $tag -> cate_id = rand(1,10);
         	$tag -> save();
         }
     }

@@ -15,32 +15,38 @@
 </li>
 <li>
     <a href="/cate" class="waves-effect waves-dark">
-        <i class="fa fa-sitemap"></i>分类管理
+        <i class="fa fa-sitemap"></i>商品分类管理
+    </a>
+</li>
+<li>
+    <a href="/flavor" class="waves-effect waves-dark">
+        <i class="fa fa-sitemap"></i>商品口味管理
     </a>
 </li>
 <li>
     <a href="/tag" class="waves-effect waves-dark">
-        <i class="fa fa-sitemap"></i>标签管理
+        <i class="fa fa-sitemap"></i>商品标签管理
     </a>
 </li>
 <li>
     <a href="/pack" class="waves-effect waves-dark">
-        <i class="fa fa-sitemap"></i>包装管理
+        <i class="fa fa-sitemap"></i>商品包装管理
+    </a>
+</li>
+
+<li>
+    <a href="/com" class="waves-effect waves-dark">
+        <i class="fa fa-sitemap"></i> 商品好中差管理
+    </a>
+</li>
+<li>
+    <a href="/ptag" class="waves-effect waves-dark">
+        <i class="fa fa-sitemap"></i> 买家印象管理
     </a>
 </li>
 <li>
     <a href="/comment" class="waves-effect waves-dark">
         <i class="fa fa-sitemap"></i> 商品评论管理
-    </a>
-</li>
-<li>
-    <a href="/ptag" class="waves-effect waves-dark">
-        <i class="fa fa-sitemap"></i> 商品评论标签管理
-    </a>
-</li>
-<li>
-    <a href="/com" class="waves-effect waves-dark">
-        <i class="fa fa-sitemap"></i> 好中差管理
     </a>
 </li>
 <li>

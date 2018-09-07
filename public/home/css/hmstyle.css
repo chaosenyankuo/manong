@@ -350,10 +350,17 @@ text-align: center;float:none}
 /*第一套轮播图布局*/	
 .banner{position: absolute;left:0px;top:180px;z-index:9 ;border-top:2px solid #d2364c;}
 .banner .am-slider .am-slides li{height:360px;}
+<<<<<<< HEAD
 .banner .am-slider .am-slides li.banner4{background: #ff9801;}
 .banner .am-slider .am-slides li.banner1{background: #55be59;}
 .banner .am-slider .am-slides li.banner2{background: #f44661;}
 .banner .am-slider .am-slides li.banner3{background: #0f1024;}
+=======
+.banner .am-slider .am-slides li.banner4{background: white;}
+.banner .am-slider .am-slides li.banner1{background: white;}
+.banner .am-slider .am-slides li.banner2{background: white;}
+.banner .am-slider .am-slides li.banner3{background: white;}
+>>>>>>> bd0307165616234e26517e418ca0af304842e767
 .banner .am-slider .am-slides img{width:800px ;left:50% ;position: absolute;margin-left: -370px;}
 .banner .am-slider-default .am-direction-nav .am-next {right: 50px;}
 
@@ -696,7 +703,11 @@ filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#f8c375',endCo
 .shopNavfloat{float:left; position:static; margin-top:-4px;display: block;}
 
 .banner .am-slider .am-slides li{height:430px;}
+<<<<<<< HEAD
 .banner .am-slider .am-slides img{width:954px ;left:50% ;position: absolute;margin-left: -438px;}
+=======
+.banner .am-slider .am-slides img{width:798px;left:50% ;position: absolute;margin-left: -438px;}
+>>>>>>> bd0307165616234e26517e418ca0af304842e767
 
 /*第二套轮播图布局*/	
 .bannerTwo{position: absolute;left:187px;;width:760px ;}

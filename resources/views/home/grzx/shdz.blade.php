@@ -183,7 +183,7 @@
                 <div class="clear"></div>
             </div>
             <!--底部-->
-            @include('layouts.home._footer')
+            @include('layouts.home._footr')
         </div>
         @include('layouts.home._menu')
     </div>

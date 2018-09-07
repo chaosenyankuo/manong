@@ -58,7 +58,7 @@
             </div>
         </div>
     </div>
-   @include('layouts.home._footer')
+   @include('layouts.home._foot')
 </body>
 
 </html>

@@ -22,6 +22,20 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
+                        <label >商品详细图片1</label><img src="{{$shop['simage1']}}" style="margin-left:100px" width="80" height="80" alt="">
+                        <input style="margin-left:100px" class="btn btn-primary dropdown-toggle" type="file" name="simage1" >
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label >商品详细图片2</label><img src="{{$shop['simage2']}}" style="margin-left:100px" width="80" height="80" alt="">
+                        <input style="margin-left:100px" class="btn btn-primary dropdown-toggle" type="file" name="simage2" >
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
                         <label>商品分类</label>
                         <p style="margin-left:100px">
                             @foreach($cates as $v)
@@ -30,6 +44,21 @@
                                 checked
                             @endif>
                             <label for="test{{$v['id']+500}}">{{$v['cname']}}</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            @endforeach
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label>商品口味</label>
+                        <p style="margin-left:100px">
+                            @foreach($flavors as $v)
+                            <input name="flavor_id[]" type="checkbox" value="{{$v['id']}}" id="test{{$v['id']+121}}" 
+                            @if(in_array($v->id,$shop->flavors->pluck('id')->toArray())) 
+                                checked
+                            @endif>
+                            <label for="test{{$v['id']+121}}">{{$v['fname']}}</label>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             @endforeach
                         </p>
@@ -53,12 +82,12 @@
                 </div>
                 <div class="row">
                     <div class="col s6">
-                        <label>口味</label>
-                        <input type="text" name="sflavor" class="validate" value="{{$shop['sflavor']}}">
-                    </div>
-                    <div class="col s6">
                         <label>食用方法</label>
                         <input type="text" name="eat" class="validate" value="{{$shop['eat']}}">
+                    </div>
+                    <div class="col s6">
+                        <label>生产许可编号</label>
+                        <input type="text" name="shengchan" class="validate" value="{{$shop['shengchan']}}">
                     </div>
                 </div>
                 <div class="row">
@@ -112,11 +141,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s6">
-                        <label>生产许可编号</label>
-                        <input type="text" name="shengchan" class="validate" value="{{$shop['shengchan']}}">
-                    </div>
-                    <div class="input-field col s6">
+                    
+                    <div class="input-field col s12">
                         <label>是否推荐</label>
                         <p style="margin-left:100px">
                             <input name="recom" type="radio" value="1" id="test999999" @if($shop['recom'] == 1) checked  @endif>
