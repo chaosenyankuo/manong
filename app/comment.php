@@ -14,7 +14,7 @@ class Comment extends Model
 
     public function shop()
     {
-    	return $this->belongsTo('App\shop');
+    	return $this->belongsTo('App\Shop');
     }
     public function ptags()
     {

@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 
 use App\Cate;
+use App\Flavor;
+use App\Pack;
 use App\Shop;
 use App\Tag;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,10 +23,11 @@ class ShopController extends Controller
     {
         $cates = Cate::all();
         $tags = Tag::all();
+        $flavors = Flavor::all();
         $shops = Shop::orderBy('id','desc')
             ->where('sname','like','%'.request()->keywords.'%')
             ->paginate(5);
-        return view('admin.shop.index',compact('shops','cates','tags'));
+        return view('admin.shop.index',compact('shops','cates','tags','flavors'));
     }
 
     /**
@@ -35,7 +39,8 @@ class ShopController extends Controller
     {
         $cates = Cate::all();
         $tags = Tag::all();
-        return view('admin.shop.create',compact('cates','tags'));
+        $flavors = Flavor::all();
+        return view('admin.shop.create',compact('cates','tags','flavors'));
     }
 
     /**
@@ -54,7 +59,6 @@ class ShopController extends Controller
         $shop -> guige = $request -> guige;
         $shop -> biaozhun = $request -> biaozhun;
         $shop -> shengchan = $request -> shengchan;
-        $shop -> sflavor = $request -> sflavor;
         $shop -> eat = $request -> eat;
         $shop -> save = $request -> save;
         $shop -> scount = $request -> scount;
@@ -70,9 +74,10 @@ class ShopController extends Controller
         DB::beginTransaction();
         //插入
         if($shop->save()){
-            //处理标签
+            //处理标签及口味
             try{
                 $res = $shop->tags()->sync($request->tag_id);
+                $jie = $shop->flavors()->sync($request->flavor_id);
                 DB::commit();
                 return redirect('/shop')->with('success','添加成功');
             }catch(\Exception $e){
@@ -94,7 +99,18 @@ class ShopController extends Controller
      */
     public function show($id)
     {
-        //
+        $shop = Shop::findOrFail($id);
+        //当前商品的评论
+        $comment = Shop::find($id)->comments; 
+        //包装
+        $pack = Pack::all();
+        //口味
+        $flavor = Flavor::all();
+        //获取分类
+        $cates = Cate::all();
+        //推荐商品
+        $recom = Shop::where('recom','1')->take(5)->orderBy('id','desc')->get();
+        return view('home.shop.index',compact('shop','comment','pack','flavor','recom','cates'));
     }
 
     /**
@@ -107,8 +123,9 @@ class ShopController extends Controller
     {
         $cates = Cate::all();
         $tags = Tag::all();
+        $flavors = Flavor::all();
         $shop = Shop::findOrFail($id);
-        return view('admin.shop.edit',compact('shop','tags','cates'));
+        return view('admin.shop.edit',compact('shop','tags','cates','flavors'));
     }
 
     /**
@@ -128,7 +145,6 @@ class ShopController extends Controller
         $shop -> guige = $request -> guige;
         $shop -> biaozhun = $request -> biaozhun;
         $shop -> shengchan = $request -> shengchan;
-        $shop -> sflavor = $request -> sflavor;
         $shop -> eat = $request -> eat;
         $shop -> save = $request -> save;
         $shop -> scount = $request -> scount;
@@ -147,6 +163,7 @@ class ShopController extends Controller
             //处理标签
             try{
                 $res = $shop->tags()->sync($request->tag_id);
+                $jie = $shop->flavors()->sync($request->flavor_id);
                 DB::commit();
                 return redirect('/shop')->with('success','修改成功');
             }catch(\Exception $e){
