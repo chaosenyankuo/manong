@@ -23,7 +23,6 @@ class ShopTableSeeder extends Seeder
         	$shop -> biaozhun = rand(100,200);
         	$shop -> shengchan = rand(100,200);
         	$shop -> eat = str_random(5);
-        	$shop -> sflavor = str_random(5);
         	$shop -> save = str_random(5);
         	$shop -> recom = 0;
        	 	$shop -> date = rand(1,30);
@@ -34,8 +33,9 @@ class ShopTableSeeder extends Seeder
         	$shop -> scount = rand(100,300);
         	$shop -> msales = rand(10,30);
         	$shop -> csales = rand(100,300);
-        	$shop -> simage = $faker -> imageUrl(350,350);
-
+            $shop -> simage = $faker -> imageUrl(350,350);
+            $shop -> simage1 = $faker -> imageUrl(818,400);
+        	$shop -> simage2 = $faker -> imageUrl(818,400);
         	$shop -> save();
         }
     }

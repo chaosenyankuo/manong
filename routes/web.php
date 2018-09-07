@@ -49,6 +49,9 @@ Route::group(['middleware'=>'login'],function(){
 	//商品管理
 	Route::resource('shop','ShopController');
 
+	//商品口味管理
+	Route::resource('flavor','FlavorController');
+
 	//好中差管理
 	Route::resource('com','ComController');
 
@@ -74,4 +77,8 @@ Route::group(['middleware'=>'login'],function(){
 
 //前台首页
 Route::get('/','HomeController@index');
+
+//前台商品详情
+Route::get('/{id}.html','ShopController@show');
+
 

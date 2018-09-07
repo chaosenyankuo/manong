@@ -14,7 +14,7 @@ class PackTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i=0; $i <5 ; $i++) { 
+        for ($i=0; $i <3 ; $i++) { 
         	$pack = new Pack;
         	$pack -> pname = $faker -> name;
         	$pack -> save();

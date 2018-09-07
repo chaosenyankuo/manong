@@ -187,7 +187,6 @@
 	window.jQuery || document.write('<script src="/home/basic/js/jquery.min.js "><\/script>');
 </script>
 <script type="text/javascript " src="/home/basic/js/quick_links.js "></script>
-
 </body>
 
 </html>
