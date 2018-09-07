@@ -1,13 +1,10 @@
 <div class="footer">
     <div class="footer-hd">
         <p>
-            <a href="#">恒望科技</a>
+            @foreach($links as $v)
+            <a href="{{$v->url}}">{{$v->name}}</a>
             <b>|</b>
-            <a href="#">商城首页</a>
-            <b>|</b>
-            <a href="#">支付宝</a>
-            <b>|</b>
-            <a href="#">物流</a>
+            @endforeach
         </p>
     </div>
     <div class="footer-bd">
@@ -28,12 +25,14 @@
     <div id="sidebar">
         <div id="wrap">
             <div id="prof" class="item">
-                <a href="#">
-                                <span class="setting"></span>
-                            </a>
+                <a href="/home/index">
+                    <span class="setting"></span>
+                </a>
                 <div class="ibar_login_box status_login">
                     <div class="avatar_box">
-                        <p class="avatar_imgbox"><img src="/home/images/no-img_mid_.jpg" /></p>
+                        <p class="avatar_imgbox">
+                            <img src="/home/images/no-img_mid_.jpg" />
+                        </p>
                         <ul class="user_info">
                             <li>用户名：sl1903</li>
                             <li>级&nbsp;别：普通会员</li>
@@ -48,8 +47,8 @@
             </div>
             <div id="shopCart" class="item">
                 <a href="#">
-                                <span class="message"></span>
-                            </a>
+                    <span class="message"></span>
+                </a>
                 <p>
                     购物车
                 </p>
@@ -57,8 +56,8 @@
             </div>
             <div id="asset" class="item">
                 <a href="#">
-                                <span class="view"></span>
-                            </a>
+                    <span class="view"></span>
+                </a>
                 <div class="mp_tooltip">
                     我的资产
                     <i class="icon_arrow_right_black"></i>
@@ -66,8 +65,8 @@
             </div>
             <div id="foot" class="item">
                 <a href="#">
-                                <span class="zuji"></span>
-                            </a>
+                    <span class="zuji"></span>
+                </a>
                 <div class="mp_tooltip">
                     我的足迹
                     <i class="icon_arrow_right_black"></i>
@@ -75,8 +74,10 @@
             </div>
             <div id="brand" class="item">
                 <a href="#">
-                                <span class="wdsc"><img src="/home/images/wdsc.png" /></span>
-                            </a>
+                    <span class="wdsc">
+                        <img src="/home/images/wdsc.png" />
+                    </span>
+                </a>
                 <div class="mp_tooltip">
                     我的收藏
                     <i class="icon_arrow_right_black"></i>
@@ -84,8 +85,10 @@
             </div>
             <div id="broadcast" class="item">
                 <a href="#">
-                                <span class="chongzhi"><img src="/home/images/chongzhi.png" /></span>
-                            </a>
+                    <span class="chongzhi">
+                        <img src="/home/images/chongzhi.png" />
+                    </span>
+                </a>
                 <div class="mp_tooltip">
                     我要充值
                     <i class="icon_arrow_right_black"></i>
@@ -94,15 +97,23 @@
             <div class="quick_toggle">
                 <li class="qtitem">
                     <a href="#"><span class="kfzx"></span></a>
-                    <div class="mp_tooltip">客服中心<i class="icon_arrow_right_black"></i></div>
+                    <div class="mp_tooltip">
+                        客服中心
+                        <i class="icon_arrow_right_black"></i>
+                    </div>
                 </li>
                 <!--二维码 -->
                 <li class="qtitem">
                     <a href="#none"><span class="mpbtn_qrcode"></span></a>
-                    <div class="mp_qrcode" style="display:none;"><img src="/home/images/weixin_code_145.png" /><i class="icon_arrow_white"></i></div>
+                    <div class="mp_qrcode" style="display:none;">
+                        <img src="/home/images/guanzhu.png" />
+                        <i class="icon_arrow_white"></i>
+                    </div>
                 </li>
                 <li class="qtitem">
-                    <a href="#top" class="return_top"><span class="top"></span></a>
+                    <a href="#top" class="return_top">
+                        <span class="top"></span>
+                    </a>
                 </li>
             </div>
             <!--回到顶部 -->
@@ -172,6 +183,10 @@
         </div>
     </div>
 </div>
+<script>
+	window.jQuery || document.write('<script src="/home/basic/js/jquery.min.js "><\/script>');
+</script>
+<script type="text/javascript " src="/home/basic/js/quick_links.js "></script>
 </body>
 
 </html>

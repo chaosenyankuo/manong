@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 //登陆页面
 Route::get('/admin/login', 'AdminController@login');
@@ -77,8 +74,11 @@ Route::group(['middleware'=>'login'],function(){
 	Route::resource('link','LinkController');
 });
 
-//前台
-//商品详情
+
+//前台首页
+Route::get('/','HomeController@index');
+
+//前台商品详情
 Route::get('/{id}.html','ShopController@show');
 
 
