@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Cate;
 use App\Flavor;
+use App\Link;
 use App\Pack;
 use App\Shop;
 use App\Tag;
@@ -115,8 +116,10 @@ class ShopController extends Controller
         //获取分类
         $cates = Cate::all();
         //推荐商品
-        $recom = Shop::where('recom','1')->take(5)->orderBy('id','desc')->get();
-        return view('home.shop.index',compact('shop','comment','pack','flavor','recom','cates'));
+        $recom = Shop::where('recom','1')->take(4)->orderBy('id','desc')->get();
+        //友情链接
+        $links = Link::all();
+        return view('home.shop.index',compact('shop','comment','pack','flavor','recom','cates','links'));
     }
 
     /**
