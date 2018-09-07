@@ -340,8 +340,8 @@
                                     <h4>商品细节</h4>
                                 </div>
                                 <div class="twlistNews">
-                                    <img src="{{$shop['simage1']}}" width="100%" />
-                                    <img src="{{$shop['simage2']}}" width="100%" />
+                                    <img src="{{$shop['simage1']}}"  style="height:400px;" width="100%" />
+                                    <img src="{{$shop['simage2']}}" style="height:400px;"  width="100%" />
 
                                 </div>
                                 

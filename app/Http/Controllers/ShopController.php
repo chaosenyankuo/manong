@@ -115,7 +115,7 @@ class ShopController extends Controller
         //获取分类
         $cates = Cate::all();
         //推荐商品
-        $recom = Shop::where('recom','1')->take(5)->orderBy('id','desc')->get();
+        $recom = Shop::where('recom','1')->take(3)->orderBy('id','desc')->get();
         return view('home.shop.index',compact('shop','comment','pack','flavor','recom','cates'));
     }
 
