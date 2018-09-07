@@ -33,9 +33,9 @@ class ShopTableSeeder extends Seeder
         	$shop -> scount = rand(100,300);
         	$shop -> msales = rand(10,30);
         	$shop -> csales = rand(100,300);
-            $shop -> simage = $faker -> imageUrl(350,350);
-            $shop -> simage1 = $faker -> imageUrl(818,400);
-        	$shop -> simage2 = $faker -> imageUrl(818,400);
+            $shop -> simage = $faker -> imageUrl(818,818);
+            $shop -> simage1 = $faker -> imageUrl(818,818);
+        	$shop -> simage2 = $faker -> imageUrl(818,818);
         	$shop -> save();
         }
     }
