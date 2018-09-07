@@ -118,7 +118,9 @@ class ShopController extends Controller
         //友情链接
         $links = Link::all();
         //推荐商品
-        $recom = Shop::where('recom','1')->take(3)->orderBy('id','desc')->get();
+        $recom = Shop::where('recom','1')->take(4)->orderBy('id','desc')->get();
+        //友情链接
+        $links = Link::all();
         return view('home.shop.index',compact('shop','comment','pack','flavor','recom','cates','links'));
     }
 
