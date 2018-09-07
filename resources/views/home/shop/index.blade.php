@@ -100,6 +100,16 @@
                                 <a href="#"><img src="{{$shop['simage']}}" mid="{{$shop['simage']}}" big="{{$shop['simage']}}"></a>
                             </div>
                         </li>
+                        <li class="tb">
+                            <div class="tb-pic tb-s40">
+                                <a href="#"><img src="{{$shop['simage1']}}" mid="{{$shop['simage1']}}" big="{{$shop['simage']}}"></a>
+                            </div>
+                        </li>
+                        <li class="tb">
+                            <div class="tb-pic tb-s40">
+                                <a href="#"><img src="{{$shop['simage2']}}" mid="{{$shop['simage2']}}" big="{{$shop['simage']}}"></a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <div class="clear"></div>
@@ -330,8 +340,12 @@
                                     <h4>商品细节</h4>
                                 </div>
                                 <div class="twlistNews">
-                                    <img src="{{$shop['simage']}}" width="100%" />
+                                    <img src="{{$shop['simage1']}}" width="100%" />
+                                    <img src="{{$shop['simage2']}}" width="100%" />
+
                                 </div>
+                                
+                                
                             </div>
                             <div class="clear"></div>
                         </div>

@@ -71,6 +71,12 @@ class ShopController extends Controller
         if($request->hasFile('simage')){
             $shop->simage = '/'.$request->simage->store('uploads/'.date('Ymd'));
         }
+        if($request->hasFile('simage1')){
+            $shop->simage1 = '/'.$request->simage1->store('uploads/'.date('Ymd'));
+        }
+        if($request->hasFile('simage2')){
+            $shop->simage2 = '/'.$request->simage2->store('uploads/'.date('Ymd'));
+        }
         DB::beginTransaction();
         //插入
         if($shop->save()){
@@ -156,6 +162,12 @@ class ShopController extends Controller
         $shop -> cate_id = $request -> cate_id;
         if($request->hasFile('simage')){
             $shop->simage = '/'.$request->simage->store('uploads/'.date('Ymd'));
+        }
+        if($request->hasFile('simage1')){
+            $shop->simage1 = '/'.$request->simage1->store('uploads/'.date('Ymd'));
+        }
+        if($request->hasFile('simage2')){
+            $shop->simage2 = '/'.$request->simage2->store('uploads/'.date('Ymd'));
         }
         DB::beginTransaction();
         //插入

@@ -22,6 +22,20 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
+                        <label >商品详细图片1</label><img src="{{$shop['simage1']}}" style="margin-left:100px" width="80" height="80" alt="">
+                        <input style="margin-left:100px" class="btn btn-primary dropdown-toggle" type="file" name="simage1" >
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label >商品详细图片2</label><img src="{{$shop['simage2']}}" style="margin-left:100px" width="80" height="80" alt="">
+                        <input style="margin-left:100px" class="btn btn-primary dropdown-toggle" type="file" name="simage2" >
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
                         <label>商品分类</label>
                         <p style="margin-left:100px">
                             @foreach($cates as $v)

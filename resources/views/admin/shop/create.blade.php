@@ -22,6 +22,20 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
+                        <label>商品详情图片1</label>
+                        <input style="margin-left:100px" class="btn btn-primary dropdown-toggle" type="file" name="simage1">
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label>商品详情图片2</label>
+                        <input style="margin-left:100px" class="btn btn-primary dropdown-toggle" type="file" name="simage2">
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
                         <label>商品分类</label>
                         <p style="margin-left:100px">
                             @foreach($cates as $v)

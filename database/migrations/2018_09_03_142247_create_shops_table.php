@@ -17,6 +17,8 @@ class CreateShopsTable extends Migration
             $table->increments('id');
             $table->string('sname')->comment('商品名称')->nullable();
             $table->string('simage')->comment('商品图片')->nullable();
+            $table->string('simage1')->comment('商品详细图片1')->nullable();
+            $table->string('simage2')->comment('商品详细图片2')->nullable();
             $table->string('sprice')->comment('商品价格')->nullable();
             $table->string('guige')->comment('产品规格')->nullable();
             $table->string('biaozhun')->comment('标准号')->nullable();
