@@ -264,9 +264,9 @@
                 </div>
                 @endif
                 <h2 class="page-header">
-                            @section('title')
-                            欢迎回到后台
-                            @show
+                    @section('title')
+                    欢迎回到后台
+                    @show
                 </h2>
             </div>
             @section('content')
