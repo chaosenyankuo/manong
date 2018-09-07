@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-    
     <div class="am-container header">
         <ul class="message-l">
             <div class="topMessage">
