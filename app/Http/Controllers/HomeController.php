@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
-<<<<<<< HEAD
-
 use App\Link;
 use App\User;
 use App\Setting;
+use App\Cate;
+use App\Shop;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -43,16 +43,7 @@ class HomeController extends Controller
   
    		}          
 	}
-}	
-=======
-use App\Cate;
-use App\Link;
-use App\Shop;
-use App\Tag;
-use Illuminate\Http\Request;
 
-class HomeController extends Controller
-{
     /**
      * 前台首页
      */
@@ -69,4 +60,3 @@ class HomeController extends Controller
     }
 
 }
->>>>>>> bd0307165616234e26517e418ca0af304842e767
