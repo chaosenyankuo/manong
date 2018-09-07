@@ -55,7 +55,13 @@
                                 <td class="center">{{$v['sname']}}</td>
                                 <td class="center">{{$v['sprice']}}</td>
                                 <td class="center"><img data-src="{{$v['simage']}}" width="30" height="30" alt=""></td>
-                                <td class="center">{{$v['sflavor']}}</td>
+                                <td class="center">
+                                    @foreach($flavors as $vvv)
+                                    @if(in_array($vvv->id,$v->flavors->pluck('id')->toArray()))
+                                        {{$vvv['fname']}}
+                                    @endif
+                                    @endforeach
+                                </td>
                                 <td class="center">{{$v['scount']}}</td>
                                 <td class="center">
                                     @if($v['recom'] == 1)

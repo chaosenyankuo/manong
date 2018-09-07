@@ -13,11 +13,11 @@ class CommentTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i=0; $i <20 ; $i++) { 
+        for ($i=0; $i <100 ; $i++) { 
         	$comment = new Comment;
         	$comment -> user_id = rand(1,20);
         	$comment -> com_id = rand(1,3);
-        	$comment -> shop_id = rand(1,20);
+        	$comment -> shop_id = rand(1,40);
         	$comment -> content = $faker->realText();
         	$comment -> save();
         }

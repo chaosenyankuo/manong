@@ -68,7 +68,11 @@
                                 </div>
                                 <div class="user-pass">
                                     <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
+<<<<<<< HEAD
                                     <input type="password" name="loginpwds" id="passwordRepeat" placeholder="确认密码">
+=======
+                                    <input type="password" name="loginpwd" id="passwordRepeat" placeholder="确认密码">
+>>>>>>> e2d5f43255b6135056f856a397eb237fe83ed8f5
                                 </div>
                                 <div class="am-cf">
                                     {{csrf_field()}}

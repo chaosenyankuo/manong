@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
 
@@ -61,6 +58,10 @@ Route::get('/admin/logout', 'AdminController@logout');
 	Route::resource('shop','ShopController');
 
 
+	//商品口味管理
+	Route::resource('flavor','FlavorController');
+
+
 	//好中差管理
 	Route::resource('com','ComController');
 
@@ -86,6 +87,24 @@ Route::get('/admin/logout', 'AdminController@logout');
 // });
 
  
+
+//忘记密码
+Route::get('/home/wjma', 'ZhuceController@wjma');
+
+//忘记密码操作
+Route::post('/home/wjmal', 'ZhuceController@wjmal');
+
+
+/*
+	前台路由
+ */
+
+//前台首页
+Route::get('/','HomeController@index');
+
+//前台商品详情
+Route::get('/{id}.html','ShopController@show');
+
 //前台注册
 Route::get('/home/zhuce', 'ZhuceController@zhuce');
 
@@ -98,23 +117,30 @@ Route::get('/home/login', 'HomeController@login');
 //前台登陆操作
 Route::post('/home/dologin', 'HomeController@dologin');
 
-//忘记密码
-Route::get('/home/wjma', 'ZhuceController@wjma');
-
-//忘记密码操作
-Route::post('/home/wjmal', 'ZhuceController@wjmal');
-
-//个人资料
-Route::get('/home/grzl','GrzxController@grzl');
-
-//个人资料操作
-Route::post('/home/grzl','GrzxController@grzla');
 //个人中心
 Route::get('/home/index','GrzxController@index');
-
-
+//个人资料
+Route::get('/home/grzl','GrzxController@grzl');
+Route::post('/home/grzl','GrzxController@grzla');
+//个人信息
+Route::get('/home/grxx','GrzxController@grxx');
+//修改个人信息
+Route::post('/home/xggrxx','GrzxController@xggrxx');
+//安全设置
 Route::get('/home/aqsz','GrzxController@aqsz');
-
-//我的收货地址
+//修改密码
+Route::get('/home/xgma','GrzxController@xgma');
+Route::post('/home/xgmacz','GrzxController@xgmacz');
+//收货地址
 Route::get('/home/shdz','GrzxController@shdz');
 Route::post('/home/shdz','GrzxController@shdza');
+//前台末尾
+
+
+
+
+
+
+
+
+

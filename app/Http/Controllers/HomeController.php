@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Link;
-use App\Setting;
 use App\User;
+use App\Setting;
+use App\Cate;
+use App\Shop;
+use App\Tag;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
-    
+
+    //前台登录
+
 	public function login()
 	{	
 		 //读取网站设置
@@ -24,9 +29,12 @@ class HomeController extends Controller
 
 	public function dologin(Request $request)
 	{	
-            //获取用户的数据
-        $user = User::where('email', $request->email)->first();
-        
+
+
+		//获取用户的数据
+		$user = User::where('email', $request->email)->first();
+		
+
         if(!$user){
             return back()->with('error','登陆失败!');
         }
@@ -39,6 +47,24 @@ class HomeController extends Controller
         }else{
             return back()->with('error','登陆失败!');
   
-        }                   
+
+   		}          
 	}
-}	
+
+    /**
+     * 前台首页
+     */
+    public function index()
+    {	
+    	$cates = Cate::all();
+    	$tags = Tag::all();
+    	$links = Link::all();
+    	$recom = Shop::where('recom','1')->take(3)->orderBy('id','desc')->get();
+    	$shops = Shop::all();
+    	$a = 1;
+    	$cid = Cate::pluck('id');
+    	return view('home',compact('cates','tags','links','recom','shops','a','cid'));
+    }
+
+}
+

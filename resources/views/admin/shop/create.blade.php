@@ -22,6 +22,20 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
+                        <label>商品详情图片1</label>
+                        <input style="margin-left:100px" class="btn btn-primary dropdown-toggle" type="file" name="simage1">
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label>商品详情图片2</label>
+                        <input style="margin-left:100px" class="btn btn-primary dropdown-toggle" type="file" name="simage2">
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
                         <label>商品分类</label>
                         <p style="margin-left:100px">
                             @foreach($cates as $v)
@@ -29,6 +43,18 @@
                             <label for="test{{$v['id']}}">{{$v['cname']}}</label>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             @endforeach
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label>商品口味</label>
+                        <p style="margin-left:100px">
+                        @foreach($flavors as $v)
+                            <input type="checkbox" id="test{{$v['id']}}+759" name="flavor_id[]" value="{{$v['id']}}">
+                            <label for="test{{$v['id']}}+759">{{$v['fname']}}</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        @endforeach
                         </p>
                     </div>
                 </div>
@@ -46,12 +72,12 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <label>口味</label>
-                        <input type="text" name="sflavor" class="validate">
-                    </div>
-                    <div class="input-field col s6">
                         <label>食用方法</label>
                         <input type="text" name="eat" class="validate">
+                    </div>
+                    <div class="input-field col s6">
+                        <label>生产许可编号</label>
+                        <input type="text" name="shengchan" class="validate">
                     </div>
                 </div>
                 <div class="row">
@@ -105,11 +131,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s6">
-                        <label>生产许可编号</label>
-                        <input type="text" name="shengchan" class="validate">
-                    </div>
-                    <div class="input-field col s6">
+                    
+                    <div class="input-field col s12">
                         <label>是否推荐</label>
                         <p style="margin-left:100px">
                             <input name="recom" type="radio" value="1" id="test999999">

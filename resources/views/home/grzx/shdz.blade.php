@@ -20,7 +20,9 @@
             <div class="mt-logo">
                 <!--顶部导航条 -->
                 @include('layouts.home._top')
-            </div>
+
+                </div>
+
             </div>
         </article>
     </header>
@@ -54,8 +56,10 @@
                         <li class="user-addresslist defaultAddr">
                             <span class="new-option-r"><i class="am-icon-check-circle"></i>默认地址</span>
                             <p class="new-tit new-p-re">
+
                                 <span class="new-txt">{!!$users['uname']!!}</span>
                                 <span class="new-txt-rd2">{{!!$users['phone']}}</span>
+
                             </p>
                             <div class="new-mu_l2a new-p-re">
                                 <p class="new-mu_l2cw">
@@ -119,17 +123,19 @@
                             </div>
                             <hr/>
                             <div class="am-u-md-12 am-u-lg-8" style="margin-top: 20px;">
+
                                 <form class="am-form am-form-horizontal" action="/home/shdz" method="post">
                                     <div class="am-form-group">
                                         <label for="user-name" class="am-form-label">收货人</label>
                                         <div class="am-form-content">
-                                            <input type="text" id="user-name" name="uname" value=""placeholder="收货人">
+                                            <input type="text" id="user-name" name="name"  placeholder="收货人">
                                         </div>
                                     </div>
                                     <div class="am-form-group">
-                                        <label for="user-phone" class="am-form-label">手机号码</label>
+                                        <label for="user-name" class="am-form-label">手机号</label>
                                         <div class="am-form-content">
-                                            <input id="user-phone" name="phone"placeholder="手机号必填" type="text">
+                                            <input type="text" id="user-name" name="uphone"  placeholder="手机号">
+
                                         </div>
                                     </div>
                                     <div class="am-form-group">
@@ -152,15 +158,18 @@
                                     <div class="am-form-group">
                                         <label for="user-intro" class="am-form-label">详细地址</label>
                                         <div class="am-form-content">
-                                            <textarea class="" name="xadress" rows="3" id="user-intro" placeholder="输入详细地址"></textarea>
+
+                                            <textarea class="" rows="3" name="address" id="user-intro" placeholder="输入详细地址"></textarea>
+
                                             <small>100字以内写出你的详细地址....</small>
                                         </div>
                                     </div>
                                     <div class="am-form-group">
+
                                         <div class="am-u-sm-9 am-u-sm-push-3">
                                         {{csrf_field()}}
                                             <button class="am-btn am-btn-danger">保存</button>
-                                            <a href="javascript: void(0)" class="am-close am-btn am-btn-danger" data-am-modal-close>取消</a>
+                                           
                                         </div>
                                     </div>
                                 </form>
@@ -184,7 +193,9 @@
                 <div class="clear"></div>
             </div>
             <!--底部-->
+
             @include('layouts.home._foot')
+
         </div>
         @include('layouts.home._menu')
     </div>

@@ -51,16 +51,16 @@
                             <div class="m-userinfo">
                                 <div class="m-baseinfo">
                                     <a href="information.html">
-                                            <img src="/home/images/getAvatar.do.jpg">
+
+                                            <img src="{{$user['image']}}">
+
                                         </a>
                                     <em class="s-name">{{$user['nickname']}}<span class="vip1"></em>
                                     <div class="s-prestige am-btn am-round">
                                         </span>会员福利</div>
                                 </div>
                                 <div class="m-right">
-                                    <div class="m-new">
-                                        <a href="news.html"><i class="am-icon-bell-o"></i>消息</a>
-                                    </div>
+
                                     <div class="m-address">
                                         <a href="/home/shdz" class="i-trigger">我的收货地址</a>
                                     </div>

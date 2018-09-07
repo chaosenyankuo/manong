@@ -16,6 +16,8 @@ class CreateCatesTable extends Migration
         Schema::create('cates', function (Blueprint $table) {
             $table->increments('id');
             $table->string('cname')->comment('分类名称')->nullable();
+            $table->string('intro')->comment('分类简介')->nullable();
+            $table->string('cimage')->comment('分类图片')->nullable();
             $table->timestamps();
         });
     }

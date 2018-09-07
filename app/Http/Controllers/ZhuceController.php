@@ -19,26 +19,31 @@ class ZhuceController extends Controller
     }
 
       public function store(Request $request)
-    {   
+
+    {
        
     	$users = new User; 
-         if($request->loginpwd == $request->loginpwds){
+
+        if($request->loginpwd == $request->loginpwds){
             $users -> loginpwd = Hash::make($request->loginpwd);
-         }else{
-            return back()->with('error','俩次密码不一致');
-         }                     
-        
+        }else{
+            return back()->with('error','两次输入不相同');
+        }
+
      
         $users -> email = $request->email;
         $users -> phone = $request->phone;
         
 
         if($users -> save()){
-            session(['email'=>$users->email,'phone'=>$users->phone,'id'=>$users->id]);
+
+            session(['phone'=>$users->phone,  'email'=>$users->email ,'id' => $users->id]);
+
             return redirect('/home/grzl')->with('success', '注册成功');
         }else{
             return back()->with('error','注册失败');
         }
+
         
     }
 
@@ -47,5 +52,6 @@ class ZhuceController extends Controller
     {	$links = Link::all();
     	$setting = Setting::first();
     	return view('home.zhuce.wjma',['links' => $links,'setting'=>$setting]);
+
     }
 }

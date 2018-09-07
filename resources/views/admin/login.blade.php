@@ -114,7 +114,7 @@
             </ul>
         </div>
         <div id="contPar" class="contPar">
-            <div id="page1" style="z-index:1;">
+            <div id="page1" style="z-index:1;font-family:华文彩云;">
                 <div class="title0"><i>登录才能操作哦!</i></div>
                 
                 <div class="imgGroug">
