@@ -13,9 +13,11 @@ class CateTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i=0; $i <5 ; $i++) { 
+        for ($i=0; $i <10 ; $i++) { 
         	$cate = new Cate;
-        	$cate -> cname = $faker -> name;
+        	$cate -> cname = str_random(5);
+            $cate -> intro = str_random(8);
+            $cate -> cimage = $faker -> imageUrl(350,350);
         	$cate -> save();
         }
     }

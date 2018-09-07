@@ -10,4 +10,9 @@ class Cate extends Model
  	{
     	return $this->hasMany('App\Shop');
  	} 
+
+ 	public function tags()
+ 	{
+ 		return $this->hasMany('App\Tag');
+ 	}
 }

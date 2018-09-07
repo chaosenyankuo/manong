@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 //登陆页面
 Route::get('/admin/login', 'AdminController@login');
@@ -73,4 +70,8 @@ Route::group(['middleware'=>'login'],function(){
 	//友情链接
 	Route::resource('link','LinkController');
 });
+
+
+//前台首页
+Route::get('/','HomeController@index');
 
