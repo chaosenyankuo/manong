@@ -32,11 +32,7 @@
             <div class="long-title"><span class="all-goods">全部分类</span></div>
             <div class="nav-cont">
                 <ul>
-                    <li class="index"><a href="#">首页</a></li>
-                    <li class="qc"><a href="#">闪购</a></li>
-                    <li class="qc"><a href="#">限时抢</a></li>
-                    <li class="qc"><a href="#">团购</a></li>
-                    <li class="qc last"><a href="#">大包装</a></li>
+                    <li class="index"><a href="/">首页</a><li>                    
                 </ul>
                 <div class="nav-extra">
                     <i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
@@ -45,7 +41,7 @@
             </div>
         </div>
         <ol class="am-breadcrumb am-breadcrumb-slash">
-            <li><a href="#">首页</a></li>
+            <li><a href="/">首页</a></li>
             <li><a href="#">分类</a></li>
             <li class="am-active">内容</li>
         </ol>
@@ -208,7 +204,7 @@
                                                         var a = $('input[name=shuliang]').val();
                                                         if (a > {{$shop['scount']}}) {
                                                             alert('对不起,库存不足');
-                                                            $('input[name=shuliang]').val({{$shop['scount']}})
+                                                            $('input[name=shuliang]').val({{$shop['scount']}});
                                                         };
                                                     });
                                                 </script>
@@ -342,8 +338,8 @@
                                     <h4>商品细节</h4>
                                 </div>
                                 <div class="twlistNews">
-                                    <img src="{{$shop['simage1']}}" width="100%" />
-                                    <img src="{{$shop['simage2']}}" width="100%" />
+                                    <img src="{{$shop['simage1']}}"  style="height:400px;" width="100%" />
+                                    <img src="{{$shop['simage2']}}" style="height:400px;"  width="100%" />
 
                                 </div>
                                 

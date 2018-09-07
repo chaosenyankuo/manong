@@ -15,7 +15,8 @@ class CreateUaddressesTable extends Migration
     {
         Schema::create('uaddresses', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_id')->comment('收货人')->nullable();
+            $table->string('user_id')->comment('用户')->nullable();
+            $table->string('name')->comment('收货人')->nullable();
             $table->char('uphone')->comment('手机号')->nullable();
             $table->string('address')->comment('所在地')->nullable();
             $table->string('xadress')->comment('详细地址')->nullable();

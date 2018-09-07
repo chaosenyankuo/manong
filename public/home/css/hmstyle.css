@@ -350,6 +350,7 @@ text-align: center;float:none}
 /*第一套轮播图布局*/	
 .banner{position: absolute;left:0px;top:180px;z-index:9 ;border-top:2px solid #d2364c;}
 .banner .am-slider .am-slides li{height:360px;}
+
 .banner .am-slider .am-slides li.banner4{background: white;}
 .banner .am-slider .am-slides li.banner1{background: white;}
 .banner .am-slider .am-slides li.banner2{background: white;}
@@ -696,6 +697,7 @@ filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#f8c375',endCo
 .shopNavfloat{float:left; position:static; margin-top:-4px;display: block;}
 
 .banner .am-slider .am-slides li{height:430px;}
+
 .banner .am-slider .am-slides img{width:798px;left:50% ;position: absolute;margin-left: -438px;}
 
 /*第二套轮播图布局*/	
