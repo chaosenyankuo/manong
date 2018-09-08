@@ -134,6 +134,11 @@ Route::post('/home/xgmacz','GrzxController@xgmacz');
 //收货地址
 Route::get('/home/shdz','GrzxController@shdz');
 Route::post('/home/shdz','GrzxController@shdza');
+//修改收货地址
+Route::get('/home/dzedit/{id}','GrzxController@dzedit');
+Route::post('/home/dzupdate/{id}','GrzxController@dzupdate');
+//删除收货地址
+Route::get('/home/dzsc/{id}','GrzxController@dzsc');
 //前台末尾
 
 

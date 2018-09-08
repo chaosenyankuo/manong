@@ -53,9 +53,9 @@
                                 <li style="height:43.2px;" class="appliance js_toggle relative first">
                                     <div class="category-info">
                                         <h3 class="category-name b-category-name">
-                                                    <i><img src="/home/images/cake.png"></i>
-                                                    <a class="ml-22" title="{{$v->cname}}">{{$v->cname}}</a>
-                                                </h3>
+	                                            	<i><img src="/home/images/cake.png"></i>
+	                                            	<a class="ml-22" title="{{$v->cname}}">{{$v->cname}}</a>
+	                                            </h3>
                                         <em>&gt;</em></div>
                                     <div class="menu-item menu-in top">
                                         <div class="area-in">
@@ -67,8 +67,8 @@
                                                             @foreach($tags as $vv) @if($vv->cate_id == $v->id)
                                                             <dd style="float:left;">
                                                                 <a title="{{$vv->tname}}" href="#"><span>
-                                                                            {{$vv -> tname}}
-                                                                        </span></a>
+	                                                                		{{$vv -> tname}}
+	                                                                	</span></a>
                                                             </dd>
                                                             @endif @endforeach
                                                         </dl>
@@ -114,27 +114,27 @@
             <div class="am-g am-g-fixed smallnav">
                 <div class="am-u-sm-3">
                     <a href="sort.html">
-                            <img src="/home/images/navsmall.jpg" />
-                            <div class="title">商品分类</div>
-                        </a>
+                        	<img src="/home/images/navsmall.jpg" />
+							<div class="title">商品分类</div>
+						</a>
                 </div>
                 <div class="am-u-sm-3">
                     <a href="#">
-                            <img src="/home/images/huismall.jpg" />
-                            <div class="title">大聚惠</div>
-                        </a>
+                        	<img src="/home/images/huismall.jpg" />
+							<div class="title">大聚惠</div>
+						</a>
                 </div>
                 <div class="am-u-sm-3">
                     <a href="/home/index">
-                            <img src="/home/images/mansmall.jpg" />
-                            <div class="title">个人中心</div>
-                        </a>
+                        	<img src="/home/images/mansmall.jpg" />
+							<div class="title">个人中心</div>
+						</a>
                 </div>
                 <div class="am-u-sm-3">
                     <a href="#">
-                            <img src="/home/images/moneysmall.jpg" />
-                            <div class="title">投资理财</div>
-                        </a>
+                        	<img src="/home/images/moneysmall.jpg" />
+							<div class="title">投资理财</div>
+						</a>
                 </div>
             </div>
             <!--走马灯 -->
@@ -143,23 +143,23 @@
                 <div class="demo">
                     <ul>
                         <li class="title-first"><a target="_blank" href="#">
-                                    <img src="/home/images/TJ2.jpg"></img>
-                                    <span>[特惠]</span>商城爆品1分秒                                
-                                </a></li>
+									<img src="/home/images/TJ2.jpg"></img>
+									<span>[特惠]</span>商城爆品1分秒								
+								</a></li>
                         <li class="title-first"><a target="_blank" href="#">
-                                    <span>[公告]</span>商城与广州市签署战略合作协议
-                                     <img src="/home/images/TJ.jpg"></img>
-                                     <p>XXXXXXXXXXXXXXXXXX</p>
-                                </a></li>
+									<span>[公告]</span>商城与广州市签署战略合作协议
+								     <img src="/home/images/TJ.jpg"></img>
+								     <p>XXXXXXXXXXXXXXXXXX</p>
+							    </a></li>
                         <div class="mod-vip">
                             <div class="m-baseinfo">
                                 <a href="/home/person/index.html">
-                                    <img src="/home/images/getAvatar.do.jpg">
-                                </a>
+									<img src="/home/images/getAvatar.do.jpg">
+								</a>
                                 <em>
-                                    Hi,<span class="s-name">小叮当</span>
-                                    <a href="#"><p>点击更多优惠活动</p></a>                                 
-                                </em>
+									Hi,<span class="s-name">小叮当</span>
+									<a href="#"><p>点击更多优惠活动</p></a>									
+								</em>
                             </div>
                             <div class="member-logout">
                                 <a class="am-btn-warning btn" href="/home/login">登录</a>
@@ -204,52 +204,53 @@
             <!--今日推荐 -->
             <div class="am-g am-g-fixed recommendation">
                 <div class="clock am-u-sm-3" ">
-                            <img src="/home/images/2016.png "></img>
-                            <p>今日<br>推荐</p>
-                        </div>
+							<img src="/home/images/2016.png "></img>
+							<p>今日<br>推荐</p>
+						</div>
 
-                        @foreach($recom as $v)
-                            <div class="am-u-sm-4 am-u-lg-3 ">
-                                <div class="info ">
-                                    <h3>{{$v -> sname}}</h3>
-                                    <h4>{{$v->cate->cname}}</h4>
-                                </div>
-                                <div class="recommendationMain one ">
+						@foreach($recom as $v)
+							<div class="am-u-sm-4 am-u-lg-3 ">
+								<div class="info ">
+									<h3>{{$v -> sname}}</h3>
+									<h4>{{$v->cate->cname}}</h4>
+								</div>
+								<div class="recommendationMain one ">
+									<a href="/{{$v->id}}.html "><img src="{{$v -> simage}}" width="120" height="120"></img></a>
+								</div>
+							</div>
+						@endforeach
+                    
+					</div>
 
-        
-                                    <a href="/{{$v->id}}.html "><img src="{{$v -> simage}}" width="120" height="120"></img>
-                    </a>
+					<div class="clear "></div>
+					@foreach($cid as $k => $v)
+					<div id="f{{$a++}}">
+						<div class="am-container ">
+							<div class="shopTitle ">
+								<h4>{{$cates[$k] -> cname}}</h4>
+								<h3>{{$cates[$k] -> intro}}</h3>
+								<div class="today-brands ">
+									@foreach($cates[$k]->tags()->get() as $vv)
+										<a href="# ">{{$vv->tname}}</a>
+									@endforeach
+								</div>
+								<span class="more ">
+
+				                    <a href="# ">更多美味<i class="am-icon-angle-right " style="padding-left:10px ; " ></i>
+				                    </a>
+				                </span>
                 </div>
-            </div>
-            @endforeach
-        </div>
-        <div class="clear "></div>
-        @foreach($cid as $k => $v)
-        <div id="f{{$a++}}">
-            <div class="am-container ">
-                <div class="shopTitle ">
-                    <h4>{{$cates[$k] -> cname}}</h4>
-                    <h3>{{$cates[$k] -> intro}}</h3>
-                    <div class="today-brands ">
-                        @foreach($cates[$k]->tags()->get() as $vv)
-                        <a href="# ">{{$vv->tname}}</a> @endforeach
-                    </div>
-                    <span class="more ">
 
-                                    <a href="# ">更多美味<i class="am-icon-angle-right " style="padding-left:10px ; " ></i>
-                                    </a>
-                                </span>
-                </div>
             </div>
             <div class="am-g am-g-fixed floodFour ">
                 <div class="am-u-sm-5 am-u-md-4 text-one list ">
                     <div class="word ">
                         @foreach($cates[$k]->tags()->take(6)->get() as $vv)
                         <a class="outer " href="# ">
-                                            <span class="inner ">
-                                                <b class="text ">{{$vv->tname}}</b>
-                                            </span>
-                                        </a> @endforeach
+											<span class="inner ">
+												<b class="text ">{{$vv->tname}}</b>
+											</span>
+										</a> @endforeach
                     </div>
                     <a href="# ">
                         <div class="outer-con ">

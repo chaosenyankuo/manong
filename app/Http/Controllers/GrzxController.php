@@ -62,6 +62,7 @@ class GrzxController extends Controller
         }
     }
 
+
     //个人信息页面
     public function grxx()
     {	
@@ -135,28 +136,81 @@ class GrzxController extends Controller
         }
         
     }
+
+    //收货地址增加
     public function shdz()
     {	
+        $uid = \Session::get('id');
     	$links = Link::all();
         $setting = Setting::first();
-    	$uaddress = Uaddress::all();
-        $id = \Session::get('id');
-        $users  = User::findOrFail($id);
+    	$uaddress = Uaddress::where('user_id',$uid)->get();        
+        $users  = User::findOrFail($uid);
     	return view('home.grzx.shdz',compact('links','uaddress','setting','users'));
     }
 
-    public function shdza(Request $req)
-    {
-        $id = \Session::get('id');
-        
-        $users = User::find($id);
+    public function shdza(Request $request)
+    {   
+        $uid = \Session::get('id');
+        $uaddresses = new Uaddress;
+        $uaddresses -> user_id = $uid;
+        $uaddresses -> name = $request -> name;
+        $uaddresses -> uphone = $request -> uphone;       
+        $uaddresses -> address = $request->sheng.'-'.$request->shi.'-'.$request->xian; //地址
+        $uaddresses -> xadress = $request->xadress; //详细地址
 
-        $users -> nickname = $request -> nickname;
-        $users -> uname = $request -> uname;
-        
-        $users -> sex = $request -> sex;
+        if($uaddresses -> save()){
+            return redirect('/home/shdz')->with('success','添加地址成功');
+        }else{
+            return back()->with('error','添加地址失败');
+        }
     }
 
-   
 
+    /**
+     * 收货地址修改
+     */
+    public function dzedit($id)
+    {
+        $uid = \Session::get('id');
+        $links = Link::all();
+        $setting = Setting::first();
+        $uaddress = Uaddress::where('user_id',$uid)->get();        
+        $users  = User::findOrFail($uid);
+        $uadd = Uaddress::findOrFail($id);
+        $san = explode('-',$uadd->address);
+        return view('home.grzx.shdzedit',compact('links','uaddress','setting','users','uadd','san'));
+    }
+
+    public function dzupdate(Request $req, $id)
+    {
+        $uaddress = Uaddress::findOrFail($id);
+
+        $uid = \Session::get('id');
+
+        $uaddress -> user_id = $uid;
+        $uaddress -> name = $req -> name;
+        $uaddress -> uphone = $req -> uphone;       
+        $uaddress -> address = $req->sheng.'-'.$req->shi.'-'.$req->xian; //地址
+        $uaddress -> xadress = $req->xadress; //详细地址
+
+        if($uaddress -> save()){
+            return redirect('/home/shdz')->with('success','修改地址成功');
+        }else{
+            return back()->with('error','修改地址失败');
+        }
+    }
+
+    //删除收货地址 
+    public function dzsc(Request $req, $id)
+    {   
+
+         $uaddress = Uaddress::findOrFail($id);
+         // dd($uaddress);
+        if($uaddress->delete()){
+            return redirect('/home/shdz')->with('success','删除成功');
+        }else{
+            return back()->with('error','删除失败');
+        }
+
+    }
 }
