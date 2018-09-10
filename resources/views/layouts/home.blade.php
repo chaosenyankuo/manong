@@ -274,7 +274,7 @@
 										<div class="sub-title ">
 											¥{{$vv -> sprice}}
 										</div>
-										<i class="am-icon-shopping-basket am-icon-md seprate "></i>
+										<a href="/{{$vv->id}}.html"><i class="am-icon-shopping-basket am-icon-md seprate "></i></a>
 									</div>
 									<a href="/{{$vv->id}}.html"><img src="{{$vv->simage}}" /></a>
 								</div>

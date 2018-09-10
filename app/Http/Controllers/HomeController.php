@@ -59,7 +59,7 @@ class HomeController extends Controller
     	$cates = Cate::all();
     	$tags = Tag::all();
     	$links = Link::all();
-    	$recom = Shop::where('recom','1')->take(3)->orderBy('id','desc')->get();
+    	$recom = Shop::where('recom','1')->take(3)->get();
     	$shops = Shop::all();
     	$a = 1;
     	$cid = Cate::pluck('id');

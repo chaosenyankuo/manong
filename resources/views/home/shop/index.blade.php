@@ -41,6 +41,13 @@
                 </div>
             </div>
         </div>
+        @if(Session::has('error'))
+            <div class="nav white" id="xiaoshi" style="margin-top: 10px;">
+                <center>
+                    <p><font style="color:red; font-size:20px;">{{Session::get('error')}}</font></p>
+                </center>
+            </div>
+        @endif
         <ol class="am-breadcrumb am-breadcrumb-slash">
             <li><a href="/">首页</a></li>
             <li><a href="#">分类</a></li>
@@ -165,7 +172,7 @@
                                 </select>
                                 <select class="form-control" style="height:28px;" id="city1" name="shi" data-city="{{$add[1]}}"></select>
                                 <select class="form-control" style="height:28px;" id="district1" name="xian" data-district="{{$add[2]}}"></select>
-                                快递<b class="sys_item_freprice"></b> 元 
+                                快递<b class="sys_item_freprice">10</b> 元 
                                 @else
                                 <select class="form-control" style="height:28px;" id="province1" name="sheng" data-province="">
                                 </select>
@@ -211,7 +218,9 @@
                                                 <ul>&nbsp; 
                                                     @foreach($flavor as $v)
                                                         @if(in_array($v->id,$shop->flavors->pluck('id')->toArray()))
-                                                            <li class="sku-line" name="flavor_id">{{$v['fname']}}</li>
+                                                            <li class="sku-line">
+                                                                <input type="radio" name="flavor_id" value="{{$v['id']}}">{{$v['fname']}}
+                                                            </li>
                                                         @endif
                                                     @endforeach
                                                 </ul>
