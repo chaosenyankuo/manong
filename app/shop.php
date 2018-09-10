@@ -37,4 +37,9 @@ class Shop extends Model
     {
         return $this->belongsToMany('App\User');
     }
+    
+    public function shopcars()
+    {
+        return $this->belongsToMany('App\Shop');
+    }
 }

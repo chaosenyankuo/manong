@@ -45,6 +45,12 @@ class HomeController extends Controller
    		}          
 	}
 
+    public function logout(Request $request)
+    {   
+        $request->session()->flush();
+        return redirect('/home/login')->with('success','退出成功');
+    }
+
     /**
      * 前台首页
      */
