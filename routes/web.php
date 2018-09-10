@@ -12,17 +12,24 @@
 */
 
 
+
+
+
 //登陆页面
 Route::get('/admin/login', 'AdminController@login');
 
 //登陆操作
 Route::post('/admin/login', 'AdminController@dologin');
 
+
 //退出登录
 Route::get('/admin/logout', 'AdminController@logout');
 
 
+
+//后台路由
 Route::group(['middleware'=>'login'],function(){
+
 	//后台主页
 	Route::get('/admin','AdminController@index');
 		
@@ -31,6 +38,7 @@ Route::group(['middleware'=>'login'],function(){
 
 	//商品评价
 	Route::resource('comment','CommentController');
+
 
 	//网站设置
 	Route::get('/admin/setting', 'AdminController@setting');
@@ -49,8 +57,10 @@ Route::group(['middleware'=>'login'],function(){
 	//商品管理
 	Route::resource('shop','ShopController');
 
+
 	//商品口味管理
 	Route::resource('flavor','FlavorController');
+
 
 	//好中差管理
 	Route::resource('com','ComController');
@@ -60,6 +70,7 @@ Route::group(['middleware'=>'login'],function(){
 
 	//包装管理
 	Route::resource('pack','PackController');
+
 
 	//标签管理
 	Route::resource('tag','TagController');
@@ -72,11 +83,22 @@ Route::group(['middleware'=>'login'],function(){
 
 	//友情链接
 	Route::resource('link','LinkController');
+		
 });
+
+ 
+
+
 
 /*
  *前台路由
  */
+//前台首页
+Route::get('/','HomeController@index');
+
+//前台商品详情
+Route::get('/{id}.html','ShopController@show');
+
 //前台注册
 Route::get('/home/zhuce', 'ZhuceController@zhuce');
 
@@ -106,24 +128,29 @@ Route::get('/home/aqsz','GrzxController@aqsz');
 //修改密码
 Route::get('/home/xgma','GrzxController@xgma');
 Route::post('/home/xgmacz','GrzxController@xgmacz');
+
+
+//忘记密码
+Route::get('/home/wjma', 'ZhuceController@wjma');
+
+//忘记密码操作
+Route::post('/home/wjmal', 'ZhuceController@wjmal');
+
+
+//评论管理
+Route::get('/home/pjgl','GrzxController@pjgl');
+
 //收货地址
 Route::get('/home/shdz','GrzxController@shdz');
-//添加收货地址
-
+Route::post('/home/shdz','GrzxController@shdza');
+//修改收货地址
+Route::get('/home/dzedit/{id}','GrzxController@dzedit');
+Route::post('/home/dzupdate/{id}','GrzxController@dzupdate');
+//删除收货地址
+Route::get('/home/dzsc/{id}','GrzxController@dzsc');
 //前台末尾
 
 
-//
-
-
-//前台首页
-Route::get('/','HomeController@index');
-
-//前台商品详情
-Route::get('/{id}.html','ShopController@show');
-
-//购物车
-Route::get('/home/shopcar/{id}','HomeController@shopcar');
 //购物车管理
 Route::resource('shopcar','ShopCarController');
 

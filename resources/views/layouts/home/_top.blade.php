@@ -2,14 +2,13 @@
     <ul class="message-l">
         <div class="topMessage">
             <div class="menu-hd">
-            @if(Session::has('nickname'))
+
+                @if(Session::has('nickname'))
                 <a href="/home/index" target="_top" class="h">你好: {{Session::get('nickname')}}</a>
-                <a href="/home/logout">&nbsp;&nbsp;&nbsp;退出</a>  
-            @endif        
-            @if(!Session::has('nickname'))
+                <a href="/home/logout">&nbsp;&nbsp;&nbsp;退出</a> @endif @if(!Session::has('nickname'))
+
                 <a href="/home/login" target="_top" class="h">请登录</a>
-                <a href="/home/zhuce" target="_top">免费注册</a>
-            @endif
+                <a href="/home/zhuce" target="_top">免费注册</a> @endif
             </div>
         </div>
     </ul>
@@ -26,10 +25,9 @@
         </div>
         <div class="topMessage mini-cart">
             <div class="menu-hd">
-                <a id="mc-menu-hd" href="#" target="_top">
+                <a id="mc-menu-hd" href="/shopcar" target="_top">
                         <i class="am-icon-shopping-cart  am-icon-fw"></i>
                         <span>购物车</span>
-                        <strong id="J_MiniCartNum" class="h">0</strong>
                     </a>
             </div>
         </div>
@@ -44,6 +42,7 @@
     </div>
     <!--悬浮搜索框-->
     <div class="nav white">
+
         <div class="logoBig">
             <li><img src="/home/images/logobig.png" /></li>
         </div>

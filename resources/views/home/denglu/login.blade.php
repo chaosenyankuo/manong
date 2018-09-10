@@ -25,25 +25,32 @@
                 <div class="clear"></div>
                 <div class="login-form">
                     <form action="/home/dologin" method="post">
+
                     @if(Session::has('error'))
-                    <div class="am-cf">{{Session::get('error')}}
-                    </div>
+                    <div class="am-cf">
+                            <span type="text" class="am-btn am-btn-primary am-btn-sm" style="background:red;">{{Session::get('error')}}</span>
+                        </div>
                     @endif
+
                         <div class="user-name">
                             <label for="user"><i class="am-icon-user"></i></label>
-                            <input type="text" name="email" id="user" placeholder="邮箱/手机/用户名">
+                            <input type="text" name="email" id="user" placeholder="请输入邮箱">
                         </div>
                         <div class="user-pass">
                             <label for="password"><i class="am-icon-lock"></i></label>
                             <input type="password" name="loginpwd" id="password" placeholder="请输入密码">
                         </div>
+                        @if(Session::has('error'))
+                        <div class="am-cf">{{Session::get('error')}}
+                        </div>
+                        @endif
                         <div>
                             <input type="checkbox" style="width:10px;height:10px; float-left;"> 记住密码
-                            <a href="" style="margin-left:150px;">忘记密码</a>
+                            <a href="/home/wjma" style="margin-left:150px;">忘记密码</a>
                         </div>
-                         {{csrf_field()}}
+                        {{csrf_field()}}
                         <div class="am-cf">
-                            <button type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm">登录</button>
+                            <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm">
                         </div>
                     </form>
                 </div>
@@ -58,7 +65,7 @@
             </div>
         </div>
     </div>
-   @include('layouts.home._foot')
+    @include('layouts.home._foot')
 </body>
 
 </html>

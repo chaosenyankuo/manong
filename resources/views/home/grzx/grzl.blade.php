@@ -28,11 +28,7 @@
         <div class="long-title"><span class="all-goods">全部分类</span></div>
         <div class="nav-cont">
             <ul>
-                <li class="index"><a href="#">首页</a></li>
-                <li class="qc"><a href="#">闪购</a></li>
-                <li class="qc"><a href="#">限时抢</a></li>
-                <li class="qc"><a href="#">团购</a></li>
-                <li class="qc last"><a href="#">大包装</a></li>
+                <li class="index"><a href="/">首页</a></li>
             </ul>
             <div class="nav-extra">
                 <i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
@@ -51,6 +47,7 @@
                     </div>
                     <hr/>
                     <!--头像 -->
+
                     <form class="am-form am-form-horizontal"  method="post" enctype="multipart/form-data">
                     <div class="user-infoPic">
                         <div class="filePic">
@@ -67,20 +64,25 @@
                                 <label for="user-name2" class="am-form-label">昵称</label>
                                 <div class="am-form-content">
                                     <input type="text" id="user-name2" name="nickname">
+
                                 </div>
                             </div>
                             <div class="am-form-group">
                                 <label for="user-name" class="am-form-label">姓名</label>
                                 <div class="am-form-content">
-                                    <input type="text" id="user-name2" name="uname">
+
+                                    <input type="text" id="user-name2" placeholder="name" name="uname">
+
                                 </div>
                             </div>
                             <div class="am-form-group">
                                 <label class="am-form-label">性别</label>
                                 <div class="am-form-content sex">
                                     <label class="am-radio-inline">
+
                                   
                                         <input type="radio" name="sex" value="1" data-am-ucheck> 男
+
                                     </label>
                                     <label class="am-radio-inline">
                                         <input type="radio" name="sex" value="2" data-am-ucheck> 女
@@ -90,19 +92,23 @@
                                     </label>
                                 </div>
                             </div>
+
                             
                             <div class="am-form-group">
                                 <label for="user-phone" class="am-form-label">电话</label>
                                 <div class="am-form-content">
                                     <input id="user-phone" name="phone" value="{{$users['phone']}}" type="tel">
+
                                 </div>
                             </div>
                             <div class="am-form-group">
                                 <label for="user-email" class="am-form-label">电子邮件</label>
                                 <div class="am-form-content">
+
                                     <input id="user-email" value="{{$users['email']}}" name="email" type="email">
                                 </div>
                             </div>
+
 
                             {{csrf_field()}}
                             <div class="info-btn">
