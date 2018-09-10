@@ -69,12 +69,12 @@
                         <label>商品标签</label>
                         <p style="margin-left:100px">
                         @foreach($tags as $v)
-                            <input type="checkbox" id="test{{$v['id']+77}}" name="tag_id[]" value="{{$v['id']}}"
+                            <input type="checkbox" id="test{{$v['id']+423423423}}" name="tag_id[]" value="{{$v['id']}}"
                             @if(in_array($v->id,$shop->tags->pluck('id')->toArray()))
                                 checked
                                 @endif
                             >
-                            <label for="test{{$v['id']+77}}">{{$v['tname']}}</label>
+                            <label for="test{{$v['id']+423423423}}">{{$v['tname']}}</label>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         @endforeach
                         </p>

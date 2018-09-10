@@ -32,7 +32,8 @@
             <div class="long-title"><span class="all-goods">全部分类</span></div>
             <div class="nav-cont">
                 <ul>
-                    <li class="index"><a href="/">首页</a><li>                    
+                    <li class="index"><a href="/">首页</a>
+                        <li>
                 </ul>
                 <div class="nav-extra">
                     <i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
@@ -103,7 +104,7 @@
                         </li>
                         <li class="tb">
                             <div class="tb-pic tb-s40">
-                                <a href="#"><img src="{{$shop['simage2']}}" mid="{{$shop['simage2']}}" big="{{$shop['simage']}}"></a>
+                                <a href="#"><img src="{{$shop['simage2']}}" mid="{{$shop['simage2']}}" data-big="{{$shop['simage']}}"></a>
                             </div>
                         </li>
                     </ul>
@@ -118,16 +119,39 @@
                         {{$shop['sname']}}
                     </h1>
                 </div>
+
+            <form action="/shopcar" method="post">
                 <div class="tb-detail-list">
+                <!--活动  -->
+                    <div class="shopPromotion gold">
+                        <div class="hot">
+                            <dt class="tb-metatit">店铺优惠</dt>
+                            <div class="gold-list">
+                                <p>购物满2件打8折，满3件7折<span>点击领券<i class="am-icon-sort-down"></i></span></p>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="coupon">
+                            <dt class="tb-metatit">优惠券</dt>
+                            <div class="gold-list">
+                                <ul>
+                                    <li>125减5</li>
+                                    <li>198减10</li>
+                                    <li>298减20</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <!--价格-->
                     <div class="tb-detail-price">
                         <li class="price iteminfo_price">
                             <dt>促销价</dt>
-                            <dd><em>¥</em><b class="sys_item_price">{{$shop['sprice']-10}}</b> </dd>
+                            <dd><em>¥</em><b class="sys_item_price">{{$shop['sprice']}}</b> </dd>
+                            <input type="hidden" value="{{$shop['sprice']}}">
                         </li>
                         <li class="price iteminfo_mktprice">
                             <dt>原价</dt>
-                            <dd><em>¥</em><b class="sys_item_mktprice">{{$shop['sprice']}}</b></dd>
+                            <dd><em>¥</em><b class="sys_item_mktprice">{{$shop['sprice']+10}}</b></dd>
                         </li>
                         <div class="clear"></div>
                     </div>
@@ -136,10 +160,19 @@
                         <div data-toggle="distpicker">
                             <dt>配送至:</dt>
                             <div class="form-group" style="width:500px;">
-                                <select class="form-control" style="height:28px;" id="province1" name="sheng" data-province=""></select>
+                                @if(!empty($add))
+                                <select class="form-control" style="height:28px;" id="province1" name="sheng" data-province="{{$add[0]}}">
+                                </select>
+                                <select class="form-control" style="height:28px;" id="city1" name="shi" data-city="{{$add[1]}}"></select>
+                                <select class="form-control" style="height:28px;" id="district1" name="xian" data-district="{{$add[2]}}"></select>
+                                快递<b class="sys_item_freprice"></b> 元 
+                                @else
+                                <select class="form-control" style="height:28px;" id="province1" name="sheng" data-province="">
+                                </select>
                                 <select class="form-control" style="height:28px;" id="city1" name="shi" data-city=""></select>
                                 <select class="form-control" style="height:28px;" id="district1" name="xian" data-district=""></select>
-                                快递<b class="sys_item_freprice"></b> 元
+                                快递<b class="sys_item_freprice"></b> 元 
+                                @endif
                             </div>
                         </div>
                     </dl>
@@ -171,20 +204,24 @@
                                     <a href="javascript:;" title="关闭" class="close">×</a>
                                 </div>
                                 <div class="theme-popbod dform">
-                                    <form class="theme-signin" name="loginform" action="" method="post">
+                                        <input type="hidden" name="shop_id" value="{{$shop['id']}}">
                                         <div class="theme-signin-left">
                                             <div class="theme-options">
                                                 <div class="cart-title">口味</div>
-                                                <ul>&nbsp; @foreach($flavor as $v) @if(in_array($v->id,$shop->flavors->pluck('id')->toArray()))
-                                                    <li class="sku-line" name="flavor_id">{{$v['fname']}}</li>
-                                                    @endif @endforeach
+                                                <ul>&nbsp; 
+                                                    @foreach($flavor as $v)
+                                                        @if(in_array($v->id,$shop->flavors->pluck('id')->toArray()))
+                                                            <li class="sku-line" name="flavor_id">{{$v['fname']}}</li>
+                                                        @endif
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                             <div class="theme-options">
                                                 <div class="cart-title">包装</div>
                                                 <ul>
                                                     @foreach($pack as $v)
-                                                    <li class="sku-line" name="pack_id">{{$v['pname']}}<i></i></li>
+                                                    <li class="sku-line">
+                                                        <input type="radio" name="pack_id" value="{{$v['id']}}">{{$v['pname']}}</li>
                                                     @endforeach
                                                 </ul>
                                             </div>
@@ -197,13 +234,13 @@
                                                     <span id="Stock" class="tb-hidden">库存<span class="stock">{{$shop['scount']}}</span>件</span>
                                                 </dd>
                                                 <script>
-                                                $('input[name=shuliang]').change(function() {
-                                                    var a = $('input[name=shuliang]').val();
-                                                    if (a > {{$shop['scount']}}) {
-                                                        alert('对不起,库存不足');
-                                                        $('input[name=shuliang]').val({{$shop['scount']}})
-                                                    };
-                                                });
+                                                    $('input[name=shuliang]').change(function() {
+                                                        var a = $('input[name=shuliang]').val();
+                                                        if (a > {{$shop['scount']}}) {
+                                                            alert('对不起,库存不足');
+                                                            $('input[name=shuliang]').val({{$shop['scount']}});
+                                                        };
+                                                    });
                                                 </script>
                                             </div>
                                             <div class="clear"></div>
@@ -221,49 +258,24 @@
                                                 <span id="Stock" class="tb-hidden">库存<span class="stock">1000</span>件</span>
                                             </div>
                                         </div>
-                                    </form>
                                 </div>
                             </div>
                         </dd>
                     </dl>
                     <div class="clear"></div>
-                    <!--活动  -->
-                    <div class="shopPromotion gold">
-                        <div class="hot">
-                            <dt class="tb-metatit">店铺优惠</dt>
-                            <div class="gold-list">
-                                <p>购物满2件打8折，满3件7折<span>点击领券<i class="am-icon-sort-down"></i></span></p>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="coupon">
-                            <dt class="tb-metatit">优惠券</dt>
-                            <div class="gold-list">
-                                <ul>
-                                    <li>125减5</li>
-                                    <li>198减10</li>
-                                    <li>298减20</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
-                <div class="pay">
-                    <div class="pay-opt">
-                        <a href="home.html"><span class="am-icon-home am-icon-fw">首页</span></a>
-                        <a><span class="am-icon-heart am-icon-fw">收藏</span></a>
-                    </div>
+            {{csrf_field()}}
+                <div class="pay" style="position:relative;top:-120px;left:600px;">
                     <li>
-                        <div class="clearfix tb-btn tb-btn-buy theme-login">
-                            <a id="LikBuy" title="点此按钮到下一步确认购买信息" href="#">立即购买</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="clearfix tb-btn tb-btn-basket theme-login">
-                            <a id="LikBasket" title="加入购物车" href="#"><i></i>加入购物车</a>
+                        
+                        <div class="clearfix theme-login">
+                            <input title="加入购物车" type="submit" value="加入购物车" style="width:98px;border:1px solid #F03726;background-color:#F03726;color:white;height:35px;"><i></i>
                         </div>
                     </li>
                 </div>
+                </form>
+                
             </div>
             <div class="clear"></div>
         </div>
@@ -335,12 +347,9 @@
                                     <h4>商品细节</h4>
                                 </div>
                                 <div class="twlistNews">
-                                    <img src="{{$shop['simage1']}}"  style="height:400px;" width="100%" />
-                                    <img src="{{$shop['simage2']}}" style="height:400px;"  width="100%" />
-
+                                    <img src="{{$shop['simage1']}}" style="height:400px;" width="100%" />
+                                    <img src="{{$shop['simage2']}}" style="height:400px;" width="100%" />
                                 </div>
-                                
-                                
                             </div>
                             <div class="clear"></div>
                         </div>
@@ -396,7 +405,7 @@
                             </div>
                             <div class="clear"></div>
                             <ul class="am-comments-list am-comments-list-flip">
-                            @foreach($comment as $v)
+                                @foreach($comment as $v)
                                 <li class="am-comment">
                                     <!-- 评论容器 -->
                                     <a href="">
@@ -428,7 +437,7 @@
                                         <!-- 评论内容 -->
                                     </div>
                                 </li>
-                            @endforeach
+                                @endforeach
                             </ul>
                             <div class="clear"></div>
                             <!--分页 -->
@@ -449,21 +458,20 @@
                         <div class="am-tab-panel am-fade">
                             <div class="like">
                                 <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
-                                    @if(!empty($shop->cate) && !empty($shop->cate->shops))
-                                    @foreach($shop->cate->shops()->take(8)->get() as $v)
+                                    @if(!empty($shop->cate) && !empty($shop->cate->shops())) @foreach($shop->cate->shops()->take(8)->get() as $v)
                                     <li>
-                                        <a href="/{{$v['id']}}.html"><div class="i-pic limit">
-                                            <img src="{{$v['simage']}}" />
-                                            <p>{{$v['sname']}}</p>
-                                            <p class="price fl">
-                                                <b>¥</b>
-                                                <strong>{{$v['sprice']}}</strong>
-                                            </p>
-                                        </div>
+                                        <a href="/{{$v['id']}}.html">
+                                            <div class="i-pic limit">
+                                                <img src="{{$v['simage']}}" />
+                                                <p>{{$v['sname']}}</p>
+                                                <p class="price fl">
+                                                    <b>¥</b>
+                                                    <strong>{{$v['sprice']}}</strong>
+                                                </p>
+                                            </div>
                                         </a>
                                     </li>
-                                    @endforeach
-                                    @endif
+                                    @endforeach @endif
                                 </ul>
                             </div>
                             <div class="clear"></div>

@@ -10,4 +10,9 @@ class Flavor extends Model
     {
     	return $this->belongsToMany('App\Shop');
     }
+
+    public function shopcars()
+    {
+    	return $this->hasMany('App\Shopcar');
+    }
 }

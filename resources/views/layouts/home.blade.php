@@ -205,6 +205,7 @@
                     }).find("li:first").appendTo(this);
                 })
             }
+
             $(function() {
                 setInterval('autoScroll(".demo")', 3000);
             })
@@ -216,6 +217,9 @@
             <!--今日推荐 -->
             <div class="am-g am-g-fixed recommendation">
                 <div class="clock am-u-sm-3" ">
+
+            
+
 							<img src="/home/images/2016.png "></img>
 							<p>今日<br>推荐</p>
 						</div>
@@ -227,24 +231,27 @@
 									<h4>{{$v->cate->cname}}</h4>
 								</div>
 								<div class="recommendationMain one ">
-									<a href="introduction.html "><img src="{{$v -> simage}}" width="120" height="120"></img>
-                    </a>
-                </div>
-            </div>
-            @endforeach
-        </div>
-        <div class="clear "></div>
-        @foreach($cid as $k => $v)
-        <div id="f{{$a++}}">
-            <div class="am-container ">
-                <div class="shopTitle ">
-                    <h4>{{$cates[$k] -> cname}}</h4>
-                    <h3>{{$cates[$k] -> intro}}</h3>
-                    <div class="today-brands ">
-                        @foreach($cates[$k]->tags()->get() as $vv)
-                        <a href="# ">{{$vv->tname}}</a> @endforeach
-                    </div>
-                    <span class="more ">
+
+									<a href="/{{$v->id}}.html "><img src="{{$v -> simage}}" width="120" height="120"></img></a>
+								</div>
+							</div>
+						@endforeach
+
+					</div>
+					<div class="clear "></div>
+					@foreach($cid as $k => $v)
+					<div id="f{{$a++}}">
+						<div class="am-container ">
+							<div class="shopTitle ">
+								<h4>{{$cates[$k] -> cname}}</h4>
+								<h3>{{$cates[$k] -> intro}}</h3>
+								<div class="today-brands ">
+									@foreach($cates[$k]->tags()->get() as $vv)
+										<a href="# ">{{$vv->tname}}</a>
+									@endforeach
+								</div>
+								<span class="more ">
+
 				                    <a href="# ">更多美味<i class="am-icon-angle-right " style="padding-left:10px ; " ></i>
 				                    </a>
 				                </span>
