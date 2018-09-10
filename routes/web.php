@@ -100,6 +100,7 @@ Route::get('/','HomeController@index');
 //前台商品详情
 Route::get('/{id}.html','ShopController@show');
 
+
 //前台注册
 Route::get('/home/zhuce', 'ZhuceController@zhuce');
 
@@ -130,11 +131,16 @@ Route::get('/home/aqsz','GrzxController@aqsz');
 Route::get('/home/xgma','GrzxController@xgma');
 Route::post('/home/xgmacz','GrzxController@xgmacz');
 
+
 //忘记密码
 Route::get('/home/wjma', 'ZhuceController@wjma');
 
 //忘记密码操作
 Route::post('/home/wjmal', 'ZhuceController@wjmal');
+
+
+//评论管理
+Route::get('/home/pjgl','GrzxController@pjgl');
 
 //收货地址
 Route::get('/home/shdz','GrzxController@shdz');

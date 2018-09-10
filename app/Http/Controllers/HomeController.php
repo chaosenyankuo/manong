@@ -42,13 +42,15 @@ class HomeController extends Controller
         //校验密码
         if(Hash::check($request->loginpwd, $user->loginpwd)){
             //写入session
-            session(['email'=>$user->email, 'nickname'=>$user->nickname, 'id'=>$user->id]);
+            session(['email'=>$user->email, 'image'=>$user->image, 'nickname'=>$user->nickname, 'id'=>$user->id]);
             return redirect('/home/index')->with('success','登陆成功');
         }else{
             return back()->with('error','登陆失败!');
   
 
+
    		}          
+
 	}
 
     public function logout(Request $request)
@@ -66,11 +68,17 @@ class HomeController extends Controller
     	$tags = Tag::all();
     	$links = Link::all();
     	$recom = Shop::where('recom','1')->take(3)->orderBy('id','desc')->get();
-    	$shops = Shop::all();
+        $shops = Shop::all();
+    	$id = \Session::get('id');
+        
+        $user = User::find($id);
+        // dd($user);
     	$a = 1;
     	$cid = Cate::pluck('id');
-    	return view('home',compact('cates','tags','links','recom','shops','a','cid'));
+
+    	return view('home',compact('cates','tags','links','recom','shops','a','cid','user'));
     }
+
 
 }
 

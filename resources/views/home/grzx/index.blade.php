@@ -48,7 +48,8 @@
                             <div class="m-bg"></div>
                             <div class="m-userinfo">
                                 <div class="m-baseinfo">
-                                    <a href="information.html">
+
+                                    <a href="/home/grxx">
 
                                             <img src="{{$user['image']}}">
 

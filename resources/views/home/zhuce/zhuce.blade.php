@@ -25,11 +25,14 @@
             <div class="login-box">
                 <div class="am-tabs" id="doc-my-tabs">
                     <ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
-                        <li class="am-active"><a href="">邮箱注册</a></li>
-                        <li><a href="">手机号注册</a></li>
+                        <li class="am-active"><a href="">注册</a></li>
                     </ul>
                     <div class="am-tabs-bd">
                         <div class="am-tab-panel am-active">
+                            <div class="am-cf">
+                                @if(Session::has('error'))
+                                <input id="baocuo" type="text" name="baocuo" value="{{Session::get('error')}}" class="am-btn res-banner  am-btn-primary am-btn-sm am-fl" style="height:30px;"> @endif
+                            </div>
                             <form action="/home/store" method="post">
                                 <div class="user-email">
                                     <label for="email"><i class="am-icon-envelope-o"></i></label>
@@ -49,6 +52,7 @@
                                 </div>
                             </form>
                         </div>
+
                         <div class="am-tab-panel">
                             <form action="/home/store" method="post">
                                 <div class="user-phone">
@@ -75,17 +79,49 @@
                                 </div>
                             </form>
                             <hr>
-                        </div>
+
+                        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
                         <script>
-                        $(function() {
-                            $('#doc-my-tabs').tabs();
-                        })
+                        $('#email').blur(function() {
+                            var v = $(this).val();
+                            $.ajax({
+
+                                url: '/check-user-exists.php',
+
+                                type: 'post',
+
+                                data: { email: v },
+
+                                success: function(data) {
+                                    if (data == 0) {
+                                        alert('用户名已存在');
+                                    }
+                                }
+                            })
+                        });
                         </script>
+
+
+                        <hr>
+
                     </div>
+                    <script>
+                    $(function() {
+                        $('#doc-my-tabs').tabs();
+                    })
+                    </script>
                 </div>
             </div>
         </div>
-        @include('layouts.home._foot')
+    </div>
+    @include('layouts.home._foot')
+    <script>
+    setTimeout(function() {
+        $('#baocuo').css('display', 'none');
+    }, 2000);
+    scrollY("#scrollbox"); //单个Y轴
+    </script>
 </body>
 
 </html>
