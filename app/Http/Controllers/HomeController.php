@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Link;
-use App\User;
-use App\Setting;
 use App\Cate;
+use App\Link;
+use App\Setting;
 use App\Shop;
+use App\Shopcar;
 use App\Tag;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -57,6 +58,19 @@ class HomeController extends Controller
     	$a = 1;
     	$cid = Cate::pluck('id');
     	return view('home',compact('cates','tags','links','recom','shops','a','cid'));
+    }
+
+    /**
+     * 购物车
+     */
+    public function shopcar($id)
+    {   
+        $shop = Shop::findOrFail($id);
+        $user = User::findOrFail(session('id'));
+        dd($user);
+        $res = $user->shops()->sync($shop->id);
+        dd($res);
+        return view('home/shopcar/index');
     }
 
 }

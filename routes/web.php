@@ -77,22 +77,8 @@ Route::group(['middleware'=>'login'],function(){
 
 
 /*
-	前台路由
+ *前台路由
  */
-//前台登录
-////前台注册
-Route::get('/home/zhuce', 'ZhuceController@zhuce');
-
-//注册操作
-Route::post('/home/store', 'ZhuceController@store');
-
-//前台登陆页面
-Route::get('/home/login', 'HomeController@login');
-
-//前台登陆操作
-Route::post('/home/dologin', 'HomeController@dologin');
-
- 
 //前台注册
 Route::get('/home/zhuce', 'ZhuceController@zhuce');
 
@@ -134,6 +120,9 @@ Route::get('/','HomeController@index');
 
 //前台商品详情
 Route::get('/{id}.html','ShopController@show');
+
+//购物车
+Route::get('/home/shopcar/{id}','HomeController@shopcar');
 
 
 
