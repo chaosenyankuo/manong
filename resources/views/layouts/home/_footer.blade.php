@@ -49,9 +49,7 @@
                 <a href="/shopcar">
                     <span class="message"></span>
                 </a>
-                <p>
-                    购物车
-                </p>
+                
                 
             </div>
             <div id="asset" class="item">

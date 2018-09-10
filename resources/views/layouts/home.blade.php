@@ -147,7 +147,7 @@
                                 </a>
                         <em>
                                     Hi,<span class="s-name">{{Session::get('nickname')}}</span>
-                                    <a href="#"><p>点击更多优惠活动</p></a>                             
+                                    <a href="/home/index"><p>点击进入个人中心</p></a>                             
                                 </em>
                     </div>
                     @endif @if(!Session::has('nickname'))

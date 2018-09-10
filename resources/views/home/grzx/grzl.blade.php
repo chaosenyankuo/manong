@@ -49,18 +49,18 @@
                     <!--头像 -->
 
                     <form class="am-form am-form-horizontal"  method="post" enctype="multipart/form-data">
-                    <div class="user-infoPic">
+                    
                         <div class="filePic">
                             <input type="file" class="inputPic" name="image" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
                             <img class="am-circle am-img-thumbnail" src="/home/images/getAvatar.do.jpg" alt="" />
                         </div>
                         <p class="am-form-help">头像</p>
                        
-                    </div>
+                    
                     <!--个人信息 -->
-                    <div class="info-main">
+                    <div class="info-main" style="padding: 0px 100px;">
                         
-                            <div class="am-form-group">
+                            <div class="am-form-group" >
                                 <label for="user-name2" class="am-form-label">昵称</label>
                                 <div class="am-form-content">
                                     <input type="text" id="user-name2" name="nickname">
