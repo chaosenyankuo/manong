@@ -156,15 +156,17 @@
 								     <p>XXXXXXXXXXXXXXXXXX</p>
 							    </a></li>
                             <div class="mod-vip">
+                            @if(Session::has('id'))
                                 <div class="m-baseinfo">
                                     <a href="/home/person/index.html">
-									<img src="/home/images/getAvatar.do.jpg">
+									<img src="{{Session::get('image')}}">
 								</a>
                                     <em>
 									Hi,<span class="s-name">小叮当</span>
 									<a href="#"><p>点击更多优惠活动</p></a>									
 								</em>
                                 </div>
+                            @endif
                                 <div class="member-logout">
                                     <a class="am-btn-warning btn" href="/home/login">登录</a>
                                     <a class="am-btn-warning btn" href="/home/zhuce">注册</a>

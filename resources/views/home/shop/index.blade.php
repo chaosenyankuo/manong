@@ -208,12 +208,11 @@
                                         <div class="theme-signin-left">
                                             <div class="theme-options">
                                                 <div class="cart-title">口味</div>
-                                                <ul>&nbsp; 
-                                                    @foreach($flavor as $v)
-                                                        @if(in_array($v->id,$shop->flavors->pluck('id')->toArray()))
-                                                            <li class="sku-line" name="flavor_id">{{$v['fname']}}</li>
-                                                        @endif
-                                                    @endforeach
+                                                <ul>&nbsp; @foreach($flavor as $v) @if(in_array($v->id,$shop->flavors->pluck('id')->toArray()))
+                                                    <li class="sku-line">
+                                                        <input type="radio" name="flavor_id" value="{{$v['id']}}">{{$v['fname']}}
+                                                    </li>
+                                                    @endif @endforeach
                                                 </ul>
                                             </div>
                                             <div class="theme-options">
