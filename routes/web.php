@@ -90,6 +90,7 @@ Route::get('/home/login', 'HomeController@login');
 //前台登陆操作
 Route::post('/home/dologin', 'HomeController@dologin');
 
+
  
 //前台注册
 Route::get('/home/zhuce', 'ZhuceController@zhuce');
@@ -120,6 +121,8 @@ Route::get('/home/aqsz','GrzxController@aqsz');
 //修改密码
 Route::get('/home/xgma','GrzxController@xgma');
 Route::post('/home/xgmacz','GrzxController@xgmacz');
+//评论管理
+Route::get('/home/pjgl','GrzxController@pjgl');
 //收货地址
 Route::get('/home/shdz','GrzxController@shdz');
 //添加收货地址

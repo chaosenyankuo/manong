@@ -50,7 +50,7 @@
                             <div class="m-bg"></div>
                             <div class="m-userinfo">
                                 <div class="m-baseinfo">
-                                    <a href="information.html">
+                                    <a href="/home/grxx">
                                             <img src="{{$user['image']}}">
                                         </a>
                                     <em class="s-name">{{$user['nickname']}}<span class="vip1"></em>
