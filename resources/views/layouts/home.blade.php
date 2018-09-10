@@ -146,8 +146,8 @@
                                     <img src="{{$user->image}}">
                                 </a>
                         <em>
-                                    Hi,<span class="s-name">{{Session::get('nickname')}}</span>
-                                    <a href="#"><p>点击更多优惠活动</p></a>                             
+                                    Hi,<span class="s-name">{{$user->nickname}}</span>
+                                    <a href="/home/index"><p>点击进入个人中心</p></a>                             
                                 </em>
                     </div>
                     @endif @if(!Session::has('nickname'))
@@ -156,7 +156,6 @@
                                     <img src="/home/images/getAvatar.do.jpg">
                                 </a>
                         <em>
-
 
                                     <span class="s-name">请登录</span>
                                                                         

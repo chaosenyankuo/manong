@@ -48,27 +48,21 @@
                     <hr/>
                     <!--头像 -->
                     <form class="am-form am-form-horizontal" action="/home/xggrxx" method="post" enctype="multipart/form-data">
-                    <div class="user-infoPic">
+                    
                         <div class="filePic">
                             <input type="file" class="inputPic" name="image" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
                             <img class="am-circle am-img-thumbnail" src="{{$users['image']}}" name="image" alt="" />
                         </div>
                         <p class="am-form-help">头像</p>
                        
-                    </div>
+                    
                     <!--个人信息 -->
-                    <div class="info-main">
+                    <div class="info-main" style="padding: 0px 50px;">
                         
                             <div class="am-form-group">
                                 <label for="user-name2" class="am-form-label">昵称</label>
                                 <div class="am-form-content">
                                     <input type="text" id="user-name2" value="{{$users['nickname']}}" name="nickname">
-                                </div>
-                            </div>
-                            <div class="am-form-group">
-                                <label for="user-name" class="am-form-label">姓名</label>
-                                <div class="am-form-content">
-                                    <input type="text" id="user-name2" value="{{$users['uname']}}" name="uname">
                                 </div>
                             </div>
                             <div class="am-form-group">

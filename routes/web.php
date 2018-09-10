@@ -91,15 +91,13 @@ Route::group(['middleware'=>'login'],function(){
 
 
 /*
-	前台路由
+ *前台路由
  */
-
 //前台首页
 Route::get('/','HomeController@index');
 
 //前台商品详情
 Route::get('/{id}.html','ShopController@show');
-
 
 //前台注册
 Route::get('/home/zhuce', 'ZhuceController@zhuce');
@@ -154,11 +152,6 @@ Route::get('/home/dzsc/{id}','GrzxController@dzsc');
 //收藏
 Route::get('/home/sc','GrzxController@sc');
 //前台末尾
-
-
-
-
-
 
 
 //购物车管理

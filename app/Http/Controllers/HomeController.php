@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Link;
-use App\User;
-use App\Setting;
 use App\Cate;
+use App\Link;
+use App\Setting;
 use App\Shop;
+use App\Shopcar;
 use App\Tag;
+use App\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -72,7 +73,6 @@ class HomeController extends Controller
     	$id = \Session::get('id');
         
         $user = User::find($id);
-        // dd($user);
     	$a = 1;
     	$cid = Cate::pluck('id');
 

@@ -27,8 +27,6 @@
         <div class="nav-cont">
             <ul>
                 <li class="index"><a href="/">首页</a></li>
-
-
             </ul>
             <div class="nav-extra">
                 <i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利

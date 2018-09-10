@@ -59,13 +59,10 @@
             </div>
         </div>
     </div>
-
     @include('layouts.home._foot')
-    </body>
-     <script>
-   
+    <script>
     setTimeout(function() {
-        $('input[name="baocuo"]').css('display', 'none');
+        $('#baocuo').css('display', 'none');
     }, 2000);
     </script>
 </body>
