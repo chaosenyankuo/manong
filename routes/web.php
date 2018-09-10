@@ -74,8 +74,6 @@ Route::group(['middleware'=>'login'],function(){
 	Route::resource('link','LinkController');
 });
 
-
-
 /*
 	前台路由
  */
@@ -104,6 +102,9 @@ Route::get('/home/login', 'HomeController@login');
 
 //前台登陆操作
 Route::post('/home/dologin', 'HomeController@dologin');
+
+//前台退出登录
+Route::get('/home/logout','HomeController@logout');
 
 //个人中心
 Route::get('/home/index','GrzxController@index');
@@ -134,6 +135,9 @@ Route::get('/','HomeController@index');
 
 //前台商品详情
 Route::get('/{id}.html','ShopController@show');
+
+//购物车管理
+Route::resource('shopcar','ShopCarController');
 
 
 
