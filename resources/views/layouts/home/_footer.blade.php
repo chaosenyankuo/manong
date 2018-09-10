@@ -3,8 +3,7 @@
         <p>
             @foreach($links as $v)
             <a href="{{$v->url}}">{{$v->name}}</a>
-            <b>|</b>
-            @endforeach
+            <b>|</b> @endforeach
         </p>
     </div>
     <div class="footer-bd">
@@ -27,16 +26,24 @@
             <div id="prof" class="item">
                 <a href="/home/index">
                     <span class="setting"></span>
-                </a>
+                </a> 
+                @if(Session::has('id'))
                 <div class="ibar_login_box status_login">
                     <div class="avatar_box">
                         <p class="avatar_imgbox">
-                            <img src="/home/images/no-img_mid_.jpg" />
+                            <img src="{{$user['image']}}" />
                         </p>
                         <ul class="user_info">
-                            <li>用户名：sl1903</li>
-                            <li>级&nbsp;别：普通会员</li>
+                            <li>用户名:{{$user['nickname']}}</li>
+                            <li>您可以去选购啦!!!</li>
                         </ul>
+                        @endif 
+
+                        @if(!Session::has('id'))
+                        <ul class="user_info">
+                            <li>用户名：请先登录!!</li>
+                        </ul>
+                        @endif
                     </div>
                     <div class="login_btnbox">
                         <a href="#" class="login_order">我的订单</a>
@@ -184,7 +191,7 @@
     </div>
 </div>
 <script>
-	window.jQuery || document.write('<script src="/home/basic/js/jquery.min.js "><\/script>');
+window.jQuery || document.write('<script src="/home/basic/js/jquery.min.js "><\/script>');
 </script>
 <script type="text/javascript " src="/home/basic/js/quick_links.js "></script>
 </body>
