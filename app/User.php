@@ -41,11 +41,13 @@ class User extends Authenticatable
         return $this->hasMany('App\Comment');
     }
 
-
-    public function shop()
+    public function shops()
     {
-        return $this->belongsToMany('App\shop');
-    }    
+
+        return $this->belongsToMany('App\Shop');
+    }
+    
+
     public function shopcar()
     {
         return $this->hasMany('App\Shopcar');

@@ -41,6 +41,13 @@
                 </div>
             </div>
         </div>
+        @if(Session::has('error'))
+            <div class="nav white" id="xiaoshi" style="margin-top: 10px;">
+                <center>
+                    <p><font style="color:red; font-size:20px;">{{Session::get('error')}}</font></p>
+                </center>
+            </div>
+        @endif
         <ol class="am-breadcrumb am-breadcrumb-slash">
             <li><a href="/">首页</a></li>
             <li><a href="#">分类</a></li>
@@ -165,7 +172,7 @@
                                 </select>
                                 <select class="form-control" style="height:28px;" id="city1" name="shi" data-city="{{$add[1]}}"></select>
                                 <select class="form-control" style="height:28px;" id="district1" name="xian" data-district="{{$add[2]}}"></select>
-                                快递<b class="sys_item_freprice"></b> 元 
+                                快递<b class="sys_item_freprice">10</b> 元 
                                 @else
                                 <select class="form-control" style="height:28px;" id="province1" name="sheng" data-province="">
                                 </select>
@@ -208,11 +215,14 @@
                                         <div class="theme-signin-left">
                                             <div class="theme-options">
                                                 <div class="cart-title">口味</div>
-                                                <ul>&nbsp; @foreach($flavor as $v) @if(in_array($v->id,$shop->flavors->pluck('id')->toArray()))
-                                                    <li class="sku-line">
-                                                        <input type="radio" name="flavor_id" value="{{$v['id']}}">{{$v['fname']}}
-                                                    </li>
-                                                    @endif @endforeach
+                                                <ul>&nbsp; 
+                                                    @foreach($flavor as $v)
+                                                        @if(in_array($v->id,$shop->flavors->pluck('id')->toArray()))
+                                                            <li class="sku-line">
+                                                                <input type="radio" name="flavor_id" value="{{$v['id']}}">{{$v['fname']}}
+                                                            </li>
+                                                        @endif
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                             <div class="theme-options">
@@ -267,7 +277,6 @@
             {{csrf_field()}}
                 <div class="pay" style="position:relative;top:-120px;left:600px;">
                     <li>
-                        
                         <div class="clearfix theme-login">
                             <input title="加入购物车" type="submit" value="加入购物车" style="width:98px;border:1px solid #F03726;background-color:#F03726;color:white;height:35px;"><i></i>
                         </div>
@@ -306,19 +315,13 @@
                 <div class="am-tabs" data-am-tabs>
                     <ul class="am-avg-sm-3 am-tabs-nav am-nav am-nav-tabs">
                         <li class="am-active">
-                            <a href="#">
-
-                                        <span class="index-needs-dt-txt">宝贝详情</span></a>
+                            <a href="#"><span class="index-needs-dt-txt">宝贝详情</span></a>
                         </li>
                         <li>
-                            <a href="#">
-
-                                        <span class="index-needs-dt-txt">全部评价</span></a>
+                            <a href="#"><span class="index-needs-dt-txt">全部评价</span></a>
                         </li>
                         <li>
-                            <a href="#">
-
-                                        <span class="index-needs-dt-txt">猜你喜欢</span></a>
+                            <a href="#"><span class="index-needs-dt-txt">猜你喜欢</span></a>
                         </li>
                     </ul>
                     <div class="am-tabs-bd">

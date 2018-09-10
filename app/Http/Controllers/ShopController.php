@@ -119,9 +119,9 @@ class ShopController extends Controller
         $links = Link::all();
         //获取当前登录人的信息
         if(\Session::has('id')){
-        $uid = \Session::get('id');
-        $user = User::find($uid);
-        //获取当前登录人的地址信息
+            $uid = \Session::get('id');
+            $user = User::find($uid);
+            //获取当前登录人的地址信息
             if(empty($user->uaddress[0])){
                 $address = '山西省-吕梁市-孝义市';
                 $add = explode('-',$address);

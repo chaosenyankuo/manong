@@ -66,12 +66,6 @@
                                 </div>
                             </div>
                             <div class="am-form-group">
-                                <label for="user-name" class="am-form-label">姓名</label>
-                                <div class="am-form-content">
-                                    <input type="text" id="user-name2" value="{{$users['uname']}}" name="uname">
-                                </div>
-                            </div>
-                            <div class="am-form-group">
                                 <label class="am-form-label">性别</label>
                                 <div class="am-form-content sex">
                                     <label class="am-radio-inline">
