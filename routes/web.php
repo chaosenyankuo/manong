@@ -119,6 +119,8 @@ Route::get('/home/aqsz','GrzxController@aqsz');
 //修改密码
 Route::get('/home/xgma','GrzxController@xgma');
 Route::post('/home/xgmacz','GrzxController@xgmacz');
+//评论管理
+Route::get('/home/pjgl','GrzxController@pjgl');
 //收货地址
 Route::get('/home/shdz','GrzxController@shdz');
 //添加收货地址

@@ -26,12 +26,13 @@
                 <div class="login-form">
                     <form action="/home/dologin" method="post">
                     @if(Session::has('error'))
-                    <div class="am-cf">{{Session::get('error')}}
-                    </div>
+                    <div class="am-cf">
+                            <span type="text" class="am-btn am-btn-primary am-btn-sm" style="background:red;">{{Session::get('error')}}</span>
+                        </div>
                     @endif
                         <div class="user-name">
                             <label for="user"><i class="am-icon-user"></i></label>
-                            <input type="text" name="email" id="user" placeholder="邮箱/手机/用户名">
+                            <input type="text" name="email" id="user" placeholder="请输入邮箱">
                         </div>
                         <div class="user-pass">
                             <label for="password"><i class="am-icon-lock"></i></label>

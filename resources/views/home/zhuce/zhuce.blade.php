@@ -13,7 +13,6 @@
     <link href="/home/css/dlstyle.css" rel="stylesheet" type="text/css">
     <script src="/home/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
     <script src="/home/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
-    
 </head>
 
 <body>
@@ -26,11 +25,14 @@
             <div class="login-box">
                 <div class="am-tabs" id="doc-my-tabs">
                     <ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
-                        <li class="am-active"><a href="">邮箱注册</a></li>
-                        <li><a href="">手机号注册</a></li>
+                        <li class="am-active"><a href="">注册</a></li>
                     </ul>
                     <div class="am-tabs-bd">
                         <div class="am-tab-panel am-active">
+                            <div class="am-cf">
+                                @if(Session::has('error'))
+                                <input id="baocuo" type="text" name="baocuo" value="{{Session::get('error')}}" class="am-btn res-banner  am-btn-primary am-btn-sm am-fl" style="height:30px;"> @endif
+                            </div>
                             <form action="/home/store" method="post">
                                 <div class="user-email">
                                     <label for="email"><i class="am-icon-envelope-o"></i></label>
@@ -50,44 +52,45 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="am-tab-panel">
-                            <form action="/home/store" method="post">
-                                <div class="user-phone">
-                                    <label for="phone"><i class="am-icon-mobile-phone am-icon-md"></i></label>
-                                    <input type="tel" name="phone" id="phone" placeholder="请输入手机号">
-                                </div>
-                                <div class="verification">
-                                    <label for="code"><i class="am-icon-code-fork"></i></label>
-                                    <input type="tel" name="" id="code" placeholder="请输入验证码">
-                                    <a class="btn" href="javascript:void(0);" onclick="sendMobileCode();" id="sendMobileCode">
-												<span id="dyMobileButton">获取</span></a>
-                                </div>
-                                <div class="user-pass">
-                                    <label for="password"><i class="am-icon-lock"></i></label>
-                                    <input type="password" name="loginpwd" id="password" placeholder="设置密码">
-                                </div>
-                                <div class="user-pass">
-                                    <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
-                                    <input type="password" name="loginpwd" id="passwordRepeat" placeholder="确认密码">
-                                </div>
-                                <div class="am-cf">
-                                    {{csrf_field()}}
-                                    <input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
-                                </div>
-                            </form>
-                            <hr>
-                        </div>
+                        </form>
+                        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
                         <script>
-                        $(function() {
-                            $('#doc-my-tabs').tabs();
-                        })
+                        $('#email').blur(function() {
+                            var v = $(this).val();
+                            $.ajax({
+
+                                url: '/check-user-exists.php',
+
+                                type: 'post',
+
+                                data: { email: v },
+
+                                success: function(data) {
+                                    if (data == 0) {
+                                        alert('用户名已存在');
+                                    }
+                                }
+                            })
+                        });
                         </script>
-                        
+                        <hr>
                     </div>
+                    <script>
+                    $(function() {
+                        $('#doc-my-tabs').tabs();
+                    })
+                    </script>
                 </div>
             </div>
         </div>
-        @include('layouts.home._foot')
+    </div>
+    @include('layouts.home._foot')
+    <script>
+    setTimeout(function() {
+        $('#baocuo').css('display', 'none');
+    }, 2000);
+    scrollY("#scrollbox"); //单个Y轴
+    </script>
 </body>
 
 </html>

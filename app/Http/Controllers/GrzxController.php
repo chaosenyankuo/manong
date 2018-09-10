@@ -7,6 +7,8 @@ use App\Link;
 use App\Uaddress;
 use App\User;
 use App\Setting;
+use App\Comment;
+use App\Shop;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Testing\Concerns\session;
 
@@ -142,5 +144,24 @@ class GrzxController extends Controller
     	return view('home.grzx.shdz',compact('links','uaddress','setting'));
     }
 
+    public function pjgl()
+    {   
+        $links = Link::all();
+        $setting = Setting::first();
+        $id = \Session::get('id');
+        $user  = User::findOrFail($id);
+        
+        $comment = $user->comment;
+        foreach ($comment as $v) {
+             $v->shop->pack_id;
+         }
+       
+        
+       
+
+       
+
+        return view('home.grzx.pjgl',compact('links','setting','user','comment','shops'));
+    }
    
 }
