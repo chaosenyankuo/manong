@@ -19,7 +19,6 @@ class ZhuceController extends Controller
     }
 
       public function store(Request $request)
-
     {
        
     	$users = new User; 

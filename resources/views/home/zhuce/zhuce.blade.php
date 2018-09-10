@@ -13,7 +13,6 @@
     <link href="/home/css/dlstyle.css" rel="stylesheet" type="text/css">
     <script src="/home/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
     <script src="/home/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
-    
 </head>
 
 <body>
@@ -60,7 +59,7 @@
                                     <label for="code"><i class="am-icon-code-fork"></i></label>
                                     <input type="tel" name="" id="code" placeholder="请输入验证码">
                                     <a class="btn" href="javascript:void(0);" onclick="sendMobileCode();" id="sendMobileCode">
-												<span id="dyMobileButton">获取</span></a>
+                                                <span id="dyMobileButton">获取</span></a>
                                 </div>
                                 <div class="user-pass">
                                     <label for="password"><i class="am-icon-lock"></i></label>
@@ -68,11 +67,7 @@
                                 </div>
                                 <div class="user-pass">
                                     <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
-<<<<<<< HEAD
                                     <input type="password" name="loginpwds" id="passwordRepeat" placeholder="确认密码">
-=======
-                                    <input type="password" name="loginpwd" id="passwordRepeat" placeholder="确认密码">
->>>>>>> e2d5f43255b6135056f856a397eb237fe83ed8f5
                                 </div>
                                 <div class="am-cf">
                                     {{csrf_field()}}
@@ -86,7 +81,6 @@
                             $('#doc-my-tabs').tabs();
                         })
                         </script>
-                        
                     </div>
                 </div>
             </div>
