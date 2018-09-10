@@ -228,15 +228,15 @@ class GrzxController extends Controller
         return view('home.grzx.pjgl',compact('links','setting','user','comment','shops'));
 
     }
-// //收藏
-//     public function sc()
-//     {   
-//         $links = Link::all();
+//收藏
+    public function sc()
+    {   
+        $links = Link::all();
 
-//         $setting = Setting::first();
-//         return view('home.grzx.sc');
+        $setting = Setting::first();
+        return view('home.grzx.sc');
         
-//     } 
+    } 
    
 }
 
