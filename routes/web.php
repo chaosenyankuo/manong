@@ -92,6 +92,7 @@ Route::get('/home/login', 'HomeController@login');
 //前台登陆操作
 Route::post('/home/dologin', 'HomeController@dologin');
 
+
  
 //前台注册
 Route::get('/home/zhuce', 'ZhuceController@zhuce');
