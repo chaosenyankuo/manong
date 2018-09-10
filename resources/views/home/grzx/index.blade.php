@@ -278,9 +278,14 @@
                         </div>
                         <div class="s-care s-care-noweather">
                             <div class="s-date">
-                                <em>21</em>
-                                <span>星期一</span>
-                                <span>2015.12</span>
+                                <em><?php $a = date('Y-m-d',time());
+                                $b = explode('-',$a);
+                                 print_r ($b[2]); ?></em>
+                                <span><?php $weekarray=array("日","一","二","三","四","五","六"); 
+                                    echo "星期".$weekarray[date("w")];
+                                 ?></span>
+                                <span><?php $a = date('Y.m',time());
+                                print_r($a); ?></span>
                             </div>
                         </div>
                     </div>

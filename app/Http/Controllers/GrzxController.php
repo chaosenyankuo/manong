@@ -214,7 +214,7 @@ class GrzxController extends Controller
         }
 
     }
-
+//评价管理
     public function pjgl()
     {   
         $links = Link::all();
@@ -226,14 +226,17 @@ class GrzxController extends Controller
         foreach ($comment as $v) {
              $v->shop->pack_id;
          }
-       
-        
-       
-
-       
-
-        return view('home.grzx.pjgl',compact('links','setting','user','comment','shops'));
+   return view('home.grzx.pjgl',compact('links','setting','user','comment','shops'));
     }
+// //收藏
+//     public function sc()
+//     {   
+//         $links = Link::all();
+
+//         $setting = Setting::first();
+//         return view('home.grzx.sc');
+        
+//     } 
    
 }
 

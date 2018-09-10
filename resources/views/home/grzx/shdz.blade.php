@@ -68,8 +68,9 @@
                                 <p class="new-mu_l2cw">
                                     <span class="title">地址：</span>
                                     <span class="province">{{$v['address']}}</span>
-                                <span class="street">{{$v['xaddress']}}</span></p>
+                                <span class="street">{{$v['xadress']}}</span></p>
                             </div>
+                            
                             <div class="new-addr-btn">
                                 <a href="/home/dzedit/{{$v['id']}}"><i class="am-icon-edit"></i>编辑</a>
                                 <span class="new-addr-bar">|</span>

@@ -150,6 +150,9 @@ Route::get('/home/dzedit/{id}','GrzxController@dzedit');
 Route::post('/home/dzupdate/{id}','GrzxController@dzupdate');
 //删除收货地址
 Route::get('/home/dzsc/{id}','GrzxController@dzsc');
+
+//收藏
+Route::get('/home/sc','GrzxController@sc');
 //前台末尾
 
 

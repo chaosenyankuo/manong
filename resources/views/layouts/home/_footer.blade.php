@@ -30,13 +30,17 @@
                 </a>
                 <div class="ibar_login_box status_login">
                     <div class="avatar_box">
+                    @if(session::has('nickname'))
                         <p class="avatar_imgbox">
-                            <img src="/home/images/no-img_mid_.jpg" />
+                            <img src="{{session::get('image')}}" />
                         </p>
                         <ul class="user_info">
-                            <li>用户名：sl1903</li>
+                        
+                            <li>{{session::get('nickname')}}</li>
                             <li>级&nbsp;别：普通会员</li>
+                           
                         </ul>
+                        @endif 
                     </div>
                     <div class="login_btnbox">
                         <a href="#" class="login_order">我的订单</a>
@@ -79,7 +83,10 @@
                     </span>
                 </a>
                 <div class="mp_tooltip">
-                    我的收藏
+                    <a href="/home/sc"></a>
+                    <p>
+                        我的收藏
+                    </p>
                     <i class="icon_arrow_right_black"></i>
                 </div>
             </div>
