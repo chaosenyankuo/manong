@@ -39,11 +39,6 @@ class AdminController extends Controller
         }
 
 	}
-	public function logout(Request $request)
-    {
-        $request->session()->flush();
-        return redirect('/admin/login')->with('success','退出成功');
-    }
    /**
 	* 后台首页
 	*/
@@ -86,4 +81,15 @@ class AdminController extends Controller
 		}
 		
 	}
+
+
+	/**
+	 * 退出登陆
+	 */
+	public function logout(Request $request)
+	{
+		$request->session()->flush();
+		return redirect('/admin/login')->with('success','退出成功');
+	}
+
 }

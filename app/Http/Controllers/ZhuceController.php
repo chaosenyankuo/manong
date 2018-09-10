@@ -31,16 +31,29 @@ class ZhuceController extends Controller
         }else{
             return back()->with('error','两次输入不相同!!');
         }
+
      
         $users -> email = $request->email;
         $users -> phone = $request->phone;
         
 
         if($users -> save()){
+
             session(['phone'=>$users->phone,  'email'=>$users->email ,'id' => $users->id]);
+
             return redirect('/home/grzl')->with('success', '注册成功');
         }else{
             return back()->with('error','注册失败');
         }
+
+        
+    }
+
+    //忘记密码
+    public function wjma()
+    {	$links = Link::all();
+    	$setting = Setting::first();
+    	return view('home.zhuce.wjma',['links' => $links,'setting'=>$setting]);
+
     }
 }

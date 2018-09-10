@@ -27,10 +27,8 @@
         <div class="nav-cont">
             <ul>
                 <li class="index"><a href="/">首页</a></li>
-                <li class="qc"><a href="#">闪购</a></li>
-                <li class="qc"><a href="#">限时抢</a></li>
-                <li class="qc"><a href="#">团购</a></li>
-                <li class="qc last"><a href="#">大包装</a></li>
+
+
             </ul>
             <div class="nav-extra">
                 <i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
@@ -50,15 +48,18 @@
                             <div class="m-bg"></div>
                             <div class="m-userinfo">
                                 <div class="m-baseinfo">
+
                                     <a href="/home/grxx">
+
                                             <img src="{{$user['image']}}">
+
                                         </a>
                                     <em class="s-name">{{$user['nickname']}}<span class="vip1"></em>
                                     <div class="s-prestige am-btn am-round">
                                         </span>会员福利</div>
                                 </div>
                                 <div class="m-right">
-                                    
+
                                     <div class="m-address">
                                         <a href="/home/shdz" class="i-trigger">我的收货地址</a>
                                     </div>

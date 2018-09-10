@@ -1,18 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Link;
 use App\User;
 use App\Setting;
 use App\Cate;
 use App\Shop;
 use App\Tag;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
+
     //前台登录
+
 	public function login()
 	{	
 		 //读取网站设置
@@ -26,9 +30,11 @@ class HomeController extends Controller
 	public function dologin(Request $request)
 	{	
 
+
 		//获取用户的数据
 		$user = User::where('email', $request->email)->first();
 		
+
         if(!$user){
             return back()->with('error','登陆失败!');
         }
@@ -41,7 +47,10 @@ class HomeController extends Controller
         }else{
             return back()->with('error','登陆失败!');
   
-   		}        
+
+
+   		}          
+
 	}
 
     public function logout(Request $request)
@@ -72,3 +81,4 @@ class HomeController extends Controller
 
 
 }
+
