@@ -32,11 +32,10 @@ class Shop extends Model
         return $this->belongsToMany('App\flavor');
     }
 
-
-    //商品对用户
-    public function user()
+    //n商品对n用户
+    public function users()
     {
-        return $this->belongsToMany('App\user');
+        return $this->belongsToMany('App\User');
     }
 
      public function packg()
@@ -44,7 +43,9 @@ class Shop extends Model
         
         return $this->belongsToMany('App\pack');
 
-    }
+    }   
+    
+
     public function shopcars()
     {
         return $this->belongsToMany('App\Shop');

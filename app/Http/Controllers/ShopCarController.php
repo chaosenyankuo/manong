@@ -57,6 +57,15 @@ class ShopCarController extends Controller
         $shopcar->flavor_id = $request->flavor_id;
         $shopcar->pack_id = $request->pack_id;
         $shopcar->shuliang = $request->shuliang;
+
+        if(!$shopcar->flavor_id){
+            return back()->with('error','请选择口味');
+        }
+
+        if(!$shopcar->pack_id){
+            return back()->with('error','请选择包装');
+        }
+        
         if($shopcar->save()){
             return redirect('/shopcar')->with('success','添加购物车成功');
         }else{

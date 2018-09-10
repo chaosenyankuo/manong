@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Link;
 use App\Uaddress;
@@ -15,13 +16,14 @@ use Illuminate\Foundation\Testing\Concerns\session;
 class GrzxController extends Controller
 {
     //个人中心页面
+
     public function index()
     {	$id = \Session::get('id');
     
     	$links = Link::all();
+
         $setting = Setting::first();
     	$user  = User::findOrFail($id);
-
     	return view('home.grzx.index',compact('links','user','setting'));
     }
     //个人资料页面
@@ -31,7 +33,6 @@ class GrzxController extends Controller
         $setting = Setting::first();
     	$id = \Session::get('id');
 		$users  = User::findOrFail($id);
-
     	return view('home.grzx.grzl',compact('links','users','setting'));
     }
 
@@ -46,9 +47,8 @@ class GrzxController extends Controller
         $users -> nickname = $request->nickname;
         
         $users -> sex = $request->sex;
-       
-        $users -> phone = $request->phone;
 
+        $users -> phone = $request->phone;
         //检测是否传文件
         if ($request->hasFile('image')) {
             $users -> image = '/'.$request->image->store('uploads/'.date('Ymd'));
@@ -63,6 +63,8 @@ class GrzxController extends Controller
             return back()->with('error','用户添加失败');
         }
     }
+
+
     //个人信息页面
     public function grxx()
     {	
@@ -134,13 +136,81 @@ class GrzxController extends Controller
         }
         
     }
+
+    //收货地址增加
     public function shdz()
     {	
+        $uid = \Session::get('id');
     	$links = Link::all();
         $setting = Setting::first();
-    	$uaddress = Uaddress::all();
+    	$uaddress = Uaddress::where('user_id',$uid)->get();        
+        $users  = User::findOrFail($uid);
+    	return view('home.grzx.shdz',compact('links','uaddress','setting','users'));
+    }
 
-    	return view('home.grzx.shdz',compact('links','uaddress','setting'));
+    public function shdza(Request $request)
+    {   
+        $uid = \Session::get('id');
+        $uaddresses = new Uaddress;
+        $uaddresses -> user_id = $uid;
+        $uaddresses -> name = $request -> name;
+        $uaddresses -> uphone = $request -> uphone;       
+        $uaddresses -> address = $request->sheng.'-'.$request->shi.'-'.$request->xian; //地址
+        $uaddresses -> xadress = $request->xadress; //详细地址
+
+        if($uaddresses -> save()){
+            return redirect('/home/shdz')->with('success','添加地址成功');
+        }else{
+            return back()->with('error','添加地址失败');
+        }
+    }
+
+    /**
+     * 收货地址修改
+     */
+    public function dzedit($id)
+    {
+        $uid = \Session::get('id');
+        $links = Link::all();
+        $setting = Setting::first();
+        $uaddress = Uaddress::where('user_id',$uid)->get();        
+        $users  = User::findOrFail($uid);
+        $uadd = Uaddress::findOrFail($id);
+        $san = explode('-',$uadd->address);
+        return view('home.grzx.shdzedit',compact('links','uaddress','setting','users','uadd','san'));
+    }
+
+    public function dzupdate(Request $req, $id)
+    {
+        $uaddress = Uaddress::findOrFail($id);
+
+        $uid = \Session::get('id');
+
+        $uaddress -> user_id = $uid;
+        $uaddress -> name = $req -> name;
+        $uaddress -> uphone = $req -> uphone;       
+        $uaddress -> address = $req->sheng.'-'.$req->shi.'-'.$req->xian; //地址
+        $uaddress -> xadress = $req->xadress; //详细地址
+
+        if($uaddress -> save()){
+            return redirect('/home/shdz')->with('success','修改地址成功');
+        }else{
+            return back()->with('error','修改地址失败');
+        }
+    }
+
+    //删除收货地址 
+    public function dzsc(Request $req, $id)
+    {   
+
+         $uaddress = Uaddress::findOrFail($id);
+         // dd($uaddress);
+        if($uaddress->delete()){
+            return redirect('/home/shdz')->with('success','删除成功');
+        }else{
+            return back()->with('error','删除失败');
+        }
+
     }
 
     public function pjgl()
@@ -160,3 +230,4 @@ class GrzxController extends Controller
     }
    
 }
+
