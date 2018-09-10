@@ -133,6 +133,7 @@ class ShopController extends Controller
         //推荐商品
         $recom = Shop::where('recom','1')->take(3)->orderBy('id','desc')->get();
         return view('home.shop.index',compact('shop','comment','pack','flavor','recom','cates','links','add'));
+
     }
 
     /**

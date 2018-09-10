@@ -219,7 +219,7 @@
 									<h4>{{$v->cate->cname}}</h4>
 								</div>
 								<div class="recommendationMain one ">
-									<a href="/{{$v->id}}.html"><img src="{{$v -> simage}}" width="120" height="120"></img></a>
+									<a href="/{{$v->id}}.html "><img src="{{$v -> simage}}" width="120" height="120"></img></a>
 								</div>
 							</div>
 						@endforeach
