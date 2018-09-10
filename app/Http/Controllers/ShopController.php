@@ -117,11 +117,23 @@ class ShopController extends Controller
         $cates = Cate::all();
         //友情链接
         $links = Link::all();
+        //获取当前登录人的信息
+        if(\Session::has('id')){
+        $uid = \Session::get('id');
+        $user = User::find($uid);
+        //获取当前登录人的地址信息
+            if(!$user->uaddress){
+                $address = $user->uaddress[0]['address'];
+                $add = explode('-',$address);
+            }else{
+                $address = $user->uaddress[0]['address'];
+                $add = explode('-',$address);
+            }
+        }
         //推荐商品
-        $recom = Shop::where('recom','1')->take(4)->orderBy('id','desc')->get();
-        //友情链接
-        $links = Link::all();
-        return view('home.shop.index',compact('shop','comment','pack','flavor','recom','cates','links'));
+        $recom = Shop::where('recom','1')->take(3)->orderBy('id','desc')->get();
+        return view('home.shop.index',compact('shop','comment','pack','flavor','recom','cates','links','add'));
+
     }
 
     /**

@@ -31,4 +31,9 @@ class Shop extends Model
     {
         return $this->belongsToMany('App\flavor');
     }
+
+    public function shopcars()
+    {
+        return $this->belongsToMany('App\Shop');
+    }
 }

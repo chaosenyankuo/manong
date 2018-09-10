@@ -2,16 +2,17 @@
     <ul class="message-l">
         <div class="topMessage">
             <div class="menu-hd">
-
-                <a href="/home/login" target="_top" class="h">亲，请登录</a>
-                <a href="/home/zhuce" target="_top">免费注册</a>
-
+                @if(Session::has('nickname'))
+                <a href="/home/index" target="_top" class="h">你好: {{Session::get('nickname')}}</a>
+                <a href="/home/logout">&nbsp;&nbsp;&nbsp;退出</a> @endif @if(!Session::has('nickname'))
+                <a href="/home/login" target="_top" class="h">请登录</a>
+                <a href="/home/zhuce" target="_top">免费注册</a> @endif
             </div>
         </div>
     </ul>
     <ul class="message-r">
         <div class="topMessage home">
-<div class="menu-hd">
+            <div class="menu-hd">
                 <a href="/" target="_top" class="h">商城首页</a>
             </div>
         </div>
@@ -36,23 +37,17 @@
                         <span>收藏夹</span>
                     </a>
             </div>
-
     </ul>
     </div>
     <!--悬浮搜索框-->
     <div class="nav white">
-
-        
-
         <div class="logoBig">
             <li><img src="/home/images/logobig.png" /></li>
         </div>
         <div class="search-bar pr">
             <a name="index_none_header_sysc" href="#"></a>
-
             <form action="/" method="get">
                 <input id="searchInput" name="keywords" type="text" placeholder="搜索" value="{{request()->keywords}}" autocomplete="off">
-
                 <input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
             </form>
         </div>
