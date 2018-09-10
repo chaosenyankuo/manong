@@ -156,8 +156,8 @@
                                     <img src="/home/images/getAvatar.do.jpg">
                                 </a>
                         <em>
-                                    Hi,<span class="s-name">小叮当</span>
-                                    <a href="#"><p>点击更多优惠活动</p></a>                                 
+                                    Hi,<span class="s-name">请登录</span>
+                                                                   
                                 </em>
                     </div>
                     <div class="member-logout">
@@ -216,7 +216,7 @@
         <div class="shopMain" id="shopmain">
             <!--今日推荐 -->
             <div class="am-g am-g-fixed recommendation">
-                <div class="clock am-u-sm-3" ">
+                <div class="clock am-u-sm-3" >
 
             
 
