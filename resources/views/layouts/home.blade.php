@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div class="hmtop">
+<div class="hmtop">
         <!--顶部导航条 -->
         @include('layouts.home._top')
     </div>
@@ -146,9 +146,8 @@
                                     <img src="{{$user->image}}">
                                 </a>
                         <em>
-                                    Hi,<span class="s-name">{{Session::get('nickname')}}</span>
-                                    <a href="/home/index"><p>点击进入个人中心</p></a>
-                                                                 
+                                    Hi,<span class="s-name">{{$user->nickname}}</span>
+                                    <a href="/home/index"><p>点击进入个人中心</p></a>                             
                                 </em>
                     </div>
                     @endif @if(!Session::has('nickname'))
@@ -157,8 +156,10 @@
                                     <img src="/home/images/getAvatar.do.jpg">
                                 </a>
                         <em>
+
                                     <span class="s-name">请登录!!</span>
                                                                      
+
                                 </em>
                     </div>
                     <div class="member-logout">
@@ -174,6 +175,7 @@
                                     <span>[特惠]</span>商城爆品1分秒                                
                                 </a></li>
                             <li class="title-first"><a target="_blank" href="#">
+
                                     <span>[公告]</span>商城与广州市签署战略合作协议
                                      <img src="/home/images/TJ.jpg"></img>
                                      <p>XXXXXXXXXXXXXXXXXX</p>
@@ -227,10 +229,12 @@
                     <div class="info ">
                         <h3>{{$v -> sname}}</h3>
                         <h4>{{$v->cate->cname}}</h4>
+
                     </div>
                     <div class="recommendationMain one ">
                         <a href="/{{$v->id}}.html "><img src="{{$v -> simage}}" width="120" height="120"></img></a>
                     </div>
+
                 </div>
                 @endforeach
             </div>
@@ -246,8 +250,12 @@
                             <a href="# ">{{$vv->tname}}</a> @endforeach
                         </div>
                         <span class="more ">
-                                <a href="# ">更多美味<i class="am-icon-angle-right " style="padding-left:10px ; " ></i></a>
-                            </span>
+
+
+                                    <a href="# ">更多美味<i class="am-icon-angle-right " style="padding-left:10px ; " ></i>
+                                    </a>
+                                </span>
+
                     </div>
                 </div>
                 <div class="am-g am-g-fixed floodFour ">

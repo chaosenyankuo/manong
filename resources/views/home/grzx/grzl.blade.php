@@ -47,30 +47,27 @@
                     </div>
                     <hr/>
                     <!--头像 -->
-
-
-                    <form class="am-form am-form-horizontal"  method="post" enctype="multipart/form-data">
-                    <div class="user-infoPic">
+                    <form class="am-form am-form-horizontal" method="post" enctype="multipart/form-data">
                         <div class="filePic">
                             <input type="file" class="inputPic" name="image" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
                             <img class="am-circle am-img-thumbnail" src="/home/images/getAvatar.do.jpg" alt="" />
                         </div>
                         <!--个人信息 -->
-                        @if(Session::has('error'))
-                         <div class="info-btn">
-                                <button class="am-btn am-btn-danger">{{Session::get('error')}}</button>
-                            </div>
-                        @endif
-                        <div class="info-main">
+                        <div class="info-main" style="padding: 0px 100px;">
                             <div class="am-form-group">
+                                <!--个人信息 -->
+                                @if(Session::has('error'))
+                                <div class="info-btn">
+                                    <button class="am-btn am-btn-danger">{{Session::get('error')}}</button>
+                                </div>
+                                @endif
                                 <label for="user-name2" class="am-form-label">昵称</label>
                                 <div class="am-form-content">
                                     <input type="text" id="user-name2" name="nickname">
-
                                 </div>
                                 <div class="nicknames"></div>
                             </div>
-                             <div class="am-form-group">
+                            <div class="am-form-group">
                                 <label for="user-phone" class="am-form-label">电话</label>
                                 <div class="am-form-content">
                                     <input id="user-phone" name="phone" value="{{$users['phone']}}" type="tel">
@@ -82,7 +79,6 @@
                                 <div class="am-form-content sex">
                                     <label class="am-radio-inline">
                                         <input type="radio" name="sex" value="1" data-am-ucheck> 男
-
                                     </label>
                                     <label class="am-radio-inline">
                                         <input type="radio" name="sex" value="2" data-am-ucheck> 女
@@ -94,7 +90,7 @@
                                 <div class="sexs"></div>
                             </div>
                             {{csrf_field()}}
-                            <div class="info-btn" >
+                            <div class="info-btn">
                                 <button class="am-btn am-btn-danger" id="tijiao">提交</button>
                             </div>
                     </form>
@@ -109,7 +105,7 @@
         CPHONE = false;
         CNICK = false;
         CUNAME = false;
-       
+
         //手机号
         $('input[name=phone]').blur(function() {
 
@@ -137,14 +133,14 @@
                 CNICK = true;
             }
         })
-       
-        
+
+
         //表单的提交事件
-        $('form').submit(function(){
+        $('form').submit(function() {
             $('input').trigger('blur');
-            if(CPHONE && CNICK) {
+            if (CPHONE && CNICK) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
         });
