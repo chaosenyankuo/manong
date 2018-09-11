@@ -6,6 +6,7 @@ use App\Link;
 use App\Setting;
 use App\Shop;
 use App\Shopcar;
+use App\User;
 use Illuminate\Http\Request;
 
 class ShopCarController extends Controller
