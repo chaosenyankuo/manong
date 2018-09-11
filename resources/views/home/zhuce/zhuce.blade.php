@@ -98,19 +98,20 @@
 
 
                         $('#email').blur(function() {
-
+                            var v = $(this).val();
+                            var reg = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
+                            if(!reg.test(v)){
+                                $('.email').show().html('<center><span style="color:red;font-size:10px;">请按正确格式输入邮箱</span><center/>');
+                                CUSER = false;
+                            }else{
                             var v = $(this).val();
                             $.ajax({
-
                                 url: '/check-user-exists.php',
-
                                 type: 'post',
-
                                 data: { email: v },
-
                                 success: function(data) {
                                     if (data == 0) {
-                                       $('.email').show().html('<center><span style="color:red;font-size:10px;">用户名已存在</span><center/>');
+                                       $('.email').show().html('<center><span style="color:red;font-size:10px;">该邮箱已被注册</span><center/>');
                                        CUSER = false;
                                     }else{
                                         $('.email').show().html('<span style="color:green;font-size:12px;font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✔</span>');
@@ -118,6 +119,7 @@
                                     }
                                 }
                             })
+                            }
                         });
                         $('#password').blur(function(){
                             var v = $(this).val();
@@ -159,10 +161,7 @@
                                 }
                             });
                         </script>
-
-
                         <hr>
-
                     </div>
                     <script>
                     $(function() {

@@ -31,7 +31,7 @@
                 <div class="ibar_login_box status_login">
                     <div class="avatar_box">
                         <p class="avatar_imgbox">
-                            <img src="{{$user['image']}}">
+                            <img src="{{$user['image']}}" style="width:100px;">
                         </p>
                         <ul class="user_info">
                             <li>用户名:{{$user['nickname']}}</li>
@@ -192,6 +192,11 @@
 window.jQuery || document.write('<script src="/home/basic/js/jquery.min.js "><\/script>');
 </script>
 <script type="text/javascript " src="/home/basic/js/quick_links.js "></script>
+<script>
+        setTimeout(function() {
+            $('#xiaoshi').css('display', 'none');
+        }, 2000)
+        </script>
 </body>
 
 </html>

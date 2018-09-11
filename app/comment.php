@@ -20,4 +20,5 @@ class Comment extends Model
     {
     	return $this->belongsToMany('App\ptag');
     }
+    
 }

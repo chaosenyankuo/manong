@@ -149,7 +149,7 @@ Route::post('/home/dzupdate/{id}','GrzxController@dzupdate');
 //删除收货地址
 Route::get('/home/dzsc/{id}','GrzxController@dzsc');
 //加入收藏夹
-Route::get('/home/shoucang','FavoriteController');
+Route::get('shoucang/{id}.html','FavoriteController@shoucang');
 
 
 //购物车管理

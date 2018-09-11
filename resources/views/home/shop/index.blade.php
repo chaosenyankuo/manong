@@ -281,17 +281,16 @@
                             <input title="加入购物车" type="submit" value="加入购物车" style="width:98px;border:1px solid #F03726;background-color:#F03726;color:white;height:35px;"><i></i>
                         </div>
                     </li>
-                </div>
-                </form>
-                
-            </div>
-            <form action="/home/shoucang">
-            <div class="clear"></div>
-            <li>
+                   <li>
                                 <div class="clearfix tb-btn tb-btn-buy theme-login">
-                                    <a id="LikBuy" title="" href="#">加入收藏夹</a>
+                                    <a id="shou" title="点此按钮加入收藏夹" href="#">加入收藏夹</a>
                                 </div>
                             </li>
+                </div>
+                </form>
+            </div>
+            <div class="clear"></div>
+            
         </div>
         <div class="clear"></div>
         <!-- introduce-->
@@ -353,7 +352,7 @@
                                 </ul>
                                 <div class="clear"></div>
                             </div>
-                            </form>
+                            
                             <div class="details">
                                 <div class="attr-list-hd after-market-hd">
                                     <h4>商品细节</h4>

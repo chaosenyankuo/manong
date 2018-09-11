@@ -20,4 +20,6 @@ class Pack extends Model
     	return $this->hasMany('App\Shopcar');
     }
 
+   
+
 }
