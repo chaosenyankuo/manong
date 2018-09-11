@@ -17,6 +17,7 @@ class ZhifuTableSeeder extends Seeder
         for ($i=0; $i <5 ; $i++) { 
         	$zhifu = new Zhifu;
         	$zhifu -> name = $faker -> name;
+            $zhifu -> image = $faker -> imageUrl(100,100);
         	$zhifu -> save();
         }
     }

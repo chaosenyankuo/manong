@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Link;
 use App\Order;
+use App\Shop;
+use App\Shopcar;
+use App\Uaddress;
 use App\User;
 use App\Wuliu;
 use App\Zhifu;
@@ -77,9 +81,20 @@ class DingdanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $req, $id)
     {
-        //
+        
+        $shopcar = Shopcar::where('user_id',$id)->get();
+        $shop_id = $req->shop_id;
+        $shops = Shop::all();
+        $shuliang = $req->shuliang;
+        $uaddress = Uaddress::where('user_id',$id)->get();
+        $wuliu = Wuliu::all();
+        $zhifu = Zhifu::all();
+        $links = Link::all();
+
+        return view('home/dingdan/index',compact('shopcar','shop_id','shops','shuliang','uaddress','uadd','wuliu','zhifu','links'));
+
     }
 
     /**
