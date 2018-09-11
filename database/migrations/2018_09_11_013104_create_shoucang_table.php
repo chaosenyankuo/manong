@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWuliusTable extends Migration
+class CreateShoucangTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateWuliusTable extends Migration
      */
     public function up()
     {
-        Schema::create('wulius', function (Blueprint $table) {
+        Schema::create('favorite', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->comment('物流名称')->nullable();
-            $table->string('image')->comment('物流图片')->nullable();
+            $table->string('sname')->comment('商品名称')->nullable();
+            $table->string('simage')->comment('商品图片')->nullable();
+            $table->string('sprice')->comment('商品价格')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateWuliusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wulius');
+        Schema::dropIfExists('favorite');
     }
 }

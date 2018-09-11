@@ -154,6 +154,7 @@ Route::get('/home/sc','GrzxController@sc');
 //前台末尾
 
 
+
 //购物车管理
 Route::resource('shopcar','ShopCarController');
 

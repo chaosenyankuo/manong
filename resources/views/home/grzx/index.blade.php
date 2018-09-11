@@ -54,13 +54,14 @@
                                         </a>
                                     <em class="s-name">{{$user['nickname']}}<span class="vip1"></em>
                                     <div class="s-prestige am-btn am-round">
-                                    @if($user-> qx ='1')
-                                        </span>管理员</div>
-                                    @elseif($user->qx ='2')
-                                        <span>银牌会员</span>
+                                    @if($user->qx == '1')
+                                        管理员
+                                    @elseif($user->qx == '2')
+                                        银牌会员
                                     @else
-                                        <span>金牌会员</span>
-                                    @endif       
+                                        金牌会员
+                                    @endif
+                                    </div>       
                                 </div>
                                 <div class="m-right">
 

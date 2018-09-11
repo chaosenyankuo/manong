@@ -43,7 +43,7 @@ class HomeController extends Controller
         //校验密码
         if(Hash::check($request->loginpwd, $user->loginpwd)){
             //写入session
-            session(['email'=>$user->email, 'image'=>$user->image, 'nickname'=>$user->nickname, 'id'=>$user->id]);
+            session(['email'=>$user->email,'qx'=>$user->qx, 'image'=>$user->image, 'nickname'=>$user->nickname, 'id'=>$user->id]);
             return redirect('/home/index')->with('success','登陆成功');
         }else{
             return back()->with('error','登陆失败!');

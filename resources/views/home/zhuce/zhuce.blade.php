@@ -62,6 +62,7 @@
                                     <input type="hidden" name='qx' value="2">
                                     <input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
                                 </div>
+                                
                             </form>
                         </div>
 
