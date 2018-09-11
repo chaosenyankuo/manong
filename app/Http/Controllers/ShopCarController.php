@@ -27,7 +27,8 @@ class ShopCarController extends Controller
         $shops = Shop::all();
         $links = Link::all();
         $setting = Setting::first();
-        $user = User::find($uid);
+         $id = \Session::get('id');
+        $user  = User::findOrFail($id);
 
         return view('home.shop.shopcar',['shop_id'=>$shop_id,'shops'=>$shops,'shopcar'=>$shopcar,'links'=>$links,'setting'=>$setting,'user'=>$user]);
     }

@@ -19,19 +19,22 @@ class ZhuceController extends Controller
     }
       public function store(Request $request)
     {
-       
-    	$users = new User; 
+       	$users = new User; 
         if($request->password == null){
             return back()->with('error','请输入密码!!');
-        }
+        }     
         $users -> loginpwd = Hash::make($request->password);
         $users -> email = $request->email;
+
+        
+        $users -> qx = $request->qx;
+
         if($users -> save()){
-            session(['phone'=>$users->phone,  'email'=>$users->email ,'id' => $users->id]);
+            session(['phone'=>$users->phone, 'qx'=>$request->qx, 'email'=>$users->email ,'id' => $users->id]);
             return redirect('/home/grzl')->with('success', '注册成功');
         }else{
             return back()->with('error','注册失败');
-        }
+        }        
     }
     //忘记密码
     public function wjma()

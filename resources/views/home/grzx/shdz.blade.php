@@ -68,8 +68,9 @@
                                 <p class="new-mu_l2cw">
                                     <span class="title">地址：</span>
                                     <span class="province">{{$v['address']}}</span>
-                                <span class="street">{{$v['xaddress']}}</span></p>
+                                <span class="street">{{$v['xadress']}}</span></p>
                             </div>
+                            
                             <div class="new-addr-btn">
                                 <a href="/home/dzedit/{{$v['id']}}"><i class="am-icon-edit"></i>编辑</a>
                                 <span class="new-addr-bar">|</span>
@@ -101,8 +102,9 @@
                                         <div class="am-form-group">
                                             <label for="user-name" class="am-form-label">手机号</label>
                                             <div class="am-form-content">
-                                                <input type="text" id="user-name" name="uphone" placeholder="手机号">
+                                                <input type="text" id="sjh" name="uphone" placeholder="手机号">
                                             </div>
+                                             <div class="phones"></div>
                                         </div>
                                         <div class="am-form-group">
                                             <label for="user-address" class="am-form-label">收货地址</label>
@@ -136,6 +138,23 @@
                                             </div>
                                         </div>
                                     </form>
+                                     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+                                     <script>
+                                    //手机号
+                                    $('input[name=uphone]').blur(function() {
+
+                                        var v = $('input[name=uphone]').val();
+                                        //正则
+                                        var reg = /^1\d{10}$/;
+                                        if(!reg.test(v)) {
+                                            $('.phones').show().html('<center><span style="color:red;font-size:10px;" >请输入11位手机号</span><center/>');
+                                            CPHONE = false;
+                                        }else{
+                                            $('.phones').show().html('<span style="color:green;font-size:12px;font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✔</span>');
+                                            CPHONE = true;
+                                        }
+                                    });
+                                     </script>
                                 </div>
                             </div>
                         </div>

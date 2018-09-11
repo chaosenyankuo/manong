@@ -35,7 +35,13 @@
                         </p>
                         <ul class="user_info">
                             <li>用户名:{{$user['nickname']}}</li>
-                            <li>您可以去选购啦!!!</li>
+                             @if($user-> qx == '1')
+                                        </li>管理员</li>
+                                    @elseif($user->qx == '2')
+                                        <li>银牌会员</li>
+                                    @else
+                                        <li>金牌会员</li>
+                                    @endif       
                         </ul>
                         @endif 
 

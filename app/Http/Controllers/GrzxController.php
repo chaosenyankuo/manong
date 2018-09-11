@@ -36,17 +36,12 @@ class GrzxController extends Controller
     }
 
     public function grzla(request $request)
-    {
-
-    	$id = \Session::get('id');
-    	
+    {       
+    	$id = \Session::get('id');	
     	$users = User::find($id);
-        
-    
         $users -> nickname = $request->nickname;
-        
         $users -> sex = $request->sex;
-
+        $users -> uname = $request->uname;
         $users -> phone = $request->phone;
         //检测是否传文件
         if ($request->hasFile('image')) {
@@ -54,9 +49,8 @@ class GrzxController extends Controller
         }else{
             $users -> image = '/uploads/1.jpg';
         } 
-
         if($users -> save()){
-        	
+            $request->session()->flush();
             return redirect('/home/login')->with('success', '添加用户成功');
         }else{
             return back()->with('error','用户添加失败');
@@ -211,7 +205,7 @@ class GrzxController extends Controller
         }
 
     }
-
+//评价管理
     public function pjgl()
     {   
         $links = Link::all();
@@ -224,9 +218,19 @@ class GrzxController extends Controller
          }
 
 
+
          
         return view('home.grzx.pjgl',compact('links','setting','user','comment','pack'));
+
     }
+//收藏
+    public function sc()
+    {   
+         $links = Link::all();
+        $setting = Setting::first();
+        return view('home.grzx.sc',compact('links','setting'));
+        
+    } 
    
 }
 

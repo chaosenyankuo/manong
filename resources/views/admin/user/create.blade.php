@@ -27,10 +27,21 @@
                         <input class="with-gap" name="sex" type="radio" id="test3" value="3">
                         <label for="test3">保密</label>
                     </div>
-                    <div class="input-field col s6" style="float:right;">
+                       <div class="input-field col s6" style="float:right;">
+                        <label for="last_name"><span style="font-size:15px;">级别</span></label>
+                        <br>
+                        <input name="qx" type="radio" id="qx1" value="1">
+                        <label for="qx1">管理员</label>
+                        <input name="qx" type="radio" id="qx2" value="2">
+                        <label for="qx2">银牌会员</label>
+                        <input class="with-gap" name="qx" type="radio" id="qx3" value="3">
+                        <label for="qx3">金牌会员</label>
+                    </div>
+                    <div class="input-field col s12" style="float:right;">
                         <input type="text" id="input4" placeholder="生日" name="birthday">
                     </div>
                 </div>
+               
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="password" type="password" class="validate" name="loginpwd">

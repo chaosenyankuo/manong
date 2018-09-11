@@ -50,6 +50,7 @@ class UserController extends Controller
         $users -> loginpwd = Hash::make($req->loginpwd);
         $users -> email = $req->email;
         $users -> phone = $req->phone;
+        $users -> qx = $req ->qx;
 
         //检测是否传文件
         if ($req->hasFile('image')) {
@@ -109,6 +110,7 @@ class UserController extends Controller
         $user -> sex = $req -> sex;
         $user -> email = $req -> email;
         $user -> phone = $req -> phone;
+        $user -> qx = $req -> qx;
 
         if ($req->hasFile('image')) {
             $user -> image = '/'.$req->image->store('uploads/'.date('Ymd'));

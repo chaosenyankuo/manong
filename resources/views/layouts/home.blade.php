@@ -15,7 +15,7 @@
 </head>
 
 <body>
-<div class="hmtop">
+    <div class="hmtop">
         <!--顶部导航条 -->
         @include('layouts.home._top')
     </div>
@@ -293,4 +293,5 @@
                 </div>
                 <div class="clear "></div>
             </div>
-            @endforeach @include('layouts.home._footer')
+            @endforeach 
+            @include('layouts.home._footer')

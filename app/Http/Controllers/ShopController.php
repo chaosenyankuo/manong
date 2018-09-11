@@ -120,6 +120,9 @@ class ShopController extends Controller
         $cates = Cate::all();
         //友情链接
         $links = Link::all();
+
+        
+
         //获取当前登录人的信息
         if(\Session::has('id')){
             $id = \Session::get('id');
@@ -134,6 +137,7 @@ class ShopController extends Controller
                 $add = explode('-',$address);
             }
         }
+        
         //推荐商品
         $recom = Shop::where('recom','1')->take(3)->orderBy('id','desc')->get();
         return view('home.shop.index',compact('shop','comment','pack','flavor','recom','cates','links','add','user'));
