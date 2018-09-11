@@ -16,6 +16,7 @@ class CreateZhifusTable extends Migration
         Schema::create('zhifus', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->comment('支付名称')->nullable();
+            $table->string('image')->comment('支付图片')->nullable();
             $table->timestamps();
         });
     }
