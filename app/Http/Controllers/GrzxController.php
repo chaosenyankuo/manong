@@ -37,17 +37,12 @@ class GrzxController extends Controller
     }
 
     public function grzla(request $request)
-    {
-
-    	$id = \Session::get('id');
-    	
+    {       
+    	$id = \Session::get('id');	
     	$users = User::find($id);
-        
-    
         $users -> nickname = $request->nickname;
-        
         $users -> sex = $request->sex;
-
+        $users -> uname = $request->uname;
         $users -> phone = $request->phone;
         //检测是否传文件
         if ($request->hasFile('image')) {
@@ -55,9 +50,7 @@ class GrzxController extends Controller
         }else{
             $users -> image = '/uploads/1.jpg';
         } 
-
-        if($users -> save()){
-        	
+        if($users -> save()){	
             return redirect('/home/login')->with('success', '添加用户成功');
         }else{
             return back()->with('error','用户添加失败');

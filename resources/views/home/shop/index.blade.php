@@ -98,22 +98,22 @@
                     });
                     </script>
                     <div class="tb-booth tb-pic tb-s310">
-                        <img src="{{$shop['simage']}}" style="width:100%;height:100%;" alt="细节展示放大镜特效" rel="{{$shop['simage']}}" class="jqzoom" />
+                        <img src="{{$shop['simage']}}" style="width:100%;height:100%;" rel="{{$shop['simage']}}" alt="细节展示放大镜特效"  class="jqzoom"/>
                     </div>
                     <ul class="tb-thumb" id="thumblist">
                         <li class="tb-selected">
                             <div class="tb-pic tb-s40">
-                                <a href="#"><img src="{{$shop['simage']}}" mid="{{$shop['simage']}}" big="{{$shop['simage']}}"></a>
+                                <a href="#"><img src="{{$shop['simage']}}" width="100" mid="{{$shop['simage']}}" big="{{$shop['simage']}}"></a>
                             </div>
                         </li>
                         <li class="tb">
                             <div class="tb-pic tb-s40">
-                                <a href="#"><img src="{{$shop['simage1']}}" mid="{{$shop['simage1']}}" big="{{$shop['simage']}}"></a>
+                                <a href="#"><img src="{{$shop['simage1']}}" width="100" mid="{{$shop['simage1']}}" big="{{$shop['simage1']}}"></a>
                             </div>
                         </li>
                         <li class="tb">
                             <div class="tb-pic tb-s40">
-                                <a href="#"><img src="{{$shop['simage2']}}" mid="{{$shop['simage2']}}" data-big="{{$shop['simage']}}"></a>
+                                <a href="#"><img src="{{$shop['simage2']}}" width="100" mid="{{$shop['simage2']}}" data-big="{{$shop['simage2']}}"></a>
                             </div>
                         </li>
                     </ul>
@@ -273,7 +273,7 @@
                     <div class="pay" style="position:relative;top:-120px;left:600px;">
                         <li>
                             <div class="clearfix theme-login">
-                                <input title="加入购物车" type="submit" value="加入购物车" style="width:98px;border:1px solid #F03726;background-color:#F03726;color:white;height:35px;"><i></i>
+                                <input title="加入购物车" type="submit" value="加入购物车" style="width:98px;border:1px solid #F03726;background-color:#F03726;color:white;height:35px;z-index:100;"><i></i>
                             </div>
                         </li>
                     </div>

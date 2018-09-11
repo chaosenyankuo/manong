@@ -83,7 +83,6 @@
                                         </span>
                                         </span>
                                     </div>
-                                    <ins class="deftip">默认地址</ins>
                                 </div>
                                 <div class="address-right">
                                     <a href="/home/person/address.html"><span class="am-icon-angle-right am-icon-lg"></span></a>
@@ -168,7 +167,7 @@
                                                 <li class="td td-item">
                                                     <div class="item-pic">
                                                         <a href="#" class="J_MakePoint">
-    														<img src="{{$shops[$v-1]->simage}}" class="itempic J_ItemImg">
+    														<img src="{{$shops[$v-1]->simage}}" width="100" class="itempic J_ItemImg">
     													</a>
                                                     </div>
                                                     <div class="item-info">
@@ -186,7 +185,7 @@
                                                 <li class="td td-price">
                                                     <div class="item-price price-promo-promo">
                                                         <div class="price-content">
-                                                            <em class="J_Price price-now">{{$shops[$v-1]->sprice}}</em>
+                                                            <em class="J_Price price-now">￥{{$shops[$v-1]->sprice}}</em>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -203,7 +202,7 @@
                                             </li>
                                             <li class="td td-sum">
                                                 <div class="td-inner">
-                                                    <em tabindex="0" class="J_ItemSum number">{{$shuliang * $shops[$v-1]->sprice}}</em>
+                                                    <em tabindex="0" class="J_ItemSum number">￥{{$shuliang * $shops[$v-1]->sprice}}</em>
                                                 </div>
                                             </li>
                                             <li class="td td-oplist">
