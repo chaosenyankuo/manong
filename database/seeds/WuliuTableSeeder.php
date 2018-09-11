@@ -16,6 +16,7 @@ class WuliuTableSeeder extends Seeder
         for ($i=0; $i <5 ; $i++) { 
         	$wuliu = new Wuliu;
         	$wuliu -> name = $faker -> name;
+            $wuliu -> image = $faker -> imageUrl(100,100);
         	$wuliu -> save();
         }
     }

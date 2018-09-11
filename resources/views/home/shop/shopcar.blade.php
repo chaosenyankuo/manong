@@ -83,28 +83,26 @@
     });
     </script>
     <script type="text/javascript">
-    function Responsive($a) {
-        if ($a == true) $("#Device").css("opacity", "100");
-        if ($a == false) $("#Device").css("opacity", "0");
-        $('#iframe-wrap').removeClass().addClass('full-width');
-        $('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
-        $(this).addClass('active');
-        return false;
-    };
+        function Responsive($a) {
+            if ($a == true) $("#Device").css("opacity", "100");
+            if ($a == false) $("#Device").css("opacity", "0");
+            $('#iframe-wrap').removeClass().addClass('full-width');
+            $('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+            $(this).addClass('active');
+            return false;
+        };
     </script>
 </head>
 
 <body id="by">
     @include('layouts.home._top') @if(Session::has('success'))
-    <div class="nav white" id="xiaoshi">
-        <center>
-            <h3 style="color:black;">{{Session::get('success')}}</h3></center>
-    </div>
+        <div class="nav white" id="xiaoshi">
+            <center><h3 style="color:black;">{{Session::get('success')}}</h3></center>
+        </div>
     @endif @if(Session::has('error'))
-    <div class="nav white" id="xiaoshi">
-        <center>
-            <h3 style="color:black;">{{Session::get('error')}}</h3></center>
-    </div>
+        <div class="nav white" id="xiaoshi">
+            <center><h3 style="color:black;">{{Session::get('error')}}</h3></center>
+        </div>
     @endif
     <div id="iframe-wrap">
         <section class="cartMain">
@@ -125,57 +123,59 @@
                 </ul>
             </div>
             <div class="cartBox">
-                <div class="order_content">
-                    <?php $i= 0; ?> 
-                    @foreach($shop_id as $k => $v)
-                    <?php $i++; ?>
-                   
-                    <ul class="order_lists">
-                        <li class="list_chk">
-                            <input type="checkbox" id="{{$i}}" class="son_check">
-                            <label for="{{$i}}"></label>
-                        </li>
-                        <li class="list_con">
-                            <div class="list_img"><a href="javascript:;"><img src="{{$shops[$v-1]->simage}}" alt=""></a></div>
-                            <div class="list_text"><a href="{{$shops[$v-1]->id}}.html">
-                                <center>{{$shops[$v-1]->sname}}</center>
-                            </a></div>
-                        </li>
-                        <li class="list_info">
-                            <p>分类：{{$shopcar[$k]->flavor['fname']}}</p>
-                            <p>包装：{{$shopcar[$k]->pack['pname']}}</p>
-                        </li>
-                        <li class="list_price">
-                            <p class="price">￥{{$shops[$v-1]->sprice}}</p>
-                        </li>
-                        <li class="list_amount">
-                            <div class="amount_box">
-                                <a href="javascript:;" class="reduce reSty">-</a>
-                                <input type="text" value="{{$shopcar[$k]->shuliang}}" class="sum">
-                                <a href="javascript:;" class="plus">+</a>
-                            </div>
-                        </li>
-                        <li class="list_sum">
-                            <p class="sum_price">￥{{$shops[$v-1]->sprice * $shopcar[$k]->shuliang}}</p>
-                        </li>
-                        <li class="list_op">
-                            <form action="/shopcar/{{$shopcar[$k]->id}}" method="post">
-                                <p class="del">
-                                    <button class="btn btn-danger">删除</button>
-                                </p>
-                                {{csrf_field()}}{{method_field('DELETE')}}
-                            </form>
-                        </li>
-                    </ul>
-                    @endforeach
-                </div>
+                <form action="/dingdan/{{session('id')}}" method="get" class="qwe">
+                    <div class="order_content">
+                        <?php $i= 0; ?> 
+                        @foreach($shop_id as $k => $v)
+                        <?php $i++; ?>
+                        <ul class="order_lists">
+                            <li class="list_chk">
+                                <input type="checkbox" id="{{$i}}" class="son_check" name="shop_id[]" value="{{$shops[$v-1]->id}}">
+                                <label for="{{$i}}"></label>
+                            </li>
+                            <li class="list_con">
+                                <div class="list_img"><a href="javascript:;"><img src="{{$shops[$v-1]->simage}}" alt=""></a></div>
+                                <div class="list_text"><a href="{{$shops[$v-1]->id}}.html">
+                                    <center>{{$shops[$v-1]->sname}}</center>
+                                </a></div>
+                            </li>
+                            <li class="list_info">
+                                <p>分类：{{$shopcar[$k]->flavor['fname']}}</p>
+                                <p>包装：{{$shopcar[$k]->pack['pname']}}</p>
+                            </li>
+                            <li class="list_price">
+                                <p class="price">￥{{$shops[$v-1]->sprice}}</p>
+                            </li>
+                            <li class="list_amount">
+                                <div class="amount_box">
+                                    <a href="javascript:;" class="reduce reSty">-</a>
+                                    <input type="text" name="shuliang" value="{{$shopcar[$k]->shuliang}}" class="sum">
+                                    <a href="javascript:;" class="plus">+</a>
+                                </div>
+                            </li>
+                            <li class="list_sum">
+                                <p class="sum_price">￥{{$shops[$v-1]->sprice * $shopcar[$k]->shuliang}}</p>
+                            </li>
+                            <li class="list_op">
+                                <form action="/shopcar/{{$shopcar[$k]->id}}" method="post">
+                                    <p class="del">
+                                        <button class="btn btn-danger">删除</button>
+                                    </p>
+                                    {{csrf_field()}}{{method_field('DELETE')}}
+                                </form>
+                            </li>
+                        </ul>
+                        @endforeach
+                    </div>
+                    {{csrf_field()}}
+                </form>
             </div>
             <!--底部-->
             <div class="bar-wrapper">
                 <div class="bar-right">
                     <div class="piece">已选商品<strong class="piece_num">0</strong>件</div>
                     <div class="totalMoney">共计: <strong class="total_text">0.00</strong></div>
-                    <div class="calBtn"><a href="javascript:;">结算</a></div>
+                    <div class="calBtn"><a href="javascript:;" class="asd">结算</a></div>
                 </div>
             </div>
         </section>
@@ -186,16 +186,23 @@
     </div>
     <!--百度流量统计代码-->
     <script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?382f81c966395258f239157654081890";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?382f81c966395258f239157654081890";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
 
-    setTimeout(function() {
-        $('#xiaoshi').css('display', 'none');
-    }, 2000);
+        setTimeout(function() {
+            $('#xiaoshi').css('display', 'none');
+        }, 2000);
+    </script>
+
+    <!-- 结算 -->
+    <script>
+        $('.asd').click(function(){
+            $('.qwe').submit();
+        })
     </script>
     @include('layouts.home._footer')

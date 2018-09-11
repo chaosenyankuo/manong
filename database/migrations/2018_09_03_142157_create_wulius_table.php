@@ -16,6 +16,7 @@ class CreateWuliusTable extends Migration
         Schema::create('wulius', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->comment('物流名称')->nullable();
+            $table->string('image')->comment('物流图片')->nullable();
             $table->timestamps();
         });
     }
