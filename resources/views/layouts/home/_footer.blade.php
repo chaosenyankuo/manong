@@ -31,7 +31,7 @@
                 <div class="ibar_login_box status_login">
                     <div class="avatar_box">
                         <p class="avatar_imgbox">
-                            <img src="{{$user['image']}}" />
+                            <img src="{{$user['image']}}">
                         </p>
                         <ul class="user_info">
                             <li>用户名:{{$user['nickname']}}</li>

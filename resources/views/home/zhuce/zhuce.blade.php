@@ -61,6 +61,7 @@
                                     {{csrf_field()}}
                                     <input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
                                 </div>
+                                
                             </form>
                         </div>
 

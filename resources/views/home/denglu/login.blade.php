@@ -54,6 +54,7 @@
                         </div>
                     </form>
                 </div>
+                 <a href="/home/zhuce"style="float:right;">账号注册</a>
                 <div class="partner">
                     <h3>合作账号</h3>
                     <div class="am-btn-group">

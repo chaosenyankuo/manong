@@ -279,13 +279,21 @@
                     </div>
                 </form>
             </div>
+            <form action="/home/shoucang">
             <div class="clear"></div>
+            <li>
+                                <div class="clearfix tb-btn tb-btn-buy theme-login">
+                                    <a id="LikBuy" title="" href="#">加入收藏夹</a>
+                                </div>
+                            </li>
         </div>
         <div class="clear"></div>
         <!-- introduce-->
         <div class="introduce">
+
             <div class="browse">
                 <div class="mc">
+
                     <ul>
                         <div class="mt">
                             <h2>推荐推荐</h2>
@@ -305,6 +313,7 @@
                     </ul>
                 </div>
             </div>
+
             <div class="introduceMain">
                 <div class="am-tabs" data-am-tabs>
                     <ul class="am-avg-sm-3 am-tabs-nav am-nav am-nav-tabs">
@@ -338,6 +347,7 @@
                                 </ul>
                                 <div class="clear"></div>
                             </div>
+                            </form>
                             <div class="details">
                                 <div class="attr-list-hd after-market-hd">
                                     <h4>商品细节</h4>
