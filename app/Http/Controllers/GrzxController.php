@@ -231,10 +231,9 @@ class GrzxController extends Controller
 //收藏
     public function sc()
     {   
-        $links = Link::all();
-
+         $links = Link::all();
         $setting = Setting::first();
-        return view('home.grzx.sc');
+        return view('home.grzx.sc',compact('links','setting'));
         
     } 
    

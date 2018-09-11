@@ -32,7 +32,7 @@ class ZhuceController extends Controller
 
         $users -> email = $request->email;
         
-        
+        $users -> qx = $request->qx;
 
         if($users -> save()){
 

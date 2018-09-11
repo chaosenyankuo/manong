@@ -26,10 +26,10 @@
             <div id="prof" class="item">
                 <a href="/home/index">
                     <span class="setting"></span>
-                </a> @if(Session::has('id'))
+                </a> 
+                @if(Session::has('id'))
                 <div class="ibar_login_box status_login">
                     <div class="avatar_box">
-                        @if(session::has('nickname'))
                         <p class="avatar_imgbox">
                             <img src="{{$user['image']}}" />
                         </p>
@@ -37,7 +37,9 @@
                             <li>用户名:{{$user['nickname']}}</li>
                             <li>您可以去选购啦!!!</li>
                         </ul>
-                        @endif @if(!Session::has('id'))
+                        @endif 
+
+                        @if(!Session::has('id'))
                         <ul class="user_info">
                             <li>用户名：请先登录!!</li>
                         </ul>
@@ -54,6 +56,8 @@
                 <a href="/shopcar">
                     <span class="message"></span>
                 </a>
+                
+                
             </div>
             <div id="asset" class="item">
                 <a href="#">
@@ -80,10 +84,7 @@
                     </span>
                 </a>
                 <div class="mp_tooltip">
-                    <a href="/home/sc"></a>
-                    <p>
-                        我的收藏
-                    </p>
+                    我的收藏
                     <i class="icon_arrow_right_black"></i>
                 </div>
             </div>

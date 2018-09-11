@@ -281,7 +281,13 @@
                             <input title="加入购物车" type="submit" value="加入购物车" style="width:98px;border:1px solid #F03726;background-color:#F03726;color:white;height:35px;"><i></i>
                         </div>
                     </li>
+                   <li>
+                                <div class="clearfix tb-btn tb-btn-buy theme-login">
+                                  <input title="收藏" type="submit" value="收藏" style="width:98px;border:1px solid #F03726;background-color:#F03726;color:white;height:35px;"><i></i>
+                                </div>
+                            </li>
                 </div>
+
                 </form>
                 
             </div>

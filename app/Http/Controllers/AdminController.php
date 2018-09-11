@@ -24,11 +24,16 @@ class AdminController extends Controller
 	{	
 		//获取用户的数据
 		$user = User::where('nickname', $request->nickname)->first();
-		
+		// dd($user);
         if(!$user){
             return back()->with('error','登陆失败!');
         }
-
+        if($user['qx']==2){
+        	 return back()->with('error','权限不足');
+        }
+        if($user['qx']==3){
+        	 return back()->with('error','权限不足');
+        }
         //校验密码
         if(Hash::check($request->loginpwd, $user->loginpwd)){
             //写入session

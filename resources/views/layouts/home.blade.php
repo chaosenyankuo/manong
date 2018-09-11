@@ -288,4 +288,5 @@
                 </div>
                 <div class="clear "></div>
             </div>
-            @endforeach @include('layouts.home._footer')
+            @endforeach 
+            @include('layouts.home._footer')
