@@ -42,12 +42,12 @@ class GrzxController extends Controller
     	$id = \Session::get('id');
     	
     	$users = User::find($id);
+        
     
         $users -> nickname = $request->nickname;
-        $users -> uname = $request->uname;
+        
         $users -> sex = $request->sex;
 
-        $users -> email = $request->email;
         $users -> phone = $request->phone;
         //检测是否传文件
         if ($request->hasFile('image')) {
@@ -85,8 +85,6 @@ class GrzxController extends Controller
     	$user = User::findOrFail($id);
 
         $user -> nickname = $request -> nickname;
-        $user -> uname = $request -> uname;
-        
         $user -> sex = $request -> sex;
         
 
@@ -226,12 +224,8 @@ class GrzxController extends Controller
         foreach ($comment as $v) {
              $v->shop->pack_id;
          }
-       
-        
-       
 
-       
-
+         
         return view('home.grzx.pjgl',compact('links','setting','user','comment','shops'));
     }
    

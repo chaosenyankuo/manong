@@ -22,19 +22,16 @@ class ZhuceController extends Controller
     {
        
     	$users = new User; 
-        if($request->loginpwd == null){
+        if($request->password == null){
             return back()->with('error','请输入密码!!');
         }
 
-        if($request->loginpwd == $request->loginpwds){
-            $users -> loginpwd = Hash::make($request->loginpwd);
-        }else{
-            return back()->with('error','两次输入不相同!!');
-        }
 
-     
+      
+        $users -> loginpwd = Hash::make($request->password);
+
         $users -> email = $request->email;
-        $users -> phone = $request->phone;
+        
         
 
         if($users -> save()){

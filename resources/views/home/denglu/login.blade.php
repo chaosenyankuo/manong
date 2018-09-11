@@ -65,7 +65,13 @@
             </div>
         </div>
     </div>
-    @include('layouts.home._foot')
+   @include('layouts.home._foot')
+   <script>
+    setTimeout(function() {
+        $('#baocuo').css('display', 'none');
+    }, 2000);
+    </script>
+
 </body>
 
 </html>

@@ -14,7 +14,15 @@
     <script src="/home/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
     <script src="/home/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
 </head>
-
+<style>
+    .remind{
+        display:none;
+    }
+    .email{
+        display:none;
+    }
+    
+</style>
 <body>
     <div class="login-boxtitle">
         <a href="home/demo.html"><img alt="" src="/home/images/logobig.png" /></a>
@@ -38,14 +46,17 @@
                                     <label for="email"><i class="am-icon-envelope-o"></i></label>
                                     <input type="email" name="email" id="email" placeholder="请输入邮箱账号">
                                 </div>
+                                <div class="email"></div>
                                 <div class="user-pass">
                                     <label for="password"><i class="am-icon-lock"></i></label>
-                                    <input type="password" name="loginpwd" id="password" placeholder="设置密码">
+                                    <input type="password" name="password" id="password" placeholder="设置密码">
                                 </div>
+                                <div class="password"></div>
                                 <div class="user-pass">
                                     <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
-                                    <input type="password" name="loginpwds" id="passwordRepeat" placeholder="确认密码">
+                                    <input type="password" name="loginpwds" id="loginpwds" placeholder="确认密码">
                                 </div>
+                                <div class="querenmima"></div>
                                 <div class="am-cf">
                                     {{csrf_field()}}
                                     <input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
@@ -83,7 +94,10 @@
                         <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 
                         <script>
+
+
                         $('#email').blur(function() {
+
                             var v = $(this).val();
                             $.ajax({
 
@@ -95,11 +109,54 @@
 
                                 success: function(data) {
                                     if (data == 0) {
-                                        alert('用户名已存在');
+                                       $('.email').show().html('<center><span style="color:red;font-size:10px;">用户名已存在</span><center/>');
+                                       CUSER = false;
+                                    }else{
+                                        $('.email').show().html('<span style="color:green;font-size:12px;font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✔</span>');
+                                        CUSER = true;
                                     }
                                 }
                             })
                         });
+                        $('#password').blur(function(){
+                            var v = $(this).val();
+                            var reg = /^\w{6,20}$/;
+                            if(!reg.test(v)){
+                                $('.password').show().html('<center><span style="color:red;font-size:10px;" >请输入8-20位非空白字符</span><center/>');
+                                PASS = false;
+                            }else{
+                                $('.password').show().html('<span style="color:green;font-size:12px;font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✔</span>');
+                                PASS = true;
+                            }
+                        })
+
+                        //确认密码
+                        $('#loginpwds').blur(function(){
+                            
+                            //获取用户的输入值
+                            var v = $(this).val();
+                            
+                            if(v != $('input[name=password]').val()) {
+                             $('.querenmima').show().html('<center><span style="color:red;font-size:10px;" >两次密码输入不一致</span><center/>');
+                                CPASS = false;
+                            }else{
+                                 
+                                 $('.querenmima').show().html('<span style="color:green;font-size:12px;font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✔</span>');
+                                CPASS = true;
+                            }
+                        })
+                                            //表单的提交事件
+                            $('form').submit(function(){
+                                //触发错误提醒
+                                $('input').trigger('blur');
+                                console.log(CUSER);
+                                //判断输入值是否都正确
+                                if(CUSER  && PASS && CPASS) {
+                                    return true;
+                                }else{
+                                    return false;
+                                }
+                            });
                         </script>
 
 
