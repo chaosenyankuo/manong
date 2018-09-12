@@ -226,10 +226,12 @@
                     <div class="info ">
                         <h3>{{$v -> sname}}</h3>
                         <h4>{{$v->cate->cname}}</h4>
+
                     </div>
                     <div class="recommendationMain one ">
                         <a href="/{{$v->id}}.html "><img src="{{$v -> simage}}" width="120" height="120"></img></a>
                     </div>
+
                 </div>
                 @endforeach
             </div>
@@ -245,10 +247,9 @@
                             <a href="# ">{{$vv->tname}}</a> @endforeach
                         </div>
                         <span class="more ">
+                            <a href="# ">更多美味<i class="am-icon-angle-right " style="padding-left:10px ; " ></i></a>
+                        </span>
 
-                                    <a href="# ">更多美味<i class="am-icon-angle-right " style="padding-left:10px ; " ></i>
-                                    </a>
-                                </span>
                     </div>
                 </div>
                 <div class="am-g am-g-fixed floodFour ">
@@ -256,10 +257,10 @@
                         <div class="word ">
                             @foreach($cates[$k]->tags()->take(6)->get() as $vv)
                             <a class="outer " href="# ">
-                                            <span class="inner ">
-                                                <b class="text ">{{$vv->tname}}</b>
-                                            </span>
-                                        </a> @endforeach
+                                <span class="inner ">
+                                    <b class="text ">{{$vv->tname}}</b>
+                                </span>
+                            </a> @endforeach
                         </div>
                         <a href="# ">
                             <div class="outer-con ">
@@ -286,4 +287,5 @@
                 </div>
                 <div class="clear "></div>
             </div>
-            @endforeach @include('layouts.home._footer')
+            @endforeach 
+            @include('layouts.home._footer')

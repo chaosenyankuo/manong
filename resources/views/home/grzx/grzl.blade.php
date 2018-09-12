@@ -47,7 +47,7 @@
                     </div>
                     <hr/>
                     <!--头像 -->
-                    <form class="am-form am-form-horizontal" method="post" enctype="multipart/form-data">
+                    <form class="am-form am-form-horizontal" action="/home/grzl" method="post" enctype="multipart/form-data">
                         <div class="filePic">
                             <input type="file" class="inputPic" name="image" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
                             <img class="am-circle am-img-thumbnail" src="/home/images/getAvatar.do.jpg" alt="" />
@@ -68,9 +68,16 @@
                                 <div class="nicknames"></div>
                             </div>
                             <div class="am-form-group">
+                                <label for="user-phone" class="am-form-label">用户名</label>
+                                <div class="am-form-content">
+                                    <input id="user-phone" name="uname" type="tel">
+                                </div>
+                                <div class="unames"></div>
+                            </div>
+                            <div class="am-form-group">
                                 <label for="user-phone" class="am-form-label">电话</label>
                                 <div class="am-form-content">
-                                    <input id="user-phone" name="phone" value="{{$users['phone']}}" type="tel">
+                                    <input id="user-phone" name="phone" type="tel">
                                 </div>
                                 <div class="phones"></div>
                             </div>
@@ -133,12 +140,24 @@
                 CNICK = true;
             }
         })
+         $('input[name=uname]').blur(function() {
 
+            var v = $('input[name=uname]').val();
+            //正则
+            var reg = /^\S{1,20}$/;
+            if (!reg.test(v)) {
+                $('.unames').show().html('<center><span style="color:red;font-size:10px;" >用户名不能为空</span><center/>');
+                CUNAME = false;
+            } else {
+                $('.unames').show().html('<span style="color:green;font-size:12px;font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✔</span>');
+                CUNAME = true;
+            }
+        })
 
         //表单的提交事件
         $('form').submit(function() {
             $('input').trigger('blur');
-            if (CPHONE && CNICK) {
+            if (CPHONE && CNICK && CUNAME) {
                 return true;
             } else {
                 return false;

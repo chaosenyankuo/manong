@@ -14,8 +14,8 @@
     <link href="/gwc/css/demo.css" rel="stylesheet" media="all" />
     <link rel="stylesheet" href="/gwc/css/reset.css">
     <link rel="stylesheet" href="/gwc/css/carts.css">
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--[if IE]>
 
@@ -131,7 +131,7 @@
                         <ul class="order_lists">
                             <li class="list_chk">
                                 <input type="checkbox" id="{{$i}}" class="son_check" name="shop_id[]" value="{{$shops[$v-1]->id}}">
-                                <label for="{{$i}}"></label>
+                                <label for="{{$i}}" id="label"></label>
                             </li>
                             <li class="list_con">
                                 <div class="list_img"><a href="javascript:;"><img src="{{$shops[$v-1]->simage}}" alt=""></a></div>
@@ -156,6 +156,8 @@
                             <li class="list_sum">
                                 <p class="sum_price">￥{{$shops[$v-1]->sprice * $shopcar[$k]->shuliang}}</p>
                             </li>
+                            {{csrf_field()}}
+                </form>
                             <li class="list_op">
                                 <form action="/shopcar/{{$shopcar[$k]->id}}" method="post">
                                     <p class="del">
@@ -167,8 +169,7 @@
                         </ul>
                         @endforeach
                     </div>
-                    {{csrf_field()}}
-                </form>
+                    
             </div>
             <!--底部-->
             <div class="bar-wrapper">
@@ -201,8 +202,12 @@
 
     <!-- 结算 -->
     <script>
-        $('.asd').click(function(){
-            $('.qwe').submit();
-        })
+    $('.asd').click(function(){
+        if($('#label').hasClass('mark')){     
+            $('.qwe').submit();       
+        }else{          
+            return false;      
+        }
+    });    
     </script>
     @include('layouts.home._footer')

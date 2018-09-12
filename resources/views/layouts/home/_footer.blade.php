@@ -33,11 +33,17 @@
                     <div class="avatar_box">
                         @if(Session::has('id'))
                         <p class="avatar_imgbox">
-                            <img src="{{$user['image']}}" />
+                            <img src="{{$user['image']}}" style="width:100px;">
                         </p>
                         <ul class="user_info">
                             <li>用户名:{{$user['nickname']}}</li>
-                            <li>您可以去选购啦!!!</li>
+                             @if($user-> qx == '1')
+                                        </li>管理员</li>
+                                    @elseif($user->qx == '2')
+                                        <li>银牌会员</li>
+                                    @else
+                                        <li>金牌会员</li>
+                                    @endif       
                         </ul>
                         @endif 
 
@@ -194,6 +200,11 @@
 window.jQuery || document.write('<script src="/home/basic/js/jquery.min.js "><\/script>');
 </script>
 <script type="text/javascript " src="/home/basic/js/quick_links.js "></script>
+<script>
+        setTimeout(function() {
+            $('#xiaoshi').css('display', 'none');
+        }, 2000)
+        </script>
 </body>
 
 </html>

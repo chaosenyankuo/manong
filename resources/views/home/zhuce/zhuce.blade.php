@@ -59,37 +59,14 @@
                                 <div class="querenmima"></div>
                                 <div class="am-cf">
                                     {{csrf_field()}}
+                                    <input type="hidden" name='qx' value="2">
                                     <input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
                                 </div>
+                                
                             </form>
                         </div>
 
-                        <div class="am-tab-panel">
-                            <form action="/home/store" method="post">
-                                <div class="user-phone">
-                                    <label for="phone"><i class="am-icon-mobile-phone am-icon-md"></i></label>
-                                    <input type="tel" name="phone" id="phone" placeholder="请输入手机号">
-                                </div>
-                                <div class="verification">
-                                    <label for="code"><i class="am-icon-code-fork"></i></label>
-                                    <input type="tel" name="" id="code" placeholder="请输入验证码">
-                                    <a class="btn" href="javascript:void(0);" onclick="sendMobileCode();" id="sendMobileCode">
-                                                <span id="dyMobileButton">获取</span></a>
-                                </div>
-                                <div class="user-pass">
-                                    <label for="password"><i class="am-icon-lock"></i></label>
-                                    <input type="password" name="loginpwd" id="password" placeholder="设置密码">
-                                </div>
-                                <div class="user-pass">
-                                    <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
-                                    <input type="password" name="loginpwds" id="passwordRepeat" placeholder="确认密码">
-                                </div>
-                                <div class="am-cf">
-                                    {{csrf_field()}}
-                                    <input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
-                                </div>
-                            </form>
-                            <hr>
+                       
 
                         <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 
@@ -97,19 +74,20 @@
 
 
                         $('#email').blur(function() {
-
+                            var v = $(this).val();
+                            var reg = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
+                            if(!reg.test(v)){
+                                $('.email').show().html('<center><span style="color:red;font-size:10px;">请按正确格式输入邮箱</span><center/>');
+                                CUSER = false;
+                            }else{
                             var v = $(this).val();
                             $.ajax({
-
                                 url: '/check-user-exists.php',
-
                                 type: 'post',
-
                                 data: { email: v },
-
                                 success: function(data) {
                                     if (data == 0) {
-                                       $('.email').show().html('<center><span style="color:red;font-size:10px;">用户名已存在</span><center/>');
+                                       $('.email').show().html('<center><span style="color:red;font-size:10px;">该邮箱已被注册</span><center/>');
                                        CUSER = false;
                                     }else{
                                         $('.email').show().html('<span style="color:green;font-size:12px;font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✔</span>');
@@ -117,6 +95,7 @@
                                     }
                                 }
                             })
+                            }
                         });
                         $('#password').blur(function(){
                             var v = $(this).val();
@@ -158,10 +137,7 @@
                                 }
                             });
                         </script>
-
-
                         <hr>
-
                     </div>
                     <script>
                     $(function() {

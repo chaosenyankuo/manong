@@ -54,7 +54,14 @@
                                         </a>
                                     <em class="s-name">{{$user['nickname']}}<span class="vip1"></em>
                                     <div class="s-prestige am-btn am-round">
-                                        </span>会员福利</div>
+                                    @if($user->qx == '1')
+                                        管理员
+                                    @elseif($user->qx == '2')
+                                        银牌会员
+                                    @else
+                                        金牌会员
+                                    @endif
+                                    </div>       
                                 </div>
                                 <div class="m-right">
 
@@ -276,9 +283,14 @@
                         </div>
                         <div class="s-care s-care-noweather">
                             <div class="s-date">
-                                <em>21</em>
-                                <span>星期一</span>
-                                <span>2015.12</span>
+                                <em><?php $a = date('Y-m-d',time());
+                                $b = explode('-',$a);
+                                 print_r ($b[2]); ?></em>
+                                <span><?php $weekarray=array("日","一","二","三","四","五","六"); 
+                                    echo "星期".$weekarray[date("w")];
+                                 ?></span>
+                                <span><?php $a = date('Y.m',time());
+                                print_r($a); ?></span>
                             </div>
                         </div>
                     </div>

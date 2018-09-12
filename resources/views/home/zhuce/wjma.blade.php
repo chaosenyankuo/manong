@@ -44,16 +44,20 @@
                 </div>
                 <form class="am-form am-form-horizontal" method="post" action="/home/login">
                     <div class="am-form-group">
-                        <label for="user-old-password" class="am-form-label">手机号</label>
+                        <label for="user-old-password" class="am-form-label">邮箱帐号</label>
+
                         <div class="am-form-content">
-                            <input type="password" id="user-old-password" placeholder="请输入注册时使用的手机号">
+                            <input type="password" id="user-old-password" placeholder="请输入注册时使用的邮箱帐号">
+
                         </div>
                     </div>
-                    <div class="am-form-content">
-                        <label for="code"><i class="am-form-label"></i></label>
-                        <input type="tel" name="" id="code" placeholder="请输入验证码">
-                        <a class="btn" href="javascript:void(0);" onclick="sendMobileCode();" id="sendMobileCode">
-												<button>获取</button></a>
+                     <button>点击发送验证码</button>
+                    
+                    <div class="am-form-group">
+                        <label for="user-new-password" class="am-form-label">验证码</label>
+                        <div class="am-form-content">
+                            <input type="password" id="user-old-password" placeholder="请输入验证码">
+                        </div>
                     </div>
                     <div class="am-form-group">
                         <label for="user-new-password" class="am-form-label">新密码</label>

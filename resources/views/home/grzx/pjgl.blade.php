@@ -20,7 +20,7 @@
             <div class="mt-logo">
                 <!--顶部导航条 -->
                 @include('layouts.home._top')
-            </div>
+                </div>
             </div>
         </article>
     </header>
@@ -53,11 +53,10 @@
                     <div class="am-tabs am-tabs-d2 am-margin" data-am-tabs>
                         <ul class="am-avg-sm-2 am-tabs-nav am-nav am-nav-tabs">
                             <li class="am-active"><a href="#tab1">所有评价</a></li>
-                            <li><a href="#tab2">有图评价</a></li>
                         </ul>
                         <div class="am-tabs-bd">
                             <div class="am-tab-panel am-fade am-in am-active" id="tab1">
-                                <div class="comment-main" style="height:50px;">
+                                <div class="comment-main">
                                     <div class="comment-list">
                                         <ul class="item-list">
                                             <div class="comment-top">
@@ -72,57 +71,30 @@
                                             <li class="td td-item">
                                                 <div class="item-pic">
                                                     <a href="#" class="J_MakePoint">
-															<img src="{{$v->shop->simage2}}" class="itempic">
-														</a>
+                                                        <img src="{{$v->shop->simage2}}" class="itempic">
+                                                    </a>
                                                 </div>
                                             </li>
-                                            <li class="td td-comment"style="height:100px;">
+                                            <li class="td td-comment">
                                                 <div class="item-title">
                                                     <div class="item-opinion">好评</div>
                                                     <div class="item-name">
                                                         <a href="#">
-                                                         
                                                             <p class="item-basic-info">{{$v->shop->sname}}</p>
-                                                           
                                                         </a>
                                                     </div>
                                                 </div>
-                                                
                                                 <div class="item-comment">
-                                                   {{$v['content']}}
-                                                </div>                                             
+                                                    {{$v['content']}}
+                                                </div>
                                                 <div class="item-info">
                                                     <div>
                                                         <p class="info-little"><span>颜色：12#玛瑙</span> <span>包装：</span> </p>
                                                         <p class="info-time">{{$v['created_at']}}</p>
                                                     </div>
-                                                    @endforeach
                                                 </div>
                                             </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="am-tab-panel am-fade" id="tab2">
-                                <div class="comment-main">
-                                    <div class="comment-list">
-                                        <ul class="item-list">
-                                            <div class="comment-top">
-                                                <div class="th th-price">
-                                                    <td class="td-inner">评价</td>
-                                                </div>
-                                                <div class="th th-item">
-                                                    <td class="td-inner">商品</td>
-                                                </div>
-                                            </div>
-                                            <li class="td td-item">
-                                                <div class="item-pic">
-                                                    <a href="#" class="J_MakePoint">
-															<img src="/home/images/kouhong.jpg_80x80.jpg" class="itempic">
-														</a>
-                                                </div>
-                                            </li>
-                                            
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
@@ -134,7 +106,7 @@
             <!--底部-->
            @include('layouts.home._foot')
         </div>
-        @include('layouts.home._menu')
+       @include('layouts.home._menu')
     </div>
 </body>
 

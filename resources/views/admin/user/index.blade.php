@@ -29,6 +29,7 @@
                                 <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column ascending">昵称</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width:100px;">用户</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width:80px;">性别</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width:80px;">级别</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width:80px;">头像</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">生日</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">邮箱</th>
@@ -44,6 +45,10 @@
                                 <td class=" ">{{$v -> uname}}</td>
                                 <td class=" ">
                                     @if($v->sex == '1') 男 @elseif($v->sex == '2') 女 @else 保密 @endif
+                                </td>
+                                <td class="">
+                                    @if($v->qx == '1') 管理员 @elseif($v->qx == '2') 银牌会员 @else 金牌
+                                    @endif
                                 </td>
                                 <td class=" "><img data-src="{{$v -> image}}" alt="" width="50" height="30"></td>
                                 <td class="center ">{{$v-> birthday}}</td>

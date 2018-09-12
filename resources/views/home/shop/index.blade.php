@@ -42,11 +42,13 @@
             </div>
         </div>
         @if(Session::has('error'))
-            <div class="nav white" id="xiaoshi" style="margin-top: 10px;">
-                <center>
-                    <p><font style="color:red; font-size:20px;">{{Session::get('error')}}</font></p>
-                </center>
-            </div>
+        <div class="nav white" id="xiaoshi" style="margin-top: 10px;">
+            <center>
+                <p>
+                    <font style="color:red; font-size:20px;">{{Session::get('error')}}</font>
+                </p>
+            </center>
+        </div>
         @endif
         <ol class="am-breadcrumb am-breadcrumb-slash">
             <li><a href="/">首页</a></li>
@@ -96,22 +98,22 @@
                     });
                     </script>
                     <div class="tb-booth tb-pic tb-s310">
-                        <img src="{{$shop['simage']}}" style="width:100%;height:100%;" alt="细节展示放大镜特效" rel="{{$shop['simage']}}" class="jqzoom" />
+                        <img src="{{$shop['simage']}}" style="width:100%;height:100%;" rel="{{$shop['simage']}}" alt="细节展示放大镜特效"  class="jqzoom"/>
                     </div>
                     <ul class="tb-thumb" id="thumblist">
                         <li class="tb-selected">
                             <div class="tb-pic tb-s40">
-                                <a href="#"><img src="{{$shop['simage']}}" mid="{{$shop['simage']}}" big="{{$shop['simage']}}"></a>
+                                <a href="#"><img src="{{$shop['simage']}}" width="100" mid="{{$shop['simage']}}" big="{{$shop['simage']}}"></a>
                             </div>
                         </li>
                         <li class="tb">
                             <div class="tb-pic tb-s40">
-                                <a href="#"><img src="{{$shop['simage1']}}" mid="{{$shop['simage1']}}" big="{{$shop['simage']}}"></a>
+                                <a href="#"><img src="{{$shop['simage1']}}" width="100" mid="{{$shop['simage1']}}" big="{{$shop['simage1']}}"></a>
                             </div>
                         </li>
                         <li class="tb">
                             <div class="tb-pic tb-s40">
-                                <a href="#"><img src="{{$shop['simage2']}}" mid="{{$shop['simage2']}}" data-big="{{$shop['simage']}}"></a>
+                                <a href="#"><img src="{{$shop['simage2']}}" width="100" mid="{{$shop['simage2']}}" data-big="{{$shop['simage2']}}"></a>
                             </div>
                         </li>
                     </ul>
@@ -126,103 +128,97 @@
                         {{$shop['sname']}}
                     </h1>
                 </div>
-
-            <form action="/shopcar" method="post">
-                <div class="tb-detail-list">
-                <!--活动  -->
-                    <div class="shopPromotion gold">
-                        <div class="hot">
-                            <dt class="tb-metatit">店铺优惠</dt>
-                            <div class="gold-list">
-                                <p>购物满2件打8折，满3件7折<span>点击领券<i class="am-icon-sort-down"></i></span></p>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="coupon">
-                            <dt class="tb-metatit">优惠券</dt>
-                            <div class="gold-list">
-                                <ul>
-                                    <li>125减5</li>
-                                    <li>198减10</li>
-                                    <li>298减20</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!--价格-->
-                    <div class="tb-detail-price">
-                        <li class="price iteminfo_price">
-                            <dt>促销价</dt>
-                            <dd><em>¥</em><b class="sys_item_price">{{$shop['sprice']}}</b> </dd>
-                            <input type="hidden" value="{{$shop['sprice']}}">
-                        </li>
-                        <li class="price iteminfo_mktprice">
-                            <dt>原价</dt>
-                            <dd><em>¥</em><b class="sys_item_mktprice">{{$shop['sprice']+10}}</b></dd>
-                        </li>
-                        <div class="clear"></div>
-                    </div>
-                    <!--地址-->
-                    <dl class="iteminfo_parameter freight">
-                        <div data-toggle="distpicker">
-                            <dt>配送至:</dt>
-                            <div class="form-group" style="width:500px;">
-                                @if(!empty($add))
-                                <select class="form-control" style="height:28px;" id="province1" name="sheng" data-province="{{$add[0]}}">
-                                </select>
-                                <select class="form-control" style="height:28px;" id="city1" name="shi" data-city="{{$add[1]}}"></select>
-                                <select class="form-control" style="height:28px;" id="district1" name="xian" data-district="{{$add[2]}}"></select>
-                                快递<b class="sys_item_freprice">10</b> 元 
-                                @else
-                                <select class="form-control" style="height:28px;" id="province1" name="sheng" data-province="">
-                                </select>
-                                <select class="form-control" style="height:28px;" id="city1" name="shi" data-city=""></select>
-                                <select class="form-control" style="height:28px;" id="district1" name="xian" data-district=""></select>
-                                快递<b class="sys_item_freprice"></b> 元 
-                                @endif
-                            </div>
-                        </div>
-                    </dl>
-                    <div class="clear"></div>
-                    <!--销量-->
-                    <ul class="tm-ind-panel">
-                        <li class="tm-ind-item tm-ind-sellCount canClick">
-                            <div class="tm-indcon"><span class="tm-label">月销量</span><span class="tm-count">{{$shop['msales']}}</span></div>
-                        </li>
-                        <li class="tm-ind-item tm-ind-sumCount canClick">
-                            <div class="tm-indcon"><span class="tm-label">累计销量</span><span class="tm-count">{{$shop['csales']}}</span></div>
-                        </li>
-                        <li class="tm-ind-item tm-ind-reviewCount canClick tm-line3">
-                            <div class="tm-indcon"><span class="tm-label">累计评价</span><span class="tm-count">{{count($comment)}}</span></div>
-                        </li>
-                    </ul>
-                    <div class="clear"></div>
-                    <!--各种规格-->
-                    <dl class="iteminfo_parameter sys_item_specpara">
-                        <dt class="theme-login">
-                            <div class="cart-title">可选规格<span class="am-icon-angle-right"></span></div>
-                        </dt>
-                        <dd>
-                            <!--操作页面-->
-                            <div class="theme-popover-mask"></div>
-                            <div class="theme-popover">
-                                <div class="theme-span"></div>
-                                <div class="theme-poptit">
-                                    <a href="javascript:;" title="关闭" class="close">×</a>
+                <form action="/shopcar" method="post">
+                    <div class="tb-detail-list">
+                        <!--活动  -->
+                        <div class="shopPromotion gold">
+                            <div class="hot">
+                                <dt class="tb-metatit">店铺优惠</dt>
+                                <div class="gold-list">
+                                    <p>购物满2件打8折，满3件7折<span>点击领券<i class="am-icon-sort-down"></i></span></p>
                                 </div>
-                                <div class="theme-popbod dform">
+                            </div>
+                            <div class="clear"></div>
+                            <div class="coupon">
+                                <dt class="tb-metatit">优惠券</dt>
+                                <div class="gold-list">
+                                    <ul>
+                                        <li>125减5</li>
+                                        <li>198减10</li>
+                                        <li>298减20</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--价格-->
+                        <div class="tb-detail-price">
+                            <li class="price iteminfo_price">
+                                <dt>促销价</dt>
+                                <dd><em>¥</em><b class="sys_item_price">{{$shop['sprice']}}</b> </dd>
+                                <input type="hidden" value="{{$shop['sprice']}}">
+                            </li>
+                            <li class="price iteminfo_mktprice">
+                                <dt>原价</dt>
+                                <dd><em>¥</em><b class="sys_item_mktprice">{{$shop['sprice']+10}}</b></dd>
+                            </li>
+                            <div class="clear"></div>
+                        </div>
+                        <!--地址-->
+                        <dl class="iteminfo_parameter freight">
+                            <div data-toggle="distpicker">
+                                <dt>配送至:</dt>
+                                <div class="form-group" style="width:500px;">
+                                    @if(!empty($add))
+                                    <select class="form-control" style="height:28px;" id="province1" name="sheng" data-province="{{$add[0]}}">
+                                    </select>
+                                    <select class="form-control" style="height:28px;" id="city1" name="shi" data-city="{{$add[1]}}"></select>
+                                    <select class="form-control" style="height:28px;" id="district1" name="xian" data-district="{{$add[2]}}"></select>
+                                    快递<b class="sys_item_freprice">10</b> 元 @else
+                                    <select class="form-control" style="height:28px;" id="province1" name="sheng" data-province="">
+                                    </select>
+                                    <select class="form-control" style="height:28px;" id="city1" name="shi" data-city=""></select>
+                                    <select class="form-control" style="height:28px;" id="district1" name="xian" data-district=""></select>
+                                    快递<b class="sys_item_freprice"></b> 元 @endif
+                                </div>
+                            </div>
+                        </dl>
+                        <div class="clear"></div>
+                        <!--销量-->
+                        <ul class="tm-ind-panel">
+                            <li class="tm-ind-item tm-ind-sellCount canClick">
+                                <div class="tm-indcon"><span class="tm-label">月销量</span><span class="tm-count">{{$shop['msales']}}</span></div>
+                            </li>
+                            <li class="tm-ind-item tm-ind-sumCount canClick">
+                                <div class="tm-indcon"><span class="tm-label">累计销量</span><span class="tm-count">{{$shop['csales']}}</span></div>
+                            </li>
+                            <li class="tm-ind-item tm-ind-reviewCount canClick tm-line3">
+                                <div class="tm-indcon"><span class="tm-label">累计评价</span><span class="tm-count">{{count($comment)}}</span></div>
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                        <!--各种规格-->
+                        <dl class="iteminfo_parameter sys_item_specpara">
+                            <dt class="theme-login">
+                                <div class="cart-title">可选规格<span class="am-icon-angle-right"></span></div>
+                            </dt>
+                            <dd>
+                                <!--操作页面-->
+                                <div class="theme-popover-mask"></div>
+                                <div class="theme-popover">
+                                    <div class="theme-span"></div>
+                                    <div class="theme-poptit">
+                                        <a href="javascript:;" title="关闭" class="close">×</a>
+                                    </div>
+                                    <div class="theme-popbod dform">
                                         <input type="hidden" name="shop_id" value="{{$shop['id']}}">
                                         <div class="theme-signin-left">
                                             <div class="theme-options">
                                                 <div class="cart-title">口味</div>
-                                                <ul>&nbsp; 
-                                                    @foreach($flavor as $v)
-                                                        @if(in_array($v->id,$shop->flavors->pluck('id')->toArray()))
-                                                            <li class="sku-line">
-                                                                <input type="radio" name="flavor_id" value="{{$v['id']}}">{{$v['fname']}}
-                                                            </li>
-                                                        @endif
-                                                    @endforeach
+                                                <ul>&nbsp; @foreach($flavor as $v) @if(in_array($v->id,$shop->flavors->pluck('id')->toArray()))
+                                                    <li class="sku-line">
+                                                        <input type="radio" name="flavor_id" value="{{$v['id']}}">{{$v['fname']}}
+                                                    </li>
+                                                    @endif @endforeach
                                                 </ul>
                                             </div>
                                             <div class="theme-options">
@@ -243,13 +239,13 @@
                                                     <span id="Stock" class="tb-hidden">库存<span class="stock">{{$shop['scount']}}</span>件</span>
                                                 </dd>
                                                 <script>
-                                                    $('input[name=shuliang]').change(function() {
-                                                        var a = $('input[name=shuliang]').val();
-                                                        if (a > {{$shop['scount']}}) {
-                                                            alert('对不起,库存不足');
-                                                            $('input[name=shuliang]').val({{$shop['scount']}});
-                                                        };
-                                                    });
+                                                $('input[name=shuliang]').change(function() {
+                                                    var a = $('input[name=shuliang]').val();
+                                                    if (a > { { $shop['scount'] } }) {
+                                                        alert('对不起,库存不足');
+                                                        $('input[name=shuliang]').val({ { $shop['scount'] } });
+                                                    };
+                                                });
                                                 </script>
                                             </div>
                                             <div class="clear"></div>
@@ -267,12 +263,24 @@
                                                 <span id="Stock" class="tb-hidden">库存<span class="stock">1000</span>件</span>
                                             </div>
                                         </div>
+                                    </div>
                                 </div>
+                            </dd>
+                        </dl>
+                        <div class="clear"></div>
+                    </div>
+                    {{csrf_field()}}
+                    <div class="pay" style="position:relative;top:-120px;left:600px;">
+                        <li>
+                            <div class="clearfix theme-login">
+                                <input title="加入购物车" type="submit" value="加入购物车" style="width:98px;border:1px solid #F03726;background-color:#F03726;color:white;height:35px;z-index:100;"><i></i>
                             </div>
+
                         </dd>
                     </dl>
                     <div class="clear"></div>
                     
+
                 </div>
             {{csrf_field()}}
                 <div class="pay" style="position:relative;top:-120px;left:600px;">
@@ -281,17 +289,25 @@
                             <input title="加入购物车" type="submit" value="加入购物车" style="width:98px;border:1px solid #F03726;background-color:#F03726;color:white;height:35px;"><i></i>
                         </div>
                     </li>
+                   <li>
+                                <div class="clearfix tb-btn tb-btn-buy theme-login">
+                                    <a id="shou" title="点此按钮加入收藏夹" href="#">加入收藏夹</a>
+                                </div>
+                            </li>
                 </div>
+
                 </form>
-                
             </div>
             <div class="clear"></div>
+            
         </div>
         <div class="clear"></div>
         <!-- introduce-->
         <div class="introduce">
+
             <div class="browse">
                 <div class="mc">
+
                     <ul>
                         <div class="mt">
                             <h2>推荐推荐</h2>
@@ -311,6 +327,7 @@
                     </ul>
                 </div>
             </div>
+
             <div class="introduceMain">
                 <div class="am-tabs" data-am-tabs>
                     <ul class="am-avg-sm-3 am-tabs-nav am-nav am-nav-tabs">
@@ -344,6 +361,7 @@
                                 </ul>
                                 <div class="clear"></div>
                             </div>
+                            
                             <div class="details">
                                 <div class="attr-list-hd after-market-hd">
                                     <h4>商品细节</h4>
@@ -492,4 +510,9 @@
                     </div>
                 </div>
                 <div class="clear"></div>
+                <script>
+                setTimeout(function() {
+                    $('#xiaoshi').css('display', 'none');
+                }, 2000);
+                </script>
                 @include('layouts.home._footer')

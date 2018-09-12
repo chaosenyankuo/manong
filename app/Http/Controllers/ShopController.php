@@ -25,10 +25,13 @@ class ShopController extends Controller
         $cates = Cate::all();
         $tags = Tag::all();
         $flavors = Flavor::all();
+        $uid = \Session::get('id');
+        $user = User::find($uid);
         $shops = Shop::orderBy('id','desc')
             ->where('sname','like','%'.request()->keywords.'%')
             ->paginate(5);
         $user = User::findOrFail(\Session::get('id'));
+        
         return view('admin.shop.index',compact('shops','cates','tags','flavors','user'));
     }
 
@@ -42,6 +45,7 @@ class ShopController extends Controller
         $cates = Cate::all();
         $tags = Tag::all();
         $flavors = Flavor::all();
+        
         return view('admin.shop.create',compact('cates','tags','flavors'));
     }
 
@@ -118,10 +122,14 @@ class ShopController extends Controller
         $cates = Cate::all();
         //友情链接
         $links = Link::all();
+
+        
+
         //获取当前登录人的信息
         if(\Session::has('id')){
-            $uid = \Session::get('id');
-            $user = User::find($uid);
+            $id = \Session::get('id');
+            $user = User::find($id);
+            
             //获取当前登录人的地址信息
             if(empty($user->uaddress[0])){
                 $address = '山西省-吕梁市-孝义市';
@@ -131,6 +139,7 @@ class ShopController extends Controller
                 $add = explode('-',$address);
             }
         }
+        
         //推荐商品
         $recom = Shop::where('recom','1')->take(3)->orderBy('id','desc')->get();
         return view('home.shop.index',compact('shop','comment','pack','flavor','recom','cates','links','add','user'));
