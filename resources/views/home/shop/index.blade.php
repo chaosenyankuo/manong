@@ -229,7 +229,8 @@
                                                     @foreach($pack as $v)
                                                     @if(in_array($v->id,$shop->packs->pluck('id')->toArray()))
                                                     <li class="sku-line">
-                                                        <input type="radio" name="pack_id" value="{{$v['id']}}">{{$v['pname']}}</li>
+                                                        <input type="radio" name="pack_id" value="{{$v['id']}}">{{$v['pname']}}
+                                                    </li>
                                                     @endif
                                                     @endforeach
                                                 </ul>
