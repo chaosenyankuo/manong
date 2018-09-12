@@ -51,4 +51,9 @@ class Shop extends Model
         return $this->belongsToMany('App\Shop');
 
     }
+
+    public function orders()
+    {
+        return $this->hasMany('App\Order');
+    }
 }

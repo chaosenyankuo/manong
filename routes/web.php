@@ -21,14 +21,13 @@ Route::get('/admin/login', 'AdminController@login');
 //登陆操作
 Route::post('/admin/login', 'AdminController@dologin');
 
-
 //退出登录
 Route::get('/admin/logout', 'AdminController@logout');
 
 
 
 //后台路由
-Route::group(['middleware'=>'login'],function(){
+// Route::group(['middleware'=>'login'],function(){
 
 	//后台主页
 	Route::get('/admin','AdminController@index');
@@ -39,11 +38,9 @@ Route::group(['middleware'=>'login'],function(){
 	//商品评价
 	Route::resource('comment','CommentController');
 
-
 	//网站设置
 	Route::get('/admin/setting', 'AdminController@setting');
 	Route::post('/admin/setting', 'AdminController@update');
-
 
 	//物流管理
 	Route::resource('wuliu', 'WuliuController');
@@ -61,7 +58,6 @@ Route::group(['middleware'=>'login'],function(){
 	//商品口味管理
 	Route::resource('flavor','FlavorController');
 
-
 	//好中差管理
 	Route::resource('com','ComController');
 
@@ -70,7 +66,6 @@ Route::group(['middleware'=>'login'],function(){
 
 	//包装管理
 	Route::resource('pack','PackController');
-
 
 	//标签管理
 	Route::resource('tag','TagController');
@@ -83,8 +78,11 @@ Route::group(['middleware'=>'login'],function(){
 
 	//友情链接
 	Route::resource('link','LinkController');
+
+	//轮播图
+	Route::resource('lunbotu','LunbotuController');
 		
-});
+// });
 
  
 
@@ -162,5 +160,13 @@ Route::resource('shopcar','ShopCarController');
 
 //收藏管理
 Route::resource('collect','CollectController');
+
+//订单保存
+Route::post('/home/dingdan','DingdanController@baocun');
+
+//订单列表
+Route::get('/home/dingdan','DingdanController@list');
+
+
 
 

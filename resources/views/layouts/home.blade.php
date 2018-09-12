@@ -21,12 +21,11 @@
     </div>
     <div class="banner">
         <!--轮播 -->
-        <div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
+        <div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">   
             <ul class="am-slides">
-                <li class="banner1"><a><img src="/lunbo/likuo.jpg" height="430" /></a></li>
-                <li class="banner2"><a><img src="/lunbo/sen.jpg" height="430" /></a></li>
-                <li class="banner3"><a><img src="/lunbo/chao.jpg" height="430" /></a></li>
-                <li class="banner4"><a><img src="/lunbo/wangyan.jpg" height="430" /></a></li>
+                @foreach($lunbotu as $v)
+                <li class="banner1"><a><img src="{{$v->pic}}" height="430" /></a></li>
+                @endforeach
             </ul>
         </div>
         <div class="clear"></div>
@@ -143,24 +142,21 @@
                     @if(Session::has('nickname'))
                     <div class="m-baseinfo">
                         <a href="/home/index">
-                                    <img src="{{$user->image}}">
-                                </a>
+                            <img src="{{$user['image']}}">
+                        </a>
                         <em>
-                                    Hi,<span class="s-name">{{$user->nickname}}</span>
-                                    <a href="/home/index"><p>点击进入个人中心</p></a>                             
-                                </em>
+                            Hi,<span class="s-name">{{$user['nickname']}}</span>
+                            <a href="/home/index"><p>点击进入个人中心</p></a>                             
+                        </em>
                     </div>
                     @endif @if(!Session::has('nickname'))
                     <div class="m-baseinfo">
                         <a href=" ">
-                                    <img src="/home/images/getAvatar.do.jpg">
-                                </a>
+                            <img src="/home/images/getAvatar.do.jpg">
+                        </a>
                         <em>
-
-                                    <span class="s-name">请登录!!</span>
-                                                                     
-
-                                </em>
+                            <span class="s-name">请登录</span>
+                        </em>
                     </div>
                     <div class="member-logout">
                         <a class="am-btn-warning btn" href="/home/login">登录</a>
@@ -250,11 +246,8 @@
                             <a href="# ">{{$vv->tname}}</a> @endforeach
                         </div>
                         <span class="more ">
-
-
-                                    <a href="# ">更多美味<i class="am-icon-angle-right " style="padding-left:10px ; " ></i>
-                                    </a>
-                                </span>
+                            <a href="# ">更多美味<i class="am-icon-angle-right " style="padding-left:10px ; " ></i></a>
+                        </span>
 
                     </div>
                 </div>
@@ -263,10 +256,10 @@
                         <div class="word ">
                             @foreach($cates[$k]->tags()->take(6)->get() as $vv)
                             <a class="outer " href="# ">
-                                            <span class="inner ">
-                                                <b class="text ">{{$vv->tname}}</b>
-                                            </span>
-                                        </a> @endforeach
+                                <span class="inner ">
+                                    <b class="text ">{{$vv->tname}}</b>
+                                </span>
+                            </a> @endforeach
                         </div>
                         <a href="# ">
                             <div class="outer-con ">
