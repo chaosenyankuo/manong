@@ -25,8 +25,6 @@ class ZhuceController extends Controller
         }     
         $users -> loginpwd = Hash::make($request->password);
         $users -> email = $request->email;
-
-        
         $users -> qx = $request->qx;
 
         if($users -> save()){

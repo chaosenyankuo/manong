@@ -54,6 +54,9 @@ Route::group(['middleware'=>'login'],function(){
 	//订单管理
 	Route::resource('dingdan','DingdanController');
 
+	//收藏管理
+	ROute::resource('collect','CollectController');
+
 	//商品管理
 	Route::resource('shop','ShopController');
 
@@ -151,13 +154,6 @@ Route::get('/home/dzsc/{id}','GrzxController@dzsc');
 
 //加入收藏夹
 Route::get('shoucang/{id}.html','FavoriteController@shoucang');
-
-
-
-
-
-
-
 //购物车管理
 Route::resource('shopcar','ShopCarController');
 

@@ -73,6 +73,7 @@ class HomeController extends Controller
     	$id = \Session::get('id');
         
         $user = User::find($id);
+        
     	$a = 1;
     	$cid = Cate::pluck('id');
 

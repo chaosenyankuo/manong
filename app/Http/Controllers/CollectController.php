@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Favorite;
+use App\Collect;
+use App\User;
+use App\Cate;
 use App\Shop;
 
-class FavoriteController extends Controller
+class CollectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,12 @@ class FavoriteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
         //
+        $collects = Collect::orderBy('id','asc')
+            ->where('User_id','like', '%'.request()->keywords.'%')
+            ->paginate(3);
+        return view('admin.collect.index',compact('collects'));
     }
 
     /**
@@ -24,8 +30,15 @@ class FavoriteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   
+        $users = User::all();
+        $cates = Cate::all();
+        $shop = Shop::all();
+        foreach($cates as $v)
+         { 
+            dd($cates->shops);
+         }
+        return view('admin.collect.create',compact('users','cates','shop'));
     }
 
     /**
@@ -37,6 +50,17 @@ class FavoriteController extends Controller
     public function store(Request $request)
     {
         //
+        $collect = new Collect;
+
+        $collect -> user_id = $request ->name;
+        $collect -> shop_id = $request ->shop_id;
+
+
+        if($collect -> save()){
+            return redirect('/collect')->with('success','添加成功');
+        }else{
+            return back()->with('error','添加失败');
+        }
     }
 
     /**
@@ -82,11 +106,5 @@ class FavoriteController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function shoucang($id)
-    {
-        
-        
     }
 }

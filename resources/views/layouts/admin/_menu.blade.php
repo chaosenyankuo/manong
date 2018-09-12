@@ -9,6 +9,11 @@
     </a>
 </li>
 <li>
+    <a href="/collect/create" class="waves-effect waves-dark">
+        <i class="fa fa-sitemap"></i>收藏管理
+    </a>
+</li>
+<li>
     <a href="/shop" class="waves-effect waves-dark">
         <i class="fa fa-sitemap"></i>商品管理
     </a>

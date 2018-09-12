@@ -143,10 +143,10 @@
                     @if(Session::has('nickname'))
                     <div class="m-baseinfo">
                         <a href="/home/index">
-                                    <img src="{{$user->image}}">
+                                    <img src="{{$user['image']}}">
                                 </a>
                         <em>
-                                    Hi,<span class="s-name">{{$user->nickname}}</span>
+                                    Hi,<span class="s-name">{{$user['nickname']}}</span>
                                     <a href="/home/index"><p>点击进入个人中心</p></a>                             
                                 </em>
                     </div>

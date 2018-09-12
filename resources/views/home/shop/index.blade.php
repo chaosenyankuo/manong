@@ -98,7 +98,7 @@
                     });
                     </script>
                     <div class="tb-booth tb-pic tb-s310">
-                        <img src="{{$shop['simage']}}" style="width:100%;height:100%;" rel="{{$shop['simage']}}" alt="细节展示放大镜特效"  class="jqzoom"/>
+                        <img src="{{$shop['simage']}}" style="width:100%;height:100%;" rel="{{$shop['simage']}}" alt="细节展示放大镜特效" class="jqzoom" />
                     </div>
                     <ul class="tb-thumb" id="thumblist">
                         <li class="tb-selected">
@@ -275,39 +275,24 @@
                             <div class="clearfix theme-login">
                                 <input title="加入购物车" type="submit" value="加入购物车" style="width:98px;border:1px solid #F03726;background-color:#F03726;color:white;height:35px;z-index:100;"><i></i>
                             </div>
-
-                        </dd>
-                    </dl>
-                    <div class="clear"></div>
-                    
-
-                </div>
-            {{csrf_field()}}
-                <div class="pay" style="position:relative;top:-120px;left:600px;">
-                    <li>
-                        <div class="clearfix theme-login">
-                            <input title="加入购物车" type="submit" value="加入购物车" style="width:98px;border:1px solid #F03726;background-color:#F03726;color:white;height:35px;"><i></i>
-                        </div>
-                    </li>
-                   <li>
+                            </dd>
+                            </dl>
+                            <div class="clear"></div>
+                            <li>
                                 <div class="clearfix tb-btn tb-btn-buy theme-login">
-                                    <a id="shou" title="点此按钮加入收藏夹" href="#">加入收藏夹</a>
+                                    <a id="shou" title="点此按钮加入收藏夹" href="/home/collect?shop_id={{$shop['id']}} && user_id={{$user['id']}}">加入收藏夹</a>
                                 </div>
                             </li>
-                </div>
-
+                    </div>
                 </form>
             </div>
             <div class="clear"></div>
-            
         </div>
         <div class="clear"></div>
         <!-- introduce-->
         <div class="introduce">
-
             <div class="browse">
                 <div class="mc">
-
                     <ul>
                         <div class="mt">
                             <h2>推荐推荐</h2>
@@ -327,7 +312,6 @@
                     </ul>
                 </div>
             </div>
-
             <div class="introduceMain">
                 <div class="am-tabs" data-am-tabs>
                     <ul class="am-avg-sm-3 am-tabs-nav am-nav am-nav-tabs">
@@ -361,7 +345,6 @@
                                 </ul>
                                 <div class="clear"></div>
                             </div>
-                            
                             <div class="details">
                                 <div class="attr-list-hd after-market-hd">
                                     <h4>商品细节</h4>

@@ -35,7 +35,7 @@
                         </p>
                         <ul class="user_info">
                             <li>用户名:{{$user['nickname']}}</li>
-                             @if($user-> qx == '1')
+                             @if($user->qx == '1')
                                         </li>管理员</li>
                                     @elseif($user->qx == '2')
                                         <li>银牌会员</li>
@@ -47,7 +47,7 @@
 
                         @if(!Session::has('id'))
                         <ul class="user_info">
-                            <li>用户名：请先登录!!</li>
+                            <li>用&nbsp;户&nbsp;名：请先登录!!</li>
                         </ul>
                         @endif
                     </div>
