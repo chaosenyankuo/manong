@@ -41,7 +41,7 @@ class Shop extends Model
      public function pack()
     {
         
-        return $this->belongsToMany('App\pack');
+        return $this->belongsToMany('App\Pack');
 
     }   
     

@@ -123,7 +123,6 @@ class ShopController extends Controller
         //友情链接
         $links = Link::all();
 
-        
 
         //获取当前登录人的信息
         if(\Session::has('id')){

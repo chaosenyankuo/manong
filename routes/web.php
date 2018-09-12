@@ -27,7 +27,7 @@ Route::get('/admin/logout', 'AdminController@logout');
 
 
 //后台路由
-// Route::group(['middleware'=>'login'],function(){
+Route::group(['middleware'=>'login'],function(){
 
 	//后台主页
 	Route::get('/admin','AdminController@index');
@@ -82,7 +82,7 @@ Route::get('/admin/logout', 'AdminController@logout');
 	//轮播图
 	Route::resource('lunbotu','LunbotuController');
 		
-// });
+});
 
  
 
