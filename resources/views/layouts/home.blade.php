@@ -15,7 +15,7 @@
 </head>
 
 <body>
-<div class="hmtop">
+    <div class="hmtop">
         <!--顶部导航条 -->
         @include('layouts.home._top')
     </div>
@@ -143,23 +143,21 @@
                     @if(Session::has('nickname'))
                     <div class="m-baseinfo">
                         <a href="/home/index">
-                                    <img src="{{$user->image}}">
-                                </a>
+                            <img src="{{$user['image']}}">
+                        </a>
                         <em>
-                                    Hi,<span class="s-name">{{$user->nickname}}</span>
-                                    <a href="/home/index"><p>点击进入个人中心</p></a>                             
-                                </em>
+                            Hi,<span class="s-name">{{$user['nickname']}}</span>
+                            <a href="/home/index"><p>点击进入个人中心</p></a>                             
+                        </em>
                     </div>
                     @endif @if(!Session::has('nickname'))
                     <div class="m-baseinfo">
                         <a href=" ">
-                                    <img src="/home/images/getAvatar.do.jpg">
-                                </a>
+                            <img src="/home/images/getAvatar.do.jpg">
+                        </a>
                         <em>
-
-                                    <span class="s-name">请登录</span>
-                                                                        
-                                </em>
+                            <span class="s-name">请登录</span>
+                        </em>
                     </div>
                     <div class="member-logout">
                         <a class="am-btn-warning btn" href="/home/login">登录</a>

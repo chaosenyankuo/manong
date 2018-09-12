@@ -2,8 +2,9 @@
     <div class="footer-hd">
         <p>
             @foreach($links as $v)
-            <a href="{{$v->url}}">{{$v->name}}</a>
-            <b>|</b> @endforeach
+                <a href="{{$v->url}}">{{$v->name}}</a>
+                <b>|</b>
+            @endforeach
         </p>
     </div>
     <div class="footer-bd">
@@ -27,9 +28,10 @@
                 <a href="/home/index">
                     <span class="setting"></span>
                 </a> 
-                @if(Session::has('id'))
+               
                 <div class="ibar_login_box status_login">
                     <div class="avatar_box">
+                        @if(Session::has('id'))
                         <p class="avatar_imgbox">
                             <img src="{{$user['image']}}" />
                         </p>

@@ -6,6 +6,7 @@ use App\Link;
 use App\Setting;
 use App\Shop;
 use App\Shopcar;
+use App\User;
 use Illuminate\Http\Request;
 
 class ShopCarController extends Controller
@@ -26,7 +27,7 @@ class ShopCarController extends Controller
         $shops = Shop::all();
         $links = Link::all();
         $setting = Setting::first();
-        $user = User::find($uid);
+        $user = User::findOrFail($uid);
 
         return view('home.shop.shopcar',['shop_id'=>$shop_id,'shops'=>$shops,'shopcar'=>$shopcar,'links'=>$links,'setting'=>$setting,'user'=>$user]);
     }

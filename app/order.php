@@ -28,4 +28,9 @@ class Order extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function shop()
+    {
+        return $this->belongsTo('App\Shop');
+    }
 }

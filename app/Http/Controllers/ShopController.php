@@ -28,7 +28,8 @@ class ShopController extends Controller
         $shops = Shop::orderBy('id','desc')
             ->where('sname','like','%'.request()->keywords.'%')
             ->paginate(5);
-        return view('admin.shop.index',compact('shops','cates','tags','flavors'));
+        $user = User::findOrFail(\Session::get('id'));
+        return view('admin.shop.index',compact('shops','cates','tags','flavors','user'));
     }
 
     /**
@@ -132,7 +133,7 @@ class ShopController extends Controller
         }
         //推荐商品
         $recom = Shop::where('recom','1')->take(3)->orderBy('id','desc')->get();
-        return view('home.shop.index',compact('shop','comment','pack','flavor','recom','cates','links','add'));
+        return view('home.shop.index',compact('shop','comment','pack','flavor','recom','cates','links','add','user'));
 
     }
 

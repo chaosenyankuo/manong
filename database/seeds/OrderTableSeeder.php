@@ -22,6 +22,8 @@ class OrderTableSeeder extends Seeder
         	$order -> order_bh = rand(100,200);
         	$order -> user_id = rand(1,10);
         	$order -> zhifu_id = rand(1,3);
+            $order -> liuyan = rand(1,10);
+            $order -> zhuangtai = 1;
         	$order -> save();
         }
     }
