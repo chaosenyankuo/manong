@@ -37,6 +37,7 @@
                                 <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 377.012px;">商品价格</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 377.012px;">商品图片</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 377.012px;">商品口味</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 377.012px;">商品包装</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 377.012px;">商品库存</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 377.012px;">是否推荐</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 377.012px;">商品分类</th>
@@ -59,6 +60,13 @@
                                     @foreach($flavors as $vvv)
                                     @if(in_array($vvv->id,$v->flavors->pluck('id')->toArray()))
                                         {{$vvv['fname']}}
+                                    @endif
+                                    @endforeach
+                                </td>
+                                <td class="center">
+                                    @foreach($packs as $vvvv)
+                                    @if(in_array($vvvv->id,$v->packs->pluck('id')->toArray()))
+                                        {{$vvvv['pname']}}
                                     @endif
                                     @endforeach
                                 </td>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddQxFieldUsers extends Migration
+class CreatePackShopTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddQxFieldUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->integer('qx')->nullable()->comment('用户权限');
+        Schema::create('pack_shop', function (Blueprint $table) {
+            $table->integer('pack_id')->comment('包装ID')->nullable();
+            $table->integer('shop_id')->comment('商品ID')->nullable();
         });
     }
 
@@ -26,8 +26,6 @@ class AddQxFieldUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('qx');
-        });
+        Schema::dropIfExists('pack_shop');
     }
 }

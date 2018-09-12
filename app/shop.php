@@ -38,7 +38,7 @@ class Shop extends Model
         return $this->belongsToMany('App\User');
     }
 
-     public function pack()
+     public function packs()
     {
         
         return $this->belongsToMany('App\pack');

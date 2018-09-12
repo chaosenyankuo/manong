@@ -25,12 +25,13 @@ class ShopController extends Controller
         $cates = Cate::all();
         $tags = Tag::all();
         $flavors = Flavor::all();
+        $packs = Pack::all();
         $uid = \Session::get('id');
         $user = User::find($uid);
         $shops = Shop::orderBy('id','desc')
             ->where('sname','like','%'.request()->keywords.'%')
             ->paginate(5);
-        return view('admin.shop.index',compact('shops','cates','tags','flavors','user'));
+        return view('admin.shop.index',compact('shops','cates','tags','flavors','user','packs'));
     }
 
     /**
@@ -43,8 +44,8 @@ class ShopController extends Controller
         $cates = Cate::all();
         $tags = Tag::all();
         $flavors = Flavor::all();
-        
-        return view('admin.shop.create',compact('cates','tags','flavors'));
+        $packs = Pack::all();
+        return view('admin.shop.create',compact('cates','tags','flavors','packs'));
     }
 
     /**
@@ -88,6 +89,7 @@ class ShopController extends Controller
             try{
                 $res = $shop->tags()->sync($request->tag_id);
                 $jie = $shop->flavors()->sync($request->flavor_id);
+                $guo = $shop->packs()->sync($request->pack_id);
                 DB::commit();
                 return redirect('/shop')->with('success','添加成功');
             }catch(\Exception $e){
@@ -121,8 +123,6 @@ class ShopController extends Controller
         //友情链接
         $links = Link::all();
 
-        
-
         //获取当前登录人的信息
         if(\Session::has('id')){
             $id = \Session::get('id');
@@ -155,8 +155,9 @@ class ShopController extends Controller
         $cates = Cate::all();
         $tags = Tag::all();
         $flavors = Flavor::all();
+        $packs = Pack::all();
         $shop = Shop::findOrFail($id);
-        return view('admin.shop.edit',compact('shop','tags','cates','flavors'));
+        return view('admin.shop.edit',compact('shop','tags','cates','flavors','packs'));
     }
 
     /**
@@ -201,6 +202,7 @@ class ShopController extends Controller
             try{
                 $res = $shop->tags()->sync($request->tag_id);
                 $jie = $shop->flavors()->sync($request->flavor_id);
+                $guo = $shop->packs()->sync($request->pack_id);
                 DB::commit();
                 return redirect('/shop')->with('success','修改成功');
             }catch(\Exception $e){
