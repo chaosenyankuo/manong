@@ -60,6 +60,18 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
+                        <label>商品包装</label>
+                        <p style="margin-left:100px">
+                        @foreach($packs as $v)
+                            <input type="checkbox" id="test{{$v['id']}}+8000000" name="pack_id[]" value="{{$v['id']}}">
+                            <label for="test{{$v['id']}}+8000000">{{$v['pname']}}</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        @endforeach
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
                         <label>商品标签</label>
                         <p style="margin-left:100px">
                         @foreach($tags as $v)

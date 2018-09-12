@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddQxFieldUsers extends Migration
+class CreateCollectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class AddQxFieldUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->integer('qx')->nullable()->comment('用户权限');
+        Schema::create('collects', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id')->comment('用户ID');
+            $table->integer('shop_id')->comment('商品ID');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +28,6 @@ class AddQxFieldUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('qx');
-        });
+        Schema::dropIfExists('collects');
     }
 }

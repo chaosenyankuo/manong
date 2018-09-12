@@ -23,7 +23,8 @@ class UserTableSeeder extends Seeder
         	$user -> birthday = rand(1995,2000);
         	$user -> phone = rand(10000,200000);
         	$user -> email = str_random(15);
-        	$user -> sex = rand(1,3);
+            $user -> sex = rand(1,3);
+        	$user -> qx = '1';
         	$user -> image = $faker -> imageUrl(50,50);
         	$user -> save();
         }
