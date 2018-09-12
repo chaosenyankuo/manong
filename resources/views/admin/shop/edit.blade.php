@@ -66,6 +66,21 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
+                        <label>商品包装</label>
+                        <p style="margin-left:100px">
+                            @foreach($packs as $v)
+                            <input name="pack_id[]" type="checkbox" value="{{$v['id']}}" id="test{{$v['id']+799999}}" 
+                            @if(in_array($v->id,$shop->packs->pluck('id')->toArray())) 
+                                checked
+                            @endif>
+                            <label for="test{{$v['id']+799999}}">{{$v['pname']}}</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            @endforeach
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
                         <label>商品标签</label>
                         <p style="margin-left:100px">
                         @foreach($tags as $v)

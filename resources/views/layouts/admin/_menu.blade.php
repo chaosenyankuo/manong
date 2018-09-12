@@ -10,7 +10,7 @@
 </li>
 <li>
     <a href="/collect/create" class="waves-effect waves-dark">
-        <i class="fa fa-sitemap"></i>收藏管理
+        <i class="fa fa-sitemap"></i> 收藏管理
     </a>
 </li>
 <li>

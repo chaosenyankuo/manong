@@ -117,19 +117,23 @@ Route::get('/home/logout','HomeController@logout');
 
 //个人中心
 Route::get('/home/index','GrzxController@index');
+
 //个人资料
 Route::get('/home/grzl','GrzxController@grzl');
 Route::post('/home/grzl','GrzxController@grzla');
+
 //个人信息
 Route::get('/home/grxx','GrzxController@grxx');
+
 //修改个人信息
 Route::post('/home/xggrxx','GrzxController@xggrxx');
+
 //安全设置
 Route::get('/home/aqsz','GrzxController@aqsz');
+
 //修改密码
 Route::get('/home/xgma','GrzxController@xgma');
 Route::post('/home/xgmacz','GrzxController@xgmacz');
-
 
 //忘记密码
 Route::get('/home/wjma', 'ZhuceController@wjma');
@@ -137,30 +141,34 @@ Route::get('/home/wjma', 'ZhuceController@wjma');
 //忘记密码操作
 Route::post('/home/wjmal', 'ZhuceController@wjmal');
 
-
 //评论管理
 Route::get('/home/pjgl','GrzxController@pjgl');
 
 //收货地址
 Route::get('/home/shdz','GrzxController@shdz');
 Route::post('/home/shdz','GrzxController@shdza');
+
 //修改收货地址
 Route::get('/home/dzedit/{id}','GrzxController@dzedit');
 Route::post('/home/dzupdate/{id}','GrzxController@dzupdate');
+
 //删除收货地址
 Route::get('/home/dzsc/{id}','GrzxController@dzsc');
 
 //加入收藏夹
 Route::get('shoucang/{id}.html','FavoriteController@shoucang');
+
 //购物车管理
 Route::resource('shopcar','ShopCarController');
+
+//收藏管理
+Route::resource('collect','CollectController');
 
 //订单保存
 Route::post('/home/dingdan','DingdanController@baocun');
 
 //订单列表
 Route::get('/home/dingdan','DingdanController@list');
-
 
 
 
