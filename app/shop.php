@@ -56,4 +56,9 @@ class Shop extends Model
     {
         return $this->hasMany('App\Order');
     }
+
+    public function collect()
+    {
+        return $this->hasMany('App\Shop');
+    }
 }

@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 
-use Illuminate\Http\Request;
+use App\Collect;
+use App\Comment;
 use App\Link;
+use App\Setting;
+use App\Shop;
 use App\Uaddress;
 use App\User;
-use App\Setting;
-use App\Comment;
-use App\Shop;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Testing\Concerns\session;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class GrzxController extends Controller
 {
@@ -23,7 +24,9 @@ class GrzxController extends Controller
     	$links = Link::all();
         $setting = Setting::first();
     	$user  = User::findOrFail($id);
-    	return view('home.grzx.index',compact('links','user','setting'));
+        $collects = Collect::where('user_id',$id)->get();
+        $recoms = Shop::where('recom','1')->take(3)->get();
+    	return view('home.grzx.index',compact('links','user','setting','collects','recoms'));
     }
     //个人资料页面
     public function grzl(request $request)

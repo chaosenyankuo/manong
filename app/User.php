@@ -54,4 +54,9 @@ class User extends Authenticatable
 
     }
 
+    public function collect()
+    {
+        return $this->hasMany('App\Collect');
+    }
+
 }

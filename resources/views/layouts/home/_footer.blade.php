@@ -86,7 +86,7 @@
                 </div>
             </div>
             <div id="brand" class="item">
-                <a href="#">
+                <a href="/home/collect">
                     <span class="wdsc">
                         <img src="/home/images/wdsc.png" />
                     </span>

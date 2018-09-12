@@ -15,8 +15,8 @@ class CreateCollectsTable extends Migration
     {
         Schema::create('collects', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->comment('用户ID');
-            $table->integer('shop_id')->comment('商品ID');
+            $table->string('user_id')->comment('用户ID');
+            $table->string('shop_id')->comment('商品ID');
             $table->timestamps();
         });
     }
