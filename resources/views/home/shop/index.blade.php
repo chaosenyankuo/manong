@@ -98,7 +98,7 @@
                     });
                     </script>
                     <div class="tb-booth tb-pic tb-s310">
-                        <img src="{{$shop['simage']}}" style="width:100%;height:100%;" rel="{{$shop['simage']}}" alt="细节展示放大镜特效"  class="jqzoom"/>
+                        <img src="{{$shop['simage']}}" style="width:100%;height:100%;" rel="{{$shop['simage']}}" alt="细节展示放大镜特效" class="jqzoom" />
                     </div>
                     <ul class="tb-thumb" id="thumblist">
                         <li class="tb-selected">
@@ -275,235 +275,317 @@
                             <div class="clearfix theme-login">
                                 <input title="加入购物车" type="submit" value="加入购物车" style="width:98px;border:1px solid #F03726;background-color:#F03726;color:white;height:35px;z-index:100;"><i></i>
                             </div>
-
-                        </dd>
-                    </dl>
-                    <div class="clear"></div>
-                    
-                
-
-                </form>
-            </div>
-            <form action="/home/shoucang">
-            <div class="clear"></div>
-            <li>
-                                <div class="clearfix tb-btn tb-btn-buy theme-login">
-                                    <a id="LikBuy" title="" href="#">加入收藏夹</a>
-                                </div>
-                            </li>
-        </div>
-        <div class="clear"></div>
-        <!-- introduce-->
-        <div class="introduce">
-
-            <div class="browse">
-                <div class="mc">
-
-                    <ul>
-                        <div class="mt">
-                            <h2>推荐推荐</h2>
-                        </div>
-                        @foreach($recom as $v)
-                        <li>
-                            <div class="p-img">
-                                <a href="{{$v['id']}}.html"> <img class="" src="{{$v['simage']}}"> </a>
+                            </dd>
+                            </dl>
+                            <div class="clear"></div>
+                            <div id="mir" class="right clearfloat fr" style="text-align: center;">
+                                <i id="shoucang" class="iconfont icon-shoucang"></i>
+                                <p style="cursor: pointer;" id="btn" class=""><a style="color: #8f8f94;" href="Javascript:window.external.addFavorite(document.location.href,document.title)">收藏</a></p>
                             </div>
-                            <div class="p-name"><a href="{{$v['id']}}.html">
+                </form>
+                </div>
+                <form action="/home/shoucang">
+                    <div class="clear"></div>
+                    <li>
+                        <div class="clearfix tb-btn tb-btn-buy theme-login">
+                            <a id="LikBuy" title="" href="#">加入收藏夹</a>
+                        </div>
+                    </li>
+            </div>
+            <div class="clear"></div>
+            <!-- introduce-->
+            <div class="introduce">
+                <div class="browse">
+                    <div class="mc">
+                        <ul>
+                            <div class="mt">
+                                <h2>推荐推荐</h2>
+                            </div>
+                            @foreach($recom as $v)
+                            <li>
+                                <div class="p-img">
+                                    <a href="{{$v['id']}}.html"> <img class="" src="{{$v['simage']}}"> </a>
+                                </div>
+                                <div class="p-name"><a href="{{$v['id']}}.html">
                                         {{$v['sname']}}
                                     </a>
-                            </div>
-                            <div class="p-price"><strong>￥{{$v['sprice']}}</strong></div>
-                        </li>
-                        @endforeach
-                    </ul>
+                                </div>
+                                <div class="p-price"><strong>￥{{$v['sprice']}}</strong></div>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
-            <div class="introduceMain">
-                <div class="am-tabs" data-am-tabs>
-                    <ul class="am-avg-sm-3 am-tabs-nav am-nav am-nav-tabs">
-                        <li class="am-active">
-                            <a href="#"><span class="index-needs-dt-txt">宝贝详情</span></a>
-                        </li>
-                        <li>
-                            <a href="#"><span class="index-needs-dt-txt">全部评价</span></a>
-                        </li>
-                        <li>
-                            <a href="#"><span class="index-needs-dt-txt">猜你喜欢</span></a>
-                        </li>
-                    </ul>
-                    <div class="am-tabs-bd">
-                        <div class="am-tab-panel am-fade am-in am-active">
-                            <div class="J_Brand">
-                                <div class="attr-list-hd tm-clear">
-                                    <h4>产品参数：</h4></div>
+                <div class="introduceMain">
+                    <div class="am-tabs" data-am-tabs>
+                        <ul class="am-avg-sm-3 am-tabs-nav am-nav am-nav-tabs">
+                            <li class="am-active">
+                                <a href="#"><span class="index-needs-dt-txt">宝贝详情</span></a>
+                            </li>
+                            <li>
+                                <a href="#"><span class="index-needs-dt-txt">全部评价</span></a>
+                            </li>
+                            <li>
+                                <a href="#"><span class="index-needs-dt-txt">猜你喜欢</span></a>
+                            </li>
+                        </ul>
+                        <div class="am-tabs-bd">
+                            <div class="am-tab-panel am-fade am-in am-active">
+                                <div class="J_Brand">
+                                    <div class="attr-list-hd tm-clear">
+                                        <h4>产品参数：</h4></div>
+                                    <div class="clear"></div>
+                                    <ul id="J_AttrUL">
+                                        <li title="">产品类型:&nbsp;{{$shop->cate->cname}}</li>
+                                        <li title="">原料产地:&nbsp;{{$shop['yplace']}}</li>
+                                        <li title="">产地:&nbsp;{{$shop['place']}}</li>
+                                        <li title="">配料表:&nbsp;{{$shop['peiliao']}}</li>
+                                        <li title="">产品规格:&nbsp;{{$shop['guige']}}</li>
+                                        <li title="">保质期:&nbsp;{{$shop['date']}}天</li>
+                                        <li title="">产品标准号:&nbsp;{{$shop['biaozhun']}}</li>
+                                        <li title="">生产许可证编号：&nbsp;{{$shop['shengchan']}}</li>
+                                        <li title="">储存方法：&nbsp;{{$shop['save']}}</li>
+                                        <li title="">食用方法：&nbsp;{{$shop['eat']}}</li>
+                                    </ul>
+                                    <div class="clear"></div>
+                                </div>
+                                </form>
+                                <div class="details">
+                                    <div class="attr-list-hd after-market-hd">
+                                        <h4>商品细节</h4>
+                                    </div>
+                                    <div class="twlistNews">
+                                        <img src="{{$shop['simage1']}}" style="height:400px;" width="100%" />
+                                        <img src="{{$shop['simage2']}}" style="height:400px;" width="100%" />
+                                    </div>
+                                </div>
                                 <div class="clear"></div>
-                                <ul id="J_AttrUL">
-                                    <li title="">产品类型:&nbsp;{{$shop->cate->cname}}</li>
-                                    <li title="">原料产地:&nbsp;{{$shop['yplace']}}</li>
-                                    <li title="">产地:&nbsp;{{$shop['place']}}</li>
-                                    <li title="">配料表:&nbsp;{{$shop['peiliao']}}</li>
-                                    <li title="">产品规格:&nbsp;{{$shop['guige']}}</li>
-                                    <li title="">保质期:&nbsp;{{$shop['date']}}天</li>
-                                    <li title="">产品标准号:&nbsp;{{$shop['biaozhun']}}</li>
-                                    <li title="">生产许可证编号：&nbsp;{{$shop['shengchan']}}</li>
-                                    <li title="">储存方法：&nbsp;{{$shop['save']}}</li>
-                                    <li title="">食用方法：&nbsp;{{$shop['eat']}}</li>
-                                </ul>
+                            </div>
+                            <div class="am-tab-panel am-fade">
+                                <div class="actor-new">
+                                    <div class="rate">
+                                        <strong>100<span>%</span></strong>
+                                        <br> <span>好评度</span>
+                                    </div>
+                                    <dl>
+                                        <dt>买家印象</dt>
+                                        <dd class="p-bfc">
+                                            <q class="comm-tags"><span>味道不错</span><em>(2177)</em></q>
+                                            <q class="comm-tags"><span>颗粒饱满</span><em>(1860)</em></q>
+                                            <q class="comm-tags"><span>口感好</span><em>(1823)</em></q>
+                                            <q class="comm-tags"><span>商品不错</span><em>(1689)</em></q>
+                                            <q class="comm-tags"><span>香脆可口</span><em>(1488)</em></q>
+                                            <q class="comm-tags"><span>个个开口</span><em>(1392)</em></q>
+                                            <q class="comm-tags"><span>价格便宜</span><em>(1119)</em></q>
+                                            <q class="comm-tags"><span>特价买的</span><em>(865)</em></q>
+                                            <q class="comm-tags"><span>皮很薄</span><em>(831)</em></q>
+                                        </dd>
+                                    </dl>
+                                </div>
                                 <div class="clear"></div>
-                            </div>
-                            </form>
-                            <div class="details">
-                                <div class="attr-list-hd after-market-hd">
-                                    <h4>商品细节</h4>
+                                <div class="tb-r-filter-bar">
+                                    <ul class=" tb-taglist am-avg-sm-4">
+                                        <li class="tb-taglist-li tb-taglist-li-current">
+                                            <div class="comment-info">
+                                                <span>全部评价</span>
+                                                <span class="tb-tbcr-num">(32)</span>
+                                            </div>
+                                        </li>
+                                        <li class="tb-taglist-li tb-taglist-li-1">
+                                            <div class="comment-info">
+                                                <span>好评</span>
+                                                <span class="tb-tbcr-num">(32)</span>
+                                            </div>
+                                        </li>
+                                        <li class="tb-taglist-li tb-taglist-li-0">
+                                            <div class="comment-info">
+                                                <span>中评</span>
+                                                <span class="tb-tbcr-num">(32)</span>
+                                            </div>
+                                        </li>
+                                        <li class="tb-taglist-li tb-taglist-li--1">
+                                            <div class="comment-info">
+                                                <span>差评</span>
+                                                <span class="tb-tbcr-num">(32)</span>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="twlistNews">
-                                    <img src="{{$shop['simage1']}}" style="height:400px;" width="100%" />
-                                    <img src="{{$shop['simage2']}}" style="height:400px;" width="100%" />
-                                </div>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="am-tab-panel am-fade">
-                            <div class="actor-new">
-                                <div class="rate">
-                                    <strong>100<span>%</span></strong>
-                                    <br> <span>好评度</span>
-                                </div>
-                                <dl>
-                                    <dt>买家印象</dt>
-                                    <dd class="p-bfc">
-                                        <q class="comm-tags"><span>味道不错</span><em>(2177)</em></q>
-                                        <q class="comm-tags"><span>颗粒饱满</span><em>(1860)</em></q>
-                                        <q class="comm-tags"><span>口感好</span><em>(1823)</em></q>
-                                        <q class="comm-tags"><span>商品不错</span><em>(1689)</em></q>
-                                        <q class="comm-tags"><span>香脆可口</span><em>(1488)</em></q>
-                                        <q class="comm-tags"><span>个个开口</span><em>(1392)</em></q>
-                                        <q class="comm-tags"><span>价格便宜</span><em>(1119)</em></q>
-                                        <q class="comm-tags"><span>特价买的</span><em>(865)</em></q>
-                                        <q class="comm-tags"><span>皮很薄</span><em>(831)</em></q>
-                                    </dd>
-                                </dl>
-                            </div>
-                            <div class="clear"></div>
-                            <div class="tb-r-filter-bar">
-                                <ul class=" tb-taglist am-avg-sm-4">
-                                    <li class="tb-taglist-li tb-taglist-li-current">
-                                        <div class="comment-info">
-                                            <span>全部评价</span>
-                                            <span class="tb-tbcr-num">(32)</span>
-                                        </div>
-                                    </li>
-                                    <li class="tb-taglist-li tb-taglist-li-1">
-                                        <div class="comment-info">
-                                            <span>好评</span>
-                                            <span class="tb-tbcr-num">(32)</span>
-                                        </div>
-                                    </li>
-                                    <li class="tb-taglist-li tb-taglist-li-0">
-                                        <div class="comment-info">
-                                            <span>中评</span>
-                                            <span class="tb-tbcr-num">(32)</span>
-                                        </div>
-                                    </li>
-                                    <li class="tb-taglist-li tb-taglist-li--1">
-                                        <div class="comment-info">
-                                            <span>差评</span>
-                                            <span class="tb-tbcr-num">(32)</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="clear"></div>
-                            <ul class="am-comments-list am-comments-list-flip">
-                                @foreach($comment as $v)
-                                <li class="am-comment">
-                                    <!-- 评论容器 -->
-                                    <a href="">
+                                <div class="clear"></div>
+                                <ul class="am-comments-list am-comments-list-flip">
+                                    @foreach($comment as $v)
+                                    <li class="am-comment">
+                                        <!-- 评论容器 -->
+                                        <a href="">
                                                 <img class="am-comment-avatar" src="{{$v->user->image}}" />
                                                 <!-- 评论者头像 -->
                                             </a>
-                                    <div class="am-comment-main">
-                                        <!-- 评论内容容器 -->
-                                        <header class="am-comment-hd">
-                                            <!--<h3 class="am-comment-title">评论标题</h3>-->
-                                            <div class="am-comment-meta">
-                                                <!-- 评论元数据 -->
-                                                <a href="#link-to-user" class="am-comment-author">{{$v->user->uname}}</a>
-                                                <!-- 评论者 -->
-                                                评论于
-                                                <time datetime="">{{$v['created_at']}}</time>
-                                            </div>
-                                        </header>
-                                        <div class="am-comment-bd">
-                                            <div class="tb-rev-item " data-id="255776406962">
-                                                <div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-                                                    {{$v['content']}}
+                                        <div class="am-comment-main">
+                                            <!-- 评论内容容器 -->
+                                            <header class="am-comment-hd">
+                                                <!--<h3 class="am-comment-title">评论标题</h3>-->
+                                                <div class="am-comment-meta">
+                                                    <!-- 评论元数据 -->
+                                                    <a href="#link-to-user" class="am-comment-author">{{$v->user->uname}}</a>
+                                                    <!-- 评论者 -->
+                                                    评论于
+                                                    <time datetime="">{{$v['created_at']}}</time>
                                                 </div>
-                                                <div class="tb-r-act-bar">
-                                                    商品口味：
+                                            </header>
+                                            <div class="am-comment-bd">
+                                                <div class="tb-rev-item " data-id="255776406962">
+                                                    <div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+                                                        {{$v['content']}}
+                                                    </div>
+                                                    <div class="tb-r-act-bar">
+                                                        商品口味：
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <!-- 评论内容 -->
                                         </div>
-                                        <!-- 评论内容 -->
-                                    </div>
-                                </li>
-                                @endforeach
-                            </ul>
-                            <div class="clear"></div>
-                            <!--分页 -->
-                            <ul class="am-pagination am-pagination-right">
-                                <li class="am-disabled"><a href="#">&laquo;</a></li>
-                                <li class="am-active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">&raquo;</a></li>
-                            </ul>
-                            <div class="clear"></div>
-                            <div class="tb-reviewsft">
-                                <div class="tb-rate-alert type-attention">购买前请查看该商品的 <a href="#" target="_blank">购物保障</a>，明确您的售后保障权益。</div>
-                            </div>
-                        </div>
-                        <div class="am-tab-panel am-fade">
-                            <div class="like">
-                                <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
-                                    @if(!empty($shop->cate) && !empty($shop->cate->shops())) @foreach($shop->cate->shops()->take(8)->get() as $v)
-                                    <li>
-                                        <a href="/{{$v['id']}}.html">
-                                            <div class="i-pic limit">
-                                                <img src="{{$v['simage']}}" />
-                                                <p>{{$v['sname']}}</p>
-                                                <p class="price fl">
-                                                    <b>¥</b>
-                                                    <strong>{{$v['sprice']}}</strong>
-                                                </p>
-                                            </div>
-                                        </a>
                                     </li>
-                                    @endforeach @endif
+                                    @endforeach
                                 </ul>
+                                <div class="clear"></div>
+                                <!--分页 -->
+                                <ul class="am-pagination am-pagination-right">
+                                    <li class="am-disabled"><a href="#">&laquo;</a></li>
+                                    <li class="am-active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li><a href="#">&raquo;</a></li>
+                                </ul>
+                                <div class="clear"></div>
+                                <div class="tb-reviewsft">
+                                    <div class="tb-rate-alert type-attention">购买前请查看该商品的 <a href="#" target="_blank">购物保障</a>，明确您的售后保障权益。</div>
+                                </div>
                             </div>
-                            <div class="clear"></div>
-                            <!--分页 -->
-                            <ul class="am-pagination am-pagination-right">
-                                <li class="am-disabled"><a href="#">&laquo;</a></li>
-                                <li class="am-active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">&raquo;</a></li>
-                            </ul>
-                            <div class="clear"></div>
+                            <div class="am-tab-panel am-fade">
+                                <div class="like">
+                                    <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
+                                        @if(!empty($shop->cate) && !empty($shop->cate->shops())) @foreach($shop->cate->shops()->take(8)->get() as $v)
+                                        <li>
+                                            <a href="/{{$v['id']}}.html">
+                                                <div class="i-pic limit">
+                                                    <img src="{{$v['simage']}}" />
+                                                    <p>{{$v['sname']}}</p>
+                                                    <p class="price fl">
+                                                        <b>¥</b>
+                                                        <strong>{{$v['sprice']}}</strong>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        @endforeach @endif
+                                    </ul>
+                                </div>
+                                <div class="clear"></div>
+                                <!--分页 -->
+                                <ul class="am-pagination am-pagination-right">
+                                    <li class="am-disabled"><a href="#">&laquo;</a></li>
+                                    <li class="am-active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li><a href="#">&raquo;</a></li>
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="clear"></div>
-                <script>
-                setTimeout(function() {
-                    $('#xiaoshi').css('display', 'none');
-                }, 2000);
-                </script>
-                @include('layouts.home._footer')
+                    <div class="clear"></div>
+                    <script>
+                    setTimeout(function() {
+                        $('#xiaoshi').css('display', 'none');
+                    }, 2000);
+                    </script>
+                    <code class="language-java"><script type="text/javascript">  
+         
+       var productID = ${requestScope.productID};  
+       var userID = ${requestScope.userID};  
+       function addbtn(){  
+            $("#shoucang").addClass('icon-shoucang1').removeClass('icon-shoucang');  
+            $("#btn").text('已收藏');  
+        };  
+          
+        function dedlebtn(){  
+            $("#btn").text('收藏');  
+            $("#shoucang").addClass('icon-shoucang').removeClass('icon-shoucang1');  
+        };  
+          
+        $(document).ready(function () {  
+        if (${message.type} == 0){  
+                dedlebtn();  
+            }else{  
+                addbtn();  
+            }  
+        });  
+        $("#mir").click(function() {  
+            if ($("#btn").text() == '收藏' ) {  
+                $("#shoucang").addClass('icon-shoucang1').removeClass('icon-shoucang');  
+                $("#btn").text('已收藏');  
+            } else {  
+                $("#btn").text('收藏');  
+                $("#shoucang").addClass('icon-shoucang').removeClass('icon-shoucang1');  
+            }  
+            if($("#btn").text() == '收藏'){  
+                deleteCollection(productID,userID);  
+            }  
+            else{  
+                addUserCollection(productID,userID);  
+                  
+            }  
+        });  
+         
+  
+        function addUserCollection(productID){  
+            $.ajax({  
+                type: "POST",  
+                url: "collection.do",  
+                data:{"productID":productID,"userID":userID},  
+                dataType: "text",  
+                success:function(data){  
+                    if(data=="1"){  
+                        $("#shoucang").addClass('icon-shoucang1').removeClass('icon-shoucang');  
+                        $("#btn").text('已收藏');  
+                          
+                    }else{  
+                        $("#btn").text('收藏');  
+                        $("#shoucang").addClass('icon-shoucang').removeClass('icon-shoucang1');  
+                    }  
+  
+                }  
+            })  
+        }  
+  
+        function deleteCollection(productID,userID){  
+            $.ajax({  
+                type: "POST",  
+                url: "deleteUcByUPId.do",  
+                data:{"productID":productID,"userID":userID},  
+                dataType: "text",  
+                success:function(data){  
+                    if(data=="1"){  
+                        $("#btn").text('收藏');  
+                        $("#shoucang").addClass('icon-shoucang').removeClass('icon-shoucang1');  
+                    }else{  
+                        $("#shoucang").addClass('icon-shoucang1').removeClass('icon-shoucang');  
+                        $("#btn").text('已收藏');  
+  
+                    }  
+  
+                }  
+            })  
+        }  
+         
+    </script>  
+  
+</code>  
+
+
+
+                    @include('layouts.home._footer')
