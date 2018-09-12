@@ -10,7 +10,7 @@ class Pack extends Model
 
      public function shop()
     {
-        return $this->hasMany('App\shop');
+        return $this->hasMany('App\Shop');
     }
 
     
