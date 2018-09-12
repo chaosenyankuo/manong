@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             $table->integer('zhifu_id')->comment('支付ID')->nullable();
             $table->integer('liuyan')->comment('买家留言')->nullable();
             $table->integer('zhuangtai')->comment('订单状态')->nullable();
+            $table->integer('shuliang')->comment('商品数量')->nullable();
             $table->timestamps();
         });
     }

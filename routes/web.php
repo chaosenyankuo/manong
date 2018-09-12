@@ -161,6 +161,9 @@ Route::resource('shopcar','ShopCarController');
 //收藏管理
 Route::resource('collect','CollectController');
 
+//加入订单
+Route::get('/home/dingdan/{id}','DingdanController@tianjia');
+
 //订单保存
 Route::post('/home/dingdan','DingdanController@baocun');
 

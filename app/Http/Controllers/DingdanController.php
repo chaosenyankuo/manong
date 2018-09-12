@@ -84,16 +84,6 @@ class DingdanController extends Controller
      */
     public function show(Request $req, $id)
     {
-        $shopcar = Shopcar::where('user_id',$id)->get();
-        $uaddress = Uaddress::where('user_id',$id)->get();
-        $shuliang = $req->shuliang;
-        $shop_id = $req->shop_id;
-        $wuliu = Wuliu::all();
-        $zhifu = Zhifu::all();
-        $links = Link::all();
-        $shops = Shop::all();
-
-        return view('home/dingdan/create',compact('id','shopcar','shop_id','shops','shuliang','uaddress','uadd','wuliu','zhifu','links'));
 
     }
 
@@ -159,6 +149,24 @@ class DingdanController extends Controller
             return back()->with('error','删除失败');
         }
     }
+
+    /**
+     * 前台订单添加
+     */
+    public function tianjia(Request $req, $id)
+    {
+        $shopcar = Shopcar::where('user_id',$id)->get();
+        $uaddress = Uaddress::where('user_id',$id)->get();
+        $shuliang = $req->shuliang;
+        $shop_id = $req->shop_id;
+        $wuliu = Wuliu::all();
+        $zhifu = Zhifu::all();
+        $links = Link::all();
+        $shops = Shop::all();
+
+        return view('home/dingdan/create',compact('id','shopcar','shop_id','shops','shuliang','uaddress','uadd','wuliu','zhifu','links'));
+    }
+
 
     /**
      * 前台保存订单
