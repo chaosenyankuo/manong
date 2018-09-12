@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Favorite;
+use App\Shop;
 
 class FavoriteController extends Controller
 {
@@ -80,5 +82,11 @@ class FavoriteController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function shoucang($id)
+    {
+        
+        
     }
 }

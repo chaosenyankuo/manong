@@ -51,7 +51,7 @@
                     
                         <div class="filePic">
                             <input type="file" class="inputPic" name="image" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
-                            <img class="am-circle am-img-thumbnail" src="{{$users['image']}}" name="image" alt="" />
+                            <img class="am-circle am-img-thumbnail" src="{{$user['image']}}" name="image" alt="" />
                         </div>
                         <p class="am-form-help">头像</p>
                        
@@ -62,7 +62,7 @@
                             <div class="am-form-group">
                                 <label for="user-name2" class="am-form-label">昵称</label>
                                 <div class="am-form-content">
-                                    <input type="text" id="user-name2" value="{{$users['nickname']}}" name="nickname">
+                                    <input type="text" id="user-name2" value="{{$user['nickname']}}" name="nickname">
                                 </div>
                             </div>
                             <div class="am-form-group">
@@ -70,21 +70,21 @@
                                 <div class="am-form-content sex">
                                     <label class="am-radio-inline">
                                         <input type="radio" name="sex" value="1" data-am-ucheck
-                                        @if($users['sex'] == 1)
+                                        @if($user['sex'] == 1)
                                         checked
                                         @endif
                                         > 男
                                     </label>
                                     <label class="am-radio-inline">
                                         <input type="radio" name="sex" value="2" data-am-ucheck
-                                         @if($users['sex'] == 2)
+                                         @if($user['sex'] == 2)
                                         checked
                                         @endif
                                         > 女
                                     </label>
                                     <label class="am-radio-inline">
                                         <input type="radio" name="sex" value="3" data-am-ucheck
-                                         @if($users['sex'] == 3)
+                                         @if($user['sex'] == 3)
                                         checked
                                         @endif> 保密
                                     </label>
@@ -94,13 +94,13 @@
                             <div class="am-form-group">
                                 <label for="user-phone" class="am-form-label">电话</label>
                                 <div class="am-form-content">
-                                    <input id="user-phone" name="phone" value="{{$users['phone']}}" type="tel">
+                                    <input id="user-phone" name="phone" value="{{$user['phone']}}" type="tel">
                                 </div>
                             </div>
                             <div class="am-form-group">
                                 <label for="user-email" class="am-form-label">电子邮件</label>
                                 <div class="am-form-content">
-                                    <input id="user-email" value="{{$users['email']}}" name="email" type="email">
+                                    <input id="user-email" value="{{$user['email']}}" name="email" type="email">
                                 </div>
                             </div>
 

@@ -54,18 +54,21 @@ class ShopCarController extends Controller
         $shopcar = new Shopcar;
         $shopcar->shop_id = $request->shop_id;
         $uid = \Session::get('id');
+        $user = User::findOrFail($uid);
         $shopcar->user_id = $uid;
         $shopcar->address = $request->sheng.'-'.$request->shi.'-'.$request->xian;
         $shopcar->flavor_id = $request->flavor_id;
         $shopcar->pack_id = $request->pack_id;
         $shopcar->shuliang = $request->shuliang;
-
+        if($uid == null){
+            return back()->with('error','请先登录!!');
+        }
         if(!$shopcar->flavor_id){
-            return back()->with('error','请选择口味');
+            return back()->with('error','请选择口味!!');
         }
 
         if(!$shopcar->pack_id){
-            return back()->with('error','请选择包装');
+            return back()->with('error','请选择包装!!');
         }
         
         if($shopcar->save()){

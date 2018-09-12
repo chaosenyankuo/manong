@@ -4,7 +4,7 @@
             <div class="menu-hd">
 
                 @if(Session::has('nickname'))
-                <a href="/home/index" target="_top" class="h">你好: {{Session::get('nickname')}}</a>
+                <a href="/home/index" target="_top" class="h">你好: {{$user['nickname']}}</a>
                 <a href="/home/logout">&nbsp;&nbsp;&nbsp;退出</a> @endif @if(!Session::has('nickname'))
 
                 <a href="/home/login" target="_top" class="h">请登录</a>

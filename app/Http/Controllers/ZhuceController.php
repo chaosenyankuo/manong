@@ -17,7 +17,6 @@ class ZhuceController extends Controller
     	$setting = Setting::first();
     	return view('home.zhuce.zhuce',['links' => $links,'setting'=>$setting]);
     }
-
       public function store(Request $request)
     {
        	$users = new User; 
@@ -37,12 +36,10 @@ class ZhuceController extends Controller
             return back()->with('error','注册失败');
         }        
     }
-
     //忘记密码
     public function wjma()
     {	$links = Link::all();
     	$setting = Setting::first();
     	return view('home.zhuce.wjma',['links' => $links,'setting'=>$setting]);
-
     }
 }

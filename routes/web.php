@@ -152,9 +152,12 @@ Route::post('/home/dzupdate/{id}','GrzxController@dzupdate');
 //删除收货地址
 Route::get('/home/dzsc/{id}','GrzxController@dzsc');
 
-//收藏
-Route::get('/home/sc','GrzxController@sc');
-//前台末尾
+//加入收藏夹
+Route::get('shoucang/{id}.html','FavoriteController@shoucang');
+
+
+
+
 
 
 
