@@ -25,5 +25,6 @@ class DatabaseSeeder extends Seeder
         $this->call(OrderTableSeeder::class);
         $this->call(ComTableSeeder::class);
         $this->call(FlavorsTableSeeder::class);
+        $this->call(ZhuangtaiTableSeeder::class);
     }
 }

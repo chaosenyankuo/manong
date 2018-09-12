@@ -16,14 +16,12 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('wuliu_id')->comment('物流id')->nullable();
-            $table->integer('shop_id')->comment('商品id')->nullable();
             $table->string('uaddress_id')->comment('收货地址ID')->nullable();
             $table->string('order_bh')->comment('订单编号')->nullable();
             $table->integer('user_id')->comment('用户ID')->nullable();
             $table->integer('zhifu_id')->comment('支付ID')->nullable();
-            $table->integer('liuyan')->comment('买家留言')->nullable();
+            $table->string('liuyan')->comment('买家留言')->nullable();
             $table->integer('zhuangtai')->comment('订单状态')->nullable();
-            $table->string('shuliang')->comment('商品数量')->nullable();
             $table->timestamps();
         });
     }

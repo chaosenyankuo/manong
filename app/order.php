@@ -31,6 +31,11 @@ class Order extends Model
 
     public function shop()
     {
-        return $this->belongsTo('App\Shop');
+        return $this->belongsToMany('App\Shop');
+    }
+
+    public function order_shop()
+    {
+        return $this->hasMany('App\Order_shop');
     }
 }

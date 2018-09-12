@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Link;
 use App\Order;
+use App\Order_shop;
 use App\Setting;
 use App\Shop;
 use App\Shopcar;
@@ -185,25 +186,29 @@ class DingdanController extends Controller
             return back()->with('error','请选择收货地址');
         }
         $order_bh = rand(100,999);
+
+        $dd = new Order;
+        $dd -> zhuangtai = 1;
+        $dd -> wuliu_id = $req -> wuliu_id;
+        $dd -> uaddress_id = $req -> uaddress_id;
+        $dd -> order_bh = $order_bh;
+        $dd -> user_id = \Session::get('id');
+        $dd -> zhifu_id = $req -> zhifu_id;
+        
+        $a = $dd->save();
+
         foreach($req-> shop_id as $k=>$v){
-            $dd = new Order;
-
-            $dd -> zhuangtai = 1;
-            $dd -> wuliu_id = $req -> wuliu_id;
-            $dd -> shop_id = $v; //数组
-            $dd -> uaddress_id = $req -> uaddress_id;
-            $dd -> order_bh = $order_bh;
-            $dd -> user_id = \Session::get('id');
-            $dd -> zhifu_id = $req -> zhifu_id;
-            $dd -> shuliang = ($req -> shuliang)[$k];
-
-            $a = $dd->save();
-
-            $shopcar = Shopcar::where('user_id',\Session::get('id'))->where('shop_id',$v)->delete();
-
+            $ddd = Order::where('user_id',\Session::get('id'))->where('order_bh',$order_bh)->take(1)->get();
+            $os = new Order_shop;
+            $os -> order_id = $ddd[0]->id;
+            $os -> shop_id = $v;
+            $os -> shuliang = ($req -> shuliang)[$k];
+            $os -> save();
         }
 
-        if($a && $shopcar){
+        $shopcar = Shopcar::where('user_id',\Session::get('id'))->where('shop_id',$v)->delete();
+
+        if($a && $os && $shopcar){
             return redirect('/home/dingdan')->with('success','生成订单成功');
         }else{
             return back()->with('error','生成订单失败');
@@ -224,9 +229,12 @@ class DingdanController extends Controller
         //待收货
         $order4 = Order::where('zhuangtai','4')->where('user_id',\Session::get('id'))->get();
 
+        $os1 = Order_shop::where('order_id',$order1[0]->id)->get();
+        // dd($order1[1]->shop);
+
         $links = Link::all();
         $setting = Setting::first();
-        return view('home/grzx/order',compact('order1','order2','order3','order4','links','setting'));
+        return view('home/grzx/order',compact('order1','order2','order3','order4','os1','links','setting'));
     }
 }
 

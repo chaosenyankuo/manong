@@ -203,11 +203,7 @@
     <!-- 结算 -->
     <script>
     $('.asd').click(function(){
-        if($('#label').hasClass('mark')){     
-            $('.qwe').submit();       
-        }else{          
-            return false;      
-        }
+        $('.qwe').submit();
     });    
     </script>
     @include('layouts.home._footer')
