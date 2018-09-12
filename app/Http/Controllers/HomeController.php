@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Cate;
 use App\Link;
+use App\Lunbotu;
 use App\Setting;
 use App\Shop;
 use App\Shopcar;
 use App\Tag;
 use App\User;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -76,8 +76,9 @@ class HomeController extends Controller
         
     	$a = 1;
     	$cid = Cate::pluck('id');
+        $lunbotu = Lunbotu::all()->take(4);
 
-    	return view('home',compact('cates','tags','links','recom','shops','a','cid','user'));
+    	return view('home',compact('cates','tags','links','recom','shops','a','cid','user','lunbotu'));
     }
 
 

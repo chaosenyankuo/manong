@@ -30,6 +30,8 @@ class ShopController extends Controller
         $shops = Shop::orderBy('id','desc')
             ->where('sname','like','%'.request()->keywords.'%')
             ->paginate(5);
+        $user = User::findOrFail(\Session::get('id'));
+        
         return view('admin.shop.index',compact('shops','cates','tags','flavors','user'));
     }
 

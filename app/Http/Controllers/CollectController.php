@@ -36,7 +36,7 @@ class CollectController extends Controller
         $shop = Shop::all();
         foreach($cates as $v)
          { 
-            dd($cates->shops);
+            
          }
         return view('admin.collect.create',compact('users','cates','shop'));
     }

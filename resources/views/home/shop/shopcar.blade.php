@@ -149,7 +149,7 @@
                             <li class="list_amount">
                                 <div class="amount_box">
                                     <a href="javascript:;" class="reduce reSty">-</a>
-                                    <input type="text" name="shuliang" value="{{$shopcar[$k]->shuliang}}" class="sum">
+                                    <input type="text" name="shuliang[]" value="{{$shopcar[$k]->shuliang}}" class="sum">
                                     <a href="javascript:;" class="plus">+</a>
                                 </div>
                             </li>

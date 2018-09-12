@@ -113,7 +113,7 @@
                         </li>
                         <li class="tb">
                             <div class="tb-pic tb-s40">
-                                <a href="#"><img src="{{$shop['simage2']}}" width="100" mid="{{$shop['simage2']}}" data-big="{{$shop['simage2']}}"></a>
+                                <a href="#"><img src="{{$shop['simage2']}}" width="100" mid="{{$shop['simage2']}}" big="{{$shop['simage2']}}"></a>
                             </div>
                         </li>
                     </ul>
@@ -214,7 +214,9 @@
                                         <div class="theme-signin-left">
                                             <div class="theme-options">
                                                 <div class="cart-title">口味</div>
-                                                <ul>&nbsp; @foreach($flavor as $v) @if(in_array($v->id,$shop->flavors->pluck('id')->toArray()))
+                                                <ul>&nbsp; 
+                                                    @foreach($flavor as $v) 
+                                                    @if(in_array($v->id,$shop->flavors->pluck('id')->toArray()))
                                                     <li class="sku-line">
                                                         <input type="radio" name="flavor_id" value="{{$v['id']}}">{{$v['fname']}}
                                                     </li>
@@ -223,10 +225,12 @@
                                             </div>
                                             <div class="theme-options">
                                                 <div class="cart-title">包装</div>
-                                                <ul>
+                                                <ul>&nbsp;
                                                     @foreach($pack as $v)
+                                                    @if(in_array($v->id,$shop->packs->pluck('id')->toArray()))
                                                     <li class="sku-line">
                                                         <input type="radio" name="pack_id" value="{{$v['id']}}">{{$v['pname']}}</li>
+                                                    @endif
                                                     @endforeach
                                                 </ul>
                                             </div>
@@ -241,9 +245,9 @@
                                                 <script>
                                                 $('input[name=shuliang]').change(function() {
                                                     var a = $('input[name=shuliang]').val();
-                                                    if (a > { { $shop['scount'] } }) {
+                                                    if (a > {{$shop['scount']}}) {
                                                         alert('对不起,库存不足');
-                                                        $('input[name=shuliang]').val({ { $shop['scount'] } });
+                                                        $('input[name=shuliang]').val({{$shop['scount']}});
                                                     };
                                                 });
                                                 </script>
@@ -270,10 +274,10 @@
                         <div class="clear"></div>
                     </div>
                     {{csrf_field()}}
-                    <div class="pay" style="position:relative;top:-120px;left:600px;">
+                    <div class="pay" style="position:relative;top:-80px;left:600px;">
                         <li>
                             <div class="clearfix theme-login">
-                                <input title="加入购物车" type="submit" value="加入购物车" style="width:98px;border:1px solid #F03726;background-color:#F03726;color:white;height:35px;z-index:100;"><i></i>
+                                <input title="加入购物车" type="submit" value="加入购物车" style="width:98px;border:1px solid #F03726;background-color:#F03726;color:white;height:35px;"><i></i>
                             </div>
                             </dd>
                             </dl>

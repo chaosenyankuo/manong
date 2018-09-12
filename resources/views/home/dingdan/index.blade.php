@@ -302,17 +302,17 @@
                                         <p class="buy-footer-address">
                                             <span class="buy-line-title buy-line-title-type">寄送至：</span>
                                             <span class="buy--address-detail">
-    								            <span class="province 1">湖北</span>省
-                                                <span class="city 2">武汉</span>市
-                                                <span class="dist 3">洪山</span>区
-                                                <span class="street 4">雄楚大道666号(中南财经政法大学)</span>
+    								            <span class="province 1">XX</span>省
+                                                <span class="city 2">XX</span>市
+                                                <span class="dist 3">XX</span>区
+                                                <span class="street 4">XXXXXX</span>
                                             </span>
                                             </span>
                                         </p>
                                         <p class="buy-footer-address">
                                             <span class="buy-line-title">收货人：</span>
                                             <span class="buy-address-detail">   
-                                         <span class="buy-user 5">艾迪 </span>
+                                         <span class="buy-user 5">XX </span>
                                             <span class="buy-phone 6">15871145629</span>
                                             </span>
                                         </p>

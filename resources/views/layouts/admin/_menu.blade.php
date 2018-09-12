@@ -75,5 +75,10 @@
     </a>
 </li>
 <li>
+    <a href="/lunbotu" class="waves-effect waves-dark">
+        <i class="fa fa-sitemap"></i> 轮播图管理
+    </a>
+</li>
+<li>
     <a href="/admin/setting" class="waves-effect waves-dark"><i class="fa fa-edit"></i>网站设置</a>
 </li>
