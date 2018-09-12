@@ -123,7 +123,7 @@
                 </ul>
             </div>
             <div class="cartBox">
-                <form action="/dingdan/{{session('id')}}" method="get" class="qwe">
+                <form action="/home/dingdan/{{session('id')}}" method="get" class="qwe">
                     <div class="order_content">
                         <?php $i= 0; ?> 
                         @foreach($shop_id as $k => $v)
