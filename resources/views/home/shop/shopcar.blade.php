@@ -121,7 +121,7 @@
                 </ul>
             </div>
             <div class="cartBox">
-                <form action="/dingdan/{{session('id')}}" method="get" class="qwe">
+                <form action="/home/dingdan/{{session('id')}}" method="get" class="qwe">
                     <div class="order_content">
                         <?php $i= 0; ?> 
                         @foreach($shop_id as $k => $v)
@@ -201,11 +201,7 @@
     <!-- 结算 -->
     <script>
     $('.asd').click(function(){
-        if($('#label').hasClass('mark')){     
-            $('.qwe').submit();       
-        }else{          
-            return false;      
-        }
+        $('.qwe').submit();
     });    
     </script>
     @include('layouts.home._footer')

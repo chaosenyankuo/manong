@@ -11,10 +11,6 @@
 |
 */
 
-
-
-
-
 //登陆页面
 Route::get('/admin/login', 'AdminController@login');
 
@@ -155,6 +151,9 @@ Route::get('shoucang/{id}.html','FavoriteController@shoucang');
 
 //购物车管理
 Route::resource('shopcar','ShopCarController');
+
+//加入订单
+Route::get('/home/dingdan/{id}','DingdanController@tianjia');
 
 //订单保存
 Route::post('/home/dingdan','DingdanController@baocun');
