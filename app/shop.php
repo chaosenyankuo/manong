@@ -29,7 +29,7 @@ class Shop extends Model
     //n商品对n口味
     public function flavors()
     {
-        return $this->belongsToMany('App\flavor');
+        return $this->belongsToMany('App\Flavor');
     }
 
     //n商品对n用户
@@ -60,5 +60,10 @@ class Shop extends Model
     public function order_shop()
     {
         return $this->hasMany('App\Order_shop');
+    }
+
+    public function collect()
+    {
+        return $this->hasMany('App\Shop');
     }
 }

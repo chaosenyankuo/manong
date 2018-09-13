@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Favorite;
-use App\Shop;
 
-class FavoriteController extends Controller
+class Wzkgcontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,6 +14,7 @@ class FavoriteController extends Controller
     public function index()
     {
         //
+         return view('admin.wzkg.index');
     }
 
     /**
@@ -37,6 +36,16 @@ class FavoriteController extends Controller
     public function store(Request $request)
     {
         //
+         $path = 'E:/XAMPP/htdocs/food/food/storage/framework/down';
+        if(!is_file($path))
+        {
+            File::copy('E:/XAMPP/htdocs/food/food/storage/framework/adown', 'E:/XAMPP/htdocs/food/food/storage/framework/down');
+            
+            return redirect('/wzkg')->with('success','网站关闭成功!!!');
+        }
+            return back()->with('error','网站已经关闭,别点我了!!!');
+            return view('admin.wzkg.index');
+           
     }
 
     /**
@@ -82,11 +91,5 @@ class FavoriteController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function shoucang($id)
-    {
-        
-        
     }
 }

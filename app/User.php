@@ -54,4 +54,15 @@ class User extends Authenticatable
 
     }
 
+
+    public function yjfk()
+    {
+        return $this->hasMany('App\Yjfk');
+    }
+
+    public function collect()
+    {
+        return $this->hasMany('App\Collect');
+    }
+
 }
