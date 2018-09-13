@@ -38,7 +38,7 @@
                     <li class="index"><a href="/">首页</a></li>
                 </ul>
                 <div class="nav-extra">
-                    <i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
+                    <a href="/fuli"><i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利</a>
                     <i class="am-icon-angle-right" style="padding-left: 10px;"></i>
                 </div>
             </div>
@@ -188,7 +188,7 @@
                     <li><a target="_blank" href="#"><span>[公告]</span>华北、华中部分地区配送延迟</a></li>
                     <li><a target="_blank" href="#"><span>[特惠]</span>家电狂欢千亿礼券 买1送1！</a></li>
                     </ul>
-                    <div class="advTip"><img src="/home/images/advTip.jpg" /></div>
+                    <div class="advTip"><a href="/{{$v->id}}.html"><img src="{{$lunbotu[0]['pic']}}" width="220px" height="88px"/></a></div>
                 </div>
             </div>
             <div class="clear"></div>

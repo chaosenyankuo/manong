@@ -39,7 +39,7 @@
                                 <input id="email" type="text" class="validate" name="banquan" value="{{$setting['banquan']}}">
                             </div>
                         </div>
-                        <div class="input-field col s6">
+                       <!--  <div class="input-field col s6">
                             <label>网站开关</label>
                             <p style="margin-left:100px">
                                 <input type="radio" value="1" id="test3" name="close" @if($setting[ 'close']==1 ) checked @endif>
@@ -48,7 +48,7 @@
                                 <input name="close" type="radio" value="0" id="test2" @if($setting[ 'close']==0 ) checked @endif>
                                 <label for="test2">关</label>
                             </p>
-                        </div>
+                        </div> -->
                         {{csrf_field()}}
                         <button class="waves-effect waves-light btn" style="margin-left:450px">提交</button>
                     </form>

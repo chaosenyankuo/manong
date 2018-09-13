@@ -36,6 +36,8 @@ Route::group(['middleware'=>'login'],function(){
 	Route::get('/admin/setting', 'AdminController@setting');
 	Route::post('/admin/setting', 'AdminController@update');
 
+	//网站开关
+	Route::resource('/wzkg','Wzkgcontroller');
 	//物流管理
 	Route::resource('wuliu', 'WuliuController');
 
@@ -80,6 +82,9 @@ Route::group(['middleware'=>'login'],function(){
 
 	//轮播图
 	Route::resource('lunbotu','LunbotuController');
+	//优惠卷
+	Route::resource('yhj','YhjController');
+
 		
 });
 /*
@@ -106,6 +111,8 @@ Route::post('/home/dologin', 'HomeController@dologin');
 //前台退出登录
 Route::get('/home/logout','HomeController@logout');
 
+//我的福利
+Route::get('/fuli','FuliController@fuli');
 //个人中心
 Route::get('/home/index','GrzxController@index');
 
@@ -165,5 +172,6 @@ Route::get('/home/dingdan','DingdanController@list');
 Route::get('/home/cun','CollectController@cun');
 Route::get('/home/collect','CollectController@zhanshi');
 Route::get('/home/delete','CollectController@delete');
+
 
 
