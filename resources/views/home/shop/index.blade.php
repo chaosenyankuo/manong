@@ -229,7 +229,8 @@
                                                     @foreach($pack as $v)
                                                     @if(in_array($v->id,$shop->packs->pluck('id')->toArray()))
                                                     <li class="sku-line">
-                                                        <input type="radio" name="pack_id" value="{{$v['id']}}">{{$v['pname']}}</li>
+                                                        <input type="radio" name="pack_id" value="{{$v['id']}}">{{$v['pname']}}
+                                                    </li>
                                                     @endif
                                                     @endforeach
                                                 </ul>
@@ -282,7 +283,7 @@
                         </li>
                         <li>
                             <div class="clearfix tb-btn tb-btn-buy theme-login">
-                                <a id="shou" title="点此按钮加入收藏夹" href="" style="width:98px;border:1px solid #F03726;background-color:#F03726;color:white;height:35px;">加入收藏夹</a>
+                                <a id="shou" title="点此按钮加入收藏夹" href="/home/cun?shop_id={{$shop['id']}}&&user_id={{session::get('id')}}" style="width:98px;border:1px solid #F03726;background-color:#F03726;color:white;height:35px;">加入收藏夹</a>
                             </div>
                         </li>
                     </div>

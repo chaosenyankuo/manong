@@ -18,7 +18,7 @@
             <div class="mt-logo">
                 <!--顶部导航条 -->
                 @include('layouts.home._top')
-                </div>
+            </div>
             </div>
         </article>
     </header>
@@ -46,7 +46,6 @@
                             <div class="m-bg"></div>
                             <div class="m-userinfo">
                                 <div class="m-baseinfo">
-
                                     <a href="/home/grxx">
 
                                             <img src="{{$user['image']}}">
@@ -54,17 +53,10 @@
                                         </a>
                                     <em class="s-name">{{$user['nickname']}}<span class="vip1"></em>
                                     <div class="s-prestige am-btn am-round">
-                                    @if($user->qx == '1')
-                                        管理员
-                                    @elseif($user->qx == '2')
-                                        银牌会员
-                                    @else
-                                        金牌会员
-                                    @endif
-                                    </div>       
+                                        @if($user->qx == '1') 管理员 @elseif($user->qx == '2') 银牌会员 @else 金牌会员 @endif
+                                    </div>
                                 </div>
                                 <div class="m-right">
-
                                     <div class="m-address">
                                         <a href="/home/shdz" class="i-trigger">我的收货地址</a>
                                     </div>
@@ -228,49 +220,26 @@
                         <!--收藏夹 -->
                         <div class="you-like">
                             <div class="s-bar">我的收藏
-                                <a class="am-badge am-badge-danger am-round">降价</a>
-                                <a class="am-badge am-badge-danger am-round">下架</a>
-                                <a class="i-load-more-item-shadow" href="#"><i class="am-icon-refresh am-icon-fw"></i>换一组</a>
                             </div>
                             <div class="s-content">
+                                @foreach($collects as $v)
                                 <div class="s-item-wrap">
                                     <div class="s-item">
                                         <div class="s-pic">
-                                            <a href="#" class="s-pic-link">
-                                                    <img src="/home/images/0-item_pic.jpg_220x220.jpg" alt="包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰" title="包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰" class="s-pic-img s-guess-item-img">
-                                                </a>
+                                            <a href="/{{$v->shop->id}}.html" class="s-pic-link">
+                                                <img src="{{$v->shop->simage}}" alt="商品图片" width="80" title=""" class="s-pic-img s-guess-item-img">
+                                            </a>
                                         </div>
-                                        <div class="s-price-box">
-                                            <span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">42.50</em></span>
-                                            <span class="s-history-price"><em class="s-price-sign">¥</em><em class="s-value">68.00</em></span>
-                                        </div>
-                                        <div class="s-title"><a href="#" title="包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰">包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰</a></div>
-                                        <div class="s-extra-box">
-                                            <span class="s-comment">好评: 98.03%</span>
-                                            <span class="s-sales">月销: 219</span>
+                                        <div class="s-info">
+                                            <div class="s-title"><a href="/{{$v->shop->id}}.html">{{$v->shop->sname}}</a></div>
+                                            <div class="s-price-box">
+                                                <span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">{{$v->shop->sprice}}</em></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="s-item-wrap">
-                                    <div class="s-item">
-                                        <div class="s-pic">
-                                            <a href="#" class="s-pic-link">
-                                                    <img src="/home/images/-0-saturn_solar.jpg_220x220.jpg" alt="4折抢购!十二生肖925银女戒指,时尚开口女戒" title="4折抢购!十二生肖925银女戒指,时尚开口女戒" class="s-pic-img s-guess-item-img">
-                                                </a>
-                                        </div>
-                                        <div class="s-price-box">
-                                            <span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">378.00</em></span>
-                                            <span class="s-history-price"><em class="s-price-sign">¥</em><em class="s-value">1888.00</em></span>
-                                        </div>
-                                        <div class="s-title"><a href="#" title="4折抢购!十二生肖925银女戒指,时尚开口女戒">4折抢购!十二生肖925银女戒指,时尚开口女戒</a></div>
-                                        <div class="s-extra-box">
-                                            <span class="s-comment">好评: 99.93%</span>
-                                            <span class="s-sales">月销: 278</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
-                            <div class="s-more-btn i-load-more-item" data-screen="0"><i class="am-icon-refresh am-icon-fw"></i>更多</div>
                         </div>
                     </div>
                 </div>
@@ -297,33 +266,18 @@
                     <!--新品 -->
                     <div class="new-goods">
                         <div class="s-bar">
-                            <i class="s-icon"></i>今日新品
-                            <a class="i-load-more-item-shadow">15款新品</a>
-                        </div>
-                        <div class="new-goods-info">
-                            <a class="shop-info" href="#" target="_blank">
-                                <div class="face-img-panel">
-                                    <img src="/home/images/imgsearch1.jpg" alt="">
-                                </div>
-                                <span class="new-goods-num ">4</span>
-                                <span class="shop-title">剥壳松子</span>
-                            </a>
-                            <a class="follow " target="_blank">关注</a>
-                        </div>
-                    </div>
-                    <!--热卖推荐 -->
-                    <div class="new-goods">
-                        <div class="s-bar">
                             <i class="s-icon"></i>热卖推荐
                         </div>
+                        @foreach($recoms as $v)
                         <div class="new-goods-info">
-                            <a class="shop-info" href="#" target="_blank">
-                                <div>
-                                    <img src="/home/images/imgsearch1.jpg" alt="">
+                            <a class="shop-info" href="/{{$v['id']}}.html" target="_blank">
+                                <div class="face-img-panel">
+                                    <img src="{{$v['simage']}}" alt="" width="80">
                                 </div>
-                                <span class="one-hot-goods">￥9.20</span>
+                                <span class="shop-title">{{$v['sname']}}</span>
                             </a>
                         </div>
+                        @endforeach
                     </div>
                     @show
                 </div>

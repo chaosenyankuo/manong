@@ -10,11 +10,10 @@ class Pack extends Model
 
      public function shop()
     {
-        return $this->belongsToMany('App\shop');
+        return $this->hasMany('App\Shop');
     }
 
     
-
     public function shopcars()
     {
     	return $this->hasMany('App\Shopcar');

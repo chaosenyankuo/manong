@@ -33,7 +33,7 @@
         </div>
         <div class="topMessage favorite">
             <div class="menu-hd">
-                <a href="#" target="_top">
+                <a href="/home/collect" target="_top">
                         <i class="am-icon-heart am-icon-fw"></i>
                         <span>收藏夹</span>
                     </a>
@@ -44,7 +44,7 @@
     <div class="nav white">
 
         <div class="logoBig">
-            <li><img src="/home/images/logobig.png" /></li>
+            <a href="/"><li><img src="/home/images/logobig.png" /></li></a>
         </div>
         <div class="search-bar pr">
             <a name="index_none_header_sysc" href="#"></a>

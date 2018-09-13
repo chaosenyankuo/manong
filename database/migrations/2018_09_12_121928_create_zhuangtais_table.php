@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCollectsTable extends Migration
+class CreateZhuangtaisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateCollectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('collects', function (Blueprint $table) {
+        Schema::create('zhuangtais', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_id')->comment('用户ID');
-            $table->string('shop_id')->comment('商品ID');
+            $table->string('zhuangtai')->comment('订单状态')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateCollectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('collects');
+        Schema::dropIfExists('zhuangtais');
     }
 }

@@ -17,13 +17,12 @@ class OrderTableSeeder extends Seeder
         for ($i=0; $i <20 ; $i++) { 
         	$order = new Order;
         	$order -> wuliu_id = rand(1,3);
-        	$order -> shop_id = rand(1,10);
         	$order -> uaddress_id = rand(1,10);
         	$order -> order_bh = rand(100,200);
         	$order -> user_id = rand(1,10);
         	$order -> zhifu_id = rand(1,3);
-            $order -> liuyan = rand(1,10);
-            $order -> zhuangtai = 1;
+            $order -> liuyan = str_random(6);
+            $order -> zhuangtai = rand(1,4);
         	$order -> save();
         }
     }

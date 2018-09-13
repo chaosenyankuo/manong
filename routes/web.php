@@ -11,10 +11,6 @@
 |
 */
 
-
-
-
-
 //登陆页面
 Route::get('/admin/login', 'AdminController@login');
 
@@ -24,10 +20,8 @@ Route::post('/admin/login', 'AdminController@dologin');
 //退出登录
 Route::get('/admin/logout', 'AdminController@logout');
 
-
-
 //后台路由
-// Route::group(['middleware'=>'login'],function(){
+Route::group(['middleware'=>'login'],function(){
 
 	//后台主页
 	Route::get('/admin','AdminController@index');
@@ -56,6 +50,11 @@ Route::get('/admin/logout', 'AdminController@logout');
 	//商品管理
 	Route::resource('shop','ShopController');
 
+	//后台收藏管理
+	Route::resource('collect','CollectController');
+
+	//发送ajax请求查询对应的分类下的商品
+	Route::post('/first','CollectController@first');
 
 	//商品口味管理
 	Route::resource('flavor','FlavorController');
@@ -87,12 +86,7 @@ Route::get('/admin/logout', 'AdminController@logout');
 	Route::resource('yhj','YhjController');
 
 		
-// });
-
- 
-
-
-
+});
 /*
  *前台路由
  */
@@ -165,8 +159,8 @@ Route::get('shoucang/{id}.html','FavoriteController@shoucang');
 //购物车管理
 Route::resource('shopcar','ShopCarController');
 
-//收藏管理
-Route::resource('collect','CollectController');
+//加入订单
+Route::get('/home/dingdan/{id}','DingdanController@tianjia');
 
 //订单保存
 Route::post('/home/dingdan','DingdanController@baocun');
@@ -174,7 +168,10 @@ Route::post('/home/dingdan','DingdanController@baocun');
 //订单列表
 Route::get('/home/dingdan','DingdanController@list');
 
-
+//前台收藏管理
+Route::get('/home/cun','CollectController@cun');
+Route::get('/home/collect','CollectController@zhanshi');
+Route::get('/home/delete','CollectController@delete');
 
 
 
