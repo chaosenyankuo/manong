@@ -2,11 +2,13 @@
 /public/hot
 /public/storage
 /public/uploads
+/public/yhjpic
 /storage/*.key
 /vendor
 /.idea
 /.vagrant
 /public/uploads
+/public/yhjpic
 Homestead.json
 Homestead.yaml
 npm-debug.log

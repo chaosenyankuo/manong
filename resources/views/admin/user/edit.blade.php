@@ -49,7 +49,7 @@
                         <input name="qx" type="radio" id="qx1" value="1" checked>
                         <label for="qx1">管理员</label>
                         @else
-                        <input name="qx" type="radio" id="qx1" value="1" >
+                        <input name="qx" type="radio" id="qx1" value="1">
                         <label for="qx1">管理员</label>
                         @endif @if($user -> qx == '2')
                         <input name="qx" type="radio" id="qx2" value="2" checked>
@@ -61,32 +61,33 @@
                         <input class="with-gap" name="qx" type="radio" id="qx3" value="3" checked>
                         <label for="qx3">金牌会员</label>
                         @else
-                        <input class="with-gap" name="sex" type="radio" id="qx3" value="3" >
+                        <input class="with-gap" name="sex" type="radio" id="qx3" value="3">
                         <label for="qx3">金牌会员</label>
                         @endif
                     </div>
                     <div class="input-field col s12" style="float:right;">
-                        <input type="text" id="input4" placeholder="生日" value="{{$user -> birthday}}" name="birthday">
+                        <input type="text" id="input4" placeholder="生日" value="{{$user -> birthday}}" name="birthday"> 
                     </div>
-
                 </div>
-
                 <div class="row">
-                    <div class="col s12">
-                        邮箱
-                        <div class="input-field inline">
-                            <input id="email" type="email" class="validate" name="email" value="{{$user -> email}}">
-                            <label for="email" data-error="wrong" data-success="right">Email</label>
-                        </div>&nbsp;&nbsp;&nbsp;&nbsp; 电话
-                        <div class="input-field inline">
-                            <input id="email" type="text" class="validate" name="phone" value="{{$user -> phone}}">
-                            <label for="email" data-error="wrong" data-success="right">Phone</label>
-                        </div>&nbsp;&nbsp;&nbsp;&nbsp; 头像
-                        <div class="input-field inline" style="width:200px;">
-                            <input id="file" type="file" class="validate" name="image">
-                            <label for="file" data-error="wrong" data-success="right"></label>
-                        </div>
+                    <div class="input-field col s6">
+                        <input id="last_name" type="text" class="validate" name="email" value="{{$user-> email}}">
+                        <label for="last_name">邮箱</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="last_name" type="text" class="validate" name="phone" value="{{$user-> phone}}">
+                        <label for="last_name">电话</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="last_name" type="number" class="validate" name="jifen" value="{{$user->jifen}}">
+                        <label for="last_name">积分</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="file" type="file" class="validate" name="image">
                         <img src="{{$user -> image}}" width="80" style="margin-top:0px;">
+                        <label for="file" data-error="wrong" data-success="right" 头像></label>
                     </div>
                 </div>
                 <div class="row">
@@ -116,8 +117,8 @@ $("#input4").shijian({
     Minute: false, //是否显分钟
 });
 $(window).load(function() {
-    $('input:lt(8)').trigger('focus');
-    $('input:lt(8)').trigger('blur');
+    $('input:lt(20)').trigger('focus');
+    $('input:lt(20)').trigger('blur');
 
 });
 </script>

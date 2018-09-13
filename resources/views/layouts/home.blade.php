@@ -188,7 +188,11 @@
                     <li><a target="_blank" href="#"><span>[公告]</span>华北、华中部分地区配送延迟</a></li>
                     <li><a target="_blank" href="#"><span>[特惠]</span>家电狂欢千亿礼券 买1送1！</a></li>
                     </ul>
-                    <div class="advTip"><a href="/{{$v->id}}.html"><img src="{{$lunbotu[0]['pic']}}" width="220px" height="88px"/></a></div>
+                    <div class="advTip"><a href="/{{$v->id}}.html">
+                   @if(!empty($lunbotu[0]['pic']))
+                    <img src="{{$lunbotu[0]['pic']}}" width="220px" height="88px"/>
+                    @endif
+                    </a></div>
                 </div>
             </div>
             <div class="clear"></div>

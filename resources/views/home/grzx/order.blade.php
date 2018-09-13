@@ -91,6 +91,7 @@
                             <li><a href="#tab5">待评价</a></li>
                         </ul>
                         <div class="am-tabs-bd">
+                            <!-- 所有订单 -->
                             <div class="am-tab-panel am-fade am-in am-active" id="tab1">
                                 <div class="order-top">
                                     <div class="th th-item">
@@ -115,7 +116,6 @@
                                         <td class="td-inner">交易操作</td>
                                     </div>
                                 </div>
-                                @if(!empty($order1))
                                 <div class="order-main">
                                     <div class="order-list">
                                         <!--交易成功-->
@@ -171,9 +171,9 @@
                                                                 <?php $a += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?>
                                                             @endforeach
                                                             合计：{{$a}}
-                                                            
-                                                            <p>含运费：<span>{{count($v->order_shop)}}0.00</span></p>
-                                                            
+                                                            <p>含运费：
+                                                                <span>{{count($v->order_shop)}}0.00</span>
+                                                            </p>
                                                         </div>
                                                     </li>
                                                     <div class="move-right">
@@ -193,26 +193,28 @@
                                             </div>
                                         </div>
                                         @endforeach
-                                        <!--交易失败-->
+                                        <!--待付款-->
+                                        @foreach($order2 as $k=>$v)
                                         <div class="order-status0">
                                             <div class="order-title">
-                                                <div class="dd-num">订单编号：<a href="javascript:;">1601430</a></div>
-                                                <span>成交时间：2015-12-20</span>
+                                                <div class="dd-num">订单编号：<a href="javascript:;">{{$v->order_bh}}</a></div>
+                                                <span>成交时间：{{$v->created_at}}</span>
                                                 <!--    <em>店铺：小桔灯</em>-->
                                             </div>
                                             <div class="order-content">
                                                 <div class="order-left">
+                                                    @foreach($v->shop as $kk=>$vv)
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
                                                                 <a href="#" class="J_MakePoint">
-																		<img src="/home/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
-																	</a>
+																	<img src="{{$vv->simage}}" class="itempic J_ItemImg">
+																</a>
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
-                                                                        <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
+                                                                        <p>{{$vv->sname}}</p>
                                                                         <p class="info-little">颜色：12#川南玛瑙
                                                                             <br/>包装：裸装 </p>
                                                                     </a>
@@ -221,12 +223,12 @@
                                                         </li>
                                                         <li class="td td-price">
                                                             <div class="item-price">
-                                                                333.00
+                                                                {{$vv->sprice}}
                                                             </div>
                                                         </li>
                                                         <li class="td td-number">
                                                             <div class="item-number">
-                                                                <span>×</span>2
+                                                                <span>×</span>{{$os2[$kk]->shuliang}}
                                                             </div>
                                                         </li>
                                                         <li class="td td-operation">
@@ -234,112 +236,63 @@
                                                             </div>
                                                         </li>
                                                     </ul>
-                                                    <ul class="item-list">
-                                                        <li class="td td-item">
-                                                            <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
-																		<img src="/home/images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
-																	</a>
-                                                            </div>
-                                                            <div class="item-info">
-                                                                <div class="item-basic-info">
-                                                                    <a href="#">
-                                                                        <p>礼盒袜子女秋冬 纯棉袜加厚 韩国可爱 </p>
-                                                                        <p class="info-little">颜色分类：李清照
-                                                                            <br/>尺码：均码</p>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-price">
-                                                            <div class="item-price">
-                                                                333.00
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-number">
-                                                            <div class="item-number">
-                                                                <span>×</span>2
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-operation">
-                                                            <div class="item-operation">
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                    <ul class="item-list">
-                                                        <li class="td td-item">
-                                                            <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
-																		<img src="/home/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
-																	</a>
-                                                            </div>
-                                                            <div class="item-info">
-                                                                <div class="item-basic-info">
-                                                                    <a href="#">
-                                                                        <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
-                                                                        <p class="info-little">颜色：12#川南玛瑙
-                                                                            <br/>包装：裸装 </p>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-price">
-                                                            <div class="item-price">
-                                                                333.00
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-number">
-                                                            <div class="item-number">
-                                                                <span>×</span>2
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-operation">
-                                                            <div class="item-operation">
-                                                            </div>
-                                                        </li>
-                                                    </ul>
+                                                    @endforeach
                                                 </div>
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
-                                                            合计：676.00
-                                                            <p>含运费：<span>10.00</span></p>
+                                                            <?php $b=0; ?>
+                                                            @foreach($v->order_shop as $kk=>$vv)
+                                                                <?php $b += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?>
+                                                            @endforeach
+                                                            合计：{{$b}}
+                                                            <p>含运费：
+                                                                <span>{{count($v->order_shop)}}0.00</span>
+                                                            </p>
                                                         </div>
                                                     </li>
                                                     <div class="move-right">
                                                         <li class="td td-status">
                                                             <div class="item-status">
-                                                                <p class="Mystatus">交易关闭</p>
+                                                                <p class="Mystatus">等待付款</p>
+                                                                <p class="order-info">
+                                                                    <a href="#">取消订单</a>
+                                                                </p>
                                                             </div>
                                                         </li>
                                                         <li class="td td-change">
-                                                            <div class="am-btn am-btn-danger anniu">
-                                                                删除订单</div>
+                                                            <a href="pay.html">
+                                                                <div class="am-btn am-btn-danger anniu">
+                                                                    一键支付</div>
+                                                            </a>
                                                         </li>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        @endforeach
                                         <!--待发货-->
+                                        @foreach($order3 as $k=>$v)
                                         <div class="order-status2">
                                             <div class="order-title">
-                                                <div class="dd-num">订单编号：<a href="javascript:;">1601430</a></div>
-                                                <span>成交时间：2015-12-20</span>
+                                                <div class="dd-num">订单编号：<a href="javascript:;">{{$v->order_bh}}</a></div>
+                                                <span>成交时间：{{$v->created_at}}</span>
                                                 <!--    <em>店铺：小桔灯</em>-->
                                             </div>
                                             <div class="order-content">
                                                 <div class="order-left">
+                                                    @foreach($v->shop as $kk=>$vv)
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
                                                                 <a href="#" class="J_MakePoint">
-																		<img src="/home/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
-																	</a>
+																	<img src="{{$vv->simage}}" class="itempic J_ItemImg">
+																</a>
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
-                                                                        <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
+                                                                        <p>{{$vv->sname}}</p>
                                                                         <p class="info-little">颜色：12#川南玛瑙
                                                                             <br/>包装：裸装 </p>
                                                                     </a>
@@ -348,12 +301,12 @@
                                                         </li>
                                                         <li class="td td-price">
                                                             <div class="item-price">
-                                                                333.00
+                                                                {{$vv->sprice}}
                                                             </div>
                                                         </li>
                                                         <li class="td td-number">
                                                             <div class="item-number">
-                                                                <span>×</span>2
+                                                                <span>×</span>{{$os3[$kk]->shuliang}}
                                                             </div>
                                                         </li>
                                                         <li class="td td-operation">
@@ -362,78 +315,20 @@
                                                             </div>
                                                         </li>
                                                     </ul>
-                                                    <ul class="item-list">
-                                                        <li class="td td-item">
-                                                            <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
-																		<img src="/home/images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
-																	</a>
-                                                            </div>
-                                                            <div class="item-info">
-                                                                <div class="item-basic-info">
-                                                                    <a href="#">
-                                                                        <p>礼盒袜子女秋冬 纯棉袜加厚 韩国可爱 </p>
-                                                                        <p class="info-little">颜色分类：李清照
-                                                                            <br/>尺码：均码</p>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-price">
-                                                            <div class="item-price">
-                                                                333.00
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-number">
-                                                            <div class="item-number">
-                                                                <span>×</span>2
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-operation">
-                                                            <div class="item-operation">
-                                                                <a href="refund.html">退款</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                    <ul class="item-list">
-                                                        <li class="td td-item">
-                                                            <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
-																		<img src="/home/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
-																	</a>
-                                                            </div>
-                                                            <div class="item-info">
-                                                                <div class="item-basic-info">
-                                                                    <a href="#">
-                                                                        <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
-                                                                        <p class="info-little">颜色：12#川南玛瑙
-                                                                            <br/>包装：裸装 </p>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-price">
-                                                            <div class="item-price">
-                                                                333.00
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-number">
-                                                            <div class="item-number">
-                                                                <span>×</span>2
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-operation">
-                                                            <div class="item-operation">
-                                                                <a href="refund.html">退款</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
+                                                    @endforeach
                                                 </div>
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
-                                                            合计：676.00
-                                                            <p>含运费：<span>10.00</span></p>
+                                                            <?php $c=0; ?>
+                                                            @foreach($v->order_shop as $kk=>$vv)
+                                                                <?php $c += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?>
+                                                            @endforeach
+                                                            合计：{{$c}}
+                                                            
+                                                            <p>含运费：
+                                                                <span>{{count($v->order_shop)}}0.00</span>
+                                                            </p>
                                                         </div>
                                                     </li>
                                                     <div class="move-right">
@@ -451,26 +346,29 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--不同状态订单-->
+                                        @endforeach
+                                        <!--待收货-->
+                                        @foreach($order4 as $k=>$v)
                                         <div class="order-status3">
                                             <div class="order-title">
-                                                <div class="dd-num">订单编号：<a href="javascript:;">1601430</a></div>
-                                                <span>成交时间：2015-12-20</span>
+                                                <div class="dd-num">订单编号：<a href="javascript:;">{{$v->order_bh}}</a></div>
+                                                <span>成交时间：{{$v->created_at}}</span>
                                                 <!--    <em>店铺：小桔灯</em>-->
                                             </div>
                                             <div class="order-content">
                                                 <div class="order-left">
+                                                    @foreach($v->shop as $kk=>$vv)
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
                                                                 <a href="#" class="J_MakePoint">
-																		<img src="/home/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
-																	</a>
+																	<img src="{{$vv->simage}}" class="itempic J_ItemImg">
+																</a>
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
-                                                                        <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
+                                                                        <p>{{$vv->sname}}</p>
                                                                         <p class="info-little">颜色：12#川南玛瑙
                                                                             <br/>包装：裸装 </p>
                                                                     </a>
@@ -479,12 +377,12 @@
                                                         </li>
                                                         <li class="td td-price">
                                                             <div class="item-price">
-                                                                333.00
+                                                                {{$vv->sprice}}
                                                             </div>
                                                         </li>
                                                         <li class="td td-number">
                                                             <div class="item-number">
-                                                                <span>×</span>2
+                                                                <span>×</span>{{$os4[$kk]->shuliang}}
                                                             </div>
                                                         </li>
                                                         <li class="td td-operation">
@@ -493,45 +391,18 @@
                                                             </div>
                                                         </li>
                                                     </ul>
-                                                    <ul class="item-list">
-                                                        <li class="td td-item">
-                                                            <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
-																		<img src="/home/images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
-																	</a>
-                                                            </div>
-                                                            <div class="item-info">
-                                                                <div class="item-basic-info">
-                                                                    <a href="#">
-                                                                        <p>礼盒袜子女秋冬 纯棉袜加厚 韩国可爱 </p>
-                                                                        <p class="info-little">颜色分类：李清照
-                                                                            <br/>尺码：均码</p>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-price">
-                                                            <div class="item-price">
-                                                                333.00
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-number">
-                                                            <div class="item-number">
-                                                                <span>×</span>2
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-operation">
-                                                            <div class="item-operation">
-                                                                <a href="refund.html">退款/退货</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
+                                                    @endforeach
                                                 </div>
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
-                                                            合计：676.00
-                                                            <p>含运费：<span>10.00</span></p>
+                                                            <?php $d=0; ?>
+                                                            @foreach($v->order_shop as $kk=>$vv)
+                                                                <?php $d += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?>
+                                                            @endforeach
+                                                            合计：{{$d}}
+                                                            <p>含运费：<span>{{count($v->order_shop)}}0.00</span></p>
+                                                            
                                                         </div>
                                                     </li>
                                                     <div class="move-right">
@@ -551,10 +422,11 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @endforeach
                                     </div>
                                 </div>
-                                @endif
                             </div>
+                            <!-- 代付款 -->
                             <div class="am-tab-panel am-fade" id="tab2">
                                 <div class="order-top">
                                     <div class="th th-item">
@@ -621,70 +493,6 @@
                                                             </div>
                                                         </li>
                                                     </ul>
-                                                    <ul class="item-list">
-                                                        <li class="td td-item">
-                                                            <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
-																		<img src="/home/images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
-																	</a>
-                                                            </div>
-                                                            <div class="item-info">
-                                                                <div class="item-basic-info">
-                                                                    <a href="#">
-                                                                        <p>礼盒袜子女秋冬 纯棉袜加厚 韩国可爱 </p>
-                                                                        <p class="info-little">颜色分类：李清照
-                                                                            <br/>尺码：均码</p>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-price">
-                                                            <div class="item-price">
-                                                                333.00
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-number">
-                                                            <div class="item-number">
-                                                                <span>×</span>2
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-operation">
-                                                            <div class="item-operation">
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                    <ul class="item-list">
-                                                        <li class="td td-item">
-                                                            <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
-																		<img src="/home/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
-																	</a>
-                                                            </div>
-                                                            <div class="item-info">
-                                                                <div class="item-basic-info">
-                                                                    <a href="#">
-                                                                        <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
-                                                                        <p class="info-little">颜色：12#川南玛瑙
-                                                                            <br/>包装：裸装 </p>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-price">
-                                                            <div class="item-price">
-                                                                333.00
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-number">
-                                                            <div class="item-number">
-                                                                <span>×</span>2
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-operation">
-                                                            <div class="item-operation">
-                                                            </div>
-                                                        </li>
-                                                    </ul>
                                                 </div>
                                                 <div class="order-right">
                                                     <li class="td td-amount">
@@ -713,6 +521,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- 待发货 -->
                             <div class="am-tab-panel am-fade" id="tab3">
                                 <div class="order-top">
                                     <div class="th th-item">
@@ -780,72 +589,6 @@
                                                             </div>
                                                         </li>
                                                     </ul>
-                                                    <ul class="item-list">
-                                                        <li class="td td-item">
-                                                            <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
-																		<img src="/home/images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
-																	</a>
-                                                            </div>
-                                                            <div class="item-info">
-                                                                <div class="item-basic-info">
-                                                                    <a href="#">
-                                                                        <p>礼盒袜子女秋冬 纯棉袜加厚 韩国可爱 </p>
-                                                                        <p class="info-little">颜色分类：李清照
-                                                                            <br/>尺码：均码</p>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-price">
-                                                            <div class="item-price">
-                                                                333.00
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-number">
-                                                            <div class="item-number">
-                                                                <span>×</span>2
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-operation">
-                                                            <div class="item-operation">
-                                                                <a href="refund.html">退款</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                    <ul class="item-list">
-                                                        <li class="td td-item">
-                                                            <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
-																		<img src="/home/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
-																	</a>
-                                                            </div>
-                                                            <div class="item-info">
-                                                                <div class="item-basic-info">
-                                                                    <a href="#">
-                                                                        <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
-                                                                        <p class="info-little">颜色：12#川南玛瑙
-                                                                            <br/>包装：裸装 </p>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-price">
-                                                            <div class="item-price">
-                                                                333.00
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-number">
-                                                            <div class="item-number">
-                                                                <span>×</span>2
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-operation">
-                                                            <div class="item-operation">
-                                                                <a href="refund.html">退款</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
                                                 </div>
                                                 <div class="order-right">
                                                     <li class="td td-amount">
@@ -872,6 +615,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- 待收货 -->
                             <div class="am-tab-panel am-fade" id="tab4">
                                 <div class="order-top">
                                     <div class="th th-item">
@@ -939,39 +683,6 @@
                                                             </div>
                                                         </li>
                                                     </ul>
-                                                    <ul class="item-list">
-                                                        <li class="td td-item">
-                                                            <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
-																		<img src="/home/images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
-																	</a>
-                                                            </div>
-                                                            <div class="item-info">
-                                                                <div class="item-basic-info">
-                                                                    <a href="#">
-                                                                        <p>礼盒袜子女秋冬 纯棉袜加厚 韩国可爱 </p>
-                                                                        <p class="info-little">颜色分类：李清照
-                                                                            <br/>尺码：均码</p>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-price">
-                                                            <div class="item-price">
-                                                                333.00
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-number">
-                                                            <div class="item-number">
-                                                                <span>×</span>2
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-operation">
-                                                            <div class="item-operation">
-                                                                <a href="refund.html">退款/退货</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
                                                 </div>
                                                 <div class="order-right">
                                                     <li class="td td-amount">
@@ -1000,6 +711,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- 待评价 -->
                             <div class="am-tab-panel am-fade" id="tab5">
                                 <div class="order-top">
                                     <div class="th th-item">
@@ -1034,139 +746,6 @@
                                             </div>
                                             <div class="order-content">
                                                 <div class="order-left">
-                                                    <ul class="item-list">
-                                                        <li class="td td-item">
-                                                            <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
-																		<img src="/home/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
-																	</a>
-                                                            </div>
-                                                            <div class="item-info">
-                                                                <div class="item-basic-info">
-                                                                    <a href="#">
-                                                                        <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
-                                                                        <p class="info-little">颜色：12#川南玛瑙
-                                                                            <br/>包装：裸装 </p>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-price">
-                                                            <div class="item-price">
-                                                                333.00
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-number">
-                                                            <div class="item-number">
-                                                                <span>×</span>2
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-operation">
-                                                            <div class="item-operation">
-                                                                <a href="refund.html">退款/退货</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="order-right">
-                                                    <li class="td td-amount">
-                                                        <div class="item-amount">
-                                                            合计：676.00
-                                                            <p>含运费：<span>10.00</span></p>
-                                                        </div>
-                                                    </li>
-                                                    <div class="move-right">
-                                                        <li class="td td-status">
-                                                            <div class="item-status">
-                                                                <p class="Mystatus">交易成功</p>
-                                                                <p class="order-info"><a href="orderinfo.html">订单详情</a></p>
-                                                                <p class="order-info"><a href="logistics.html">查看物流</a></p>
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-change">
-                                                            <a href="commentlist.html">
-                                                                <div class="am-btn am-btn-danger anniu">
-                                                                    评价商品</div>
-                                                            </a>
-                                                        </li>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="order-status4">
-                                            <div class="order-title">
-                                                <div class="dd-num">订单编号：<a href="javascript:;">1601430</a></div>
-                                                <span>成交时间：2015-12-20</span>
-                                                <!--    <em>店铺：小桔灯</em>-->
-                                            </div>
-                                            <div class="order-content">
-                                                <div class="order-left">
-                                                    <ul class="item-list">
-                                                        <li class="td td-item">
-                                                            <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
-																		<img src="/home/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
-																	</a>
-                                                            </div>
-                                                            <div class="item-info">
-                                                                <div class="item-basic-info">
-                                                                    <a href="#">
-                                                                        <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
-                                                                        <p class="info-little">颜色：12#川南玛瑙
-                                                                            <br/>包装：裸装 </p>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-price">
-                                                            <div class="item-price">
-                                                                333.00
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-number">
-                                                            <div class="item-number">
-                                                                <span>×</span>2
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-operation">
-                                                            <div class="item-operation">
-                                                                <a href="refund.html">退款/退货</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                    <ul class="item-list">
-                                                        <li class="td td-item">
-                                                            <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
-																		<img src="/home/images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
-																	</a>
-                                                            </div>
-                                                            <div class="item-info">
-                                                                <div class="item-basic-info">
-                                                                    <a href="#">
-                                                                        <p>礼盒袜子女秋冬 纯棉袜加厚 韩国可爱 </p>
-                                                                        <p class="info-little">颜色分类：李清照
-                                                                            <br/>尺码：均码</p>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-price">
-                                                            <div class="item-price">
-                                                                333.00
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-number">
-                                                            <div class="item-number">
-                                                                <span>×</span>2
-                                                            </div>
-                                                        </li>
-                                                        <li class="td td-operation">
-                                                            <div class="item-operation">
-                                                                <a href="refund.html">退款/退货</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
