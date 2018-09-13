@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\File;
 class Wzkgcontroller extends Controller
 {
     /**
@@ -36,10 +36,10 @@ class Wzkgcontroller extends Controller
     public function store(Request $request)
     {
         //
-         $path = 'E:/XAMPP/htdocs/food/food/storage/framework/down';
+         $path = 'E:/XAMPP/htdocs/manong/storage/framework/down';
         if(!is_file($path))
         {
-            File::copy('E:/XAMPP/htdocs/food/food/storage/framework/adown', 'E:/XAMPP/htdocs/food/food/storage/framework/down');
+            File::copy('E:/XAMPP/htdocs/manong/storage/framework/adown', 'E:/XAMPP/htdocs/manong/storage/framework/down');
             
             return redirect('/wzkg')->with('success','网站关闭成功!!!');
         }
@@ -91,5 +91,16 @@ class Wzkgcontroller extends Controller
     public function destroy($id)
     {
         //
+        $path = 'E:/XAMPP/htdocs/manong/storage/framework/down';
+        if(is_file($path))
+        {
+            File::delete('E:/XAMPP/htdocs/manong/storage/framework/down');
+           
+             return redirect('/wzkg')->with('success','恭喜维护完成!!!');
+        } else {
+
+              return back()->with('error','网站已经开启,别点我了!!!');
+        }
+         return view('admin.wzkg.index');
     }
 }

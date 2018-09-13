@@ -51,6 +51,7 @@ class UserController extends Controller
         $users -> email = $req->email;
         $users -> phone = $req->phone;
         $users -> qx = $req ->qx;
+        $users -> jifen = $req ->jifen;
 
         //检测是否传文件
         if ($req->hasFile('image')) {
@@ -111,6 +112,7 @@ class UserController extends Controller
         $user -> email = $req -> email;
         $user -> phone = $req -> phone;
         $user -> qx = $req -> qx;
+        $user -> jifen = $req -> jifen;
 
         if ($req->hasFile('image')) {
             $user -> image = '/'.$req->image->store('uploads/'.date('Ymd'));

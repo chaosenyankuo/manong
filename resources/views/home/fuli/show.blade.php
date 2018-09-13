@@ -62,9 +62,7 @@
 <body class="keBody">
     <!--效果html开始-->
     <div id="lottery">
-     
         <table border="0" cellpadding="0" cellspacing="0">
-          
             <tr>
                 <td class="lottery-unit lottery-unit-0"><img src="{{$yhj[0]['yhj_pic']}}">
                     <div class="mask"></div>
@@ -72,40 +70,38 @@
                 </td>
                 <td class="lottery-unit lottery-unit-1"><img src="{{$yhj[1]['yhj_pic']}}">
                     <div class="mask"></div>
-                     <div>劵码:{{$yhj[1]['yhj_id']}}</div>
+                    <div>劵码:{{$yhj[1]['yhj_id']}}</div>
                 </td>
                 <td class="lottery-unit lottery-unit-2"><img src="{{$yhj[2]['yhj_pic']}}">
                     <div class="mask"></div>
-                     <div>劵码:{{$yhj[2]['yhj_id']}}</div>
+                    <div>劵码:{{$yhj[2]['yhj_id']}}</div>
                 </td>
             </tr>
             <tr>
                 <td class="lottery-unit lottery-unit-7"><img src="{{$yhj[3]['yhj_pic']}}">
                     <div class="mask"></div>
-                     <div>劵码:{{$yhj[3]['yhj_id']}}</div>
+                    <div>劵码:{{$yhj[3]['yhj_id']}}</div>
                 </td>
                 <td><a href="#"></a></td>
                 <td class="lottery-unit lottery-unit-3"><img src="{{$yhj[4]['yhj_pic']}}">
                     <div class="mask"></div>
-                     <div>劵码:{{$yhj[4]['yhj_id']}}</div>
+                    <div>劵码:{{$yhj[4]['yhj_id']}}</div>
                 </td>
             </tr>
             <tr>
                 <td class="lottery-unit lottery-unit-6"><img src="{{$yhj[5]['yhj_pic']}}">
                     <div class="mask"></div>
-                     <div>劵码:{{$yhj[5]['yhj_id']}}</div>
+                    <div>劵码:{{$yhj[5]['yhj_id']}}</div>
                 </td>
                 <td class="lottery-unit lottery-unit-5"><img src="{{$yhj[6]['yhj_pic']}}">
                     <div class="mask"></div>
-                     <div>劵码:{{$yhj[6]['yhj_id']}}</div>
+                    <div>劵码:{{$yhj[6]['yhj_id']}}</div>
                 </td>
                 <td class="lottery-unit lottery-unit-4"><img src="{{$yhj[7]['yhj_pic']}}">
                     <div class="mask"></div>
-                     <div>劵码:{{$yhj[7]['yhj_id']}}</div>
+                    <div>劵码:{{$yhj[7]['yhj_id']}}</div>
                 </td>
-                
             </tr>
-          
         </table>
     </div>
     <script src="http://www.jq22.com/jquery/jquery-latest.js"></script>
@@ -116,8 +112,8 @@
         timer: 0, //setTimeout的ID，用clearTimeout清除
         speed: 1, //初始转动速度
         times: 0, //转动次数
-        cycle:{{$yhj[1]['cycle']}}, //转动基本次数：即至少需要转动多少次再进入抽奖环节
-        prize:{{$yhj[1]['prize']}}, //中奖位置
+        cycle: {{$yhj[1]['cycle']}}, //转动基本次数：即至少需要转动多少次再进入抽奖环节
+        prize: {{$yhj[1]['prize']}}, //中奖位置
         init: function(id) {
             if ($("#" + id).find(".lottery-unit").length > 0) {
                 $lottery = $("#" + id);
@@ -193,7 +189,7 @@
     };
     </script>
     <!--效果html结束-->
-    
+
 </body>
 
 </html>

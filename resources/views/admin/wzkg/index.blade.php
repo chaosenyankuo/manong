@@ -6,7 +6,7 @@
                 <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
                     <div class="row">
                         <div class="col-sm-6">
-                            <form action="/peizhi" method="post">
+                            <form action="/wzkg" method="post">
                                 
                         <br>
                         <br>
@@ -19,8 +19,10 @@
                         </ul>
                         </form>
                     </div>
+                    <br>
+                    <br>    
                     <div class="col-sm-6">
-                        <form action="/peizhi/destroy" method="post">
+                        <form action="/wzkg/destroy" method="post">
                             <ul class="forminfo">
                                 {{method_field('DELETE')}} {{csrf_field()}}
                                 <li>

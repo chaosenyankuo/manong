@@ -63,7 +63,7 @@
 								<div><b>用户名：<i>{{$user['nickname']}}</i></b></div>
 								<div class="u-level">
 									<span class="rank r2">
-							             <s class="vip1"></s><a class="classes" href="#">会员</a>
+							             <s class="vip1"></s><a class="classes" href="#">@if($user->qx == '1') 管理员 @elseif($user->qx == '2') 银牌会员 @else 金牌会员 @endif</a>
 						            </span>
 								</div>
 								
