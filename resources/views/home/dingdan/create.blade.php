@@ -149,12 +149,16 @@
                             $(this).siblings().removeAttr('id');
                             $('#wuliu > input').attr('name','wuliu_id');
                             $('#wuliu').siblings().removeAttr('name');
+                            console.log($('#wuliu > input').val());
+                            $('.m').val($('#wuliu > input').val());
+                            console.log($('.m').val());
                         })
                         $('.pay-list > li').click(function(){
                             $(this).attr('id','zhifu');
                             $(this).siblings().removeAttr('id');
                             $('#zhifu > input').attr('name','zhifu_id');
-                            $('#zhifu').siblings().removeAttr('name');                           
+                            $('#zhifu').siblings().removeAttr('name');
+                            $('.l').val($('#zhifu > input').val());                         
                         })
 
                     </script>
@@ -256,7 +260,7 @@
                                     <div class="order-user-info">
                                         <div id="holyshit257" class="memo">
                                             <label>买家留言：</label>
-                                            <input type="text" title="选填,对本次交易的说明（建议填写已经和卖家达成一致的说明）" placeholder="选填,建议填写和卖家达成一致的说明" class="memo-input J_MakePoint c2c-text-default memo-close" name="liuyan">
+                                            <input type="text" title="选填,对本次交易的说明（建议填写已经和卖家达成一致的说明）" placeholder="选填,建议填写和卖家达成一致的说明" class="memo-input J_MakePoint c2c-text-default memo-close p" name="liuyan">
                                             <div class="msg hidden J-msg">
                                                 <p class="error">最多输入500个字符</p>
                                             </div>
@@ -311,12 +315,33 @@
                                 <div class="clear"></div>
                             </div>
                         </form>
+                        <form action="/dingdan/pay" method="post" class="pay">
+                            {{csrf_field()}}
+                            <input type="hidden" value="" name="zongjia" class="z" />
+                            <input type="hidden" name="uadd_id" value="" class="x" />
+                            @foreach($shop_id as $k=>$v)
+                            <input type="hidden" name="shop_id[]" value="{{$v}}" />
+                            <input type="hidden" name="shuliang[]" value="{{$shuliang[$k]}}" />
+                            @endforeach
+                            <input type="hidden" name="wl_id" value="" class="m" />
+                            <input type="hidden" name="zf_id" value="" class="l" />
+                            <input type="hidden" name="liuyan" value="" class="k" />
+                        </form>
                             <!--含运费小计 -->
                             <div class="buy-point-discharge ">
                                 <p class="price g_price ">
-                                    合计（含运费） <span>¥</span><em class="pay-sum">{{$a+(count($shop_id)*10)}}</em>
+                                    合计（含运费） <span>¥</span><em class="pay-sum 12">{{$a+(count($shop_id)*10)}}</em>
                                 </p>
                             </div>
+                            <script type="text/javascript">
+                                $('.user-addresslist').click(function(){
+                                    $('.z').val($('.12').html()); //总价
+                                    $('.x').val($('input[name=uaddress_id]').val());
+                                    $('.m').val($('input[name=wuliu_id]').val());
+                                    $('.l').val($('input[name=zhifu_id]').val());
+                                    $('.k').val($('.p').val());
+                                });
+                            </script>
                             <!--信息 -->
                             <div class="order-go clearfix">
                                 <div class="pay-confirm clearfix">
@@ -363,8 +388,13 @@
                                     </div>
                                     <script type="text/javascript">
                                         $('#J_Go').click(function(){
-                                            // alert(111);
-                                            $('.tijiao').submit();
+                                            var r=confirm("确认支付");
+                                            if (r==true){
+                                                $('.pay').submit();
+                                            }else{
+                                                $('.tijiao').submit();
+                                            }
+                                            
                                         })
                                     </script>
                                     <div class="clear"></div>

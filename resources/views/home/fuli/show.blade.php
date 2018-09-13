@@ -5,57 +5,57 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>我的福利</title>
     <style>
-    #lottery {
-        width: 570px;
-        height: 510px;
-        margin: 0px auto;
-        border: 4px solid #ba1809;
-    }
+        #lottery {
+            width: 570px;
+            height: 510px;
+            margin: 0px auto;
+            border: 4px solid #ba1809;
+        }
 
-    #lottery table {
-        background-color: yellow;
-    }
+        #lottery table {
+            background-color: yellow;
+        }
 
-    #lottery table td {
-        position: relative;
-        width: 190px;
-        height: 170px;
-        text-align: center;
-        color: #333;
-        font-index: -999
-    }
+        #lottery table td {
+            position: relative;
+            width: 190px;
+            height: 170px;
+            text-align: center;
+            color: #333;
+            font-index: -999
+        }
 
-    #lottery table td img {
-        display: block;
-        width: 190px;
-        height: 160px;
-    }
+        #lottery table td img {
+            display: block;
+            width: 190px;
+            height: 160px;
+        }
 
-    #lottery table td a {
-        width: 190px;
-        height: 190px;
-        display: block;
-        text-decoration: none;
-        background: url(./choujiang/lottery1.jpg) no-repeat top center;
-    }
+        #lottery table td a {
+            width: 190px;
+            height: 190px;
+            display: block;
+            text-decoration: none;
+            background: url(./choujiang/lottery1.jpg) no-repeat top center;
+        }
 
-    #lottery table td a:hover {
-        background-image: url(./choujiang/lottery2.jpg);
-    }
+        #lottery table td a:hover {
+            background-image: url(./choujiang/lottery2.jpg);
+        }
 
-    #lottery table td.active .mask {
-        display: block;
-    }
+        #lottery table td.active .mask {
+            display: block;
+        }
 
-    .mask {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
-        background-color: rgba(252, 211, 4, 0.5);
-        display: none;
-    }
+        .mask {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: rgba(252, 211, 4, 0.5);
+            display: none;
+        }
     </style>
 </head>
 
@@ -112,9 +112,9 @@
     <script type="text/javascript">
     var lottery = {
         index: -1, //当前转动到哪个位置，起点位置
-        count: 0, //总共有多少个位置
+        count: 8, //总共有多少个位置
         timer: 0, //setTimeout的ID，用clearTimeout清除
-        speed: 20, //初始转动速度
+        speed: 1, //初始转动速度
         times: 0, //转动次数
         cycle:{{$yhj[1]['cycle']}}, //转动基本次数：即至少需要转动多少次再进入抽奖环节
         prize:{{$yhj[1]['prize']}}, //中奖位置
