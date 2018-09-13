@@ -2,11 +2,9 @@
     <ul class="message-l">
         <div class="topMessage">
             <div class="menu-hd">
-
                 @if(Session::has('nickname'))
                 <a href="/home/index" target="_top" class="h">你好: {{$user['nickname']}}</a>
                 <a href="/home/logout">&nbsp;&nbsp;&nbsp;退出</a> @endif @if(!Session::has('nickname'))
-
                 <a href="/home/login" target="_top" class="h">请登录</a>
                 <a href="/home/zhuce" target="_top">免费注册</a> @endif
             </div>
@@ -42,9 +40,10 @@
     </div>
     <!--悬浮搜索框-->
     <div class="nav white">
-
         <div class="logoBig">
-            <a href="/"><li><img src="/home/images/logobig.png" /></li></a>
+            <a href="/">
+                <li><img src="/home/images/logobig.png" /></li>
+            </a>
         </div>
         <div class="search-bar pr">
             <a name="index_none_header_sysc" href="#"></a>
