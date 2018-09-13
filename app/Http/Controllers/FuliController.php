@@ -10,9 +10,7 @@ class FuliController extends Controller
     //
     public function fuli()
     {
-    	$yhj = Yhj::all()->take(8);
-    	
+    	$yhj = Yhj::all()->take(8);   	
     	return view('home.fuli.show',compact('yhj'));
-
     }
 }

@@ -113,6 +113,7 @@ Route::get('/home/logout','HomeController@logout');
 
 //我的福利
 Route::get('/fuli','FuliController@fuli');
+
 //个人中心
 Route::get('/home/index','GrzxController@index');
 
@@ -152,9 +153,6 @@ Route::post('/home/dzupdate/{id}','GrzxController@dzupdate');
 
 //删除收货地址
 Route::get('/home/dzsc/{id}','GrzxController@dzsc');
-
-//加入收藏夹
-Route::get('shoucang/{id}.html','FavoriteController@shoucang');
 
 //购物车管理
 Route::resource('shopcar','ShopCarController');

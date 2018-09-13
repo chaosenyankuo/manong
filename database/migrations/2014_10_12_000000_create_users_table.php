@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->comment('邮箱')->nullable();
             $table->string('image')->comment('头像')->nullable();
             $table->string('loginpwd')->comment('登录密码')->nullable();
+            $table->string('jifen')->comment('用户积分')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

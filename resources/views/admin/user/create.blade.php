@@ -58,6 +58,10 @@
                         <div class="input-field inline">
                             <input id="email" type="text" class="validate" name="phone">
                             <label for="email" data-error="wrong" data-success="right">Phone</label>
+                        </div>&nbsp;&nbsp;&nbsp;&nbsp; 积分
+                        <div class="input-field inline">
+                            <input id="jfen" type="number" class="validate" name="jifen">
+                            <label for="jfen" data-error="wrong" data-success="right">JiFen</label>
                         </div>&nbsp;&nbsp;&nbsp;&nbsp; 头像
                         <div class="input-field inline">
                             <input id="file" type="file" class="validate" name="image">
