@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Favorite;
-use App\Shop;
+use App\User;
+use App\Link;
+use App\Setting;
+use App\Yjfk;
 
-class FavoriteController extends Controller
+
+class YjfkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,6 +19,11 @@ class FavoriteController extends Controller
     public function index()
     {
         //
+        $setting = Setting::first();
+        $links = Link::all();
+        $id = \Session::get('id');
+        $user  = User::findOrFail($id);
+        return view('home.yjfk.create',compact('user','links','setting'));
     }
 
     /**
@@ -26,6 +34,8 @@ class FavoriteController extends Controller
     public function create()
     {
         //
+        
+        
     }
 
     /**
@@ -37,6 +47,20 @@ class FavoriteController extends Controller
     public function store(Request $request)
     {
         //
+        $setting = Setting::first();
+        $links = Link::all();
+        $id = \Session::get('id');
+        $user  = User::findOrFail($id);
+        $yjfk = new Yjfk;
+        $yjfk -> user_id = $id;
+        $yjfk -> content = $request->content;
+        if($yjfk -> save()){
+            return redirect('/home/yjfk')->with('success', '恭喜您,反馈成功!');
+        }else{
+            return back()->with('error','反馈失败,再从新试试吧!');
+        }
+        return view('home.yjfk.create',compact('user','links','setting','yjfk'));
+        
     }
 
     /**
@@ -81,12 +105,8 @@ class FavoriteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 
-    public function shoucang($id)
-    {
-        
-        
-    }
+    
 }

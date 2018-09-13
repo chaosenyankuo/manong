@@ -21,7 +21,7 @@ Route::post('/admin/login', 'AdminController@dologin');
 Route::get('/admin/logout', 'AdminController@logout');
 
 //后台路由
-Route::group(['middleware'=>'login'],function(){
+// Route::group(['middleware'=>'login'],function(){
 
 	//后台主页
 	Route::get('/admin','AdminController@index');
@@ -37,7 +37,7 @@ Route::group(['middleware'=>'login'],function(){
 	Route::post('/admin/setting', 'AdminController@update');
 
 	//网站开关
-	Route::resource('/wzkg','Wzkgcontroller');
+	Route::resource('wzkg','Wzkgcontroller');
 	//物流管理
 	Route::resource('wuliu', 'WuliuController');
 
@@ -46,6 +46,9 @@ Route::group(['middleware'=>'login'],function(){
 
 	//订单管理
 	Route::resource('dingdan','DingdanController');
+
+	//收藏管理
+	Route::resource('collect','CollectController');
 
 	//商品管理
 	Route::resource('shop','ShopController');
@@ -82,11 +85,14 @@ Route::group(['middleware'=>'login'],function(){
 
 	//轮播图
 	Route::resource('lunbotu','LunbotuController');
+
+	//意见反馈列表
+	Route::resource('/admin/yjfkui','YjfkuiController');
+
 	//优惠卷
 	Route::resource('yhj','YhjController');
-
 		
-});
+// });
 /*
  *前台路由
  */
@@ -166,10 +172,14 @@ Route::post('/home/dingdan','DingdanController@baocun');
 //订单列表
 Route::get('/home/dingdan','DingdanController@list');
 
+//意见反馈
+Route::resource('/home/yjfk','YjfkController');
+
 //前台收藏管理
 Route::get('/home/cun','CollectController@cun');
 Route::get('/home/collect','CollectController@zhanshi');
 Route::get('/home/delete','CollectController@delete');
+
 
 
 

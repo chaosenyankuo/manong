@@ -72,6 +72,7 @@ class HomeController extends Controller
         $shops = Shop::all();
     	$id = \Session::get('id');     
         $user = User::find($id);
+        
     	$a = 1;
     	$cid = Cate::pluck('id');
         $lunbotu = Lunbotu::all()->take(4);

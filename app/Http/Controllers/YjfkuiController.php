@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
-class Wzkgcontroller extends Controller
+use App\User;
+use App\Link;
+use App\Setting;
+use App\Yjfk;
+
+class YjfkuiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +18,16 @@ class Wzkgcontroller extends Controller
     public function index()
     {
         //
-         return view('admin.wzkg.index');
+        // $yjfk = Yjfk::all();
+        $setting = Setting::first();
+        $links = Link::all();
+        $user = User::all();
+        $yjfk = Yjfk::orderBy('id','asc')
+            ->where('user_id','like', '%'.request()->keywords.'%')
+            ->paginate(5);
+        
+
+        return view('admin.yjfk.index',compact('yjfk','links','setting','user'));
     }
 
     /**
@@ -25,7 +38,7 @@ class Wzkgcontroller extends Controller
     public function create()
     {
         //
-    }
+            }
 
     /**
      * Store a newly created resource in storage.
@@ -36,16 +49,8 @@ class Wzkgcontroller extends Controller
     public function store(Request $request)
     {
         //
-         $path = 'E:/XAMPP/htdocs/manong/storage/framework/down';
-        if(!is_file($path))
-        {
-            File::copy('E:/XAMPP/htdocs/manong/storage/framework/adown', 'E:/XAMPP/htdocs/manong/storage/framework/down');
-            
-            return redirect('/wzkg')->with('success','网站关闭成功!!!');
-        }
-            return back()->with('error','网站已经关闭,别点我了!!!');
-            return view('admin.wzkg.index');
-           
+        
+
     }
 
     /**
@@ -57,6 +62,7 @@ class Wzkgcontroller extends Controller
     public function show($id)
     {
         //
+        
     }
 
     /**
@@ -68,6 +74,7 @@ class Wzkgcontroller extends Controller
     public function edit($id)
     {
         //
+        
     }
 
     /**
@@ -90,17 +97,14 @@ class Wzkgcontroller extends Controller
      */
     public function destroy($id)
     {
+        
         //
-        $path = 'E:/XAMPP/htdocs/manong/storage/framework/down';
-        if(is_file($path))
-        {
-            File::delete('E:/XAMPP/htdocs/manong/storage/framework/down');
-           
-             return redirect('/wzkg')->with('success','恭喜维护完成!!!');
-        } else {
+        $yjfk = yjfk::findOrFail($id);
 
-              return back()->with('error','网站已经开启,别点我了!!!');
+        if($yjfk -> delete()){
+            return redirect('/admin/yjfkui')->with('success','删除用户成功');
+        }else{
+            return back()->with('error','删除用户失败');
         }
-         return view('admin.wzkg.index');
     }
 }

@@ -22,7 +22,7 @@ class CheckForMaintenanceMode
      }*/
      //指定路由可以访问
      if(app()->isDownForMaintenance()){
-     if(!$request->is('admin*','ptag*','comment*','wuliu*','zhifu*','dingdan*','shop*','flavor*','com*','cate*','pack*','tag*','user*','uaddress*','link*','lunbotu*','yhj*')){
+     if(!$request->is('admin*','ptag*','comment*','wuliu*','zhifu*','dingdan*','shop*','flavor*','com*','cate*','pack*','tag*','user*','uaddress*','link*','lunbotu*','yhj*','wzkg*')){
      throw new HttpException(503);
         }
      }
