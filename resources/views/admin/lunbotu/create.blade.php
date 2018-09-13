@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="input-field col s6">
                         <input id="first_name" name="pic" type="file" class="validate">
-                        <label for="first_name">轮播图</label>
+                        <label for="first_name"></label>
                     </div>
                     <br>
                     <br>
