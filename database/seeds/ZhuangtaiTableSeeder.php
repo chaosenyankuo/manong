@@ -13,7 +13,7 @@ class ZhuangtaiTableSeeder extends Seeder
     public function run()
     {
         $zt1 = new Zhuangtai;
-    	$zt1 -> zhuangtai = '交易成功/待评价';
+    	$zt1 ->zhuangtai = '交易成功/待评价';
     	$zt1 ->save();
     	$zt2 = new Zhuangtai;
     	$zt2 ->zhuangtai = '待支付';
