@@ -229,12 +229,30 @@ class DingdanController extends Controller
         //待收货
         $order4 = Order::where('zhuangtai','4')->where('user_id',\Session::get('id'))->get();
 
-        $os1 = Order_shop::where('order_id',$order1[0]->id)->get();
-        // dd($order1[1]->shop);
+        if(!empty($order1[0])){
+            $os1 = Order_shop::where('order_id',$order1[0]->id)->get();
+        }else{
+            $os1 = [];
+        }
+        if(!empty($order2[0])){
+            $os2 = Order_shop::where('order_id',$order2[0]->id)->get();
+        }else{
+            $os2 = [];
+        }
+        if(!empty($order3[0])){
+            $os3 = Order_shop::where('order_id',$order3[0]->id)->get();
+        }else{
+            $os3 = [];
+        }
+        if(!empty($order4[0])){
+            $os4 = Order_shop::where('order_id',$order4[0]->id)->get();
+        }else{
+            $os4 = [];
+        }
 
         $links = Link::all();
         $setting = Setting::first();
-        return view('home/grzx/order',compact('order1','order2','order3','order4','os1','links','setting'));
+        return view('home/grzx/order',compact('order1','order2','order3','order4','os1','os2','os3','os4','links','setting'));
     }
 }
 

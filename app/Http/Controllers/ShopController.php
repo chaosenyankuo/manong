@@ -124,6 +124,7 @@ class ShopController extends Controller
         $links = Link::all();
 
         //获取当前登录人的信息
+        $user = null;
         if(\Session::has('id')){
             $id = \Session::get('id');
             $user = User::find($id);

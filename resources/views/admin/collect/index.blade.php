@@ -51,11 +51,9 @@
                             @endforeach
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>
     </div>
-    <!--End Advanced Tables -->
 </div>
 @endsection

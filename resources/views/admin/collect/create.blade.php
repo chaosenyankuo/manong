@@ -1,3 +1,4 @@
+
 @extends('layouts.admin') @section('title') 添加收藏 @endsection @section('title','添加收藏') @section('content')
 <div id="page-inner">
     <div class="row">

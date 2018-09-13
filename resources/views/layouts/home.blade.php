@@ -21,7 +21,7 @@
     </div>
     <div class="banner">
         <!--轮播 -->
-        <div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">   
+        <div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
             <ul class="am-slides">
                 @foreach($lunbotu as $v)
                 <li class="banner1"><a><img src="{{$v->pic}}" title="{{$v->pic}}" height="430" /></a></li>
@@ -142,12 +142,12 @@
                     @if(Session::has('nickname'))
                     <div class="m-baseinfo">
                         <a href="/home/index">
-                            <img src="{{$user['image']}}">
-                        </a>
+                                    <img src="{{$user['image']}}">
+                                </a>
                         <em>
-                            Hi,<span class="s-name">{{$user['nickname']}}</span>
-                            <a href="/home/index"><p>点击进入个人中心</p></a>                             
-                        </em>
+                                    Hi,<span class="s-name">{{$user['nickname']}}</span>
+                                    <a href="/home/index"><p>点击进入个人中心</p></a>                             
+                                </em>
                     </div>
                     @endif @if(!Session::has('nickname'))
                     <div class="m-baseinfo">
@@ -230,12 +230,10 @@
                     <div class="info ">
                         <h3>{{$v -> sname}}</h3>
                         <h4>{{$v->cate->cname}}</h4>
-
                     </div>
                     <div class="recommendationMain one ">
                         <a href="/{{$v->id}}.html "><img src="{{$v -> simage}}" width="120" height="120"></img></a>
                     </div>
-
                 </div>
                 @endforeach
             </div>
@@ -253,7 +251,6 @@
                         <span class="more ">
                             <a href="# ">更多美味<i class="am-icon-angle-right " style="padding-left:10px ; " ></i></a>
                         </span>
-
                     </div>
                 </div>
                 <div class="am-g am-g-fixed floodFour ">
@@ -291,5 +288,4 @@
                 </div>
                 <div class="clear "></div>
             </div>
-            @endforeach 
-            @include('layouts.home._footer')
+            @endforeach @include('layouts.home._footer')

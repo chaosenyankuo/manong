@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Collect;
+use App\User;
 use App\Cate;
 use App\Collect;
 use App\Link;
 use App\Setting;
 use App\Shop;
-use App\User;
-use Illuminate\Http\Request;
 
 class CollectController extends Controller
 {
@@ -29,10 +30,14 @@ class CollectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {   
         $users = User::all();
         $cates = Cate::all();
         $shops = Shop::all();
+        foreach($cates as $v)
+         { 
+            
+         }
         return view('admin.collect.create',compact('users','cates','shops'));
     }
 
@@ -61,7 +66,6 @@ class CollectController extends Controller
                 return back()->with('error','添加失败');
             }    
         }        
-        
     }
 
     /**
@@ -72,7 +76,7 @@ class CollectController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -174,5 +178,4 @@ class CollectController extends Controller
             return back()->with('error','删除失败');
         }
     }
-
 }

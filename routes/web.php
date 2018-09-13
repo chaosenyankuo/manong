@@ -47,6 +47,9 @@ Route::get('/admin/logout', 'AdminController@logout');
 	//订单管理
 	Route::resource('dingdan','DingdanController');
 
+	//收藏管理
+	Route::resource('collect','CollectController');
+
 	//商品管理
 	Route::resource('shop','ShopController');
 
@@ -82,9 +85,12 @@ Route::get('/admin/logout', 'AdminController@logout');
 
 	//轮播图
 	Route::resource('lunbotu','LunbotuController');
+
+	//意见反馈列表
+	Route::resource('/admin/yjfkui','YjfkuiController');
+
 	//优惠卷
 	Route::resource('yhj','YhjController');
-
 		
 // });
 /*
@@ -153,9 +159,6 @@ Route::post('/home/dzupdate/{id}','GrzxController@dzupdate');
 //删除收货地址
 Route::get('/home/dzsc/{id}','GrzxController@dzsc');
 
-//加入收藏夹
-Route::get('shoucang/{id}.html','FavoriteController@shoucang');
-
 //购物车管理
 Route::resource('shopcar','ShopCarController');
 
@@ -168,10 +171,14 @@ Route::post('/home/dingdan','DingdanController@baocun');
 //订单列表
 Route::get('/home/dingdan','DingdanController@list');
 
+//意见反馈
+Route::resource('/home/yjfk','YjfkController');
+
 //前台收藏管理
 Route::get('/home/cun','CollectController@cun');
 Route::get('/home/collect','CollectController@zhanshi');
 Route::get('/home/delete','CollectController@delete');
+
 
 
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateShoucangTable extends Migration
+class CreateYjfksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateShoucangTable extends Migration
      */
     public function up()
     {
-        Schema::create('favorite', function (Blueprint $table) {
+        Schema::create('yjfks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('sname')->comment('商品名称')->nullable();
-            $table->string('simage')->comment('商品图片')->nullable();
-            $table->string('sprice')->comment('商品价格')->nullable();
+            $table->integer('user_id');
+            $table->string('content');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateShoucangTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('favorite');
+        Schema::dropIfExists('yjfks');
     }
 }

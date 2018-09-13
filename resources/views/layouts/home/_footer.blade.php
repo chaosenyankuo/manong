@@ -37,7 +37,7 @@
                         </p>
                         <ul class="user_info">
                             <li>用户名:{{$user['nickname']}}</li>
-                             @if($user-> qx == '1')
+                             @if($user->qx == '1')
                                         </li>管理员</li>
                                     @elseif($user->qx == '2')
                                         <li>银牌会员</li>
@@ -49,7 +49,7 @@
 
                         @if(!Session::has('id'))
                         <ul class="user_info">
-                            <li>用户名：请先登录!!</li>
+                            <li>用&nbsp;户&nbsp;名：请先登录!!</li>
                         </ul>
                         @endif
                     </div>
@@ -109,9 +109,9 @@
             </div>
             <div class="quick_toggle">
                 <li class="qtitem">
-                    <a href="#"><span class="kfzx"></span></a>
+                    <a href="/home/yjfk"><span class="kfzx"></span></a>
                     <div class="mp_tooltip">
-                        客服中心
+                        意见反馈
                         <i class="icon_arrow_right_black"></i>
                     </div>
                 </li>
