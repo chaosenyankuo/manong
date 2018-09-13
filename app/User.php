@@ -54,4 +54,10 @@ class User extends Authenticatable
 
     }
 
+    public function yjfk()
+    {
+        return $this->hasMany('App\Yjfk');
+
+    }
+
 }

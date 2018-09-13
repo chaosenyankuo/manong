@@ -9,7 +9,7 @@
     </a>
 </li>
 <li>
-    <a href="/collect/create" class="waves-effect waves-dark">
+    <a href="/collect" class="waves-effect waves-dark">
         <i class="fa fa-sitemap"></i> 收藏管理
     </a>
 </li>
@@ -77,6 +77,11 @@
 <li>
     <a href="/lunbotu" class="waves-effect waves-dark">
         <i class="fa fa-sitemap"></i> 轮播图管理
+    </a>
+</li>
+<li>
+    <a href="/admin/yjfkui" class="waves-effect waves-dark">
+        <i class="fa fa-sitemap"></i> 用户反馈
     </a>
 </li>
 <li>

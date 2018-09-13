@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Cate;
-use App\Shop;
-use App\User;
 use Illuminate\Http\Request;
+use App\User;
+use App\Link;
+use App\Setting;
+use App\Yjfk;
 
-class CollectController extends Controller
+
+class YjfkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,6 +19,11 @@ class CollectController extends Controller
     public function index()
     {
         //
+        $setting = Setting::first();
+        $links = Link::all();
+        $id = \Session::get('id');
+        $user  = User::findOrFail($id);
+        return view('home.yjfk.create',compact('user','links','setting'));
     }
 
     /**
@@ -26,10 +33,9 @@ class CollectController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-        $cates = Cate::all();
-        $shops = Shop::all();
-        return view('admin.collect.create',compact('users','cates','shops'));
+        //
+        
+        
     }
 
     /**
@@ -41,6 +47,20 @@ class CollectController extends Controller
     public function store(Request $request)
     {
         //
+        $setting = Setting::first();
+        $links = Link::all();
+        $id = \Session::get('id');
+        $user  = User::findOrFail($id);
+        $yjfk = new Yjfk;
+        $yjfk -> user_id = $id;
+        $yjfk -> content = $request->content;
+        if($yjfk -> save()){
+            return redirect('/home/yjfk')->with('success', '恭喜您,反馈成功!');
+        }else{
+            return back()->with('error','反馈失败,再从新试试吧!');
+        }
+        return view('home.yjfk.create',compact('user','links','setting','yjfk'));
+        
     }
 
     /**
@@ -51,7 +71,7 @@ class CollectController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -85,7 +105,8 @@ class CollectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 
+    
 }

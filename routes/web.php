@@ -52,7 +52,7 @@ Route::group(['middleware'=>'login'],function(){
 	Route::resource('dingdan','DingdanController');
 
 	//收藏管理
-	ROute::resource('collect','CollectController');
+	Route::resource('collect','CollectController');
 
 	//商品管理
 	Route::resource('shop','ShopController');
@@ -84,6 +84,8 @@ Route::group(['middleware'=>'login'],function(){
 
 	//轮播图
 	Route::resource('lunbotu','LunbotuController');
+	//意见反馈列表
+	Route::resource('/admin/yjfkui','YjfkuiController');
 		
 });
 
@@ -172,6 +174,10 @@ Route::post('/home/dingdan','DingdanController@baocun');
 
 //订单列表
 Route::get('/home/dingdan','DingdanController@list');
+
+//意见反馈
+Route::resource('/home/yjfk','YjfkController');
+
 
 
 

@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Collect;
 use App\User;
-use App\Cate;
-use App\Shop;
+use App\Link;
+use App\Setting;
+use App\Yjfk;
 
-class CollectController extends Controller
+class YjfkuiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +16,18 @@ class CollectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         //
+        // $yjfk = Yjfk::all();
+        $setting = Setting::first();
+        $links = Link::all();
+        $user = User::all();
+        $yjfk = Yjfk::orderBy('id','asc')
+            ->where('user_id','like', '%'.request()->keywords.'%')
+            ->paginate(5);
         
-        $collects = Collect::orderBy('id','asc')
-            ->where('User_id','like', '%'.request()->keywords.'%')
-            ->paginate(3);
-        return view('admin.collect.index',compact('collects'));
+
+        return view('admin.yjfk.index',compact('yjfk','links','setting','user'));
     }
 
     /**
@@ -31,16 +36,9 @@ class CollectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
-        $users = User::all();
-        $cates = Cate::all();
-        $shops = Shop::all();
-        foreach($cates as $v)
-         { 
-            
-         }
-        return view('admin.collect.create',compact('users','cates','shops'));
-    }
+    {
+        //
+            }
 
     /**
      * Store a newly created resource in storage.
@@ -51,17 +49,8 @@ class CollectController extends Controller
     public function store(Request $request)
     {
         //
-        $collect = new Collect;
+        
 
-        $collect -> user_id = $request ->name;
-        $collect -> shop_id = $request ->shop_id;
-
-
-        if($collect -> save()){
-            return redirect('/collect')->with('success','添加成功');
-        }else{
-            return back()->with('error','添加失败');
-        }
     }
 
     /**
@@ -73,6 +62,7 @@ class CollectController extends Controller
     public function show($id)
     {
         //
+        
     }
 
     /**
@@ -84,6 +74,7 @@ class CollectController extends Controller
     public function edit($id)
     {
         //
+        
     }
 
     /**
@@ -106,6 +97,14 @@ class CollectController extends Controller
      */
     public function destroy($id)
     {
+        
         //
+        $yjfk = yjfk::findOrFail($id);
+
+        if($yjfk -> delete()){
+            return redirect('/admin/yjfkui')->with('success','删除用户成功');
+        }else{
+            return back()->with('error','删除用户失败');
+        }
     }
 }
