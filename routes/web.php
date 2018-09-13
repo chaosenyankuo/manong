@@ -42,6 +42,8 @@ Route::get('/admin/logout', 'AdminController@logout');
 	Route::get('/admin/setting', 'AdminController@setting');
 	Route::post('/admin/setting', 'AdminController@update');
 
+	//网站开关
+	Route::resource('/wzkg','Wzkgcontroller');
 	//物流管理
 	Route::resource('wuliu', 'WuliuController');
 
@@ -81,6 +83,9 @@ Route::get('/admin/logout', 'AdminController@logout');
 
 	//轮播图
 	Route::resource('lunbotu','LunbotuController');
+	//优惠卷
+	Route::resource('yhj','YhjController');
+
 		
 // });
 
@@ -112,6 +117,8 @@ Route::post('/home/dologin', 'HomeController@dologin');
 //前台退出登录
 Route::get('/home/logout','HomeController@logout');
 
+//我的福利
+Route::get('/fuli','FuliController@fuli');
 //个人中心
 Route::get('/home/index','GrzxController@index');
 
@@ -166,6 +173,7 @@ Route::post('/home/dingdan','DingdanController@baocun');
 
 //订单列表
 Route::get('/home/dingdan','DingdanController@list');
+
 
 
 
