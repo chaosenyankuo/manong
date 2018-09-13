@@ -149,6 +149,12 @@ Route::post('/home/wjmal', 'ZhuceController@wjmal');
 //评论管理
 Route::get('/home/pjgl','GrzxController@pjgl');
 
+//评价商品
+Route::get('/home/pjsp','GrzxController@pjsp');
+
+//足迹
+Route::get('/home/foot','GrzxController@foot');
+
 //收货地址
 Route::get('/home/shdz','GrzxController@shdz');
 Route::post('/home/shdz','GrzxController@shdza');

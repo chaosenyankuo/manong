@@ -38,7 +38,7 @@
                     <li class="index"><a href="/">首页</a></li>
                 </ul>
                 <div class="nav-extra">
-                    <a href="/fuli"><i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利</a>
+                    <a href="/home/fuli" style="color:yellow"><i class="am-icon-user-secret am-icon-md nav-user"></i>福利中心</a>
                     <i class="am-icon-angle-right" style="padding-left: 10px;"></i>
                 </div>
             </div>
@@ -168,13 +168,7 @@
                         <ul>
                             <li class="title-first"><a target="_blank" href="#">
                                     <img src="/home/images/TJ2.jpg"></img>
-                                    <span>[特惠]</span>商城爆品1分秒                                
-                                </a></li>
-                            <li class="title-first"><a target="_blank" href="#">
-
-                                    <span>[公告]</span>商城与广州市签署战略合作协议
-                                     <img src="/home/images/TJ.jpg"></img>
-                                     <p>XXXXXXXXXXXXXXXXXX</p>
+                                    <span>[特惠]</span>两元商城                               
                                 </a></li>
                             <div class="member-login">
                                 <a href="#"><strong>0</strong>待收货</a>
@@ -184,8 +178,8 @@
                             </div>
                             <div class="clear"></div>
                     </div>
-                    <li><a target="_blank" href="#"><span>[特惠]</span>洋河年末大促，低至两件五折</a></li>
-                    <li><a target="_blank" href="#"><span>[公告]</span>华北、华中部分地区配送延迟</a></li>
+                    <li><a target="_blank" href="#"><span>[特惠]</span>全场都两块,两块钱你买不了吃亏,买不了上当,真整的物有所值!!</a></li>
+                    <li><a target="_blank" href="#"><span>[公告]</span>红包、优惠券一大波福利来袭，还在等什么！一起来转转转！！！</a></li>
                     <li><a target="_blank" href="#"><span>[特惠]</span>家电狂欢千亿礼券 买1送1！</a></li>
                     </ul>
                     <div class="advTip"><a href="/{{$v->id}}.html">

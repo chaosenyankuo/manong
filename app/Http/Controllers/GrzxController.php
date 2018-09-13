@@ -217,14 +217,20 @@ class GrzxController extends Controller
         $user  = User::findOrFail($id);
         $comment = $user->comment;
         foreach ($comment as $v) {
-            dd($v->shop);
+            
          }
-
-
-
-         
         return view('home.grzx.pjgl',compact('links','setting','user','comment','pack'));
 
+    }
+//评价商品
+    public function pjsp()
+    {   
+        $links = Link::all();
+        $setting = Setting::first();
+        $id = \Session::get('id');
+        $user  = User::findOrFail($id);
+        $shop = Shop::all();
+        return view('home.grzx.pjsp',compact('links','setting','user'));
     }
 //收藏
     public function sc()
@@ -235,5 +241,15 @@ class GrzxController extends Controller
         
     } 
    
+//z足迹
+    public function foot()
+    {
+        $links = Link::all();
+        $setting = Setting::first();
+        $id = \Session::get('id');
+        $user  = User::findOrFail($id);
+        $shop = Shop::all();
+        return view('home.grzx.foot',compact('links','setting','user'));
+    } 
 }
 
