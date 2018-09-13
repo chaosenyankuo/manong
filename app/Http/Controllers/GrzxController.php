@@ -229,7 +229,7 @@ class GrzxController extends Controller
         $setting = Setting::first();
         $id = \Session::get('id');
         $user  = User::findOrFail($id);
-        $shop = Shop::all();
+        
         return view('home.grzx.pjsp',compact('links','setting','user'));
     }
 //收藏
