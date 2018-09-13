@@ -12,7 +12,7 @@
 
 		<link href="/home/css/personal.css" rel="stylesheet" type="text/css">
 		<link href="/home/css/stepstyle.css" rel="stylesheet" type="text/css">
-
+		
 		<script type="text/javascript" src="/home/js/jquery-1.7.2.min.js"></script>
 		<script src="/home/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 
@@ -33,11 +33,8 @@
 					   <div class="long-title"><span class="all-goods">全部分类</span></div>
 					   <div class="nav-cont">
 							<ul>
-								<li class="index"><a href="#">首页</a></li>
-                                <li class="qc"><a href="#">闪购</a></li>
-                                <li class="qc"><a href="#">限时抢</a></li>
-                                <li class="qc"><a href="#">团购</a></li>
-                                <li class="qc last"><a href="#">大包装</a></li>
+								<li class="index"><a href="/">首页</a></li>
+                               
 							</ul>
 						    <div class="nav-extra">
 						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
@@ -54,6 +51,16 @@
 						<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">修改密码</strong> / <small>Password</small></div>
 					</div>
 					<hr/>
+					@if(Session::has('error'))
+						<center><div id="cuowu"class="duide" style="width:300px;height:50px; background:red;text-align:center;line-height:50px;color:white;font-size:16px;">
+							{{Session::get('error')}}
+						</div></center>
+					@endif
+					@if(Session::has('success'))
+						<center><div id="cuowu"class="duide" style="width:300px;height:50px; background:#2196f3;text-align:center;line-height:50px;color:white;font-size:16px;">
+							{{Session::get('success')}}
+						</div></center>
+					@endif
 					<!--进度条-->
 					<div class="m-progress">
 						<div class="m-progress-list">
@@ -97,7 +104,7 @@
 						</div>
 						{{csrf_field()}}
 					</form>
-
+					
 				</div>
 				<!--底部-->
 				@include('layouts.home._foot')
@@ -105,7 +112,11 @@
 
 		@include('layouts.home._menu')
 		</div>
-
+<script>
+    setTimeout(function() {
+        $('.duide').css('display', 'none');
+    }, 2000);
+    </script>
 	</body>
 
 </html>

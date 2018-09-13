@@ -91,6 +91,7 @@ Route::get('/admin/logout', 'AdminController@logout');
 
 	//优惠卷
 	Route::resource('yhj','YhjController');
+	
 		
 // });
 /*

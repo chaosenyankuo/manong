@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Collect;
 use App\User;
 use App\Cate;
-use App\Collect;
 use App\Link;
 use App\Setting;
 use App\Shop;
