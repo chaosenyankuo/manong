@@ -70,8 +70,7 @@ class HomeController extends Controller
     	$links = Link::all();
     	$recom = Shop::where('recom','1')->take(3)->orderBy('id','desc')->get();
         $shops = Shop::all();
-    	$id = \Session::get('id');
-        
+    	$id = \Session::get('id');     
         $user = User::find($id);
         
     	$a = 1;

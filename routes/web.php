@@ -11,10 +11,6 @@
 |
 */
 
-
-
-
-
 //登陆页面
 Route::get('/admin/login', 'AdminController@login');
 
@@ -23,8 +19,6 @@ Route::post('/admin/login', 'AdminController@dologin');
 
 //退出登录
 Route::get('/admin/logout', 'AdminController@logout');
-
-
 
 //后台路由
 Route::group(['middleware'=>'login'],function(){
@@ -42,6 +36,8 @@ Route::group(['middleware'=>'login'],function(){
 	Route::get('/admin/setting', 'AdminController@setting');
 	Route::post('/admin/setting', 'AdminController@update');
 
+	//网站开关
+	Route::resource('/wzkg','Wzkgcontroller');
 	//物流管理
 	Route::resource('wuliu', 'WuliuController');
 
@@ -57,6 +53,11 @@ Route::group(['middleware'=>'login'],function(){
 	//商品管理
 	Route::resource('shop','ShopController');
 
+	//后台收藏管理
+	Route::resource('collect','CollectController');
+
+	//发送ajax请求查询对应的分类下的商品
+	Route::post('/first','CollectController@first');
 
 	//商品口味管理
 	Route::resource('flavor','FlavorController');
@@ -84,15 +85,14 @@ Route::group(['middleware'=>'login'],function(){
 
 	//轮播图
 	Route::resource('lunbotu','LunbotuController');
+
 	//意见反馈列表
 	Route::resource('/admin/yjfkui','YjfkuiController');
+
+	//优惠卷
+	Route::resource('yhj','YhjController');
 		
 });
-
- 
-
-
-
 /*
  *前台路由
  */
@@ -117,6 +117,8 @@ Route::post('/home/dologin', 'HomeController@dologin');
 //前台退出登录
 Route::get('/home/logout','HomeController@logout');
 
+//我的福利
+Route::get('/fuli','FuliController@fuli');
 //个人中心
 Route::get('/home/index','GrzxController@index');
 
@@ -157,14 +159,8 @@ Route::post('/home/dzupdate/{id}','GrzxController@dzupdate');
 //删除收货地址
 Route::get('/home/dzsc/{id}','GrzxController@dzsc');
 
-//加入收藏夹
-Route::get('shoucang/{id}.html','FavoriteController@shoucang');
-
 //购物车管理
 Route::resource('shopcar','ShopCarController');
-
-//收藏管理
-Route::resource('collect','CollectController');
 
 //加入订单
 Route::get('/home/dingdan/{id}','DingdanController@tianjia');
@@ -178,6 +174,10 @@ Route::get('/home/dingdan','DingdanController@list');
 //意见反馈
 Route::resource('/home/yjfk','YjfkController');
 
+//前台收藏管理
+Route::get('/home/cun','CollectController@cun');
+Route::get('/home/collect','CollectController@zhanshi');
+Route::get('/home/delete','CollectController@delete');
 
 
 

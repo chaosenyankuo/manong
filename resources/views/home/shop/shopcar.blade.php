@@ -14,8 +14,6 @@
     <link href="/gwc/css/demo.css" rel="stylesheet" media="all" />
     <link rel="stylesheet" href="/gwc/css/reset.css">
     <link rel="stylesheet" href="/gwc/css/carts.css">
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--[if IE]>
 
@@ -161,7 +159,7 @@
                             <li class="list_op">
                                 <form action="/shopcar/{{$shopcar[$k]->id}}" method="post">
                                     <p class="del">
-                                        <button class="btn btn-danger">删除</button>
+                                        <button style="background-color:red;width:50px;height:30px;">删除</button>
                                     </p>
                                     {{csrf_field()}}{{method_field('DELETE')}}
                                 </form>
@@ -203,11 +201,7 @@
     <!-- 结算 -->
     <script>
     $('.asd').click(function(){
-        if($('#label').hasClass('mark')){     
-            $('.qwe').submit();       
-        }else{          
-            return false;      
-        }
+        $('.qwe').submit();
     });    
     </script>
     @include('layouts.home._footer')

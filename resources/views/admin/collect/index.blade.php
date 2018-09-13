@@ -1,8 +1,6 @@
-@extends('layouts.admin')
- @section('title') 收藏列表 @endsection 
- @section('title','收藏列表')
-  @section('content')
+@extends('layouts.admin') @section('title','收藏列表') @section('title') 收藏列表 @endsection @section('content')
 <div class="col-md-12">
+    <!-- Advanced Tables -->
     <div class="card">
         <div class="card-content">
             <div class="table-responsive">
@@ -15,62 +13,44 @@
                                 {{csrf_field()}} {{method_field('DELETE')}}
                             </form>
                         </div>
-                        <div class="col-sm-6">
-                            <form action="/collect" method="get">
-                                <div id="dataTables-example_filter" class="dataTables_filter">
-                                    <label>Search:
-                                        <input type="search" class="form-control input-sm" aria-controls="dataTables-example" name="keywords" value="{{request()->keywords}}">
-                                    </label>
-                                </div>
-                            </form>
-                        </div>
                     </div>
                     <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
                         <thead>
-                        </thead>
-                        <tbody>
-                            <tr class="gradeA odd">
+                            <tr role="row">
                                 <th>
                                     <center>
-                                        <input type="checkbox" id="fxk">
-                                        <label for="fxk" style="margin-bottom:-10px"></label>
+                                    <input type="checkbox" id="test9999999" >
+                                    <label for="test9999999" style="margin-bottom:-10px"></label>
                                     </center>
                                 </th>
-                                <th class="center">用户id</th>
-                                <th class="center">商品名称</th>
-                                <th class="center">操作</th>
+                                <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column ascending" style="width: 245.012px;">ID</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 377.012px;">用户名</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 377.012px;">商品名</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 341.012px;">操作</th>
                             </tr>
-                        </tbody>
+                        </thead>
                         <tbody>
                             @foreach($collects as $v)
                             <tr class="gradeA odd">
                                 <td>
                                     <center>
-                                        <input type="checkbox" id="">
-                                        <label for="" style="margin-bottom:-10px"></label>
+                                    <input type="checkbox" id="test{{$v['id']}}">
+                                    <label for="test{{$v['id']}}" style="margin-bottom:-10px"></label>
                                     </center>
                                 </td>
-                                <td class="center">{{$v['user_id']}}</td>
-                                <td class="center">{{$v['shop_id']}}</td>
-                                
-                                <td>
-                                    <form action="/collect/{{$v['id']}}" method="post">
-                                    <a href="/collect/{{$v['id']}}/edit" style="float:left " class="waves-effect waves-light btn">编辑</a>
-                                    
-                                        {{method_field('DELETE')}} {{csrf_field()}}
-                                        <button class="btn btn-danger dropdown-toggle">删除</button>
+                                <td class="sorting_1">{{$v['id']}}</td>
+                                <td class=" ">{{$v->user->uname}}</td>
+                                <td class=" ">{{$v->shop->sname}}</td>
+                                <td class=" ">
+                                    <form action="/collect/{{$v['id']}}" method="POST">
+                                        <button class="btn-danger btn-min">删除</button>
+                                        {{csrf_field()}} {{method_field('DELETE')}}
                                     </form>
                                 </td>
-                                @endforeach
                             </tr>
+                            @endforeach
+                        </tbody>
                     </table>
-                    <div class="row">
-                        <div class="am-cf">
-                            <div class="am-fr">
-                               
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

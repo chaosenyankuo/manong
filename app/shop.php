@@ -52,8 +52,18 @@ class Shop extends Model
 
     }
 
-    public function orders()
+    public function order()
     {
-        return $this->hasMany('App\Order');
+        return $this->belongsToMany('App\Order');
+    }
+
+    public function order_shop()
+    {
+        return $this->hasMany('App\Order_shop');
+    }
+
+    public function collect()
+    {
+        return $this->hasMany('App\Shop');
     }
 }
