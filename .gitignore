@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /public/uploads
+/public/yhjpic
 /storage/*.key
 /vendor
 /.idea
@@ -12,4 +13,5 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+/public/yhjpic
 .env

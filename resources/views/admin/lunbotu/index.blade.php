@@ -49,7 +49,7 @@
                                     </center>
                                 </td>
                                 <td class="center">{{$v['id']}}</td>
-                                <td class="center"><img data-src="{{URL::asset($v['pic'])}}" alt="" width="50" height="30"></td>
+                                <td class="center"><img src="{{$v['pic']}}" alt="" width="50" height="30"></td>
                                 <td class="center">{{$v['url']}}</td>
                                 <td>
                                     <form action="/lunbotu/{{$v -> id}}" method="post">

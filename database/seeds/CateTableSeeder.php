@@ -17,7 +17,7 @@ class CateTableSeeder extends Seeder
         	$cate = new Cate;
         	$cate -> cname = str_random(5);
             $cate -> intro = str_random(8);
-            $cate -> cimage = '/123.gif';
+            $cate -> cimage = '/321.jpg';
         	$cate -> save();
         }
     }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
-    <title>个人资料</title>
+    <title>完善个人资料</title>
     <link href="/home/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
     <link href="/home/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
     <link href="/home/css/personal.css" rel="stylesheet" type="text/css">
@@ -43,7 +43,7 @@
                 <div class="user-info">
                     <!--标题 -->
                     <div class="am-cf am-padding">
-                        <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">个人资料</strong> / <small>Personal&nbsp;information</small></div>
+                        <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">完善资料</strong> / <small>Personal&nbsp;information</small></div>
                     </div>
                     <hr/>
                     <!--头像 -->
@@ -61,28 +61,28 @@
                                     <button class="am-btn am-btn-danger">{{Session::get('error')}}</button>
                                 </div>
                                 @endif
-                                <label for="user-name2" class="am-form-label">昵称</label>
+                                <label for="user-name2" class="am-form-label">昵称:</label>
                                 <div class="am-form-content">
                                     <input type="text" id="user-name2" name="nickname">
                                 </div>
                                 <div class="nicknames"></div>
                             </div>
                             <div class="am-form-group">
-                                <label for="user-phone" class="am-form-label">用户名</label>
+                                <label for="user-phone" class="am-form-label">用户名:</label>
                                 <div class="am-form-content">
                                     <input id="user-phone" name="uname" type="tel">
                                 </div>
                                 <div class="unames"></div>
                             </div>
                             <div class="am-form-group">
-                                <label for="user-phone" class="am-form-label">电话</label>
+                                <label for="user-phone" class="am-form-label">电话:</label>
                                 <div class="am-form-content">
                                     <input id="user-phone" name="phone" type="tel">
                                 </div>
                                 <div class="phones"></div>
                             </div>
                             <div class="am-form-group">
-                                <label class="am-form-label">性别</label>
+                                <label class="am-form-label">性别:</label>
                                 <div class="am-form-content sex">
                                     <label class="am-radio-inline">
                                         <input type="radio" name="sex" value="1" data-am-ucheck> 男
@@ -123,7 +123,7 @@
                 $('.phones').show().html('<center><span style="color:red;font-size:10px;" >请输入11位手机号</span><center/>');
                 CPHONE = false;
             } else {
-                $('.phones').show().html('<span style="color:green;font-size:12px;font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✔</span>');
+                $('.phones').show().html('<span style="color:green;font-size:12px;font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✔</span>');
                 CPHONE = true;
             }
         })
@@ -136,7 +136,7 @@
                 $('.nicknames').show().html('<center><span style="color:red;font-size:10px;" >昵称不能为空</span><center/>');
                 CNICK = false;
             } else {
-                $('.nicknames').show().html('<span style="color:green;font-size:12px;font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✔</span>');
+                $('.nicknames').show().html('<span style="color:green;font-size:12px;font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✔</span>');
                 CNICK = true;
             }
         })
@@ -149,7 +149,7 @@
                 $('.unames').show().html('<center><span style="color:red;font-size:10px;" >用户名不能为空</span><center/>');
                 CUNAME = false;
             } else {
-                $('.unames').show().html('<span style="color:green;font-size:12px;font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✔</span>');
+                $('.unames').show().html('<span style="color:green;font-size:12px;font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✔</span>');
                 CUNAME = true;
             }
         })
