@@ -181,7 +181,6 @@ class DingdanController extends Controller
      */
     public function baocun(Request $req)
     {   
-        dd($req->jifen);
         if(!$req->wuliu_id){
             return back()->with('error','请选择配送方式');
         }
@@ -206,7 +205,7 @@ class DingdanController extends Controller
         $a = $dd->save();
 
         foreach($req-> shop_id as $k=>$v){
-            $ddd = Order::where('user_id',\Session::get('id'))->where('order_bh',$order_bh)->take(1)->get();
+            $ddd = Order::where('user_id',\Session::get('id'))->where('order_bh',$order_bh)->get();
             $os = new Order_shop;
             $os -> order_id = $ddd[0]->id;
             $os -> shop_id = $v;
@@ -238,26 +237,34 @@ class DingdanController extends Controller
         $order4 = Order::where('zhuangtai','4')->where('user_id',\Session::get('id'))->get();
 
         if(!empty($order1[0])){
-            $os1 = Order_shop::where('order_id',$order1[0]->id)->get();
+            foreach($order1 as $k=>$v){
+                $os1 = Order_shop::where('order_id',$v->id)->get();
+            }
         }else{
             $os1 = [];
         }
         if(!empty($order2[0])){
-            $os2 = Order_shop::where('order_id',$order2[0]->id)->get();
+            foreach($order2 as $k=>$v){
+                $os2 = Order_shop::where('order_id',$order2[0]->id)->get();
+            }
         }else{
             $os2 = [];
         }
         if(!empty($order3[0])){
-            $os3 = Order_shop::where('order_id',$order3[0]->id)->get();
+            foreach($order3 as $k=>$v){
+                $os3 = Order_shop::where('order_id',$order3[0]->id)->get();
+            }
         }else{
             $os3 = [];
         }
         if(!empty($order4[0])){
-            $os4 = Order_shop::where('order_id',$order4[0]->id)->get();
+            foreach($order1 as $k=>$v){
+                $os4 = Order_shop::where('order_id',$order4[0]->id)->get();
+            }
         }else{
             $os4 = [];
         }
-
+        
         $uid = \Session::get('id');
         $user = User::findOrFail($uid);
 
