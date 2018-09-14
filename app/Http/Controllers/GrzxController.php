@@ -11,7 +11,6 @@ use App\Setting;
 use App\Shop;
 use App\Uaddress;
 use App\User;
-use App\Order;
 use Illuminate\Foundation\Testing\Concerns\session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -260,12 +259,17 @@ class GrzxController extends Controller
         $user  = User::findOrFail($uid);
         $order = Order::findOrFail($id);
         $shop = $order->shop;
+
+        foreach($shop as $v)
+        {
+            dd($v->pack);
+        }
         return view('home.grzx.pjsp',compact('links','setting','user','order','shop'));
     }
 
     public function plsp(Request $request)
     {
-        
+        //将值存入到数据库
     }
 //收藏
     public function sc()
