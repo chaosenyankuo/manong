@@ -55,57 +55,13 @@
                                     <div class="s-prestige am-btn am-round">
                                         @if($user->qx == '1') 管理员 @elseif($user->qx == '2') 银牌会员 @else 金牌会员 @endif
                                     </div>
-                                   <span class="s-name">积分:{{$user['jifen']}}</span>
+                                    <span class="s-name">积分:{{$user['jifen']}}</span>
                                 </div>
                                 <div class="m-right">
                                     <div class="m-address">
                                         <a href="/home/shdz" class="i-trigger">我的收货地址</a>
                                     </div>
                                 </div>
-                            </div>
-                            <!--个人资产-->
-                            <div class="m-userproperty">
-                                <div class="s-bar">
-                                    <i class="s-icon"></i>个人资产
-                                </div>
-                                <p class="m-bonus">
-                                    <a href="bonus.html">
-                                            <i><img src="/home/images/bonus.png"/></i>
-                                            <span class="m-title">红包</span>
-                                            <em class="m-num">2</em>
-                                        </a>
-                                </p>
-                                <p class="m-coupon">
-                                    <a href="/home/coupon">
-                                        <?php 
-                                        use App\User;
-                                        $uid = \Session::get('id');
-                                        $user = User::findOrFail($uid);
-                                        ?>
-                                            <i><img src="/home/images/coupon.png"/></i>
-                                            <span class="m-title">优惠券</span>
-                                            <em class="m-num">{{count($user->coupons)}}</em>
-                                        </a>
-                                </p>
-                                <p class="m-bill">
-                                    <a href="bill.html">
-                                            <i><img src="/home/images/wallet.png"/></i>
-                                            <span class="m-title">钱包</span>
-                                            <em class="m-num">2</em>
-                                        </a>
-                                </p>
-                                <p class="m-big">
-                                    <a href="#">
-                                            <i><img src="/home/images/day-to.png"/></i>
-                                            <span class="m-title">签到有礼</span>
-                                        </a>
-                                </p>
-                                <p class="m-big">
-                                    <a href="#">
-                                            <i><img src="/home/images/72h.png"/></i>
-                                            <span class="m-title">72小时发货</span>
-                                        </a>
-                                </p>
                             </div>
                         </div>
                         <div class="box-container-bottom"></div>
