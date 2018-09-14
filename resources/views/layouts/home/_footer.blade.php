@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div id="foot" class="item">
-                <a href="#">
+                <a href="/home/foot">
                     <span class="zuji"></span>
                 </a>
                 <div class="mp_tooltip">

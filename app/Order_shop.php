@@ -18,4 +18,14 @@ class Order_shop extends Model
     {
     	return $this->belongsTo('App\Shop');
     }
+
+    public function flavor()
+    {
+        return $this->belongsTo('App\Flavor');
+    }
+
+    public function pack()
+    {
+        return $this->belongsTo('App\Pack');
+    }
 }

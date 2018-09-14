@@ -31,7 +31,7 @@
                 <li class="index"><a href="/">首页</a></li>
             </ul>
             <div class="nav-extra">
-                <i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
+                <a href="/home/fuli" style="color:yellow"><i class="am-icon-user-secret am-icon-md nav-user"></i>福利中心</a>
                 <i class="am-icon-angle-right" style="padding-left: 10px;"></i>
             </div>
         </div>
@@ -82,8 +82,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">颜色：12#川南玛瑙
-                                                                            <br/>包装：裸装 </p>
+                                                                        <p class="info-little">口味：{{$os1[$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os1[$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -157,8 +157,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">颜色：12#川南玛瑙
-                                                                            <br/>包装：裸装 </p>
+                                                                        <p class="info-little">口味:{{$os2[$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os2[$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -235,8 +235,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">颜色：12#川南玛瑙
-                                                                            <br/>包装：裸装 </p>
+                                                                        <p class="info-little">颜色：{{$os3[$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os3[$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -310,8 +310,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">颜色：12#川南玛瑙
-                                                                            <br/>包装：裸装 </p>
+                                                                        <p class="info-little">颜色：{{$os4[$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os4[$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -393,8 +393,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">颜色：12#川南玛瑙
-                                                                            <br/>包装：裸装 </p>
+                                                                        <p class="info-little">颜色：{{$os2[$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os2[$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -477,8 +477,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">颜色：12#川南玛瑙
-                                                                            <br/>包装：裸装 </p>
+                                                                        <p class="info-little">颜色：{{$os3[$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os3[$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -559,8 +559,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">颜色：12#川南玛瑙
-                                                                            <br/>包装：裸装 </p>
+                                                                        <p class="info-little">颜色：{{$os4[$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os4[$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -626,9 +626,11 @@
                                                 <div class="dd-num">订单编号：<a href="javascript:;">{{$v->order_bh}}</a></div>
                                                 <span>成交时间：{{$v->created_at}}</span>
                                             </div>
+                                            @foreach($v->shop as $kk=>$vv)
                                             <div class="order-content">
+
                                                 <div class="order-left">
-                                                    @foreach($v->shop as $kk=>$vv)
+                                                    
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
@@ -640,8 +642,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">颜色：12#川南玛瑙
-                                                                            <br/>包装：裸装 </p>
+                                                                        <p class="info-little">颜色：{{$os1[$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os1[$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -662,18 +664,16 @@
                                                             </div>
                                                         </li>
                                                     </ul>
-                                                    @endforeach
+                                                    
                                                 </div>
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
                                                             <?php $h=0; ?>
-                                                            @foreach($v->order_shop as $kk=>$vv)
-                                                                <?php $h += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?>
-                                                            @endforeach
+                                                            <?php $h = ($v->order_shop[$kk]->shuliang)*($v->shop[$kk]->sprice)+($v->order_shop[$kk]->shuliang * 10); ?>
                                                             合计：{{$h}}
                                                             <p>含运费：
-                                                                <span>{{count($v->order_shop)}}0.00</span>
+                                                                <span>{{$v->order_shop[$kk]->shuliang}}0.00</span>
                                                             </p>
                                                         </div>
                                                     </li>
@@ -686,14 +686,16 @@
                                                             </div>
                                                         </li>
                                                         <li class="td td-change">
-                                                            <a href="commentlist.html">
+                                                            <a href="/home/pjsp/{{$vv->id}}">
                                                                 <div class="am-btn am-btn-danger anniu">
                                                                     评价商品</div>
                                                             </a>
                                                         </li>
                                                     </div>
                                                 </div>
+                                                
                                             </div>
+                                            @endforeach
                                         </div>
                                         @endforeach
                                     </div>

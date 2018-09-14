@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Sctt;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
-class Wzkgcontroller extends Controller
+
+class Scttcontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,9 @@ class Wzkgcontroller extends Controller
     public function index()
     {
         //
-         return view('admin.wzkg.index');
+        $sctt = Sctt::orderBy('id','asc')->paginate(3);
+        // dd($sctt);
+         return view('admin.Sctt.index',compact('sctt'));
     }
 
     /**
@@ -24,7 +27,7 @@ class Wzkgcontroller extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.Sctt.create',compact('sctt'));
     }
 
     /**
@@ -35,17 +38,19 @@ class Wzkgcontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
-         $path = 'F:\xampp\htdocs\jszuoye\xiangmu\manong\storage\framework/down';
-        if(!is_file($path))
-        {
-            File::copy('F:\xampp\htdocs\jszuoye\xiangmu\manong\storage\framework/adown', 'F:\xampp\htdocs\jszuoye\xiangmu\manong\storage\framework/down');
-            
-            return redirect('/wzkg')->with('success','网站关闭成功!!!');
+         $sctt = new Sctt;
+
+        $sctt -> scth = $request ->scth;
+        $sctt -> scgg = $request ->scgg;
+        $sctt -> scgg_url = $request ->scgg_url;
+        $sctt -> scth_url = $request ->scth_url;
+      
+
+        if($sctt -> save()){
+            return redirect('/sctt')->with('success','添加成功');
+        }else{
+            return back()->with('error','添加失败');
         }
-            return back()->with('error','网站已经关闭,别点我了!!!');
-            return view('admin.wzkg.index');
-           
     }
 
     /**
@@ -68,6 +73,9 @@ class Wzkgcontroller extends Controller
     public function edit($id)
     {
         //
+        $sctt = Sctt::findOrfail($id);
+        // dd($sctt);
+        return view('admin.Sctt.edit',compact('sctt'));
     }
 
     /**
@@ -80,6 +88,18 @@ class Wzkgcontroller extends Controller
     public function update(Request $request, $id)
     {
         //
+        $sctt = Sctt::findOrfail($id);
+        $sctt -> scth = $request ->scth;
+        $sctt -> scgg = $request ->scgg;
+        $sctt -> scgg_url = $request ->scgg_url;
+        $sctt -> scth_url = $request ->scth_url;
+      
+
+        if($sctt -> save()){
+            return redirect('/sctt')->with('success','更新成功');
+        }else{
+            return back()->with('error','更新失败');
+        }
     }
 
     /**
@@ -90,24 +110,11 @@ class Wzkgcontroller extends Controller
      */
     public function destroy($id)
     {
-        //
-<<<<<<< HEAD
-        $path = 'F:\xampp\htdocs\jszuoye\xiangmu\manong\storage\framework/down';
-        if(is_file($path))
-        {
-            File::delete('F:\xampp\htdocs\jszuoye\xiangmu\manong\storage\framework/down');
-=======
-        $path = 'F:/xampp/htdocs/javascript/shangcheng/manong/storage/framework/down';
-        if(is_file($path))
-        {
-            File::delete($path);
->>>>>>> 46889d6e652681f457bfa69b91886be4831a9d0d
-           
-             return redirect('/wzkg')->with('success','恭喜维护完成!!!');
-        } else {
-
-              return back()->with('error','网站已经开启,别点我了!!!');
+        $sctt = Sctt::findOrfail($id);
+         if($sctt->delete()){
+             return redirect('/sctt')->with('success','删除成功');
+        }else{
+             return back()->with('error','删除失败');
         }
-         return view('admin.wzkg.index');
     }
 }
