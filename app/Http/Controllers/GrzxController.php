@@ -10,6 +10,7 @@ use App\Setting;
 use App\Shop;
 use App\Uaddress;
 use App\User;
+use App\Order;
 use Illuminate\Foundation\Testing\Concerns\session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -216,21 +217,25 @@ class GrzxController extends Controller
         $id = \Session::get('id');
         $user  = User::findOrFail($id);
         $comment = $user->comment;
-        foreach ($comment as $v) {
-            
-         }
+        
         return view('home.grzx.pjgl',compact('links','setting','user','comment','pack'));
 
     }
 //评价商品
-    public function pjsp()
+    public function pjsp($id)
     {   
         $links = Link::all();
         $setting = Setting::first();
-        $id = \Session::get('id');
-        $user  = User::findOrFail($id);
+        $uid = \Session::get('id');
+        $user  = User::findOrFail($uid);
+        $order = Order::findOrFail($id);
+        $shop = $order->shop;
+        return view('home.grzx.pjsp',compact('links','setting','user','order','shop'));
+    }
+
+    public function plsp(Request $request)
+    {
         
-        return view('home.grzx.pjsp',compact('links','setting','user'));
     }
 //收藏
     public function sc()

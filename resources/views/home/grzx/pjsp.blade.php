@@ -49,44 +49,51 @@
                         <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">发表评论</strong> / <small>Make&nbsp;Comments</small></div>
                     </div>
                     <hr/>
+                    <form action="/home/plsp" method="post">
                     <div class="comment-main">
+                    @foreach($shop as $v)
                         <div class="comment-list">
                             <div class="item-pic">
                                 <a href="#" class="J_MakePoint">
-										<img src="/home/images/comment.jpg_400x400.jpg" class="itempic">
+										<img src="{{$v->simage}}" class="itempic">
 									</a>
                             </div>
+                            
                             <div class="item-title">
                                 <div class="item-name">
                                     <a href="#">
-                                        <p class="item-basic-info">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
+                                        <p class="item-basic-info">{{$v->sname}}</p>
                                     </a>
                                 </div>
                                 <div class="item-info">
                                     <div class="info-little">
-                                        <span>颜色：洛阳牡丹</span>
+                                        <span>颜色：洛阳牡丹</span><br>
                                         <span>包装：裸装</span>
                                     </div>
                                     <div class="item-price">
-                                        价格：<strong>19.88元</strong>
+                                        价格：<strong>{{$v->sprice}}</strong>
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="clear"></div>
                             <div class="item-comment">
-                                <textarea placeholder="请写下对宝贝的感受吧，对他人帮助很大哦！"></textarea>
+                                <textarea name="content[]" placeholder="请写下对宝贝的感受吧，对他人帮助很大哦！"></textarea>
                             </div>
-                            <div class="item-opinion">
-                                <li><i class="op1"></i>好评</li>
-                                <li><i class="op2"></i>中评</li>
-                                <li><i class="op3"></i>差评</li>
+                            <div class="item-opinion" name="haoping">
+                                <li><i class="op1"type="radio" value="1"></i>好评</li>
+                                <li><i class="op2"type="radio" value="2"></i>中评</li>
+                                <li><i class="op3"type="radio" value="3"></i>差评</li>
                             </div>
                         </div>
+                        <input type="hidden" name="shop_id[]" value="{{$v->id}}">
+                        @endforeach
                         <!--多个商品评论-->
-                        
+                        {{csrf_field()}}
                         <div class="info-btn">
-                            <div class="am-btn am-btn-danger">发表评论</div>
+                            <button class="am-btn am-btn-danger">发表评论</button>
                         </div>
+                        </form>
                         <script type="text/javascript">
                         $(document).ready(function() {
                             $(".comment-list .item-opinion li").click(function() {

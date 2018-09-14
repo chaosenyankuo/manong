@@ -686,7 +686,7 @@
                                                             </div>
                                                         </li>
                                                         <li class="td td-change">
-                                                            <a href="/home/pjsp">
+                                                            <a href="/home/pjsp/{{$v->id}}">
                                                                 <div class="am-btn am-btn-danger anniu">
                                                                     评价商品</div>
                                                             </a>
