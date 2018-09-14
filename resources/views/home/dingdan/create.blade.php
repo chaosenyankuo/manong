@@ -214,6 +214,8 @@
                                 <div class="clear"></div>
                             </div>
                         </tr>
+                        <input type="hidden" name="flavor_id[]" value="{{$shopcar[$k]->flavor['id']}}" />
+                        <input type="hidden" name="pack_id[]" value="{{$shopcar[$k]->pack['id']}}" />
                         <input type="hidden" name="shop_id[]" value="{{$v}}" />
                         <input type="hidden" name="shuliang[]" value="{{$shuliang[$k]}}" />
                         <?php $a += $shuliang[$k] * $shops[$v-1]->sprice; ?> @endforeach
@@ -260,96 +262,100 @@
                             </div>
                             <div class="clear"></div>
                         </div>
-    </form>
-    <form action="/dingdan/pay" method="post" class="pay">
-        {{csrf_field()}}
-        <input type="hidden" value="" name="zongjia" class="z" />
-        <input type="hidden" name="uadd_id" value="" class="x" /> @foreach($shop_id as $k=>$v)
-        <input type="hidden" name="shop_id[]" value="{{$v}}" />
-        <input type="hidden" name="shuliang[]" value="{{$shuliang[$k]}}" /> @endforeach
-        <input type="hidden" name="wl_id" value="" class="m" />
-        <input type="hidden" name="zf_id" value="" class="l" />
-        <input type="hidden" name="liuyan" value="" class="k" />
-    </form>
-    <!--含运费小计 -->
-    <div class="buy-point-discharge ">
-        <p class="price g_price ">
-            合计（含运费） <span>¥</span><em class="pay-sum 12">{{$a+(count($shop_id)*10)}}</em>
-        </p>
-    </div>
-    <script type="text/javascript">
-    $('.user-addresslist').click(function() {
-        $('.z').val($('.12').html()); //总价
-        $('.x').val($('input[name=uaddress_id]').val());
-        $('.m').val($('input[name=wuliu_id]').val());
-        $('.l').val($('input[name=zhifu_id]').val());
-    });
-    </script>
-    <!--信息 -->
-    <div class="order-go clearfix">
-        <div class="pay-confirm clearfix">
-            <div class="box">
-                <div tabindex="0" id="holyshit267" class="realPay"><em class="t">实付款：</em>
-                    <span class="price g_price ">
-                                        <span>¥</span> <em class="style-large-bold-red " id="J_ActualFee">{{$a+(count($shop_id)*10)}}</em>
-                    </span>
+                    </form>
+                    <form action="/dingdan/pay" method="post" class="pay">
+                        {{csrf_field()}}
+                        <input type="hidden" value="" name="zongjia" class="z" />
+                        <input type="hidden" name="uadd_id" value="" class="x" /> 
+                        @foreach($shop_id as $k=>$v)
+                        <input type="hidden" name="shop_id[]" value="{{$v}}" />
+                        <input type="hidden" name="shuliang[]" value="{{$shuliang[$k]}}" /> 
+                        <input type="hidden" name="flavor_id[]" value="{{$shopcar[$k]->flavor['id']}}" />
+                        <input type="hidden" name="pack_id[]" value="{{$shopcar[$k]->pack['id']}}" />
+                        @endforeach
+                        <input type="hidden" name="wl_id" value="" class="m" />
+                        <input type="hidden" name="zf_id" value="" class="l" />
+                        <input type="hidden" name="liuyan" value="" class="k" />
+                    </form>
+                    <!--含运费小计 -->
+                    <div class="buy-point-discharge ">
+                        <p class="price g_price ">
+                            合计（含运费） <span>¥</span><em class="pay-sum 12">{{$a+(count($shop_id)*10)}}</em>
+                        </p>
+                    </div>
+                    <script type="text/javascript">
+                    $('.user-addresslist').click(function() {
+                        $('.z').val($('.12').html()); //总价
+                        $('.x').val($('input[name=uaddress_id]').val());
+                        $('.m').val($('input[name=wuliu_id]').val());
+                        $('.l').val($('input[name=zhifu_id]').val());
+                    });
+                    </script>
+                    <!--信息 -->
+                    <div class="order-go clearfix">
+                        <div class="pay-confirm clearfix">
+                            <div class="box">
+                                <div tabindex="0" id="holyshit267" class="realPay"><em class="t">实付款：</em>
+                                    <span class="price g_price ">
+                                                        <span>¥</span> <em class="style-large-bold-red " id="J_ActualFee">{{$a+(count($shop_id)*10)}}</em>
+                                    </span>
+                                </div>
+                                <div id="holyshit268" class="pay-address">
+                                    <p class="buy-footer-address">
+                                        <span class="buy-line-title buy-line-title-type">寄送至：</span>
+                                        <span class="buy--address-detail">
+                                                                <span class="province 1">XX</span>省
+                                        <span class="city 2">XX</span>市
+                                        <span class="dist 3">XX</span>区
+                                        <span class="street 4">XXXXX</span>
+                                        </span>
+                                        </span>
+                                    </p>
+                                    <p class="buy-footer-address">
+                                        <span class="buy-line-title">收货人：</span>
+                                        <span class="buy-address-detail">   
+                                            <span class="buy-user 5">XXX </span>
+                                            <span class="buy-phone 6">phoneXXX</span>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                            $('.user-addresslist').click(function() {
+                                $('.5').html($('#nihao .a').html());
+                                $('.6').html($('#nihao .b').html());
+                                $('.1').html($('#nihao .c').html());
+                                $('.2').html($('#nihao .d').html());
+                                $('.3').html($('#nihao .e').html());
+                                $('.4').html($('#nihao .f').html());
+                            });
+                            </script>
+                            <div id="holyshit269" class="submitOrder">
+                                <div class="go-btn-wrap">
+                                    <a id="J_Go" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                            $('#J_Go').click(function() {
+                                var r = confirm('确认支付');
+                                if (r == true) {
+                                    $('.k').val($('.p').val());
+                                    $('.pay').submit();
+                                } else {
+                                    $('.tijiao').submit();
+                                }
+                            })
+                            </script>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
                 </div>
-                <div id="holyshit268" class="pay-address">
-                    <p class="buy-footer-address">
-                        <span class="buy-line-title buy-line-title-type">寄送至：</span>
-                        <span class="buy--address-detail">
-                                                <span class="province 1">XX</span>省
-                        <span class="city 2">XX</span>市
-                        <span class="dist 3">XX</span>区
-                        <span class="street 4">XXXXX</span>
-                        </span>
-                        </span>
-                    </p>
-                    <p class="buy-footer-address">
-                        <span class="buy-line-title">收货人：</span>
-                        <span class="buy-address-detail">   
-                                                                 <span class="buy-user 5">XXX </span>
-                        <span class="buy-phone 6">phoneXXX</span>
-                        </span>
-                    </p>
-                </div>
-            </div>
-            <script type="text/javascript">
-            $('.user-addresslist').click(function() {
-                $('.5').html($('#nihao .a').html());
-                $('.6').html($('#nihao .b').html());
-                $('.1').html($('#nihao .c').html());
-                $('.2').html($('#nihao .d').html());
-                $('.3').html($('#nihao .e').html());
-                $('.4').html($('#nihao .f').html());
-            });
-            </script>
-            <div id="holyshit269" class="submitOrder">
-                <div class="go-btn-wrap">
-                    <a id="J_Go" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
-                </div>
-            </div>
-            <script type="text/javascript">
-            $('#J_Go').click(function() {
-                var r = confirm('确认支付');
-                if (r == true) {
-                    $('.k').val($('.p').val());
-                    $('.pay').submit();
-                } else {
-                    $('.tijiao').submit();
-                }
-            })
-            </script>
             <div class="clear"></div>
         </div>
     </div>
-    </div>
-    <div class="clear"></div>
-    </div>
-    </div>
     @include('layouts.home._foot')
     </div>
-    <div class="theme-popover-mask"></div>
+<div class="theme-popover-mask"></div>
 </body>
 
 </html>

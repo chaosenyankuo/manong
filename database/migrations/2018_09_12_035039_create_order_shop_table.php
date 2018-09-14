@@ -18,6 +18,8 @@ class CreateOrderShopTable extends Migration
             $table->string('order_id');
             $table->string('shop_id');
             $table->string('shuliang');
+            $table->string('flavor_id');
+            $table->string('pack_id');
             $table->timestamps();
         });
     }

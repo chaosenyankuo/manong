@@ -17,6 +17,8 @@ class Pack extends Model
     	return $this->hasMany('App\Shopcar');
     }
 
-   
-
+   	public function order_shop()
+   	{
+   		return $this->hasMany('App\Order_shop');
+   	}
 }
