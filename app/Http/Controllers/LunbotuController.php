@@ -99,7 +99,7 @@ class LunbotuController extends Controller
         $lunbotu -> pic = $request->pic;
         $lunbotu -> url = $request->url;
         if ($request->hasFile('pic')) {
-            $lunbotu -> pic = '/'.$request->image->store('uploads/'.date('Ymd'));
+            $lunbotu -> pic = '/'.$request->pic->store('uploads/'.date('Ymd'));
         }else{
             $lunbotu -> pic = '/uploads/1.jpg';
         } 

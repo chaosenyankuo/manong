@@ -91,10 +91,17 @@ class Wzkgcontroller extends Controller
     public function destroy($id)
     {
         //
+<<<<<<< HEAD
         $path = 'F:\xampp\htdocs\jszuoye\xiangmu\manong\storage\framework/down';
         if(is_file($path))
         {
             File::delete('F:\xampp\htdocs\jszuoye\xiangmu\manong\storage\framework/down');
+=======
+        $path = 'F:/xampp/htdocs/javascript/shangcheng/manong/storage/framework/down';
+        if(is_file($path))
+        {
+            File::delete($path);
+>>>>>>> 46889d6e652681f457bfa69b91886be4831a9d0d
            
              return redirect('/wzkg')->with('success','恭喜维护完成!!!');
         } else {

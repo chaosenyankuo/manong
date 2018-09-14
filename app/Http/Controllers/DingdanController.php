@@ -22,7 +22,9 @@ class DingdanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   $zhifu =zhifu::all();
+    {  $uid = \Session::get('id');
+        $user = User::findOrFail($uid);
+        $zhifu =zhifu::all();
         $wuliu = wuliu::all();
 
           //读取数据库 获取订单数据
@@ -31,7 +33,7 @@ class DingdanController extends Controller
             
             
         //解析模板显示用户数据
-        return view('admin.dingdan.index', ['dingdan'=>$dingdan,'zhifu'=>$zhifu,'wuliu'=>$wuliu]);
+        return view('admin.dingdan.index', ['dingdan'=>$dingdan,'zhifu'=>$zhifu,'wuliu'=>$wuliu,'user'=>$user]);
     }
 
     /**
@@ -40,7 +42,9 @@ class DingdanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {       
+    {      
+        $uid = \Session::get('id');
+        $user = User::findOrFail($uid); 
          //读取支付信息
         $zhifu = zhifu::all();
       
@@ -48,7 +52,7 @@ class DingdanController extends Controller
 
         //读取物流信息
         // $wuliu =wuliu::all();
-          return view('admin.dingdan.create',['zhifu'=>$zhifu,'wuliu'=>$wuliu,]);
+          return view('admin.dingdan.create',['zhifu'=>$zhifu,'wuliu'=>$wuliu,'user'=>$user]);
     }
 
     /**
@@ -97,12 +101,13 @@ class DingdanController extends Controller
     public function edit($id)
     {
          $dingdan =order::findOrFail($id);
-
+         $uid = \Session::get('id');
+        $user = User::findOrFail($uid);
         $wuliu = wuliu::all();
 
         $zhifu = zhifu::all();
 
-        return view('admin.dingdan.edit', compact('dingdan','zhifu','wuliu'));
+        return view('admin.dingdan.edit', compact('dingdan','zhifu','wuliu','user'));
     }
 
     /**
@@ -164,8 +169,10 @@ class DingdanController extends Controller
         $zhifu = Zhifu::all();
         $links = Link::all();
         $shops = Shop::all();
-
-        return view('home/dingdan/create',compact('id','shopcar','shop_id','shops','shuliang','uaddress','uadd','wuliu','zhifu','links'));
+        $uid = \Session::get('id');
+        $user = User::find($uid);
+        $setting = Setting::first();
+        return view('home/dingdan/create',compact('id','shopcar','shop_id','shops','shuliang','uaddress','uadd','wuliu','zhifu','links','user','setting'));
     }
 
 
@@ -174,6 +181,7 @@ class DingdanController extends Controller
      */
     public function baocun(Request $req)
     {   
+        dd($req->jifen);
         if(!$req->wuliu_id){
             return back()->with('error','请选择配送方式');
         }
@@ -255,6 +263,7 @@ class DingdanController extends Controller
 
         $links = Link::all();
         $setting = Setting::first();
+
         return view('home/grzx/order',compact('order1','order2','order3','order4','os1','os2','os3','os4','user','links','setting'));
     }
 
@@ -315,6 +324,7 @@ class DingdanController extends Controller
         }else{
             return back()->with('error','生成订单失败');
         }
+
     }
 }
 
