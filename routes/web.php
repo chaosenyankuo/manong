@@ -91,6 +91,10 @@ Route::get('/admin/logout', 'AdminController@logout');
 
 	//优惠卷
 	Route::resource('yhj','YhjController');
+
+	//商城头条
+	
+	Route::resource('sctt','ScttController');
 	
 		
 // });

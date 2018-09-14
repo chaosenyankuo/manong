@@ -28,5 +28,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ZhuangtaiTableSeeder::class);
         $this->call(LunbotusTableSeeder::class);
         $this->call(YhjsTableSeeder::class);
+        $this->call(ScttTableSeeder::class);
     }
 }
