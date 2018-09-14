@@ -29,9 +29,9 @@
         <li class="person">
             <a href="#">我的小窝</a>
             <ul>
-                <li> <a href="/home/collect">收藏</a></li>
-                <li> <a href="foot.html">足迹</a></li>
-                <li> <a href="/home/pjgl">评价</a></li>
+                <li> <a href="/home/collect">我的收藏</a></li>
+                <li> <a href="/home/foot">足迹</a></li>
+                <li> <a href="/home/pjgl">我的评价</a></li>
             </ul>
         </li>
     </ul>
