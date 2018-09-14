@@ -260,10 +260,13 @@ class GrzxController extends Controller
         $order = Order::findOrFail($id);
         $shop = $order->shop;
 
-        foreach($shop as $v)
-        {
-            dd($v->pack);
-        }
+        // foreach($shop as $v)
+        // {
+        //     foreach($v->flavors as $vv)
+        //     {
+        //         dd($vv->fname);
+        //     }
+        // }
         return view('home.grzx.pjsp',compact('links','setting','user','order','shop'));
     }
 

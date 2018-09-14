@@ -48,6 +48,8 @@
                     <form action="/home/plsp" method="post">
                     <div class="comment-main">
                     @foreach($shop as $v)
+                     
+                     
                         <div class="comment-list">
                             <div class="item-pic">
                                 <a href="#" class="J_MakePoint">
@@ -63,8 +65,11 @@
                                 </div>
                                 <div class="item-info">
                                     <div class="info-little">
-                                        <span>颜色：洛阳牡丹</span><br>
-                                        <span>包装：裸装</span>
+                                     
+                                        <span>口味：</span><br>
+                                       
+                                        <span>包装：</span>
+                                        
                                     </div>
                                     <div class="item-price">
                                         价格：<strong>{{$v->sprice}}</strong>
@@ -84,6 +89,8 @@
                         </div>
                         <input type="hidden" name="shop_id[]" value="{{$v->id}}">
                         @endforeach
+                        
+                        
                         <!--多个商品评论-->
                         {{csrf_field()}}
                         <div class="info-btn">
