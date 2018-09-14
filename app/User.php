@@ -65,4 +65,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Collect');
     }
 
+    public function coupons()
+    {
+        return $this->belongsToMany('App\Coupon');
+    }
+
 }

@@ -246,15 +246,30 @@ class GrzxController extends Controller
         $id = \Session::get('id');
         $user  = User::findOrFail($id);
         $comment = $user->comment;
-        foreach ($comment as $v) {
-            dd($v->shop);
-         }
-
-
-
-         
+        
         return view('home.grzx.pjgl',compact('links','setting','user','comment','pack'));
 
+    }
+//评价商品
+    public function pjsp($id)
+    {   
+        $links = Link::all();
+        $setting = Setting::first();
+        $uid = \Session::get('id');
+        $user  = User::findOrFail($uid);
+        $order = Order::findOrFail($id);
+        $shop = $order->shop;
+
+        foreach($shop as $v)
+        {
+            dd($v->pack);
+        }
+        return view('home.grzx.pjsp',compact('links','setting','user','order','shop'));
+    }
+
+    public function plsp(Request $request)
+    {
+        //将值存入到数据库
     }
 //收藏
     public function sc()
@@ -265,5 +280,15 @@ class GrzxController extends Controller
         
     } 
    
+//z足迹
+    public function foot()
+    {
+        $links = Link::all();
+        $setting = Setting::first();
+        $id = \Session::get('id');
+        $user  = User::findOrFail($id);
+        $shop = Shop::all();
+        return view('home.grzx.foot',compact('links','setting','user'));
+    } 
 }
 

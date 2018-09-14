@@ -38,7 +38,7 @@
                     <li class="index"><a href="/">首页</a></li>
                 </ul>
                 <div class="nav-extra">
-                    <a href="/fuli"><i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利</a>
+                    <a href="/home/fuli" style="color:yellow"><i class="am-icon-user-secret am-icon-md nav-user"></i>福利中心</a>
                     <i class="am-icon-angle-right" style="padding-left: 10px;"></i>
                 </div>
             </div>
@@ -138,20 +138,17 @@
             </div>
             <!--走马灯 -->
             <div class="marqueen">
-            <span class="marqueen-title">商城头条</span>
+                <span class="marqueen-title">商城头条</span>
                 <ul>
-                    
-                
-                                <li class="title-first"style="text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:188px;"><a target="_blank" href="{{$sctt[0]['scth_url']}}">
+                    <li class="title-first" style="text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:188px;"><a target="_blank" href="{{$sctt[0]['scth_url']}}">
                                    
                                     <span>[特惠]</span style="text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:188px;">{{$sctt[0]['scth']}}                               
                                 </a></li>
-                                <li class="title-first" style="text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:188px;"><a target="_blank" href="{{$sctt[1]['scgg_url']}}">
+                    <li class="title-first" style="text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:188px;"><a target="_blank" href="{{$sctt[1]['scgg_url']}}">
                                     <span>[公告]</span>{{$sctt[1]['scgg']}}                                            
                                 </a></li>
-                                    
                 </ul>
-                <div class="mod-vip" height="220px">
+                <div class="mod-vip" height="220px" style="padding:0px">
                     @if(Session::has('nickname'))
                     <div class="m-baseinfo">
                         <a href="/home/index">
@@ -177,11 +174,11 @@
                     </div>
                     @endif
                     <ul>
-                       @foreach ($sctt as $v)
-                    <li style="text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:188px;"><a target="_blank" href="{{$v['scth_url']}}"><span>[特惠]</span>{{$v['scth']}}</a></li>
-                    <li style="text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:188px;"><a target="_blank" href="{{$v['scgg_url']}}"><span>[公告]</span>{{$v['scgg']}}</a></li>
+                        @foreach ($sctt as $v)
+                        <li style=" text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:188px;"><a target="_blank" href="{{$v['scth_url']}}"><span>[特惠]</span>{{$v['scth']}}</a></li>
+                        <li style="text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:188px;"><a target="_blank" href="{{$v['scgg_url']}}"><span>[公告]</span>{{$v['scgg']}}</a></li>
                         @endforeach
-                     </ul>   
+                    </ul>
                     <div class="advTip">
                         <a href="/{{$v->id}}.html">
                             <img src="{{$cates[0]['cimage']}}" width="220px" height="88px"/>

@@ -35,7 +35,7 @@
                 <li class="qc last"><a href="#">大包装</a></li>
             </ul>
             <div class="nav-extra">
-                <i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
+                <a href="/home/fuli" style="color:yellow"><i class="am-icon-user-secret am-icon-md nav-user"></i>福利中心</a>
                 <i class="am-icon-angle-right" style="padding-left: 10px;"></i>
             </div>
         </div>
@@ -89,7 +89,7 @@
                                                 </div>
                                                 <div class="item-info">
                                                     <div>
-                                                        <p class="info-little"><span>颜色：12#玛瑙</span> <span>包装：</span> </p>
+                                                        <p class="info-little"><span>口味：12#玛瑙</span> <span>包装：</span> </p>
                                                         <p class="info-time">{{$v['created_at']}}</p>
                                                     </div>
                                                 </div>

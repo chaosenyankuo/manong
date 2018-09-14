@@ -89,13 +89,16 @@ Route::get('/admin/logout', 'AdminController@logout');
 	//意见反馈列表
 	Route::resource('/admin/yjfkui','YjfkuiController');
 
-	//优惠卷
-	Route::resource('yhj','YhjController');
+
 
 	//商城头条
 	
 	Route::resource('sctt','ScttController');
 	
+
+	//优惠券管理
+	Route::resource('coupon','CouponController');
+
 		
 // });
 /*
@@ -121,9 +124,6 @@ Route::post('/home/dologin', 'HomeController@dologin');
 
 //前台退出登录
 Route::get('/home/logout','HomeController@logout');
-
-//我的福利
-Route::get('/fuli','FuliController@fuli');
 
 //个人中心
 Route::get('/home/index','GrzxController@index');
@@ -153,6 +153,13 @@ Route::post('/home/wjmal', 'ZhuceController@wjmal');
 
 //评论管理
 Route::get('/home/pjgl','GrzxController@pjgl');
+
+//评价商品
+Route::get('/home/pjsp/{id}','GrzxController@pjsp');
+Route::post('/home/plsp','GrzxController@plsp');
+
+//足迹
+Route::get('/home/foot','GrzxController@foot');
 
 //收货地址
 Route::get('/home/shdz','GrzxController@shdz');
@@ -188,6 +195,10 @@ Route::get('/home/cun','CollectController@cun');
 Route::get('/home/collect','CollectController@zhanshi');
 Route::get('/home/delete','CollectController@delete');
 
+//福利中心
+Route::get('/home/fuli','CouponController@fuli');
 
+//发送ajax存优惠券
+Route::post('/cunquan','CouponController@cunquan');
 
 

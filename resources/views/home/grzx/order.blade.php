@@ -31,7 +31,7 @@
                 <li class="index"><a href="/">首页</a></li>
             </ul>
             <div class="nav-extra">
-                <i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
+                <a href="/home/fuli" style="color:yellow"><i class="am-icon-user-secret am-icon-md nav-user"></i>福利中心</a>
                 <i class="am-icon-angle-right" style="padding-left: 10px;"></i>
             </div>
         </div>
@@ -686,7 +686,7 @@
                                                             </div>
                                                         </li>
                                                         <li class="td td-change">
-                                                            <a href="commentlist.html">
+                                                            <a href="/home/pjsp/{{$v->id}}">
                                                                 <div class="am-btn am-btn-danger anniu">
                                                                     评价商品</div>
                                                             </a>

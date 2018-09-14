@@ -14,6 +14,11 @@
     </a>
 </li>
 <li>
+    <a href="/coupon" class="waves-effect waves-dark">
+        <i class="fa fa-sitemap"></i> 优惠券管理
+    </a>
+</li>
+<li>
     <a href="/shop" class="waves-effect waves-dark">
         <i class="fa fa-sitemap"></i>商品管理
     </a>
