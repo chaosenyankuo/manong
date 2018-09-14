@@ -42,7 +42,10 @@
         use App\Setting;
         use App\User;
         $uid = \Session::get('id');
-        $user = User::findOrFail($uid);
+        $user = null;
+        if($uid !== null){
+            $user = User::findOrFail($uid);
+        }
         $links = Link::all();
         $setting = Setting::first();
     ?>
@@ -103,6 +106,11 @@
                     </div>
                 </div>
                 <div>
+                    @if($user == null){
+                    <script> 
+                        alert('请先登录哦!!!');     
+                    </script>
+                    @endif
                     <button id="start">点击立即抽奖</button>
                     @if($user['huodong'] == '1')
                     <script>
