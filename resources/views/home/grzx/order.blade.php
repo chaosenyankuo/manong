@@ -626,9 +626,11 @@
                                                 <div class="dd-num">订单编号：<a href="javascript:;">{{$v->order_bh}}</a></div>
                                                 <span>成交时间：{{$v->created_at}}</span>
                                             </div>
+                                            @foreach($v->shop as $kk=>$vv)
                                             <div class="order-content">
+
                                                 <div class="order-left">
-                                                    @foreach($v->shop as $kk=>$vv)
+                                                    
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
@@ -662,18 +664,16 @@
                                                             </div>
                                                         </li>
                                                     </ul>
-                                                    @endforeach
+                                                    
                                                 </div>
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
                                                             <?php $h=0; ?>
-                                                            @foreach($v->order_shop as $kk=>$vv)
-                                                                <?php $h += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?>
-                                                            @endforeach
+                                                            <?php $h = ($v->order_shop[$kk]->shuliang)*($v->shop[$kk]->sprice)+($v->order_shop[$kk]->shuliang * 10); ?>
                                                             合计：{{$h}}
                                                             <p>含运费：
-                                                                <span>{{count($v->order_shop)}}0.00</span>
+                                                                <span>{{$v->order_shop[$kk]->shuliang}}0.00</span>
                                                             </p>
                                                         </div>
                                                     </li>
@@ -693,7 +693,9 @@
                                                         </li>
                                                     </div>
                                                 </div>
+                                                
                                             </div>
+                                            @endforeach
                                         </div>
                                         @endforeach
                                     </div>

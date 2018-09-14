@@ -15,44 +15,7 @@
 
 <body>
     <!--顶部导航条 -->
-    <div class="am-container header">
-        <ul class="message-l">
-            <div class="topMessage">
-                <div class="menu-hd">
-                    <a href="/home/login" target="_top" class="h">亲，请登录</a>
-                    <a href="/home/zhuce" target="_top">免费注册</a>
-                </div>
-            </div>
-        </ul>
-        <ul class="message-r">
-            <div class="topMessage home">
-                <div class="menu-hd"><a href="/" target="_top" class="h">商城首页</a></div>
-            </div>
-            <div class="topMessage my-shangcheng">
-                <div class="menu-hd MyShangcheng"><a href="/home/index" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
-            </div>
-            <div class="topMessage mini-cart">
-                <div class="menu-hd"><a id="mc-menu-hd" href="/shopcar" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
-            </div>
-            <div class="topMessage favorite">
-                <div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
-        </ul>
-        </div>
-        <!--悬浮搜索框-->
-        <div class="nav white">
-            <div class="logo"><img src="/home/images/logo.png" /></div>
-            <div class="logoBig">
-                <li><img src="/home/images/logobig.png" /></li>
-            </div>
-            <div class="search-bar pr">
-                <a name="index_none_header_sysc" href="#"></a>
-                <form>
-                    <input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
-                    <input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
-                </form>
-            </div>
-        </div>
-        <div class="clear"></div>
+    @include('layouts.home._top')
         <form action="/home/dingdan" method="post" class="tijiao">
             <div class="concent">
                 {{csrf_field()}}
@@ -290,27 +253,6 @@
                                             </option>
                                         </select>
                                     </li>
-                                    <li class="td td-bonus">
-                                        <span class="bonus-title">红包</span>
-                                        <select data-am-selected>
-                                            <option value="a">
-                                                <div class="item-info">
-                                                    ¥50.00<span>元</span>
-                                                </div>
-                                                <div class="item-remainderprice">
-                                                    <span>还剩</span>10.40<span>元</span>
-                                                </div>
-                                            </option>
-                                            <option value="b" selected>
-                                                <div class="item-info">
-                                                    ¥50.00<span>元</span>
-                                                </div>
-                                                <div class="item-remainderprice">
-                                                    <span>还剩</span>50.00<span>元</span>
-                                                </div>
-                                            </option>
-                                        </select>
-                                    </li>
                                 </div>
                                 <div class="clear"></div>
                             </div>
@@ -339,7 +281,6 @@
                                     $('.x').val($('input[name=uaddress_id]').val());
                                     $('.m').val($('input[name=wuliu_id]').val());
                                     $('.l').val($('input[name=zhifu_id]').val());
-                                    $('.k').val($('.p').val());
                                 });
                             </script>
                             <!--信息 -->
@@ -390,6 +331,7 @@
                                         $('#J_Go').click(function(){
                                             var r=confirm("确认支付");
                                             if (r==true){
+                                                $('.k').val($('.p').val());
                                                 $('.pay').submit();
                                             }else{
                                                 $('.tijiao').submit();
@@ -404,24 +346,7 @@
                         <div class="clear"></div>
                     </div>
                 </div>
-                <div class="footer">
-                    <div class="footer-hd">
-                        <p>
-                            @foreach($links as $v)
-                            <a href="{{$v->url}}">{{$v->name}}</a>
-                            <b>|</b>
-                            @endforeach
-                        </p>
-                    </div>
-                    <div class="footer-bd">
-                        <p>
-                            @foreach($links as $v)
-                            <a href="{{$v->url}}">{{$v->name}}</a>
-                            @endforeach
-                            <em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
-                        </p>
-                    </div>
-                </div>
+                @inclide('layouts.home._foot')
             </div>
         <div class="theme-popover-mask"></div>
 </body>
