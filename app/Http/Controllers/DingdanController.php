@@ -284,7 +284,7 @@ class DingdanController extends Controller
         $dd -> user_id = \Session::get('id');
         $dd -> zhifu_id = $req -> zf_id;
         $dd -> liuyan = $req -> liuyan;
-        
+
         $a = $dd->save();
 
         foreach($req-> shop_id as $k=>$v){

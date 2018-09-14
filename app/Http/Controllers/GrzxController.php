@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Collect;
 use App\Comment;
 use App\Link;
+use App\Order;
 use App\Setting;
 use App\Shop;
 use App\Uaddress;
@@ -27,7 +28,36 @@ class GrzxController extends Controller
     	$user  = User::findOrFail($id);
         $collects = Collect::where('user_id',$id)->get();
         $recoms = Shop::where('recom','1')->take(3)->get();
-    	return view('home.grzx.index',compact('links','user','setting','collects','recoms'));
+
+        $dfk = Order::where('zhuangtai','2')->where('user_id',\Session::get('id'))->get();
+        $a = [];
+        foreach($dfk as $k=>$v){
+            $a[] = $v->order_shop; //待付款
+        }
+        $dfks = count($a);
+
+        $dfh = Order::where('zhuangtai','3')->where('user_id',\Session::get('id'))->get();
+        $a = [];
+        foreach($dfh as $k=>$v){
+            $a[] = $v->order_shop; //待发货
+        }
+        $dfhs = count($a);
+
+        $dsh = Order::where('zhuangtai','4')->where('user_id',\Session::get('id'))->get();
+        $a = [];
+        foreach($dsh as $k=>$v){
+            $a[] = $v->order_shop; //待收货
+        }
+        $dshs = count($a);
+
+        $dpj = Order::where('zhuangtai','1')->where('user_id',\Session::get('id'))->get();
+        $a = [];
+        foreach($dpj as $k=>$v){
+            $a[] = $v->order_shop; //待评价
+        }
+        $dpjs = count($a);
+
+    	return view('home.grzx.index',compact('links','user','setting','collects','recoms','dsh','dfks','dfhs','dshs','dpjs'));
     }
     //个人资料页面
     public function grzl(request $request)
