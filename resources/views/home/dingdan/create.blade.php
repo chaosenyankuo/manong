@@ -290,27 +290,6 @@
                                             </option>
                                         </select>
                                     </li>
-                                    <li class="td td-bonus">
-                                        <span class="bonus-title">红包</span>
-                                        <select data-am-selected>
-                                            <option value="a">
-                                                <div class="item-info">
-                                                    ¥50.00<span>元</span>
-                                                </div>
-                                                <div class="item-remainderprice">
-                                                    <span>还剩</span>10.40<span>元</span>
-                                                </div>
-                                            </option>
-                                            <option value="b" selected>
-                                                <div class="item-info">
-                                                    ¥50.00<span>元</span>
-                                                </div>
-                                                <div class="item-remainderprice">
-                                                    <span>还剩</span>50.00<span>元</span>
-                                                </div>
-                                            </option>
-                                        </select>
-                                    </li>
                                 </div>
                                 <div class="clear"></div>
                             </div>

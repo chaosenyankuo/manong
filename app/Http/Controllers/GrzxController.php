@@ -273,6 +273,7 @@ class GrzxController extends Controller
     public function plsp(Request $request)
     {
         //将值存入到数据库
+        $comment = new Comment;
     }
 //收藏
     public function sc()
