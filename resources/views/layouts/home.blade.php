@@ -142,12 +142,12 @@
                     @if(Session::has('nickname'))
                     <div class="m-baseinfo">
                         <a href="/home/index">
-                                    <img src="{{$user['image']}}">
-                                </a>
+                            <img src="{{$user['image']}}">
+                        </a>
                         <em>
-                                    Hi,<span class="s-name">{{$user['nickname']}}</span>
-                                    <a href="/home/index"><p>点击进入个人中心</p></a>                             
-                                </em>
+                            Hi,<span class="s-name">{{$user['nickname']}}</span>
+                            <a href="/home/index"><p>点击进入个人中心</p></a>                             
+                        </em>
                     </div>
                     @endif @if(!Session::has('nickname'))
                     <div class="m-baseinfo">
@@ -188,11 +188,11 @@
                     <li><a target="_blank" href="#"><span>[公告]</span>华北、华中部分地区配送延迟</a></li>
                     <li><a target="_blank" href="#"><span>[特惠]</span>家电狂欢千亿礼券 买1送1！</a></li>
                     </ul>
-                    <div class="advTip"><a href="/{{$v->id}}.html">
-                   @if(!empty($lunbotu[0]['pic']))
-                    <img src="{{$lunbotu[0]['pic']}}" width="220px" height="88px"/>
-                    @endif
-                    </a></div>
+                    <div class="advTip">
+                        <a href="/{{$v->id}}.html">
+                            <img src="{{$cates[0]['cimage']}}" width="220px" height="88px"/>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="clear"></div>

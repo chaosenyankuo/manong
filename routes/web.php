@@ -160,6 +160,9 @@ Route::get('/home/dzsc/{id}','GrzxController@dzsc');
 //购物车管理
 Route::resource('shopcar','ShopCarController');
 
+//支付页面
+Route::post('/dingdan/pay','DingdanController@pay');
+
 //加入订单
 Route::get('/home/dingdan/{id}','DingdanController@tianjia');
 
@@ -177,7 +180,7 @@ Route::get('/home/cun','CollectController@cun');
 Route::get('/home/collect','CollectController@zhanshi');
 Route::get('/home/delete','CollectController@delete');
 
-//我的福利
+//福利中心
 Route::get('/home/fuli','CouponController@fuli');
 
 //发送ajax存优惠券

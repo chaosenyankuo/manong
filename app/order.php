@@ -38,4 +38,9 @@ class Order extends Model
     {
         return $this->hasMany('App\Order_shop');
     }
+
+    public function uaddress()
+    {
+        return $this->belongsTo('App\Uaddress');
+    }
 }

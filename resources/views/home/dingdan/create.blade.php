@@ -15,7 +15,15 @@
 
 <body>
     <!--顶部导航条 -->
-    @include('layouts.home._top')
+   @include('layouts.home._top') @if(Session::has('success'))
+        <div class="nav white" id="xiaoshi">
+            <center><h3 style="color:black;">{{Session::get('success')}}</h3></center>
+        </div>
+    @endif @if(Session::has('error'))
+        <div class="nav white" id="xiaoshi">
+            <center><h3 style="color:black;">{{Session::get('error')}}</h3></center>
+        </div>
+    @endif
         <form action="/home/dingdan" method="post" class="tijiao">
             <div class="concent">
                 {{csrf_field()}}
@@ -103,19 +111,23 @@
                         </ul>
                     </div>
                     <div class="clear"></div>
-                    <script type="text/javascript">
-                    $('.op_express_delivery_hot > li').click(function() {
-                        $(this).attr('id', 'wuliu');
-                        $(this).siblings().removeAttr('id');
-                        $('#wuliu > input').attr('name', 'wuliu_id');
-                        $('#wuliu').siblings().removeAttr('name');
-                    })
-                    $('.pay-list > li').click(function() {
-                        $(this).attr('id', 'zhifu');
-                        $(this).siblings().removeAttr('id');
-                        $('#zhifu > input').attr('name', 'zhifu_id');
-                        $('#zhifu').siblings().removeAttr('name');
-                    })
+                    <script type="text/javascript">                       
+                        $('.op_express_delivery_hot > li').click(function(){
+                            $(this).attr('id','wuliu');
+                            $(this).siblings().removeAttr('id');
+                            $('#wuliu > input').attr('name','wuliu_id');
+                            $('#wuliu').siblings().removeAttr('name');
+                            console.log($('#wuliu > input').val());
+                            $('.m').val($('#wuliu > input').val());
+                            console.log($('.m').val());
+                        })
+                        $('.pay-list > li').click(function(){
+                            $(this).attr('id','zhifu');
+                            $(this).siblings().removeAttr('id');
+                            $('#zhifu > input').attr('name','zhifu_id');
+                            $('#zhifu').siblings().removeAttr('name');
+                            $('.l').val($('#zhifu > input').val());                         
+                        })
                     </script>
                     <!--订单 -->
                     <div class="concent">
@@ -172,6 +184,27 @@
                                                         </div>
                                                     </div>
                                                 </li>
+                                            </ul>
+                                            <div class="clear"></div>
+                                        </div>
+                                </tr>
+                                <input type="hidden" name="shop_id[]" value="{{$v}}" />
+                                <input type="hidden" name="shuliang[]" value="{{$shuliang[$k]}}" />
+                                <?php $a += $shuliang[$k] * $shops[$v-1]->sprice; ?>
+                            @endforeach
+                            <div class="clear"></div>
+                            </div>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="pay-total">
+                                <!--留言-->
+                                <div class="order-extra">
+                                    <div class="order-user-info">
+                                        <div id="holyshit257" class="memo">
+                                            <label>买家留言：</label>
+                                            <input type="text" title="选填,对本次交易的说明（建议填写已经和卖家达成一致的说明）" placeholder="选填,建议填写和卖家达成一致的说明" class="memo-input J_MakePoint c2c-text-default memo-close p" name="liuyan">
+                                            <div class="msg hidden J-msg">
+                                                <p class="error">最多输入500个字符</p>
                                             </div>
                                             <li class="td td-amount">
                                                 <div class="amount-wrapper ">
@@ -196,9 +229,68 @@
                                                         快递<b class="sys_item_freprice">10</b>元
                                                     </div>
                                                 </div>
-                                            </li>
-                                        </ul>
-                                        <div class="clear"></div>
+                                            </option>
+                                        </select>
+                                    </li>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </form>
+                        <form action="/dingdan/pay" method="post" class="pay">
+                            {{csrf_field()}}
+                            <input type="hidden" value="" name="zongjia" class="z" />
+                            <input type="hidden" name="uadd_id" value="" class="x" />
+                            @foreach($shop_id as $k=>$v)
+                            <input type="hidden" name="shop_id[]" value="{{$v}}" />
+                            <input type="hidden" name="shuliang[]" value="{{$shuliang[$k]}}" />
+                            @endforeach
+                            <input type="hidden" name="wl_id" value="" class="m" />
+                            <input type="hidden" name="zf_id" value="" class="l" />
+                            <input type="hidden" name="liuyan" value="" class="k" />
+                        </form>
+                            <!--含运费小计 -->
+                            <div class="buy-point-discharge ">
+                                <p class="price g_price ">
+                                    合计（含运费） <span>¥</span><em class="pay-sum 12">{{$a+(count($shop_id)*10)}}</em>
+                                </p>
+                            </div>
+                            <script type="text/javascript">
+                                $('.user-addresslist').click(function(){
+                                    $('.z').val($('.12').html()); //总价
+                                    $('.x').val($('input[name=uaddress_id]').val());
+                                    $('.m').val($('input[name=wuliu_id]').val());
+                                    $('.l').val($('input[name=zhifu_id]').val());
+                                    $('.k').val($('.p').val());
+                                });
+                            </script>
+                            <!--信息 -->
+                            <div class="order-go clearfix">
+                                <div class="pay-confirm clearfix">
+                                    <div class="box">
+                                        <div tabindex="0" id="holyshit267" class="realPay"><em class="t">实付款：</em>
+                                            <span class="price g_price ">
+                                        <span>¥</span> <em class="style-large-bold-red " id="J_ActualFee">{{$a+(count($shop_id)*10)}}</em>
+                                            </span>
+                                        </div>
+                                        <div id="holyshit268" class="pay-address">
+                                            <p class="buy-footer-address">
+                                                <span class="buy-line-title buy-line-title-type">寄送至：</span>
+                                                <span class="buy--address-detail">
+        								            <span class="province 1">XX</span>省
+                                                    <span class="city 2">XX</span>市
+                                                    <span class="dist 3">XX</span>区
+                                                    <span class="street 4">XXXXX</span>
+                                                </span>
+                                                </span>
+                                            </p>
+                                            <p class="buy-footer-address">
+                                                <span class="buy-line-title">收货人：</span>
+                                                <span class="buy-address-detail">   
+                                             <span class="buy-user 5">XXX </span>
+                                                <span class="buy-phone 6">phoneXXX</span>
+                                                </span>
+                                            </p>
+                                        </div>
                                     </div>
                             </tr>
                             <input type="hidden" name="shop_id[]" value="{{$v}}" />
@@ -219,6 +311,18 @@
                                             <p class="error">最多输入500个字符</p>
                                         </div>
                                     </div>
+                                    <script type="text/javascript">
+                                        $('#J_Go').click(function(){
+                                            var r=confirm("确认支付");
+                                            if (r==true){
+                                                $('.pay').submit();
+                                            }else{
+                                                $('.tijiao').submit();
+                                            }
+                                            
+                                        })
+                                    </script>
+                                    <div class="clear"></div>
                                 </div>
                             </div>
                             <!--优惠券 -->

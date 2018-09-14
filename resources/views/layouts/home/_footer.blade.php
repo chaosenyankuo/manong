@@ -37,9 +37,9 @@
                         </p>
                         <ul class="user_info">
                             <li>用户名:{{$user['nickname']}}</li>
-                             @if($user->qx == '1')
+                             @if($user['qx'] == '1')
                                         </li>管理员</li>
-                                    @elseif($user->qx == '2')
+                                    @elseif($user['qx'] == '2')
                                         <li>银牌会员</li>
                                     @else
                                         <li>金牌会员</li>

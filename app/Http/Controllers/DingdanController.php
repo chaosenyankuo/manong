@@ -22,7 +22,9 @@ class DingdanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   $zhifu =zhifu::all();
+    {  $uid = \Session::get('id');
+        $user = User::findOrFail($uid);
+        $zhifu =zhifu::all();
         $wuliu = wuliu::all();
 
           //读取数据库 获取订单数据
@@ -31,7 +33,7 @@ class DingdanController extends Controller
             
             
         //解析模板显示用户数据
-        return view('admin.dingdan.index', ['dingdan'=>$dingdan,'zhifu'=>$zhifu,'wuliu'=>$wuliu]);
+        return view('admin.dingdan.index', ['dingdan'=>$dingdan,'zhifu'=>$zhifu,'wuliu'=>$wuliu,'user'=>$user]);
     }
 
     /**
@@ -40,7 +42,9 @@ class DingdanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {       
+    {      
+        $uid = \Session::get('id');
+        $user = User::findOrFail($uid); 
          //读取支付信息
         $zhifu = zhifu::all();
       
@@ -48,7 +52,7 @@ class DingdanController extends Controller
 
         //读取物流信息
         // $wuliu =wuliu::all();
-          return view('admin.dingdan.create',['zhifu'=>$zhifu,'wuliu'=>$wuliu,]);
+          return view('admin.dingdan.create',['zhifu'=>$zhifu,'wuliu'=>$wuliu,'user'=>$user]);
     }
 
     /**
@@ -97,12 +101,13 @@ class DingdanController extends Controller
     public function edit($id)
     {
          $dingdan =order::findOrFail($id);
-
+         $uid = \Session::get('id');
+        $user = User::findOrFail($uid);
         $wuliu = wuliu::all();
 
         $zhifu = zhifu::all();
 
-        return view('admin.dingdan.edit', compact('dingdan','zhifu','wuliu'));
+        return view('admin.dingdan.edit', compact('dingdan','zhifu','wuliu','user'));
     }
 
     /**
@@ -191,7 +196,7 @@ class DingdanController extends Controller
         $order_bh = rand(100,999);
 
         $dd = new Order;
-        $dd -> zhuangtai = 1;
+        $dd -> zhuangtai = 2;
         $dd -> wuliu_id = $req -> wuliu_id;
         $dd -> uaddress_id = $req -> uaddress_id;
         $dd -> order_bh = $order_bh;
@@ -253,9 +258,73 @@ class DingdanController extends Controller
             $os4 = [];
         }
 
+        $uid = \Session::get('id');
+        $user = User::findOrFail($uid);
+
         $links = Link::all();
         $setting = Setting::first();
-        return view('home/grzx/order',compact('order1','order2','order3','order4','os1','os2','os3','os4','links','setting'));
+
+        return view('home/grzx/order',compact('order1','order2','order3','order4','os1','os2','os3','os4','user','links','setting'));
+    }
+
+    /**
+     * 支付页面
+     */
+    public function pay(Request $req)
+    {
+        if(!$req->wl_id){
+            return back()->with('error','请选择配送方式');
+        }
+
+        if(!$req->zf_id){
+            return back()->with('error','请选择支付方式');
+        }
+
+        if(!$req->uadd_id){
+            return back()->with('error','请选择收货地址');
+        }
+        $order_bh = rand(100,999);
+
+        $dd = new Order;
+        $dd -> zhuangtai = 3;
+        $dd -> wuliu_id = $req -> wl_id;
+        $dd -> uaddress_id = $req -> uadd_id;
+        $dd -> order_bh = $order_bh;
+        $dd -> user_id = \Session::get('id');
+        $dd -> zhifu_id = $req -> zf_id;
+        $dd -> liuyan = $req -> liuyan;
+
+        $a = $dd->save();
+
+        foreach($req-> shop_id as $k=>$v){
+            $ddd = Order::where('user_id',\Session::get('id'))->where('order_bh',$order_bh)->take(1)->get();
+            $os = new Order_shop;
+            $os -> order_id = $ddd[0]->id;
+            $os -> shop_id = $v;
+            $os -> shuliang = ($req -> shuliang)[$k];
+            $b = $os -> save();
+
+            $shopcar = Shopcar::where('user_id',\Session::get('id'))->where('shop_id',$v)->delete();
+        }
+
+        if($a && $os && $shopcar){
+
+            $user = User::findOrFail(\Session::get('id'));
+            $setting = Setting::first();
+            $links = Link::all();
+            $order = Order::where('user_id',\Session::get('id'))->where('order_bh',$order_bh)->get();
+            $uadd = $order[0]->uaddress;
+            $address = explode('-', $uadd->address);
+            $xiangxi = $uadd -> xadress;
+            $zongjia = $req -> zongjia;
+            $uname = $uadd -> name;
+            $phone = $uadd -> uphone;
+
+            return view('home/dingdan/pay',compact('user','setting','links','address','zongjia','uname','phone','xiangxi'));
+        }else{
+            return back()->with('error','生成订单失败');
+        }
+
     }
 }
 
