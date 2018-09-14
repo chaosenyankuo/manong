@@ -90,11 +90,6 @@
     </a>
 </li>
 <li>
-    <a href="/yhj" class="waves-effect waves-dark">
-        <i class="fa fa-sitemap"></i> 优惠劵管理
-    </a>
-</li>
-<li>
     <a href="/wzkg" class="waves-effect waves-dark">
         <i class="fa fa-sitemap"></i> 网站开关
     </a>

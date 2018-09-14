@@ -42,7 +42,7 @@
         use App\Setting;
         use App\User;
         $uid = \Session::get('id');
-        $user = User::find($uid);
+        $user = User::findOrFail($uid);
         $links = Link::all();
         $setting = Setting::first();
     ?>
@@ -75,7 +75,7 @@
                 <div class="user-coupon">
                     <!--标题 -->
                     <div class="am-cf am-padding">
-                        <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">优惠券</strong> / <small>Coupon</small></div>
+                        <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">福利</strong> / <small>FuLi</small></div>
                     </div>
                     <hr/>
                     <div class="am-tabs-d2 am-tabs  am-margin" data-am-tabs>
@@ -104,62 +104,136 @@
                 </div>
                 <div>
                     <button id="start">点击立即抽奖</button>
-                    @if(!empty($user->coupons[0]))
+                    @if($user['huodong'] == '1')
                     <script>
-                        $('#start').click(function(){
-                            alert('对不起,您已经参与过该活动了哦!!!');
-                            $('#start').arrt('disabled','disabled');
-                        })
+                    $('#start').click(function() {
+                        alert('对不起,您已经参与过该活动了哦!!!');
+                        $('#start').arrt('disabled', 'disabled');
+                    })
                     </script>
                     @endif
                     <button id="stop" disabled='disabled'>点击停止</button>
                 </div>
-            </div>
-            <meta name="csrf-token" content="{{csrf_token()}}">
-            @if(empty($user->coupons[0]))
-            <script>
-            var start = $('#start');
-            var stop = $('#stop');
-            var coupons = ['5元优惠券', '5元优惠券','5元优惠券','5元优惠券','5元优惠券','5元优惠券','5元优惠券','5元优惠券','5元优惠券','5元优惠券','10元优惠券','10元优惠券','10元优惠券','10元优惠券','10元优惠券','10元优惠券','10元优惠券','10元优惠券', '15元优惠券','15元优惠券','15元优惠券','15元优惠券','15元优惠券', '15元优惠券','20元优惠券', '20元优惠券','20元优惠券','20元优惠券','25元优惠券', '25元优惠券','25元优惠券','30元优惠券', '35元优惠券', '50元优惠券', '80元优惠券', '100元优惠券'];
-            var timer = [];
-            start.click(function() {
-                stop.removeAttr('disabled');
-                timer.push(setInterval(function() {
-                    var coupon = coupons[rand(0, coupons.length - 1)];
-                    $('#name').text(coupon);
-                }, 50));
-            });
-            function rand(m, n) {
-                return Math.ceil(Math.random() * (n - m + 1)) + (m - 1);
-            };
-            stop.click(function() {
-                start.attr('disabled', 'disabled');
-                for (var i = 0; i < timer.length; i++) {
-                    clearInterval(timer[i]);
-                }
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                var quan = $('#name').text();
-                console.log(quan);
-                $.ajax({
-                    url: '/cunquan',
-                    type: 'post',
-                    data: { quan: quan},
-                    success: function(data) {
-                        if(data ==1 ){
-                            alert('恭喜您,获得' + quan + '优惠券');
-                        }else{
-                            alert('抽奖失败');
+                <meta name="csrf-token" content="{{csrf_token()}}"> 
+                <script>
+                    var start = $('#start');
+                    var stop = $('#stop');
+                    var coupons = ['5元优惠券', '5元优惠券', '5元优惠券', '5元优惠券', '5元优惠券', '5元优惠券', '5元优惠券', '5元优惠券', '5元优惠券', '5元优惠券', '10元优惠券', '10元优惠券', '10元优惠券', '10元优惠券', '10元优惠券', '10元优惠券', '10元优惠券', '10元优惠券', '20元优惠券', '20元优惠券', '20元优惠券', '20元优惠券', '25元优惠券', '25元优惠券', '25元优惠券', '30元优惠券', '50元优惠券', '80元优惠券', '100元优惠券'];
+                    var timer = [];
+                    start.click(function() {
+                        stop.removeAttr('disabled');
+                        timer.push(setInterval(function() {
+                            var coupon = coupons[rand(0, coupons.length - 1)];
+                            $('#name').text(coupon);
+                        }, 50));
+                    });
+
+                    function rand(m, n) {
+                        return Math.ceil(Math.random() * (n - m + 1)) + (m - 1);
+                    };
+                    stop.click(function() {
+                        start.attr('disabled', 'disabled');
+                        for (var i = 0; i < timer.length; i++) {
+                            clearInterval(timer[i]);
                         }
-                    },
-                    async: true
-                })
-            });
-            </script>
-            @endif
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+                        var quan = $('#name').text();
+                        $.ajax({
+                            url: '/cunquan',
+                            type: 'post',
+                            data: { quan: quan },
+                            success: function(data) {
+                                if (data == 1) {
+                                    alert('恭喜您,获得' + quan);
+                                } else {
+                                    alert('抽奖失败');
+                                }
+                            },
+                            async: false
+                        })
+                    });
+                </script>
+                <hr>
+                <div class="user-coupon">
+                    <!--标题 -->
+                    <div class="am-cf am-padding">
+                        <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">积分兑换</strong> / <small>JiFen</small> &nbsp;&nbsp;&nbsp;我的积分:{{$user['jifen']}}</div>
+                    </div>
+                    <hr/>
+                    <div class="am-tabs-d2 am-tabs  am-margin" data-am-tabs>
+                        <div class="am-tabs-bd">
+                            <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+                                <div class="coupon-items">
+                                    @foreach($coupons as $v)
+                                    <div class="coupon-item coupon-item-d">
+                                        <div class="coupon-list">
+                                            <div class="c-type">
+                                                <div class="c-class">
+                                                    <strong>购物券</strong>
+                                                </div>
+                                                <div class="c-price">
+                                                    <strong>￥{{$v['price']}}</strong>
+                                                </div>
+                                                <div class="c-limit">
+                                                    适用于任何产品
+                                                </div>
+                                                <div class="c-type-top"></div>
+                                                <div class="c-type-bottom"></div>
+                                            </div>
+                                            <div class="c-msg">
+                                                <div class="c-range">
+                                                    <div class="range-all">
+                                                        <div class="range-item">
+                                                            <span class="label">券名：</span>
+                                                            <span class="txt">{{$v['name']}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="op-btns">
+                                                    <button price="{{$v['price']}}" class="duihuan" style="width:200px;height:35px;background-color:#eee"><span class="txt" style="color:black">立即兑换</span><b></b></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                    <script>
+                                    $('.duihuan').click(function() {
+                                        $(this).attr('id', 'do');
+                                        $(this).siblings().removeAttr('id');
+                                        //获取当前优惠券的金额
+                                        var price = $(this).attr('price');
+                                        //获取当前登录用户的积分
+                                        var jifen = {{$user['jifen']}};
+                                        $.ajaxSetup({
+                                            headers: {
+                                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                            }
+                                        });
+                                        $.ajax({
+                                            url: '/duihuan',
+                                            type: 'post',
+                                            data: {price:price,jifen:jifen},
+                                            success: function(data) {
+                                                if(data == 1){
+                                                    alert('兑换成功');
+                                                }else{
+                                                    alert('兑换失败,积分不足');
+                                                }
+                                            },
+                                            async: false
+                                        })
+                                    })
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!--底部-->
             @include('layouts.home._foot')
         </div>

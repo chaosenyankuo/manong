@@ -109,7 +109,8 @@ class CouponController extends Controller
 
     public function fuli()
     {
-        return view('home.fuli.show');
+        $coupons = Coupon::all();
+        return view('home.fuli.show',compact('coupons'));
     }
 
     public function cunquan()
@@ -119,11 +120,52 @@ class CouponController extends Controller
         $cid = $coupon[0]['id'];
         $uid = \Session::get('id');
         $user = User::findOrFail($uid);
-        $res=$user->coupons()->sync($cid);
-        if($res){
+        $user -> huodong = '1';
+        if($user -> save()){
+            $res=$user->coupons()->attach($cid);
             echo '1';
         }else{
             echo '0';
         }
+    }
+
+    public function zhanshi()
+    {
+        $uid = \Session::get('id');
+        $user = User::findOrFail($uid);
+        $coupons = $user -> coupons;
+        return view('home.fuli.coupon',compact('coupons','user'));
+    }
+
+    public function duihuan()
+    {
+        //获取优惠券金额
+        $price = $_POST['price'];
+        //按照积分:优惠券金额  10:1的比例进行兑换
+        $newprice = $price * 10;
+        //获取当前登录人的积分
+        $jifen = $_POST['jifen'];
+        //获取优惠券的id
+        $coupon = Coupon::where('price',$price)->first();
+        $cid = $coupon['id'];
+        //改变当前登录人的积分
+        $uid = \Session::get('id');
+        $user = User::findOrFail($uid);
+        //如果当前登录人的积分小于优惠券金额 则兑换失败
+        if($jifen < $newprice){
+            $user -> jifen = $jifen;
+            echo '0';
+        }
+        if($jifen >= $newprice){
+            $user -> jifen = $jifen - $newprice;
+            if($user -> save()){
+            //将数据存入中间表中
+            $res=$user->coupons()->attach($cid);
+            echo '1';
+            }
+        }else{
+            echo '0';
+        }
+
     }
 }

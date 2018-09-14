@@ -55,6 +55,7 @@
                                     <div class="s-prestige am-btn am-round">
                                         @if($user->qx == '1') 管理员 @elseif($user->qx == '2') 银牌会员 @else 金牌会员 @endif
                                     </div>
+                                   <span class="s-name">积分:{{$user['jifen']}}</span>
                                 </div>
                                 <div class="m-right">
                                     <div class="m-address">
@@ -75,10 +76,15 @@
                                         </a>
                                 </p>
                                 <p class="m-coupon">
-                                    <a href="coupon.html">
+                                    <a href="/home/coupon">
+                                        <?php 
+                                        use App\User;
+                                        $uid = \Session::get('id');
+                                        $user = User::findOrFail($uid);
+                                        ?>
                                             <i><img src="/home/images/coupon.png"/></i>
                                             <span class="m-title">优惠券</span>
-                                            <em class="m-num">2</em>
+                                            <em class="m-num">{{count($user->coupons)}}</em>
                                         </a>
                                 </p>
                                 <p class="m-bill">
