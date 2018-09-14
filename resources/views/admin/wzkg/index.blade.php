@@ -5,7 +5,7 @@
             <div class="table-responsive">
                 <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <form action="/wzkg" method="post">
                                 
                         <br>
@@ -21,7 +21,7 @@
                     </div>
                     <br>
                     <br>    
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                         <form action="/wzkg/destroy" method="post">
                             <ul class="forminfo">
                                 {{method_field('DELETE')}} {{csrf_field()}}

@@ -21,7 +21,7 @@ Route::post('/admin/login', 'AdminController@dologin');
 Route::get('/admin/logout', 'AdminController@logout');
 
 //后台路由
-// Route::group(['middleware'=>'login'],function(){
+Route::group(['middleware'=>'login'],function(){
 
 	//后台主页
 	Route::get('/admin','AdminController@index');
@@ -89,10 +89,10 @@ Route::get('/admin/logout', 'AdminController@logout');
 	//意见反馈列表
 	Route::resource('/admin/yjfkui','YjfkuiController');
 
-	//优惠卷
-	Route::resource('yhj','YhjController');
+	//优惠券管理
+	Route::resource('coupon','CouponController');
 		
-// });
+});
 /*
  *前台路由
  */
@@ -116,9 +116,6 @@ Route::post('/home/dologin', 'HomeController@dologin');
 
 //前台退出登录
 Route::get('/home/logout','HomeController@logout');
-
-//我的福利
-Route::get('/fuli','FuliController@fuli');
 
 //个人中心
 Route::get('/home/index','GrzxController@index');
@@ -180,6 +177,10 @@ Route::get('/home/cun','CollectController@cun');
 Route::get('/home/collect','CollectController@zhanshi');
 Route::get('/home/delete','CollectController@delete');
 
+//我的福利
+Route::get('/home/fuli','CouponController@fuli');
 
+//发送ajax存优惠券
+Route::post('/cunquan','CouponController@cunquan');
 
 

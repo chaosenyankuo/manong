@@ -241,7 +241,7 @@
         </nav>
         <!-- /. NAV SIDE  -->
 
-        <div id="page-wrapper" style="position: relative;left:0px;top:-900px;">
+        <div id="page-wrapper" style="position: relative;left:0px;top:-970px;">
 
             <div class="header">
                 @if(Session::has('success'))

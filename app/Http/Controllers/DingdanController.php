@@ -164,8 +164,10 @@ class DingdanController extends Controller
         $zhifu = Zhifu::all();
         $links = Link::all();
         $shops = Shop::all();
-
-        return view('home/dingdan/create',compact('id','shopcar','shop_id','shops','shuliang','uaddress','uadd','wuliu','zhifu','links'));
+        $uid = \Session::get('id');
+        $user = User::find($uid);
+        $setting = Setting::first();
+        return view('home/dingdan/create',compact('id','shopcar','shop_id','shops','shuliang','uaddress','uadd','wuliu','zhifu','links','user','setting'));
     }
 
 
@@ -174,6 +176,7 @@ class DingdanController extends Controller
      */
     public function baocun(Request $req)
     {   
+        dd($req->jifen);
         if(!$req->wuliu_id){
             return back()->with('error','请选择配送方式');
         }
