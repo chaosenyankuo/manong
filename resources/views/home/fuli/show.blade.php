@@ -155,6 +155,7 @@
                             },
                             async: false
                         })
+                        window.location.reload();
                     });
                 </script>
                 <hr>
@@ -226,6 +227,7 @@
                                             },
                                             async: false
                                         })
+                                        window.location.reload();
                                     })
                                     </script>
                                 </div>
