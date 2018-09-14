@@ -95,6 +95,11 @@
     </a>
 </li>
 <li>
+    <a href="/sctt" class="waves-effect waves-dark">
+        <i class="fa fa-sitemap"></i> 商城头条管理
+    </a>
+</li>
+<li>
     <a href="/wzkg" class="waves-effect waves-dark">
         <i class="fa fa-sitemap"></i> 网站开关
     </a>

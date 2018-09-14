@@ -24,7 +24,7 @@
         <div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
             <ul class="am-slides">
                 @foreach($lunbotu as $v)
-                <li class="banner1"><a><img src="{{$v->url}}" title="{{$v->pic}}" height="430" /></a></li>
+                <li class="banner1"><a><img src="{{$v->pic}}" title="{{$v->url}}" height="430" /></a></li>
                 @endforeach
             </ul>
         </div>
@@ -138,7 +138,17 @@
             </div>
             <!--走马灯 -->
             <div class="marqueen">
-                <div class="mod-vip">
+                <span class="marqueen-title">商城头条</span>
+                <ul>
+                    <li class="title-first" style="text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:188px;"><a target="_blank" href="{{$sctt[0]['scth_url']}}">
+                                   
+                                    <span>[特惠]</span style="text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:188px;">{{$sctt[0]['scth']}}                               
+                                </a></li>
+                    <li class="title-first" style="text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:188px;"><a target="_blank" href="{{$sctt[1]['scgg_url']}}">
+                                    <span>[公告]</span>{{$sctt[1]['scgg']}}                                            
+                                </a></li>
+                </ul>
+                <div class="mod-vip" height="220px" style="padding:0px">
                     @if(Session::has('nickname'))
                     <div class="m-baseinfo">
                         <a href="/home/index">
@@ -163,24 +173,11 @@
                         <a class="am-btn-warning btn" href="/home/zhuce">注册</a>
                     </div>
                     @endif
-                    <span class="marqueen-title">商城头条</span>
-                    <div class="demo">
-                        <ul>
-                            <li class="title-first"><a target="_blank" href="#">
-                                    <img src="/home/images/TJ2.jpg"></img>
-                                    <span>[特惠]</span>两元商城                               
-                                </a></li>
-                            <div class="member-login">
-                                <a href="#"><strong>0</strong>待收货</a>
-                                <a href="#"><strong>0</strong>待发货</a>
-                                <a href="#"><strong>0</strong>待付款</a>
-                                <a href="#"><strong>0</strong>待评价</a>
-                            </div>
-                            <div class="clear"></div>
-                    </div>
-                    <li><a target="_blank" href="#"><span>[特惠]</span>全场都两块,两块钱你买不了吃亏,买不了上当,真整的物有所值!!</a></li>
-                    <li><a target="_blank" href="#"><span>[公告]</span>红包、优惠券一大波福利来袭，还在等什么！一起来转转转！！！</a></li>
-                    <li><a target="_blank" href="#"><span>[特惠]</span>家电狂欢千亿礼券 买1送1！</a></li>
+                    <ul>
+                        @foreach ($sctt as $v)
+                        <li style=" text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:188px;"><a target="_blank" href="{{$v['scth_url']}}"><span>[特惠]</span>{{$v['scth']}}</a></li>
+                        <li style="text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:188px;"><a target="_blank" href="{{$v['scgg_url']}}"><span>[公告]</span>{{$v['scgg']}}</a></li>
+                        @endforeach
                     </ul>
                     <div class="advTip">
                         <a href="/{{$v->id}}.html">

@@ -2,7 +2,7 @@
 
 use App\Lunbotu;
 use Illuminate\Database\Seeder;
-
+use Faker\Generator as Faker;
 class LunboTableSeeder extends Seeder
 {
     /**
@@ -10,23 +10,16 @@ class LunboTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
+         for ($i=0; $i <4 ; $i++) { 
         $lunbo = new Lunbotu;
-    	$lunbo -> pic = '李阔';
-    	$lunbo -> url = '/lunbo/kuo.jpg';
+    	$lunbo -> pic = '/lunbo/kuo.jpg';    	    	   	
+    	$lunbo -> pic = '/lunbo/sen.jpg';    	    	    	
+    	$lunbo -> pic = '/lunbo/chao.jpg';    	   	
+    	$lunbo -> pic = '/lunbo/yan.jpg';
+    	$lunbotu -> url = $faker ->url;
     	$lunbo -> save();
-    	$lunbo = new Lunbotu;
-    	$lunbo -> pic = '赵广森';
-    	$lunbo -> url = '/lunbo/sen.jpg';
-    	$lunbo -> save();
-    	$lunbo = new Lunbotu;
-    	$lunbo -> pic = '樊家朝';
-    	$lunbo -> url = '/lunbo/chao.jpg';
-    	$lunbo -> save();
-    	$lunbo = new Lunbotu;
-    	$lunbo -> pic = '王炎';
-    	$lunbo -> url = '/lunbo/yan.jpg';
-    	$lunbo -> save();
+       }
     }
 }

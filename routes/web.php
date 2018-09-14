@@ -21,7 +21,7 @@ Route::post('/admin/login', 'AdminController@dologin');
 Route::get('/admin/logout', 'AdminController@logout');
 
 //后台路由
-Route::group(['middleware'=>'login'],function(){
+// Route::group(['middleware'=>'login'],function(){
 
 	//后台主页
 	Route::get('/admin','AdminController@index');
@@ -89,10 +89,18 @@ Route::group(['middleware'=>'login'],function(){
 	//意见反馈列表
 	Route::resource('/admin/yjfkui','YjfkuiController');
 
+
+
+	//商城头条
+	
+	Route::resource('sctt','ScttController');
+	
+
 	//优惠券管理
 	Route::resource('coupon','CouponController');
+
 		
-});
+// });
 /*
  *前台路由
  */

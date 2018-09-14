@@ -22,11 +22,12 @@ class DatabaseSeeder extends Seeder
         $this->call(LinkTableSeeder::class);
         $this->call(PtagTableSeeder::class);
         $this->call(UaddressTableSeeder::class);
-        $this->call(OrderTableSeeder::class);
         $this->call(ComTableSeeder::class);
         $this->call(FlavorsTableSeeder::class);
         $this->call(ZhuangtaiTableSeeder::class);
         $this->call(LunbotusTableSeeder::class);
+        $this->call(ScttTableSeeder::class);
         $this->call(CouponsTableSeeder::class);
+
     }
 }
