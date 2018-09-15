@@ -211,6 +211,9 @@ class DingdanController extends Controller
             $os -> shop_id = $v;
             $os -> shuliang = ($req -> shuliang)[$k];
             $os -> order_bh = $order_bh;
+            $os -> flavor_id = ($req -> flavor_id)[$k];
+            $os -> pack_id = ($req -> pack_id)[$k];
+
             $os -> save();
         }
 
@@ -274,7 +277,6 @@ class DingdanController extends Controller
         }else{
             $os5 = [];
         }
-
         $uid = \Session::get('id');
         $user = User::findOrFail($uid);
 
@@ -320,8 +322,9 @@ class DingdanController extends Controller
             $os -> shop_id = $v;
             $os -> shuliang = ($req -> shuliang)[$k];
             $os -> order_bh = $order_bh;
+            $os -> flavor_id = ($req -> flavor_id)[$k];
+            $os -> pack_id = ($req -> pack_id)[$k];
             $b = $os -> save();
-
             $shopcar = Shopcar::where('user_id',\Session::get('id'))->where('shop_id',$v)->delete();
         }
 

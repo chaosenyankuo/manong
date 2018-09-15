@@ -82,8 +82,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">口味：
-                                                                            <br/>包装： </p>
+                                                                        <p class="info-little">口味：{{$os1[$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os1[$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -166,8 +166,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">口味:
-                                                                            <br/>包装： </p>
+                                                                        <p class="info-little">口味:{{$os2[$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os2[$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -241,8 +241,9 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">颜色：
-                                                                            <br/>包装： </p>
+                                                                        <p class="info-little">颜色：{{$os3[$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os3[$kk]->pack->pname}} </p>
+
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -313,8 +314,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">颜色：
-                                                                            <br/>包装： </p>
+                                                                        <p class="info-little">颜色：{{$os4[$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os4[$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -392,8 +393,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">颜色：
-                                                                            <br/>包装： </p>
+                                                                        <p class="info-little">颜色：{{$os2[$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os2[$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -473,8 +474,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">颜色：
-                                                                            <br/>包装： </p>
+                                                                        <p class="info-little">颜色：{{$os3[$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os3[$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -552,8 +553,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">颜色：
-                                                                            <br/>包装： </p>
+                                                                        <p class="info-little">颜色：{{$os4[$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os4[$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -630,8 +631,9 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">颜色：
-                                                                            <br/>包装： </p>
+
+                                                                        <p class="info-little">颜色：{{$os1[$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os1[$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>

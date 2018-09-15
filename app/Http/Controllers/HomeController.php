@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cate;
 use App\Link;
 use App\Lunbotu;
+use App\Sctt;
 use App\Setting;
 use App\Shop;
 use App\Shopcar;
@@ -76,8 +77,9 @@ class HomeController extends Controller
     	$a = 1;
     	$cid = Cate::pluck('id');
         $lunbotu = Lunbotu::all()->take(4);
+        $sctt = Sctt::all()->take(4);
         
-    	return view('home',compact('cates','tags','links','recom','shops','a','cid','user','lunbotu'));
+    	return view('home',compact('cates','tags','links','recom','shops','a','cid','user','lunbotu','sctt'));
     }
 
 

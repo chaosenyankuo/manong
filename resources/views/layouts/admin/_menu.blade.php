@@ -90,8 +90,8 @@
     </a>
 </li>
 <li>
-    <a href="/yhj" class="waves-effect waves-dark">
-        <i class="fa fa-sitemap"></i> 优惠劵管理
+    <a href="/sctt" class="waves-effect waves-dark">
+        <i class="fa fa-sitemap"></i> 商城头条管理
     </a>
 </li>
 <li>
