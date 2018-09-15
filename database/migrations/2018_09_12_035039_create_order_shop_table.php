@@ -14,12 +14,12 @@ class CreateOrderShopTable extends Migration
     public function up()
     {
         Schema::create('order_shop', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('order_id');
-            $table->string('shop_id');
-            $table->string('shuliang');
-            $table->string('flavor_id');
-            $table->string('pack_id');
+            $table->increments('id')->nullable();
+            $table->string('order_id')->nullable();
+            $table->string('shop_id')->nullable();
+            $table->string('shuliang')->nullable();
+            $table->string('order_bh')->nullable();
+            $table->string('hascom')->default(0);
             $table->timestamps();
         });
     }

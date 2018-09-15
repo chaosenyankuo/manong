@@ -210,8 +210,10 @@ class DingdanController extends Controller
             $os -> order_id = $ddd[0]->id;
             $os -> shop_id = $v;
             $os -> shuliang = ($req -> shuliang)[$k];
+            $os -> order_bh = $order_bh;
             $os -> flavor_id = ($req -> flavor_id)[$k];
             $os -> pack_id = ($req -> pack_id)[$k];
+
             $os -> save();
         }
 
@@ -242,35 +244,35 @@ class DingdanController extends Controller
 
         if(!empty($order1[0])){
             foreach($order1 as $k=>$v){
-                $os1 = Order_shop::where('order_id',$v->id)->get();
+                $os1[] = Order_shop::where('order_id',$v->id)->get();
             }
         }else{
             $os1 = [];
         }
         if(!empty($order2[0])){
             foreach($order2 as $k=>$v){
-                $os2 = Order_shop::where('order_id',$v->id)->get();
+                $os2[] = Order_shop::where('order_id',$v->id)->get();
             }
         }else{
             $os2 = [];
         }
         if(!empty($order3[0])){
             foreach($order3 as $k=>$v){
-                $os3 = Order_shop::where('order_id',$v->id)->get();
+                $os3[] = Order_shop::where('order_id',$v->id)->get();
             }
         }else{
             $os3 = [];
         }
         if(!empty($order4[0])){
             foreach($order4 as $k=>$v){
-                $os4 = Order_shop::where('order_id',$v->id)->get();
+                $os4[] = Order_shop::where('order_id',$v->id)->get();
             }
         }else{
             $os4 = [];
         }
         if(!empty($order5[0])){
             foreach($order5 as $k=>$v){
-                $os5 = Order_shop::where('order_id',$v->id)->get();
+                $os5[] = Order_shop::where('order_id',$v->id)->get();
             }
         }else{
             $os5 = [];
@@ -319,10 +321,10 @@ class DingdanController extends Controller
             $os -> order_id = $ddd[0]->id;
             $os -> shop_id = $v;
             $os -> shuliang = ($req -> shuliang)[$k];
+            $os -> order_bh = $order_bh;
             $os -> flavor_id = ($req -> flavor_id)[$k];
             $os -> pack_id = ($req -> pack_id)[$k];
             $b = $os -> save();
-
             $shopcar = Shopcar::where('user_id',\Session::get('id'))->where('shop_id',$v)->delete();
         }
 

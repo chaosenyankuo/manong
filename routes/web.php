@@ -156,7 +156,7 @@ Route::get('/home/pjgl','GrzxController@pjgl');
 
 //评价商品
 Route::get('/home/pjsp/{id}','GrzxController@pjsp');
-Route::post('/home/plsp','GrzxController@plsp');
+Route::post('/home/plsp/{id}','GrzxController@plsp');
 
 //足迹
 Route::get('/home/foot','GrzxController@foot');
