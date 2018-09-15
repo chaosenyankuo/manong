@@ -38,6 +38,7 @@ Route::get('/admin/logout', 'AdminController@logout');
 
 	//网站开关
 	Route::resource('wzkg','Wzkgcontroller');
+	
 	//物流管理
 	Route::resource('wuliu', 'WuliuController');
 

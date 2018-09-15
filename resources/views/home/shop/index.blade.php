@@ -214,9 +214,7 @@
                                         <div class="theme-signin-left">
                                             <div class="theme-options">
                                                 <div class="cart-title">口味</div>
-                                                <ul>&nbsp; 
-                                                    @foreach($flavor as $v) 
-                                                    @if(in_array($v->id,$shop->flavors->pluck('id')->toArray()))
+                                                <ul>&nbsp; @foreach($flavor as $v) @if(in_array($v->id,$shop->flavors->pluck('id')->toArray()))
                                                     <li class="sku-line">
                                                         <input type="radio" name="flavor_id" value="{{$v['id']}}">{{$v['fname']}}
                                                     </li>
@@ -225,14 +223,11 @@
                                             </div>
                                             <div class="theme-options">
                                                 <div class="cart-title">包装</div>
-                                                <ul>&nbsp;
-                                                    @foreach($pack as $v)
-                                                    @if(in_array($v->id,$shop->packs->pluck('id')->toArray()))
+                                                <ul>&nbsp; @foreach($pack as $v) @if(in_array($v->id,$shop->packs->pluck('id')->toArray()))
                                                     <li class="sku-line">
                                                         <input type="radio" name="pack_id" value="{{$v['id']}}">{{$v['pname']}}
                                                     </li>
-                                                    @endif
-                                                    @endforeach
+                                                    @endif @endforeach
                                                 </ul>
                                             </div>
                                             <div class="theme-options">
@@ -246,9 +241,9 @@
                                                 <script>
                                                 $('input[name=shuliang]').change(function() {
                                                     var a = $('input[name=shuliang]').val();
-                                                    if (a > {{$shop['scount']}}) {
+                                                    if (a > { { $shop['scount'] } }) {
                                                         alert('对不起,库存不足');
-                                                        $('input[name=shuliang]').val({{$shop['scount']}});
+                                                        $('input[name=shuliang]').val({ { $shop['scount'] } });
                                                     };
                                                 });
                                                 </script>
@@ -446,19 +441,63 @@
                                 @endforeach
                             </ul>
                             <div class="clear"></div>
+                            <style>
+                            .pagination {
+                                padding-left: 0;
+                                margin: 1.5rem 0;
+                                list-style: none;
+                                color: #999;
+                                text-align: left;
+                                padding: 0;
+                            }
+
+                            .pagination li {
+                                display: inline-block;
+                            }
+
+                            .pagination li a,
+                            .pagination li span {
+                                color: #23abf0;
+                                border-radius: 3px;
+                                padding: 6px 12px;
+                                position: relative;
+                                display: block;
+                                text-decoration: none;
+                                line-height: 1.2;
+                                background-color: #fff;
+                                border: 1px solid #ddd;
+                                border-radius: 0;
+                                margin-bottom: 5px;
+                                margin-right: 5px;
+                            }
+
+                            .pagination li.active {
+                                background-color: white;
+                            }
+
+                            .pagination .active span {
+                                color: #23abf0;
+                                border-radius: 3px;
+                                padding: 6px 12px;
+                                position: relative;
+                                display: block;
+                                text-decoration: none;
+                                line-height: 1.2;
+                                background-color: #fff;
+                                border: 1px solid #ddd;
+                                border-radius: 0;
+                                margin-bottom: 5px;
+                                margin-right: 5px;
+                                background: #23abf0;
+                                color: #fff;
+                                border: 1px solid #23abf0;
+                                padding: 6px 12px;
+                            }
+                            </style>
                             <!--分页 -->
-                            <ul class="am-pagination am-pagination-right">
-                                <li class="am-disabled"><a href="#">&laquo;</a></li>
-                                <li class="am-active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">&raquo;</a></li>
-                            </ul>
+                            {{$comment->links()}}
                             <div class="clear"></div>
                             <div class="tb-reviewsft">
-                                <div class="tb-rate-alert type-attention">购买前请查看该商品的 <a href="#" target="_blank">购物保障</a>，明确您的售后保障权益。</div>
                             </div>
                         </div>
                         <div class="am-tab-panel am-fade">
@@ -481,16 +520,6 @@
                                 </ul>
                             </div>
                             <div class="clear"></div>
-                            <!--分页 -->
-                            <ul class="am-pagination am-pagination-right">
-                                <li class="am-disabled"><a href="#">&laquo;</a></li>
-                                <li class="am-active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">&raquo;</a></li>
-                            </ul>
                             <div class="clear"></div>
                         </div>
                     </div>

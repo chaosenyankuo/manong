@@ -67,6 +67,7 @@ class HomeController extends Controller
     public function index()
     {	
     	$cates = Cate::all();
+
     	$tags = Tag::all();
     	$links = Link::all();
     	$recom = Shop::where('recom','1')->take(3)->orderBy('id','desc')->get();
@@ -76,6 +77,7 @@ class HomeController extends Controller
 
     	$a = 1;
     	$cid = Cate::pluck('id');
+        
         $lunbotu = Lunbotu::all()->take(4);
         $sctt = Sctt::all()->take(4);
         
