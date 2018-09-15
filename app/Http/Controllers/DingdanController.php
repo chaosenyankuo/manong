@@ -277,6 +277,7 @@ class DingdanController extends Controller
         }else{
             $os5 = [];
         }
+
         $uid = \Session::get('id');
         $user = User::findOrFail($uid);
 
