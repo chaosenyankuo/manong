@@ -61,7 +61,7 @@
                                 <div class="order-main">
                                     <div class="order-list">
                                         <!--交易成功-->
-                                        @foreach($order1 as $k=>$v)
+                                        @foreach($order5 as $k=>$v)
                                         <div class="order-status5">
                                             <div class="order-title">
                                                 <div class="dd-num">订单编号：<a href="javascript:;">{{$v->order_bh}}</a></div>
@@ -82,8 +82,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">口味：{{$os1[$kk]->flavor->fname}}
-                                                                            <br/>包装：{{$os1[$kk]->pack->pname}} </p>
+                                                                        <p class="info-little">口味：{{$os5[$k][$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os5[$k][$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -95,7 +95,7 @@
                                                         </li>
                                                         <li class="td td-number">
                                                             <div class="item-number">
-                                                                <span>×</span>{{$os1[$kk]->shuliang}}
+                                                                <span>×</span>{{$os5[$kk]->shuliang}}
                                                             </div>
                                                         </li>
                                                         <li class="td td-operation">
@@ -126,9 +126,98 @@
                                                                 <p class="order-info"><a href="logistics.html">查看物流</a></p>
                                                             </div>
                                                         </li>
+                                                        <form action="/home/dingdan/delete/{{$v->id}}" method="post" class="1">
+                                                            {{csrf_field()}}
+                                                            <li class="td td-change a">
+                                                                <div class="am-btn am-btn-danger anniu">
+                                                                    删除订单</div>
+                                                            </li>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                        <script type="text/javascript">
+                                            $('.a').click(function(){
+                                                var r = confirm('确认删除该订单');
+
+                                                if(r == true){
+                                                    $('.1').submit();
+                                                }
+                                            })
+                                        </script>
+                                        <!-- 待评论 -->
+                                        @foreach($order1 as $k=>$v)
+                                        <div class="order-status5">
+                                            <div class="order-title">
+                                                <div class="dd-num">订单编号：<a href="javascript:;">{{$v->order_bh}}</a></div>
+                                                <span>成交时间：{{$v->created_at}}</span>
+                                                <!--    <em>店铺：小桔灯</em>-->
+                                            </div>
+                                            <div class="order-content">
+                                                <div class="order-left">
+                                                    @foreach($v->shop as $kk=>$vv)
+                                                    <ul class="item-list">
+                                                        <li class="td td-item">
+                                                            <div class="item-pic">
+                                                                <a href="#" class="J_MakePoint">
+                                                                    <img src="{{$vv->simage}}" class="itempic J_ItemImg">
+                                                                </a>
+                                                            </div>
+                                                            <div class="item-info">
+                                                                <div class="item-basic-info">
+                                                                    <a href="#">
+                                                                        <p>{{$vv->sname}}</p>
+                                                                        <p class="info-little">口味：{{$os1[$k][$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os1[$k][$kk]->pack->pname}} </p>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="td td-price">
+                                                            <div class="item-price">
+                                                                {{$vv->sprice}}
+                                                            </div>
+                                                        </li>
+                                                        <li class="td td-number">
+                                                            <div class="item-number">
+                                                                <span>×</span>{{$os1[$k][$kk]->shuliang}}
+                                                            </div>
+                                                        </li>
+                                                        <li class="td td-operation">
+                                                            <div class="item-operation">
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                    @endforeach
+                                                </div>
+                                                <div class="order-right">
+                                                    <li class="td td-amount">
+                                                        <div class="item-amount">
+                                                            <?php $a=0; ?>
+                                                            @foreach($v->order_shop as $kk=>$vv)
+                                                                <?php $a += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?>
+                                                            @endforeach
+                                                            合计：{{$a}}
+                                                            <p>含运费：
+                                                                <span>{{count($v->order_shop)}}0.00</span>
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                    <div class="move-right">
+                                                        <li class="td td-status">
+                                                            <div class="item-status">
+                                                                <p class="Mystatus">等待评论</p>
+                                                                <p class="order-info"><a href="orderinfo.html">订单详情</a></p>
+                                                                <p class="order-info"><a href="logistics.html">查看物流</a></p>
+                                                            </div>
+                                                        </li>
                                                         <li class="td td-change">
-                                                            <div class="am-btn am-btn-danger anniu">
-                                                                删除订单</div>
+                                                            <a href="/home/pjsp/{{$vv->id}}">
+                                                                <div class="am-btn am-btn-danger anniu">
+                                                                    评价商品</div>
+                                                            </a>
                                                         </li>
                                                     </div>
                                                 </div>
@@ -157,8 +246,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">口味:{{$os2[$kk]->flavor->fname}}
-                                                                            <br/>包装：{{$os2[$kk]->pack->pname}} </p>
+                                                                        <p class="info-little">口味:{{$os2[$k][$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os2[$k][$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -170,7 +259,7 @@
                                                         </li>
                                                         <li class="td td-number">
                                                             <div class="item-number">
-                                                                <span>×</span>{{$os2[$kk]->shuliang}}
+                                                                <span>×</span>{{$os2[$k][$kk]->shuliang}}
                                                             </div>
                                                         </li>
                                                         <li class="td td-operation">
@@ -235,8 +324,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">颜色：{{$os3[$kk]->flavor->fname}}
-                                                                            <br/>包装：{{$os3[$kk]->pack->pname}} </p>
+                                                                        <p class="info-little">颜色：{{$os3[$k][$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os3[$k][$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -248,7 +337,7 @@
                                                         </li>
                                                         <li class="td td-number">
                                                             <div class="item-number">
-                                                                <span>×</span>{{$os3[$kk]->shuliang}}
+                                                                <span>×</span>{{$os3[$k][$kk]->shuliang}}
                                                             </div>
                                                         </li>
                                                         <li class="td td-operation">
@@ -310,8 +399,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">颜色：{{$os4[$kk]->flavor->fname}}
-                                                                            <br/>包装：{{$os4[$kk]->pack->pname}} </p>
+                                                                        <p class="info-little">颜色：{{$os4[$k][$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os4[$k][$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -323,7 +412,7 @@
                                                         </li>
                                                         <li class="td td-number">
                                                             <div class="item-number">
-                                                                <span>×</span>{{$os4[$kk]->shuliang}}
+                                                                <span>×</span>{{$os4[$k][$kk]->shuliang}}
                                                             </div>
                                                         </li>
                                                         <li class="td td-operation">
@@ -393,8 +482,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">颜色：{{$os2[$kk]->flavor->fname}}
-                                                                            <br/>包装：{{$os2[$kk]->pack->pname}} </p>
+                                                                        <p class="info-little">颜色：{{$os2[$k][$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os2[$k][$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -406,7 +495,7 @@
                                                         </li>
                                                         <li class="td td-number">
                                                             <div class="item-number">
-                                                                <span>×</span>{{$os2[$kk]->shuliang}}
+                                                                <span>×</span>{{$os2[$k][$kk]->shuliang}}
                                                             </div>
                                                         </li>
                                                         <li class="td td-operation">
@@ -477,8 +566,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">颜色：{{$os3[$kk]->flavor->fname}}
-                                                                            <br/>包装：{{$os3[$kk]->pack->pname}} </p>
+                                                                        <p class="info-little">颜色：{{$os3[$k][$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os3[$k][$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -490,7 +579,7 @@
                                                         </li>
                                                         <li class="td td-number">
                                                             <div class="item-number">
-                                                                <span>×</span>{{$os3[$kk]->shuliang}}
+                                                                <span>×</span>{{$os3[$k][$kk]->shuliang}}
                                                             </div>
                                                         </li>
                                                         <li class="td td-operation">
@@ -559,8 +648,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">颜色：{{$os4[$kk]->flavor->fname}}
-                                                                            <br/>包装：{{$os4[$kk]->pack->pname}} </p>
+                                                                        <p class="info-little">颜色：{{$os4[$k][$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os4[$k][$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -572,7 +661,7 @@
                                                         </li>
                                                         <li class="td td-number">
                                                             <div class="item-number">
-                                                                <span>×</span>{{$os4[$kk]->shuliang}}
+                                                                <span>×</span>{{$os4[$k][$kk]->shuliang}}
                                                             </div>
                                                         </li>
                                                         <li class="td td-operation">
@@ -615,7 +704,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- 待评价 -->
+                            <!-- 待评论 -->
                             <div class="am-tab-panel am-fade" id="tab5">
                                 @include('layouts.home._orderTop')
                                 <div class="order-main">
@@ -642,8 +731,8 @@
                                                                 <div class="item-basic-info">
                                                                     <a href="#">
                                                                         <p>{{$vv->sname}}</p>
-                                                                        <p class="info-little">颜色：{{$os1[$kk]->flavor->fname}}
-                                                                            <br/>包装：{{$os1[$kk]->pack->pname}} </p>
+                                                                        <p class="info-little">颜色：{{$os1[$k][$kk]->flavor->fname}}
+                                                                            <br/>包装：{{$os1[$k][$kk]->pack->pname}} </p>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -655,7 +744,7 @@
                                                         </li>
                                                         <li class="td td-number">
                                                             <div class="item-number">
-                                                                <span>×</span>{{$os1[$kk]->shuliang}}
+                                                                <span>×</span>{{$os1[$k][$kk]->shuliang}}
                                                             </div>
                                                         </li>
                                                         <li class="td td-operation">
@@ -680,7 +769,7 @@
                                                     <div class="move-right">
                                                         <li class="td td-status">
                                                             <div class="item-status">
-                                                                <p class="Mystatus">交易成功</p>
+                                                                <p class="Mystatus">等待评论</p>
                                                                 <p class="order-info"><a href="orderinfo.html">订单详情</a></p>
                                                                 <p class="order-info"><a href="logistics.html">查看物流</a></p>
                                                             </div>
