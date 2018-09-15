@@ -159,7 +159,7 @@ Route::get('/home/pjgl','GrzxController@pjgl');
 
 //评价商品
 Route::get('/home/pjsp/{id}','GrzxController@pjsp');
-Route::post('/home/plsp','GrzxController@plsp');
+Route::post('/home/plsp/{id}','GrzxController@plsp');
 
 //收货地址
 Route::get('/home/shdz','GrzxController@shdz');
@@ -186,6 +186,9 @@ Route::post('/home/dingdan','DingdanController@baocun');
 
 //订单列表
 Route::get('/home/dingdan','DingdanController@list');
+
+//订单删除
+Route::post('/home/dingdan/delete/{id}','DingdanController@del');
 
 //意见反馈
 Route::resource('/home/yjfk','YjfkController');

@@ -19,7 +19,7 @@
             <div class="mt-logo">
                 <!--顶部导航条 -->
                 @include('layouts.home._top')
-            </div>
+                </div>
             </div>
         </article>
     </header>
@@ -45,20 +45,35 @@
                         <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">发表评论</strong> / <small>Make&nbsp;Comments</small></div>
                     </div>
                     <hr/>
-                    <form action="/home/plsp" method="post">
+                    <form action="/home/plsp/{{$shop['id']}}" method="post">
                     <div class="comment-main">
-                    @foreach($shop as $v)
                         <div class="comment-list">
+                        <div class="item-opinion">
+                            <li class="a"><i class="op1"></i>好评</li>
+                            <li class="b"><i class="op2"></i>中评</li>
+                            <li class="c"><i class="op3"></i>差评</li>
+                            <input type="hidden" name="com_id" value="" class="d">
+                        </div>
+                        <script type="text/javascript">
+                            $('.a').click(function(){
+                                $('.d').val('1');
+                            });
+                            $('.b').click(function(){
+                                $('.d').val('2');
+                            });
+                            $('.c').click(function(){
+                                $('.d').val('3');
+                            });
+                        </script>
                             <div class="item-pic">
                                 <a href="#" class="J_MakePoint">
-										<img src="{{$v->simage}}" class="itempic">
-									</a>
+                                        <img src="{{$shop['simage']}}" class="itempic">
+                                    </a>
                             </div>
-                            
                             <div class="item-title">
                                 <div class="item-name">
                                     <a href="#">
-                                        <p class="item-basic-info">{{$v->sname}}</p>
+                                        <p class="item-basic-info">{{$shop['sname']}}</p>
                                     </a>
                                 </div>
                                 <div class="item-info">
@@ -67,25 +82,17 @@
                                         <span>包装：裸装</span>
                                     </div>
                                     <div class="item-price">
-                                        价格：<strong>{{$v->sprice}}</strong>
+                                        价格：<strong>{{$shop['sprice']}}</strong>
                                     </div>
                                 </div>
                             </div>
-                            
                             <div class="clear"></div>
                             <div class="item-comment">
-                                <textarea name="content[]" placeholder="请写下对宝贝的感受吧，对他人帮助很大哦！"></textarea>
-                            </div>
-                            <div class="item-opinion" name="haoping">
-                                <li><i class="op1"type="radio" value="1"></i>好评</li>
-                                <li><i class="op2"type="radio" value="2"></i>中评</li>
-                                <li><i class="op3"type="radio" value="3"></i>差评</li>
+                                <textarea  name="content" placeholder="请写下对宝贝的感受吧，对他人帮助很大哦！"></textarea>
                             </div>
                         </div>
-                        <input type="hidden" name="shop_id[]" value="{{$v->id}}">
-                        @endforeach
-                        <!--多个商品评论-->
                         {{csrf_field()}}
+                        <input type="hidden" name="order_id" value="{{$o_id}}">
                         <div class="info-btn">
                             <button class="am-btn am-btn-danger">发表评论</button>
                         </div>
@@ -96,7 +103,6 @@
                                 $(this).prevAll().children('i').removeClass("active");
                                 $(this).nextAll().children('i').removeClass("active");
                                 $(this).children('i').addClass("active");
-
                             });
                         })
                         </script>
