@@ -287,7 +287,6 @@ class GrzxController extends Controller
             $order = Order::find($request -> order_id);
             $os = Order_shop::where('order_id',$request->order_id)->where('shop_id',$id)->first();
             $os -> hascom = 1;
-            // dd($order->order_shop);
             if($os->save()){
                 foreach($order->order_shop as $v){
                     $hascom[] = $v->hascom;

@@ -20,6 +20,8 @@ class CreateOrderShopTable extends Migration
             $table->string('shuliang')->nullable();
             $table->string('order_bh')->nullable();
             $table->string('hascom')->default(0);
+            $table->string('flavor_id')->nullable();
+            $table->string('pack_id')->nullable();
             $table->timestamps();
         });
     }
