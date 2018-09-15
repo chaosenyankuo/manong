@@ -47,10 +47,7 @@ Route::get('/admin/logout', 'AdminController@logout');
 
 	//订单管理
 	Route::resource('dingdan','DingdanController');
-
-	//收藏管理
-	Route::resource('collect','CollectController');
-
+	
 	//商品管理
 	Route::resource('shop','ShopController');
 

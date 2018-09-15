@@ -54,11 +54,9 @@
         </nav>
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
-
             <li><a href="/admin/setting"><i class="fa fa-sign-out fa-fw"></i> 设置</a>
-            <li><a href="/admin/logout"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
-            </li>
-
+                <li><a href="/admin/logout"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
+                </li>
             </li>
         </ul>
         <ul id="dropdown2" class="dropdown-content w250">
@@ -240,13 +238,7 @@
             </div>
         </nav>
         <!-- /. NAV SIDE  -->
-<<<<<<< HEAD
-        <div id="page-wrapper" style="position: relative;left:0px;top:-952px;">
-=======
-
         <div id="page-wrapper" style="position: relative;left:0px;top:-1020px;">
-
->>>>>>> 28d9c720dfc3a24579bce8f8c4e9f4282fd3aa48
             <div class="header">
                 @if(Session::has('success'))
                 <div class="col-xs-12" id="xiaoshi" style="padding:10px;">
