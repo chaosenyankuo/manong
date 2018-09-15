@@ -181,7 +181,6 @@ class DingdanController extends Controller
      */
     public function baocun(Request $req)
     {   
-        dd($req->jifen);
         if(!$req->wuliu_id){
             return back()->with('error','请选择配送方式');
         }
@@ -206,11 +205,12 @@ class DingdanController extends Controller
         $a = $dd->save();
 
         foreach($req-> shop_id as $k=>$v){
-            $ddd = Order::where('user_id',\Session::get('id'))->where('order_bh',$order_bh)->take(1)->get();
+            $ddd = Order::where('user_id',\Session::get('id'))->where('order_bh',$order_bh)->get();
             $os = new Order_shop;
             $os -> order_id = $ddd[0]->id;
             $os -> shop_id = $v;
             $os -> shuliang = ($req -> shuliang)[$k];
+            $os -> order_bh = $order_bh;
             $os -> save();
         }
 
@@ -228,7 +228,7 @@ class DingdanController extends Controller
      */
     public function list()
     {   
-        //交易成功和待评价
+        //待评价
         $order1 = Order::where('zhuangtai','1')->where('user_id',\Session::get('id'))->get();
         //代付款
         $order2 = Order::where('zhuangtai','2')->where('user_id',\Session::get('id'))->get();
@@ -236,26 +236,43 @@ class DingdanController extends Controller
         $order3 = Order::where('zhuangtai','3')->where('user_id',\Session::get('id'))->get();
         //待收货
         $order4 = Order::where('zhuangtai','4')->where('user_id',\Session::get('id'))->get();
+        //交易成功
+        $order5 = Order::where('zhuangtai','5')->where('user_id',\Session::get('id'))->get();
 
         if(!empty($order1[0])){
-            $os1 = Order_shop::where('order_id',$order1[0]->id)->get();
+            foreach($order1 as $k=>$v){
+                $os1[] = Order_shop::where('order_id',$v->id)->get();
+            }
         }else{
             $os1 = [];
         }
         if(!empty($order2[0])){
-            $os2 = Order_shop::where('order_id',$order2[0]->id)->get();
+            foreach($order2 as $k=>$v){
+                $os2[] = Order_shop::where('order_id',$v->id)->get();
+            }
         }else{
             $os2 = [];
         }
         if(!empty($order3[0])){
-            $os3 = Order_shop::where('order_id',$order3[0]->id)->get();
+            foreach($order3 as $k=>$v){
+                $os3 = Order_shop::where('order_id',$v->id)->get();
+            }
         }else{
             $os3 = [];
         }
         if(!empty($order4[0])){
-            $os4 = Order_shop::where('order_id',$order4[0]->id)->get();
+            foreach($order4 as $k=>$v){
+                $os4[] = Order_shop::where('order_id',$v->id)->get();
+            }
         }else{
             $os4 = [];
+        }
+        if(!empty($order5[0])){
+            foreach($order5 as $k=>$v){
+                $os5[] = Order_shop::where('order_id',$v->id)->get();
+            }
+        }else{
+            $os5 = [];
         }
 
         $uid = \Session::get('id');
@@ -264,7 +281,7 @@ class DingdanController extends Controller
         $links = Link::all();
         $setting = Setting::first();
 
-        return view('home/grzx/order',compact('order1','order2','order3','order4','os1','os2','os3','os4','user','links','setting'));
+        return view('home/grzx/order',compact('order1','order2','order3','order4','order5','os1','os2','os3','os4','os5','user','links','setting'));
     }
 
     /**
@@ -302,6 +319,7 @@ class DingdanController extends Controller
             $os -> order_id = $ddd[0]->id;
             $os -> shop_id = $v;
             $os -> shuliang = ($req -> shuliang)[$k];
+            $os -> order_bh = $order_bh;
             $b = $os -> save();
 
             $shopcar = Shopcar::where('user_id',\Session::get('id'))->where('shop_id',$v)->delete();

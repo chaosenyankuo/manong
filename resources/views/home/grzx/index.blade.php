@@ -110,7 +110,7 @@
                                 <a class="i-load-more-item-shadow" href="/home/dingdan">全部订单</a>
                             </div>
                             <ul>
-                                <li>
+                                <li style="width:203.98px;">
                                     <a href="order.html"><i><img src="/home/images/pay.png"/></i>
                                         <span>待付款<em class="m-num">
                                             @if($dfks != 0)
@@ -119,7 +119,7 @@
                                         </em></span>
                                     </a>
                                 </li>
-                                <li>
+                                <li style="width:203.98px;">
                                     <a href="order.html"><i><img src="/home/images/send.png"/></i>
                                         <span>待发货<em class="m-num">
                                             @if($dfhs != 0)
@@ -128,7 +128,7 @@
                                         </em></span>
                                     </a>
                                 </li>
-                                <li>
+                                <li style="width:203.98px;">
                                     <a href="order.html"><i><img src="/home/images/receive.png"/></i>
                                         <span>待收货<em class="m-num">
                                             @if($dshs != 0)
@@ -137,18 +137,13 @@
                                         </em></span>
                                     </a>
                                 </li>
-                                <li>
+                                <li style="width:203.98px;">
                                     <a href="order.html"><i><img src="/home/images/comment.png"/></i>
                                         <span>待评价<em class="m-num">
                                             @if($dpjs != 0)
                                                 {{$dpjs}}
                                             @endif
                                         </em></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="change.html"><i><img src="/home/images/refund.png"/></i>
-                                        <span>退换货<em class="m-num">1</em></span>
                                     </a>
                                 </li>
                             </ul>

@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(LinkTableSeeder::class);
         $this->call(PtagTableSeeder::class);
         $this->call(UaddressTableSeeder::class);
-        $this->call(OrderTableSeeder::class);
         $this->call(ComTableSeeder::class);
         $this->call(FlavorsTableSeeder::class);
         $this->call(ZhuangtaiTableSeeder::class);

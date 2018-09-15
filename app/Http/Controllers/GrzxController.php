@@ -7,6 +7,7 @@ use App\Collect;
 use App\Comment;
 use App\Link;
 use App\Order;
+use App\Order_shop;
 use App\Setting;
 use App\Shop;
 use App\Uaddress;
@@ -251,29 +252,55 @@ class GrzxController extends Controller
 
     }
 //评价商品
-    public function pjsp($id)
+    public function pjsp(Request $req, $id)
     {   
+        $o_id = $req->order_id;
         $links = Link::all();
         $setting = Setting::first();
         $uid = \Session::get('id');
         $user  = User::findOrFail($uid);
-        $order = Order::findOrFail($id);
-        $shop = $order->shop;
+        $shop = Shop::findOrFail($id);
 
-        // foreach($shop as $v)
-        // {
-        //     foreach($v->flavors as $vv)
-        //     {
-        //         dd($vv->fname);
-        //     }
-        // }
-        return view('home.grzx.pjsp',compact('links','setting','user','order','shop'));
+
+        
+        return view('home.grzx.pjsp',compact('links','setting','user','order','shop','o_id'));
     }
 
-    public function plsp(Request $request)
+    public function plsp(Request $request,$id)
     {
+        if(empty($request->com_id)){
+            return back()->with('error','请选择您对本商品的评价');
+        }
         //将值存入到数据库
         $comment = new Comment;
+        $shop = Shop::findOrFail($id);
+        $uid = \Session::get('id');
+        $user  = User::findOrFail($uid);
+
+        $comment -> user_id = $user['id'];
+        $comment -> shop_id = $shop['id'];
+        $comment -> com_id  = $request -> com_id;
+        $comment -> content = $request -> content;
+        $a = $comment ->save();
+
+        if($a){
+            $order = Order::find($request -> order_id);
+            $os = Order_shop::where('order_id',$request->order_id)->where('shop_id',$id)->first();
+            $os -> hascom = 1;
+            // dd($order->order_shop);
+            if($os->save()){
+                foreach($order->order_shop as $v){
+                    $hascom[] = $v->hascom;
+                }
+                if(!in_array('0',$hascom)){
+                    $order->zhuangtai = 5;
+                    $order->save();
+                }
+            }
+            return redirect('/home/pjgl')->with('success','恭喜您,评论成功');
+        }else{
+            return back()->with('error','抱歉,评论失败请重试!!');
+        }
     }
 //收藏
     public function sc()

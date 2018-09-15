@@ -24,7 +24,7 @@
         <div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
             <ul class="am-slides">
                 @foreach($lunbotu as $v)
-                <li class="banner1"><a><img src="{{$v->pic}}" title="{{$v->pic}}" height="430" /></a></li>
+                <li class="banner1"><a><img src="{{$v->url}}" title="{{$v->pic}}" height="430" /></a></li>
                 @endforeach
             </ul>
         </div>

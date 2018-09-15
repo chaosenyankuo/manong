@@ -20,7 +20,7 @@
             <div class="mt-logo">
                 <!--顶部导航条 -->
                 @include('layouts.home._top')
-                </div>
+            </div>
             </div>
         </article>
     </header>
@@ -29,10 +29,6 @@
         <div class="nav-cont">
             <ul>
                 <li class="index"><a href="#">首页</a></li>
-                <li class="qc"><a href="#">闪购</a></li>
-                <li class="qc"><a href="#">限时抢</a></li>
-                <li class="qc"><a href="#">团购</a></li>
-                <li class="qc last"><a href="#">大包装</a></li>
             </ul>
             <div class="nav-extra">
                 <a href="/home/fuli" style="color:yellow"><i class="am-icon-user-secret am-icon-md nav-user"></i>福利中心</a>
@@ -54,20 +50,20 @@
                         <ul class="am-avg-sm-2 am-tabs-nav am-nav am-nav-tabs">
                             <li class="am-active"><a href="#tab1">所有评价</a></li>
                         </ul>
+                        <div class="comment-top">
+                            <div class="th th-price">
+                                <td class="td-inner">评价</td>
+                            </div>
+                            <div class="th th-item">
+                                <td class="td-inner">商品</td>
+                            </div>
+                        </div>
+                        @foreach($comment as $v)
                         <div class="am-tabs-bd">
                             <div class="am-tab-panel am-fade am-in am-active" id="tab1">
                                 <div class="comment-main">
                                     <div class="comment-list">
                                         <ul class="item-list">
-                                            <div class="comment-top">
-                                                <div class="th th-price">
-                                                    <td class="td-inner">评价</td>
-                                                </div>
-                                                <div class="th th-item">
-                                                    <td class="td-inner">商品</td>
-                                                </div>
-                                            </div>
-                                            @foreach($comment as $v)
                                             <li class="td td-item">
                                                 <div class="item-pic">
                                                     <a href="#" class="J_MakePoint">
@@ -94,19 +90,19 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
             <!--底部-->
-           @include('layouts.home._foot')
+            @include('layouts.home._foot')
         </div>
-       @include('layouts.home._menu')
+        @include('layouts.home._menu')
     </div>
 </body>
 
