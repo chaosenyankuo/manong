@@ -204,4 +204,11 @@ Route::get('/home/fuli','CouponController@fuli');
 //发送ajax存优惠券
 Route::post('/cunquan','CouponController@cunquan');
 
+//前台我的优惠券页面
+Route::get('/home/coupon','CouponController@zhanshi');
+
+//发送ajax进行积分兑换优惠券
+Route::post('/duihuan','CouponController@duihuan');
+
+
 

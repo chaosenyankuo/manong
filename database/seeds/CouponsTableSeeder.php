@@ -20,10 +20,6 @@ class CouponsTableSeeder extends Seeder
         $coupon2 -> name = '10元优惠券';
         $coupon2 -> price = '10';
         $coupon2 -> save();
-        $coupon3 = new Coupon;
-        $coupon3 -> name = '15元优惠券';
-        $coupon3 -> price = '15';
-        $coupon3 -> save();
         $coupon4 = new Coupon;
         $coupon4 -> name = '20元优惠券';
         $coupon4 -> price = '20';
@@ -36,10 +32,6 @@ class CouponsTableSeeder extends Seeder
         $coupon6 -> name = '30元优惠券';
         $coupon6 -> price = '30';
         $coupon6 -> save();
-        $coupon7 = new Coupon;
-        $coupon7 -> name = '35元优惠券';
-        $coupon7 -> price = '35';
-        $coupon7 -> save();
         $coupon8 = new Coupon;
         $coupon8 -> name = '50元优惠券';
         $coupon8 -> price = '50';

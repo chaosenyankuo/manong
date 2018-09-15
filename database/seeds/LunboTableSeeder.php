@@ -11,15 +11,22 @@ class LunboTableSeeder extends Seeder
      * @return void
      */
     public function run(Faker $faker)
-    {
-         for ($i=0; $i <4 ; $i++) { 
-        $lunbo = new Lunbotu;
-    	$lunbo -> pic = '/lunbo/kuo.jpg';    	    	   	
-    	$lunbo -> pic = '/lunbo/sen.jpg';    	    	    	
-    	$lunbo -> pic = '/lunbo/chao.jpg';    	   	
-    	$lunbo -> pic = '/lunbo/yan.jpg';
-    	$lunbotu -> url = $faker ->url;
-    	$lunbo -> save();
-       }
+    { 
+        $lunbo1 = new Lunbotu;
+        $lunbo1 -> pic = '/lunbo/kuo.jpg';                  
+    	$lunbo1 -> url = $faker ->url;
+        $lunbo1 -> save(); 
+        $lunbo2 = new Lunbotu;
+        $lunbo2 -> pic = '/lunbo/sen.jpg';                  
+        $lunbo2 -> url = $faker ->url;
+        $lunbo2 -> save(); 
+        $lunbo3 = new Lunbotu;
+        $lunbo3 -> pic = '/lunbo/chao.jpg';                  
+        $lunbo3 -> url = $faker ->url;
+        $lunbo3-> save();  
+        $lunbo4 = new Lunbotu;
+        $lunbo4 -> pic = '/lunbo/yan.jpg';                  
+        $lunbo4 -> url = $faker ->url;
+        $lunbo4-> save(); 
     }
 }

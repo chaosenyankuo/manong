@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ComTableSeeder::class);
         $this->call(FlavorsTableSeeder::class);
         $this->call(ZhuangtaiTableSeeder::class);
-        $this->call(LunbotusTableSeeder::class);
+        $this->call(LunboTableSeeder::class);
         $this->call(ScttTableSeeder::class);
         $this->call(CouponsTableSeeder::class);
 

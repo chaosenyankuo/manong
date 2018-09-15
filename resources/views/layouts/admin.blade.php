@@ -240,7 +240,7 @@
             </div>
         </nav>
         <!-- /. NAV SIDE  -->
-        <div id="page-wrapper" style="position: relative;left:0px;top:-930px;"> 
+        <div id="page-wrapper" style="position: relative;left:0px;top:-930px;">
             <div class="header">
                 @if(Session::has('success'))
                 <div class="col-xs-12" id="xiaoshi" style="padding:10px;">
