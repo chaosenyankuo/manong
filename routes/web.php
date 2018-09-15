@@ -187,6 +187,9 @@ Route::post('/home/dingdan','DingdanController@baocun');
 //订单列表
 Route::get('/home/dingdan','DingdanController@list');
 
+//订单删除
+Route::post('/home/dingdan/delete/{id}','DingdanController@del');
+
 //意见反馈
 Route::resource('/home/yjfk','YjfkController');
 

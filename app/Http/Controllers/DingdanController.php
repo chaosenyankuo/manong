@@ -258,7 +258,7 @@ class DingdanController extends Controller
         }
         if(!empty($order3[0])){
             foreach($order3 as $k=>$v){
-                $os3 = Order_shop::where('order_id',$v->id)->get();
+                $os3[] = Order_shop::where('order_id',$v->id)->get();
             }
         }else{
             $os3 = [];
@@ -345,7 +345,24 @@ class DingdanController extends Controller
         }else{
             return back()->with('error','生成订单失败');
         }
+    }
 
+    /**
+     * 前台订单删除
+     */
+    public function del($id)
+    {
+        $order = Order::findOrFail($id);
+        $os = $order->Order_shop;
+        foreach($os as $v){
+            $a = $v->delete();
+        }
+        $b = $order ->delete();
+        if($a && $b){
+            return back()->with('success','删除订单成功');
+        }else{
+            return back()->with('error','删除订单失败');
+        }
     }
 }
 
