@@ -106,7 +106,7 @@
                     </div>
                 </div>
                 <div>
-                    @if($user == null){
+                    @if($user == null)
                     <script> 
                         alert('请先登录哦!!!');     
                     </script>

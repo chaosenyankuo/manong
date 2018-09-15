@@ -14,6 +14,11 @@
     </a>
 </li>
 <li>
+    <a href="/zuji" class="waves-effect waves-dark">
+        <i class="fa fa-sitemap"></i> 足迹管理
+    </a>
+</li>
+<li>
     <a href="/coupon" class="waves-effect waves-dark">
         <i class="fa fa-sitemap"></i> 优惠券管理
     </a>

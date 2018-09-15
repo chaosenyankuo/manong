@@ -135,19 +135,11 @@
                             <div class="hot">
                                 <dt class="tb-metatit">店铺优惠</dt>
                                 <div class="gold-list">
-                                    <p>购物满2件打8折，满3件7折<span>点击领券<i class="am-icon-sort-down"></i></span></p>
+                                    <p>该商品参与优惠券活动</p>
                                 </div>
                             </div>
                             <div class="clear"></div>
                             <div class="coupon">
-                                <dt class="tb-metatit">优惠券</dt>
-                                <div class="gold-list">
-                                    <ul>
-                                        <li>125减5</li>
-                                        <li>198减10</li>
-                                        <li>298减20</li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                         <!--价格-->
@@ -214,9 +206,7 @@
                                         <div class="theme-signin-left">
                                             <div class="theme-options">
                                                 <div class="cart-title">口味</div>
-                                                <ul>&nbsp; 
-                                                    @foreach($flavor as $v) 
-                                                    @if(in_array($v->id,$shop->flavors->pluck('id')->toArray()))
+                                                <ul>&nbsp; @foreach($flavor as $v) @if(in_array($v->id,$shop->flavors->pluck('id')->toArray()))
                                                     <li class="sku-line">
                                                         <input type="radio" name="flavor_id" value="{{$v['id']}}">{{$v['fname']}}
                                                     </li>
@@ -225,14 +215,11 @@
                                             </div>
                                             <div class="theme-options">
                                                 <div class="cart-title">包装</div>
-                                                <ul>&nbsp;
-                                                    @foreach($pack as $v)
-                                                    @if(in_array($v->id,$shop->packs->pluck('id')->toArray()))
+                                                <ul>&nbsp; @foreach($pack as $v) @if(in_array($v->id,$shop->packs->pluck('id')->toArray()))
                                                     <li class="sku-line">
                                                         <input type="radio" name="pack_id" value="{{$v['id']}}">{{$v['pname']}}
                                                     </li>
-                                                    @endif
-                                                    @endforeach
+                                                    @endif @endforeach
                                                 </ul>
                                             </div>
                                             <div class="theme-options">
@@ -246,9 +233,9 @@
                                                 <script>
                                                 $('input[name=shuliang]').change(function() {
                                                     var a = $('input[name=shuliang]').val();
-                                                    if (a > {{$shop['scount']}}) {
+                                                    if (a > { { $shop['scount'] } }) {
                                                         alert('对不起,库存不足');
-                                                        $('input[name=shuliang]').val({{$shop['scount']}});
+                                                        $('input[name=shuliang]').val({ { $shop['scount'] } });
                                                     };
                                                 });
                                                 </script>
@@ -496,9 +483,27 @@
                     </div>
                 </div>
                 <div class="clear"></div>
+                <meta name="csrf-token" content="{{csrf_token()}}">
                 <script>
                 setTimeout(function() {
                     $('#xiaoshi').css('display', 'none');
                 }, 2000);
+                $(window).load(function() {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    var shop_id = {{$shop['id']}};
+                    $.ajax({
+                        url: '/cunzuji',
+                        type: 'post',
+                        data: {shop_id:shop_id},
+                        success: function(data) {
+
+                        },
+                        async: false
+                    });
+                });
                 </script>
                 @include('layouts.home._footer')

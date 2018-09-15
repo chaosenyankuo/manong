@@ -267,28 +267,5 @@ class GrzxController extends Controller
         return view('home.grzx.pjsp',compact('links','setting','user','order','shop'));
     }
 
-    public function plsp(Request $request)
-    {
-        //将值存入到数据库
-    }
-//收藏
-    public function sc()
-    {   
-         $links = Link::all();
-        $setting = Setting::first();
-        return view('home.grzx.sc',compact('links','setting'));
-        
-    } 
-   
-//z足迹
-    public function foot()
-    {
-        $links = Link::all();
-        $setting = Setting::first();
-        $id = \Session::get('id');
-        $user  = User::findOrFail($id);
-        $shop = Shop::all();
-        return view('home.grzx.foot',compact('links','setting','user'));
-    } 
 }
 

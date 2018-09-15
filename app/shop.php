@@ -66,4 +66,9 @@ class Shop extends Model
     {
         return $this->hasMany('App\Shop');
     }
+
+    public function zuji()
+    {
+        return $this->hasMany('App\Zuji');
+    }
 }
