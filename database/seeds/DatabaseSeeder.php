@@ -12,7 +12,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(CateTableSeeder::class);
-        $this->call(CommentTableSeeder::class);
         $this->call(PackTableSeeder::class);
         $this->call(ShopTableSeeder::class);
         $this->call(TagTableSeeder::class);

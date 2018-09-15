@@ -135,19 +135,11 @@
                             <div class="hot">
                                 <dt class="tb-metatit">店铺优惠</dt>
                                 <div class="gold-list">
-                                    <p>购物满2件打8折，满3件7折<span>点击领券<i class="am-icon-sort-down"></i></span></p>
+                                    <p>该商品参与优惠券活动</p>
                                 </div>
                             </div>
                             <div class="clear"></div>
                             <div class="coupon">
-                                <dt class="tb-metatit">优惠券</dt>
-                                <div class="gold-list">
-                                    <ul>
-                                        <li>125减5</li>
-                                        <li>198减10</li>
-                                        <li>298减20</li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                         <!--价格-->
@@ -525,9 +517,27 @@
                     </div>
                 </div>
                 <div class="clear"></div>
+                <meta name="csrf-token" content="{{csrf_token()}}">
                 <script>
                 setTimeout(function() {
                     $('#xiaoshi').css('display', 'none');
                 }, 2000);
+                $(window).load(function() {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    var shop_id = {{$shop['id']}};
+                    $.ajax({
+                        url: '/cunzuji',
+                        type: 'post',
+                        data: {shop_id:shop_id},
+                        success: function(data) {
+
+                        },
+                        async: false
+                    });
+                });
                 </script>
                 @include('layouts.home._footer')

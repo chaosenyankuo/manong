@@ -43,7 +43,29 @@
                     <div class="am-cf am-padding">
                         <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">我的收藏</strong> / <small>My&nbsp;Collection</small></div>
                     </div>
-                    <hr/>
+                    <hr/> @if(Session::has('success'))
+                    <div class="nav white" id="xiaoshi" style="margin-top: 10px;">
+                        <center>
+                            <p>
+                                <font style="color:red; font-size:20px;">{{Session::get('success')}}</font>
+                            </p>
+                        </center>
+                    </div>
+                    @endif @if(Session::has('error'))
+                    <div class="nav white" id="xiaoshi" style="margin-top: 10px;">
+                        <center>
+                            <p>
+                                <font style="color:red; font-size:20px;">{{Session::get('error')}}</font>
+                            </p>
+                        </center>
+                    </div>
+                    @endif
+                    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+                    <script>
+                    setTimeout(function() {
+                        $('#xiaoshi').css('display', 'none');
+                    }, 2000);
+                    </script>
                     <div class="you-like">
                         <div class="s-content">
                             @foreach($collects as $v)
@@ -51,8 +73,8 @@
                                 <div class="s-item">
                                     <div class="s-pic">
                                         <a href="/{{$v->shop->id}}.html" class="s-pic-link">
-												<img src="{{$v->shop->simage}}" alt="商品图片" width="80" title=""" class="s-pic-img s-guess-item-img">
-											</a>
+                                                <img src="{{$v->shop->simage}}" alt="商品图片" width="80" title=""" class="s-pic-img s-guess-item-img">
+                                            </a>
                                     </div>
                                     <div class="s-info">
                                         <div class="s-title"><a href="/{{$v->shop->id}}.html">{{$v->shop->sname}}</a></div>

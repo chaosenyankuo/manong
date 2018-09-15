@@ -18,14 +18,19 @@
     @include('layouts.home._top') @if(Session::has('success'))
     <div class="nav white" id="xiaoshi">
         <center>
-            <h3 style="color:black;">{{Session::get('success')}}</h3></center>
+            <h1 style="color:red;font-size:30px;">{{Session::get('success')}}</h1></center>
     </div>
     @endif @if(Session::has('error'))
     <div class="nav white" id="xiaoshi">
         <center>
-            <h3 style="color:black;">{{Session::get('error')}}</h3></center>
+            <h1 style="color:red;font-size:30px;">{{Session::get('error')}}</h1></center>
     </div>
     @endif
+    <script>
+        setTimeout(function(){
+            $('#xiaoshi').css('display','none');
+        },2000)
+    </script>
     <form action="/home/dingdan" method="post" class="tijiao">
         <div class="concent">
             {{csrf_field()}}
