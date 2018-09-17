@@ -38,6 +38,7 @@ Route::get('/admin/logout', 'AdminController@logout');
 
 	//网站开关
 	Route::resource('wzkg','Wzkgcontroller');
+	
 	//物流管理
 	Route::resource('wuliu', 'WuliuController');
 
@@ -46,16 +47,16 @@ Route::get('/admin/logout', 'AdminController@logout');
 
 	//订单管理
 	Route::resource('dingdan','DingdanController');
-
-	//收藏管理
-	Route::resource('collect','CollectController');
-
+	
 	//商品管理
 	Route::resource('shop','ShopController');
 
 	//后台收藏管理
 	Route::resource('collect','CollectController');
 
+	//后台足迹管理
+	Route::resource('zuji','ZujiController');
+	
 	//发送ajax请求查询对应的分类下的商品
 	Route::post('/first','CollectController@first');
 
@@ -106,6 +107,9 @@ Route::get('/admin/logout', 'AdminController@logout');
  */
 //前台首页
 Route::get('/','HomeController@index');
+
+//前台搜索
+Route::get('/soso','HomeController@soso');
 
 //前台商品详情
 Route::get('/{id}.html','ShopController@show');
@@ -158,9 +162,6 @@ Route::get('/home/pjgl','GrzxController@pjgl');
 Route::get('/home/pjsp/{id}','GrzxController@pjsp');
 Route::post('/home/plsp/{id}','GrzxController@plsp');
 
-//足迹
-Route::get('/home/foot','GrzxController@foot');
-
 //收货地址
 Route::get('/home/shdz','GrzxController@shdz');
 Route::post('/home/shdz','GrzxController@shdza');
@@ -189,6 +190,16 @@ Route::get('/home/dingdan','DingdanController@list');
 
 //订单删除
 Route::post('/home/dingdan/delete/{id}','DingdanController@del');
+Route::get('/home/dingdan/delete/{id}','DingdanController@del');
+
+//点击支付
+Route::get('/home/pay/{id}','DingdanController@pays');
+
+//提醒发货
+Route::get('/dingdan/fahuo/{id}','DingdanController@fahuo');
+
+//确认收货
+Route::get('/dingdan/shouhuo/{id}','DingdanController@shouhuo');
 
 //意见反馈
 Route::resource('/home/yjfk','YjfkController');
@@ -210,8 +221,16 @@ Route::get('/home/coupon','CouponController@zhanshi');
 //发送ajax进行积分兑换优惠券
 Route::post('/duihuan','CouponController@duihuan');
 
-//发送ajax查询好评
-Route::post('/haoping','CommentController@haoping');
+//发送ajax足迹保存
+Route::post('/cunzuji','ZujiController@cunzuji');
+
+//前台足迹
+Route::get('/home/foot','ZujiController@foot');
+
+//删除足迹
+Route::get('/shanzuji','ZujiController@shanzuji');
+
+
 
 
 

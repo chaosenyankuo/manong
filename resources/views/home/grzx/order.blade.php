@@ -208,16 +208,18 @@
                                                             </div>
                                                         </li>
                                                         <li class="td td-change">
-                                                            <a href="/home/pjsp/{{$vv->id}}">
-                                                                <div class="am-btn am-btn-danger anniu">
-                                                                    评价商品</div>
-                                                            </a>
+                                                            <div class="am-btn am-btn-danger anniu asd">评价商品</div>
                                                         </li>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         @endforeach
+                                        <script type="text/javascript">
+                                            $('.asd').click(function(){
+                                                alert('请到待评论列表进行评论');
+                                            })
+                                        </script>
                                         <!--待付款-->
                                         @foreach($order2 as $k=>$v)
                                         <div class="order-status0">
@@ -278,12 +280,12 @@
                                                             <div class="item-status">
                                                                 <p class="Mystatus">等待付款</p>
                                                                 <p class="order-info">
-                                                                    <a href="#">取消订单</a>
+                                                                    <a href="/home/dingdan/delete/{{$v->id}}" class="132" >取消订单</a>
                                                                 </p>
                                                             </div>
                                                         </li>
                                                         <li class="td td-change">
-                                                            <a href="pay.html">
+                                                            <a href="/home/pay/{{$v->id}}">
                                                                 <div class="am-btn am-btn-danger anniu">
                                                                     一键支付</div>
                                                             </a>
@@ -333,7 +335,7 @@
                                                         </li>
                                                         <li class="td td-operation">
                                                             <div class="item-operation">
-                                                                <a href="refund.html">退款</a>
+                                                                <a href="/home/dingdan/delete/{{$v->id}}" class="132" >退款</a>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -357,8 +359,9 @@
                                                             </div>
                                                         </li>
                                                         <li class="td td-change">
-                                                            <div class="am-btn am-btn-danger anniu">
-                                                                提醒发货</div>
+                                                            <a href="/dingdan/fahuo/{{$v->id}}">
+                                                                <div class="am-btn am-btn-danger anniu">提醒发货</div>
+                                                            </a>
                                                         </li>
                                                     </div>
                                                 </div>
@@ -429,8 +432,9 @@
                                                             </div>
                                                         </li>
                                                         <li class="td td-change">
-                                                            <div class="am-btn am-btn-danger anniu">
-                                                                确认收货</div>
+                                                            <a href="/dingdan/shouhuo/{{$v->id}}">
+                                                                <div class="am-btn am-btn-danger anniu">确认收货</div>
+                                                            </a>
                                                         </li>
                                                     </div>
                                                 </div>
@@ -503,11 +507,13 @@
                                                         <li class="td td-status">
                                                             <div class="item-status">
                                                                 <p class="Mystatus">等待买家付款</p>
-                                                                <p class="order-info"><a href="#">取消订单</a></p>
+                                                                <p class="order-info">
+                                                                    <a href="/home/dingdan/delete/{{$v->id}}" class="132" >取消订单</a>
+                                                                </p>
                                                             </div>
                                                         </li>
                                                         <li class="td td-change">
-                                                            <a href="pay.html">
+                                                            <a href="/home/pay/{{$v->id}}">
                                                                 <div class="am-btn am-btn-danger anniu">
                                                                     一键支付
                                                                 </div>
@@ -565,7 +571,7 @@
                                                         </li>
                                                         <li class="td td-operation">
                                                             <div class="item-operation">
-                                                                <a href="refund.html">退款</a>
+                                                                <a href="/home/dingdan/delete/{{$v->id}}" class="132" >退款</a>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -589,8 +595,9 @@
                                                             </div>
                                                         </li>
                                                         <li class="td td-change">
-                                                            <div class="am-btn am-btn-danger anniu">
-                                                                提醒发货</div>
+                                                            <a href="/dingdan/fahuo/{{$v->id}}">
+                                                                <div class="am-btn am-btn-danger anniu">提醒发货</div>
+                                                            </a>
                                                         </li>
                                                     </div>
                                                 </div>
@@ -668,8 +675,9 @@
                                                             </div>
                                                         </li>
                                                         <li class="td td-change">
-                                                            <div class="am-btn am-btn-danger anniu">
-                                                                确认收货</div>
+                                                            <a href="/dingdan/shouhuo/{{$v->id}}">
+                                                                <div class="am-btn am-btn-danger anniu">确认收货</div>
+                                                            </a>
                                                         </li>
                                                     </div>
                                                 </div>
@@ -775,6 +783,17 @@
                     </div>
                 </div>
             </div>
+            <script type="text/javascript">
+                $('.132').click(function(){
+                    var q = confirm('确认删除该订单');
+
+                    if(q == true){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                })
+            </script>
             <!--底部-->
             @include('layouts.home._foot')
         </div>

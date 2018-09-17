@@ -67,19 +67,38 @@ class HomeController extends Controller
     public function index()
     {	
     	$cates = Cate::all();
+
     	$tags = Tag::all();
     	$links = Link::all();
     	$recom = Shop::where('recom','1')->take(3)->orderBy('id','desc')->get();
-        $shops = Shop::all();
+        $shops = Shop::all();  
     	$id = \Session::get('id');     
         $user = User::find($id);
 
     	$a = 1;
     	$cid = Cate::pluck('id');
+        
         $lunbotu = Lunbotu::all()->take(4);
         $sctt = Sctt::all()->take(4);
+        $setting = Setting::first();
+
+    	return view('home',compact('cates','tags','links','recom','shops','a','cid','user','lunbotu','sctt','setting'));
+    }
+
+    //前台搜索
+    public function soso()
+    {
+        $soso = $_GET['keywords'];
         
-    	return view('home',compact('cates','tags','links','recom','shops','a','cid','user','lunbotu','sctt'));
+        $id = \Session::get('id');     
+        $user = User::find($id);
+        $setting = Setting::first();
+        $links = Link::all();
+        $shops = Shop::orderBy('id','desc')
+            ->where('sname','like','%'.request()->keywords.'%')->get();
+       
+        return view('/home.soso.index',compact('user','setting','links','shops'));
+       
     }
 
 

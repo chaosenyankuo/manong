@@ -73,7 +73,7 @@
                             </div>
                             <ul>
                                 <li style="width:203.98px;">
-                                    <a href="order.html"><i><img src="/home/images/pay.png"/></i>
+                                    <a href="/home/dingdan"><i><img src="/home/images/pay.png"/></i>
                                         <span>待付款<em class="m-num">
                                             @if($dfks != 0)
                                                 {{$dfks}}
@@ -82,7 +82,7 @@
                                     </a>
                                 </li>
                                 <li style="width:203.98px;">
-                                    <a href="order.html"><i><img src="/home/images/send.png"/></i>
+                                    <a href="/home/dingdan"><i><img src="/home/images/send.png"/></i>
                                         <span>待发货<em class="m-num">
                                             @if($dfhs != 0)
                                                 {{$dfhs}}
@@ -91,7 +91,7 @@
                                     </a>
                                 </li>
                                 <li style="width:203.98px;">
-                                    <a href="order.html"><i><img src="/home/images/receive.png"/></i>
+                                    <a href="/home/dingdan"><i><img src="/home/images/receive.png"/></i>
                                         <span>待收货<em class="m-num">
                                             @if($dshs != 0)
                                                 {{$dshs}}
@@ -100,7 +100,7 @@
                                     </a>
                                 </li>
                                 <li style="width:203.98px;">
-                                    <a href="order.html"><i><img src="/home/images/comment.png"/></i>
+                                    <a href="/home/dingdan"><i><img src="/home/images/comment.png"/></i>
                                         <span>待评价<em class="m-num">
                                             @if($dpjs != 0)
                                                 {{$dpjs}}
@@ -108,39 +108,6 @@
                                         </em></span>
                                     </a>
                                 </li>
-                            </ul>
-                        </div>
-                        <!--九宫格-->
-                        <div class="user-patternIcon">
-                            <div class="s-bar">
-                                <i class="s-icon"></i>我的常用
-                            </div>
-                            <ul>
-                                <a href="/home/home/shopcart.html">
-                                    <li class="am-u-sm-4"><i class="am-icon-shopping-basket am-icon-md"></i><img src="/home/images/iconbig.png" />
-                                        <p>购物车</p>
-                                    </li>
-                                </a>
-                                <a href="collection.html">
-                                    <li class="am-u-sm-4"><i class="am-icon-heart am-icon-md"></i><img src="/home/images/iconsmall1.png" />
-                                        <p>我的收藏</p>
-                                    </li>
-                                </a>
-                                <a href="/home/home/home.html">
-                                    <li class="am-u-sm-4"><i class="am-icon-gift am-icon-md"></i><img src="/home/images/iconsmall0.png" />
-                                        <p>为你推荐</p>
-                                    </li>
-                                </a>
-                                <a href="comment.html">
-                                    <li class="am-u-sm-4"><i class="am-icon-pencil am-icon-md"></i><img src="/home/images/iconsmall3.png" />
-                                        <p>好评宝贝</p>
-                                    </li>
-                                </a>
-                                <a href="foot.html">
-                                    <li class="am-u-sm-4"><i class="am-icon-clock-o am-icon-md"></i><img src="/home/images/iconsmall2.png" />
-                                        <p>我的足迹</p>
-                                    </li>
-                                </a>
                             </ul>
                         </div>
                         <!--收藏夹 -->
@@ -158,6 +125,35 @@
                                         </div>
                                         <div class="s-info">
                                             <div class="s-title"><a href="/{{$v->shop->id}}.html">{{$v->shop->sname}}</a></div>
+                                            <div class="s-price-box">
+                                                <span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">{{$v->shop->sprice}}</em></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="you-like">
+                            <div class="s-bar">我的足迹
+                            </div>
+                            <div class="s-content">
+                                <?php
+                                use App\Zuji;
+                                $uid = \Session::get('id');
+                                $zuji = Zuji::where('user_id',$uid)->get();
+                                ?>
+                                @foreach($zuji as $v)
+                                <div class="s-item-wrap">
+                                    <div class="s-item">
+                                        <div class="s-pic">
+                                            <a href="/{{$v->shop->id}}.html" class="s-pic-link">
+                                                <img src="{{$v->shop->simage}}" alt="商品图片" width="80" title=""" class="s-pic-img s-guess-item-img">
+                                            </a>
+                                        </div>
+                                        <div class="s-info">
+                                            <div class="s-title"><a href="/{{$v->shop->id}}.html">{{$v->shop->sname}}</a></div>
+                                            <center><span style="font-size:10px;">{{$v['updated_at']}}</span>
                                             <div class="s-price-box">
                                                 <span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">{{$v->shop->sprice}}</em></span>
                                             </div>

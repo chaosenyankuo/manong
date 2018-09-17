@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCouponUserTable extends Migration
+class CreateZujisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateCouponUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('coupon_user', function (Blueprint $table) {
-            $table->string('coupon_id')->comment('优惠券ID')->nullable();
-            $table->string('user_id')->comment('用户ID')->nullable();
+        Schema::create('zujis', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('user_id')->comment('用户ID');
+            $table->string('shop_id')->comment('商品ID');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +28,6 @@ class CreateCouponUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coupon_user');
+        Schema::dropIfExists('zujis');
     }
 }

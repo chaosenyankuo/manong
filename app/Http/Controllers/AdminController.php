@@ -85,15 +85,7 @@ class AdminController extends Controller
 			return back()->with('error','设置失败!!');
 		}
 
-		$path = 'E:/XAMPP/htdocs/manong/storage/framework/down';
-        if(!is_file($path))
-        {
-            File::copy('E:/XAMPP/htdocs/manong/storage/framework/adown', 'E:/XAMPP/htdocs/manong/storage/framework/down');
-            
-            return redirect('/peizhi')->with('success','网站关闭成功!!!');
-        }
-            return back()->with('error','网站已经关闭,别点我了!!!');
-            return view('admin.peizhi.index');
+		
 		
 	}
 

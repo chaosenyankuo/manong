@@ -38,7 +38,7 @@
                             @foreach ($uaddress as $v)
                             <tr class="gradeA odd">
                                 <td class="center ">{{$v -> id}}</td>
-                                <td class="center ">{{$v -> user -> uname}}</td>
+                                <td class="center ">{{$v ->user['uname']}}</td>
                                 <td class=" ">{{$v -> uphone}}</td>
                                 <td class=" ">{{$v -> address}}</td>
                                 <td class="center ">{{$v-> xadress}}</td>

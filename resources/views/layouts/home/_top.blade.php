@@ -26,7 +26,7 @@
                 <a id="mc-menu-hd" href="/shopcar" target="_top">
                         <i class="am-icon-shopping-cart  am-icon-fw"></i>
                         <span>购物车</span>
-                    </a>
+                </a>     
             </div>
         </div>
         <div class="topMessage favorite">
@@ -42,15 +42,17 @@
     <div class="nav white">
         <div class="logoBig">
             <a href="/">
-                <li><img src="/home/images/logobig.png" /></li>
+                <li><img src="{{$setting['logo']}}" style="width: 200px; height:90px"/></li>
             </a>
         </div>
         <div class="search-bar pr">
             <a name="index_none_header_sysc" href="#"></a>
-            <form action="/" method="get">
-                <input style="padding-left:0px;" id="searchInput" name="keywords" type="text" placeholder="搜索" value="{{request()->keywords}}" autocomplete="off">
+            <form action="/soso" method="get">
+                <input style="padding-left:0px;" id="searchInput" name="keywords" value="{{request()->keywords}}" type="text" placeholder="搜索" autocomplete="off">
                 <input style="padding:0px; width:128px;" id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
+                
             </form>
+          
         </div>
     </div>
     <div class="clear"></div>

@@ -63,7 +63,7 @@
         <div class="long-title"><span class="all-goods">全部分类</span></div>
         <div class="nav-cont">
             <ul>
-                <li class="/"><a href="#">首页</a></li>
+                <li class="/"><a href="/">首页</a></li>
             </ul>
             <div class="nav-extra">
                 <a href="/home/fuli" style="color:yellow"><i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>福利中心</a>
@@ -106,7 +106,7 @@
                     </div>
                 </div>
                 <div>
-                    @if($user == null){
+                    @if($user == null)
                     <script> 
                         alert('请先登录哦!!!');     
                     </script>
@@ -163,7 +163,7 @@
                             },
                             async: false
                         })
-                        window.location.reload();
+                        $('#name').text(quan);
                     });
                 </script>
                 <hr>

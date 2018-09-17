@@ -135,19 +135,11 @@
                             <div class="hot">
                                 <dt class="tb-metatit">店铺优惠</dt>
                                 <div class="gold-list">
-                                    <p>购物满2件打8折，满3件7折<span>点击领券<i class="am-icon-sort-down"></i></span></p>
+                                    <p>该商品参与优惠券活动</p>
                                 </div>
                             </div>
                             <div class="clear"></div>
                             <div class="coupon">
-                                <dt class="tb-metatit">优惠券</dt>
-                                <div class="gold-list">
-                                    <ul>
-                                        <li>125减5</li>
-                                        <li>198减10</li>
-                                        <li>298减20</li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                         <!--价格-->
@@ -214,9 +206,7 @@
                                         <div class="theme-signin-left">
                                             <div class="theme-options">
                                                 <div class="cart-title">口味</div>
-                                                <ul>&nbsp; 
-                                                    @foreach($flavor as $v) 
-                                                    @if(in_array($v->id,$shop->flavors->pluck('id')->toArray()))
+                                                <ul>&nbsp; @foreach($flavor as $v) @if(in_array($v->id,$shop->flavors->pluck('id')->toArray()))
                                                     <li class="sku-line">
                                                         <input type="radio" name="flavor_id" value="{{$v['id']}}">{{$v['fname']}}
                                                     </li>
@@ -225,14 +215,11 @@
                                             </div>
                                             <div class="theme-options">
                                                 <div class="cart-title">包装</div>
-                                                <ul>&nbsp;
-                                                    @foreach($pack as $v)
-                                                    @if(in_array($v->id,$shop->packs->pluck('id')->toArray()))
+                                                <ul>&nbsp; @foreach($pack as $v) @if(in_array($v->id,$shop->packs->pluck('id')->toArray()))
                                                     <li class="sku-line">
                                                         <input type="radio" name="pack_id" value="{{$v['id']}}">{{$v['pname']}}
                                                     </li>
-                                                    @endif
-                                                    @endforeach
+                                                    @endif @endforeach
                                                 </ul>
                                             </div>
                                             <div class="theme-options">
@@ -246,9 +233,9 @@
                                                 <script>
                                                 $('input[name=shuliang]').change(function() {
                                                     var a = $('input[name=shuliang]').val();
-                                                    if (a > {{$shop['scount']}}) {
+                                                    if (a > { { $shop['scount'] } }) {
                                                         alert('对不起,库存不足');
-                                                        $('input[name=shuliang]').val({{$shop['scount']}});
+                                                        $('input[name=shuliang]').val({ { $shop['scount'] } });
                                                     };
                                                 });
                                                 </script>
@@ -367,13 +354,11 @@
                                 </div>
                                 <dl>
                                     <dt>买家印象</dt>
-                                    
                                     <dd class="p-bfc">
-                                    @foreach($ptags as $k => $v)
+                                        @foreach($ptags as $k => $v)
                                         <q class="comm-tags"><span>{{$v['ptname']}}</span><em>({{$count[$k]}})</em></q>
                                         @endforeach
                                     </dd>
-
                                 </dl>
                             </div>
                             <div class="clear"></div>
@@ -424,6 +409,10 @@
                                                 <!-- 评论者 -->
                                                 评论于
                                                 <time datetime="">{{$v['created_at']}}</time>
+                                                &nbsp;&nbsp;&nbsp;&nbsp; @if($v->com_id == '1')
+                                                <span>好评</span> @endif @if($v->com_id == '2')
+                                                <span>中评</span> @endif @if($v->com_id == '3')
+                                                <span>差评</span> @endif
                                             </div>
                                         </header>
                                         <div class="am-comment-bd">
@@ -445,19 +434,63 @@
                                 @endforeach
                             </ul>
                             <div class="clear"></div>
+                            <style>
+                            .pagination {
+                                padding-left: 0;
+                                margin: 1.5rem 0;
+                                list-style: none;
+                                color: #999;
+                                text-align: left;
+                                padding: 0;
+                            }
+
+                            .pagination li {
+                                display: inline-block;
+                            }
+
+                            .pagination li a,
+                            .pagination li span {
+                                color: #23abf0;
+                                border-radius: 3px;
+                                padding: 6px 12px;
+                                position: relative;
+                                display: block;
+                                text-decoration: none;
+                                line-height: 1.2;
+                                background-color: #fff;
+                                border: 1px solid #ddd;
+                                border-radius: 0;
+                                margin-bottom: 5px;
+                                margin-right: 5px;
+                            }
+
+                            .pagination li.active {
+                                background-color: white;
+                            }
+
+                            .pagination .active span {
+                                color: #23abf0;
+                                border-radius: 3px;
+                                padding: 6px 12px;
+                                position: relative;
+                                display: block;
+                                text-decoration: none;
+                                line-height: 1.2;
+                                background-color: #fff;
+                                border: 1px solid #ddd;
+                                border-radius: 0;
+                                margin-bottom: 5px;
+                                margin-right: 5px;
+                                background: #23abf0;
+                                color: #fff;
+                                border: 1px solid #23abf0;
+                                padding: 6px 12px;
+                            }
+                            </style>
                             <!--分页 -->
-                            <ul class="am-pagination am-pagination-right">
-                                <li class="am-disabled"><a href="#">&laquo;</a></li>
-                                <li class="am-active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">&raquo;</a></li>
-                            </ul>
+                            {{$comments->links()}}
                             <div class="clear"></div>
                             <div class="tb-reviewsft">
-                                <div class="tb-rate-alert type-attention">购买前请查看该商品的 <a href="#" target="_blank">购物保障</a>，明确您的售后保障权益。</div>
                             </div>
                         </div>
                         <div class="am-tab-panel am-fade">
@@ -480,24 +513,32 @@
                                 </ul>
                             </div>
                             <div class="clear"></div>
-                            <!--分页 -->
-                            <ul class="am-pagination am-pagination-right">
-                                <li class="am-disabled"><a href="#">&laquo;</a></li>
-                                <li class="am-active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">&raquo;</a></li>
-                            </ul>
                             <div class="clear"></div>
                         </div>
                     </div>
                 </div>
                 <div class="clear"></div>
+                <meta name="csrf-token" content="{{csrf_token()}}">
                 <script>
                 setTimeout(function() {
                     $('#xiaoshi').css('display', 'none');
                 }, 2000);
+                $(window).load(function() {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    var shop_id = { { $shop['id'] } };
+                    $.ajax({
+                        url: '/cunzuji',
+                        type: 'post',
+                        data: { shop_id: shop_id },
+                        success: function(data) {
+
+                        },
+                        async: false
+                    });
+                });
                 </script>
                 @include('layouts.home._footer')
