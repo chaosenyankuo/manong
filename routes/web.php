@@ -108,6 +108,9 @@ Route::get('/admin/logout', 'AdminController@logout');
 //前台首页
 Route::get('/','HomeController@index');
 
+//前台搜索
+Route::get('/soso','HomeController@soso');
+
 //前台商品详情
 Route::get('/{id}.html','ShopController@show');
 
@@ -216,5 +219,7 @@ Route::get('/home/foot','ZujiController@foot');
 
 //删除足迹
 Route::get('/shanzuji','ZujiController@shanzuji');
+
+
 
 

@@ -8,6 +8,7 @@ use App\Comment;
 use App\Flavor;
 use App\Link;
 use App\Pack;
+use App\Setting;
 use App\Shop;
 use App\Tag;
 use App\User;
@@ -139,10 +140,10 @@ class ShopController extends Controller
                 $add = explode('-',$address);
             }
         }
-        
+        $setting = Setting::first();
         //推荐商品
         $recom = Shop::where('recom','1')->take(3)->orderBy('id','desc')->get();
-        return view('home.shop.index',compact('shop','comment','pack','flavor','recom','links','add','user'));
+        return view('home.shop.index',compact('shop','comment','pack','flavor','recom','links','add','user','setting'));
 
     }
 

@@ -1,4 +1,4 @@
- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -137,7 +137,7 @@
                 </div>
             </div>
             <!--走马灯 -->
-            <div class="marqueen">
+            <div class="marqueen" style="height:418px;">
                 <span class="marqueen-title">商城头条</span>
                 <ul>
                     <li class="title-first" style="text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:188px;"><a target="_blank" href="{{$sctt[0]['scth_url']}}">
@@ -148,7 +148,7 @@
                                     <span>[公告]</span>{{$sctt[1]['scgg']}}                                            
                                 </a></li>
                 </ul>
-                <div class="mod-vip" height="220px" style="padding:0px">
+                <div class="mod-vip" style="padding:0px">
                     @if(Session::has('nickname'))
                     <div class="m-baseinfo">
                         <a href="/home/index">
@@ -161,27 +161,29 @@
                     </div>
                     @endif @if(!Session::has('nickname'))
                     <div class="m-baseinfo">
-                        <a href=" ">
+                        <div class="m-baseinfo">
+                            <a href=" ">
                             <img src="/home/images/getAvatar.do.jpg">
                         </a>
-                        <em>
+                            <em>
                             <span class="s-name">请登录</span>
                         </em>
+                        </div>
+                        <div class="member-logout">
+                            <a class="am-btn-warning btn" href="/home/login">登录</a>
+                            <a class="am-btn-warning btn" href="/home/zhuce">注册</a>
+                        </div>
+                        @endif
                     </div>
-                    <div class="member-logout">
-                        <a class="am-btn-warning btn" href="/home/login">登录</a>
-                        <a class="am-btn-warning btn" href="/home/zhuce">注册</a>
-                    </div>
-                    @endif
-                    <ul>
+                    <ul style="height:160px;">
                         @foreach ($sctt as $v)
                         <li style=" text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:188px;"><a target="_blank" href="{{$v['scth_url']}}"><span>[特惠]</span>{{$v['scth']}}</a></li>
                         <li style="text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:188px;"><a target="_blank" href="{{$v['scgg_url']}}"><span>[公告]</span>{{$v['scgg']}}</a></li>
                         @endforeach
                     </ul>
-                    <div class="advTip">
+                    <div style="width:200px;height:100px;">
                         <a href="/{{$v->id}}.html">
-                            <img src="{{$cates[0]['cimage']}}" width="220px" height="88px"/>
+                            <img src="{{$cates[0]['cimage']}}" width="100"/>
                         </a>
                     </div>
                 </div>
@@ -278,4 +280,4 @@
                 </div>
                 <div class="clear "></div>
             </div>
-            @endforeach @include('layouts.home._footer')
+            @endforeach @include('layouts.home._foot')
