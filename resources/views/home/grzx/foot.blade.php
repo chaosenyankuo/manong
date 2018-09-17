@@ -19,7 +19,7 @@
     $uid = \Session::get('id');
     $user = null;
     if($uid !== null){
-        $user = User::findOrFail($uid);
+        $user = User::find($uid);
     }
     $links = Link::all();
     $setting = Setting::first();

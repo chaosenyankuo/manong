@@ -163,7 +163,7 @@
                             },
                             async: false
                         })
-                        window.location.reload();
+                        $('#name').text(quan);
                     });
                 </script>
                 <hr>

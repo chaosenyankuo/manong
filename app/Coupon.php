@@ -10,4 +10,9 @@ class Coupon extends Model
     {
     	return $this->belongsToMany('App\User');
     }
+
+    public function coupon_user()
+    {
+    	return $this->hasMany('App\Coupon_user');
+    }
 }

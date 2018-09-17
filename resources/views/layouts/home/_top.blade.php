@@ -26,7 +26,7 @@
                 <a id="mc-menu-hd" href="/shopcar" target="_top">
                         <i class="am-icon-shopping-cart  am-icon-fw"></i>
                         <span>购物车</span>
-                    </a>
+                </a>     
             </div>
         </div>
         <div class="topMessage favorite">
