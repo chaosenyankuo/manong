@@ -301,24 +301,5 @@ class GrzxController extends Controller
             return back()->with('error','抱歉,评论失败请重试!!');
         }
     }
-//收藏
-    public function sc()
-    {   
-         $links = Link::all();
-        $setting = Setting::first();
-        return view('home.grzx.sc',compact('links','setting'));
-        
-    } 
-   
-//z足迹
-    public function foot()
-    {
-        $links = Link::all();
-        $setting = Setting::first();
-        $id = \Session::get('id');
-        $user  = User::findOrFail($id);
-        $shop = Shop::all();
-        return view('home.grzx.foot',compact('links','setting','user'));
-    } 
 }
 

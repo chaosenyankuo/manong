@@ -70,4 +70,14 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Coupon');
     }
 
+    public function zuji()
+    {
+        return $this->hasMany('App\Zuji');
+    }
+
+    public function coupon_user()
+    {
+        return $this->hasMany('App\Coupon_user');
+    }
+
 }

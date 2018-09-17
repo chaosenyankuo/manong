@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Coupon;
+use App\Coupon_user;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -121,8 +122,14 @@ class CouponController extends Controller
         $uid = \Session::get('id');
         $user = User::findOrFail($uid);
         $user -> huodong = '1';
-        if($user -> save()){
-            $res=$user->coupons()->attach($cid);
+        $lingqu = date('Y-m-d H:i:s',time());
+        $daoqi = date('Y-m-d H:i:s',strtotime('+2 day'));
+        $coupon_user = new Coupon_user;
+        $coupon_user -> user_id = $uid;
+        $coupon_user -> coupon_id = $cid;
+        $coupon_user -> lingqu = $lingqu;
+        $coupon_user -> daoqi = $daoqi;
+        if($user -> save() && $coupon_user -> save()){
             echo '1';
         }else{
             echo '0';
@@ -133,7 +140,7 @@ class CouponController extends Controller
     {
         $uid = \Session::get('id');
         $user = User::findOrFail($uid);
-        $coupons = $user -> coupons;
+        $coupons = $user -> coupon_user;
         return view('home.fuli.coupon',compact('coupons','user'));
     }
 
@@ -158,10 +165,17 @@ class CouponController extends Controller
         }
         if($jifen >= $newprice){
             $user -> jifen = $jifen - $newprice;
-            if($user -> save()){
-            //将数据存入中间表中
-            $res=$user->coupons()->attach($cid);
-            echo '1';
+            $lingqu = date('Y-m-d H:i:s',time());
+            $daoqi = date('Y-m-d H:i:s',strtotime('+2 day'));
+            $coupon_user = new Coupon_user;
+            $coupon_user -> user_id = $uid;
+            $coupon_user -> coupon_id = $cid;
+            $coupon_user -> lingqu = $lingqu;
+            $coupon_user -> daoqi = $daoqi;
+            if($user -> save() && $coupon_user -> save()){
+                echo '1';
+            }else{
+                echo '0';
             }
         }else{
             echo '0';
