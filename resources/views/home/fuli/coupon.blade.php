@@ -67,7 +67,7 @@
                                                     <strong>购物券</strong>
                                                 </div>
                                                 <div class="c-price">
-                                                    <strong>￥{{$v['price']}}</strong>
+                                                    <strong>￥{{$v->coupon->price}}</strong>
                                                 </div>
                                                 <div class="c-limit">
                                                     适用于任何产品
@@ -80,7 +80,7 @@
                                                     <div class="range-all">
                                                         <div class="range-item">
                                                             <span class="label">券名：</span>
-                                                            <span class="txt">{{$v['name']}}</span>
+                                                            <span class="txt">{{$v->coupon->name}}</span>
                                                         </div>
                                                     </div>
                                                 </div>

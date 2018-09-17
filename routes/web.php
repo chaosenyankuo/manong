@@ -191,6 +191,15 @@ Route::get('/home/dingdan','DingdanController@list');
 //订单删除
 Route::post('/home/dingdan/delete/{id}','DingdanController@del');
 
+//点击支付
+Route::get('/home/pay/{id}','DingdanController@pays');
+
+//提醒发货
+Route::get('/dingdan/fahuo/{id}','DingdanController@fahuo');
+
+//确认收货
+Route::get('/dingdan/shouhuo/{id}','DingdanController@shouhuo');
+
 //意见反馈
 Route::resource('/home/yjfk','YjfkController');
 

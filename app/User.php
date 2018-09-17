@@ -75,4 +75,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Zuji');
     }
 
+    public function coupon_user()
+    {
+        return $this->hasMany('App\Coupon_user');
+    }
+
 }

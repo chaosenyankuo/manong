@@ -14,7 +14,7 @@ class UserTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i=0; $i <20 ; $i++) { 
+        for ($i=0; $i <5 ; $i++) { 
         	$user = new User;
         	$user -> uname = $faker -> name;
         	$user -> nickname = 'admin';
