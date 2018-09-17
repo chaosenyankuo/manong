@@ -20,4 +20,8 @@ class Flavor extends Model
     {
     	return $this->hasMany('App\Order_shop');
     }
+    public function comment()
+    {
+      return $this->hasMany('App\Comment');
+    }
 }

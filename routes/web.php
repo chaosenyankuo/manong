@@ -210,5 +210,8 @@ Route::get('/home/coupon','CouponController@zhanshi');
 //发送ajax进行积分兑换优惠券
 Route::post('/duihuan','CouponController@duihuan');
 
+//发送ajax查询好评
+Route::post('/haoping','CommentController@haoping');
+
 
 

@@ -12,6 +12,7 @@ use App\Setting;
 use App\Shop;
 use App\Uaddress;
 use App\User;
+use App\Ptag;
 use Illuminate\Foundation\Testing\Concerns\session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -240,34 +241,34 @@ class GrzxController extends Controller
 
     }
 //评价管理
-    public function pjgl()
+    public function pjgl(Request $request)
     {   
         $links = Link::all();
         $setting = Setting::first();
         $id = \Session::get('id');
         $user  = User::findOrFail($id);
         $comment = $user->comment;
-        
         return view('home.grzx.pjgl',compact('links','setting','user','comment','pack'));
-
     }
 //评价商品
     public function pjsp(Request $req, $id)
     {   
+        $ptag = Ptag::all();
         $o_id = $req->order_id;
+        $order = Order::findOrFail($o_id);
+        $os = Order_shop::where('order_id',$o_id)->where('shop_id',$id)->first();
         $links = Link::all();
         $setting = Setting::first();
         $uid = \Session::get('id');
         $user  = User::findOrFail($uid);
         $shop = Shop::findOrFail($id);
 
-
-        
-        return view('home.grzx.pjsp',compact('links','setting','user','order','shop','o_id'));
+        return view('home.grzx.pjsp',compact('links','setting','user','order','shop','o_id','os','ptag'));
     }
 
     public function plsp(Request $request,$id)
     {
+        // dd($request->ptag_id);
         if(empty($request->com_id)){
             return back()->with('error','请选择您对本商品的评价');
         }
@@ -281,9 +282,11 @@ class GrzxController extends Controller
         $comment -> shop_id = $shop['id'];
         $comment -> com_id  = $request -> com_id;
         $comment -> content = $request -> content;
+        $comment -> pack_id = $request -> pack_id;
+        $comment -> flavor_id = $request -> flavor_id;
         $a = $comment ->save();
-
         if($a){
+            $res = $shop->ptags()->attach($request -> ptag_id);
             $order = Order::find($request -> order_id);
             $os = Order_shop::where('order_id',$request->order_id)->where('shop_id',$id)->first();
             $os -> hascom = 1;
