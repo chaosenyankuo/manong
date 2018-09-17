@@ -433,19 +433,63 @@
                                 @endforeach
                             </ul>
                             <div class="clear"></div>
+                            <style>
+                            .pagination {
+                                padding-left: 0;
+                                margin: 1.5rem 0;
+                                list-style: none;
+                                color: #999;
+                                text-align: left;
+                                padding: 0;
+                            }
+
+                            .pagination li {
+                                display: inline-block;
+                            }
+
+                            .pagination li a,
+                            .pagination li span {
+                                color: #23abf0;
+                                border-radius: 3px;
+                                padding: 6px 12px;
+                                position: relative;
+                                display: block;
+                                text-decoration: none;
+                                line-height: 1.2;
+                                background-color: #fff;
+                                border: 1px solid #ddd;
+                                border-radius: 0;
+                                margin-bottom: 5px;
+                                margin-right: 5px;
+                            }
+
+                            .pagination li.active {
+                                background-color: white;
+                            }
+
+                            .pagination .active span {
+                                color: #23abf0;
+                                border-radius: 3px;
+                                padding: 6px 12px;
+                                position: relative;
+                                display: block;
+                                text-decoration: none;
+                                line-height: 1.2;
+                                background-color: #fff;
+                                border: 1px solid #ddd;
+                                border-radius: 0;
+                                margin-bottom: 5px;
+                                margin-right: 5px;
+                                background: #23abf0;
+                                color: #fff;
+                                border: 1px solid #23abf0;
+                                padding: 6px 12px;
+                            }
+                            </style>
                             <!--分页 -->
-                            <ul class="am-pagination am-pagination-right">
-                                <li class="am-disabled"><a href="#">&laquo;</a></li>
-                                <li class="am-active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">&raquo;</a></li>
-                            </ul>
+                            {{$comment->links()}}
                             <div class="clear"></div>
                             <div class="tb-reviewsft">
-                                <div class="tb-rate-alert type-attention">购买前请查看该商品的 <a href="#" target="_blank">购物保障</a>，明确您的售后保障权益。</div>
                             </div>
                         </div>
                         <div class="am-tab-panel am-fade">
@@ -468,16 +512,6 @@
                                 </ul>
                             </div>
                             <div class="clear"></div>
-                            <!--分页 -->
-                            <ul class="am-pagination am-pagination-right">
-                                <li class="am-disabled"><a href="#">&laquo;</a></li>
-                                <li class="am-active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">&raquo;</a></li>
-                            </ul>
                             <div class="clear"></div>
                         </div>
                     </div>

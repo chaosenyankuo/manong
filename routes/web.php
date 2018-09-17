@@ -38,6 +38,7 @@ Route::get('/admin/logout', 'AdminController@logout');
 
 	//网站开关
 	Route::resource('wzkg','Wzkgcontroller');
+	
 	//物流管理
 	Route::resource('wuliu', 'WuliuController');
 
@@ -46,10 +47,7 @@ Route::get('/admin/logout', 'AdminController@logout');
 
 	//订单管理
 	Route::resource('dingdan','DingdanController');
-
-	//收藏管理
-	Route::resource('collect','CollectController');
-
+	
 	//商品管理
 	Route::resource('shop','ShopController');
 

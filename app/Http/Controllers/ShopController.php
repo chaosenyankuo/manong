@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Cate;
+use App\Comment;
 use App\Flavor;
 use App\Link;
 use App\Pack;
@@ -113,13 +114,13 @@ class ShopController extends Controller
     {
         $shop = Shop::findOrFail($id);
         //当前商品的评论
-        $comment = Shop::find($id)->comments; 
+        $comment = Comment::orderBy('id','desc')
+                ->where('shop_id',$id)
+                ->paginate(2);
         //包装
         $pack = Pack::all();
         //口味
         $flavor = Flavor::all();
-        //获取分类
-        $cates = Cate::all();
         //友情链接
         $links = Link::all();
 
@@ -141,7 +142,7 @@ class ShopController extends Controller
         
         //推荐商品
         $recom = Shop::where('recom','1')->take(3)->orderBy('id','desc')->get();
-        return view('home.shop.index',compact('shop','comment','pack','flavor','recom','cates','links','add','user'));
+        return view('home.shop.index',compact('shop','comment','pack','flavor','recom','links','add','user'));
 
     }
 
