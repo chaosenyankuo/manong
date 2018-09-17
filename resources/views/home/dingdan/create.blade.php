@@ -246,12 +246,12 @@
                                     <select data-am-selected name="yhj_1" class="yhj">
                                         <option value="0">不使用</option>
                                         @foreach($yhj as $v)
-                                        <option value="{{$v->price}}">
+                                        <option value="{{$v->coupon->price}}">
                                             <div class="c-price">
-                                                <strong>￥{{$v->price}}</strong>
+                                                <strong>￥{{$v->coupon->price}}</strong>
                                             </div>
                                             <div class="c-limit">
-                                                【{{$v->name}}】
+                                                【{{$v->coupon->name}}】
                                             </div>
                                         </option>
                                         @endforeach
@@ -260,7 +260,7 @@
                             </div>
                             <div class="clear"></div>
                         </div>
-                        <input type="hidden" name="jifen" value="" />
+                        <input type="hidden" name="jifen" value="" class="p"/>
                     </form>
                     <form action="/dingdan/pay" method="post" class="pay">
                         {{csrf_field()}}
@@ -276,7 +276,7 @@
                         <input type="hidden" name="zf_id" value="" class="l" />
                         <input type="hidden" name="liuyan" value="" class="k" />
                         <input type="hidden" name="jifen" value="" />
-                        <input type="hidden" name="yhj-2" value="" class="j" />
+                        <input type="hidden" name="yhj_1" value="" class="j" />
                     </form>
                     <!--含运费小计 -->
                     <div class="buy-point-discharge ">
@@ -287,6 +287,7 @@
                     <script type="text/javascript">
                         $('.user-addresslist').click(function() {
                             $('.z').val($('.12').html()); //总价
+                            $('.p').val({{$a}});
                             $('.x').val($('input[name=uaddress_id]').val());
                             $('.m').val($('input[name=wuliu_id]').val());
                             $('.l').val($('input[name=zhifu_id]').val());
@@ -297,7 +298,7 @@
                             $('#J_ActualFee').html(zhi - $('.yhj').val());
                             $('input[name=jifen]').val({{$a}});
                             $('.z').val($('.12').html()); //总价
-                            $('.yhj-2').val($('.yhj').val());
+                            $('.j').val($('.yhj').val());
                         })
                     </script>
                     <!--信息 -->

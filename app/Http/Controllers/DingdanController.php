@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Coupon;
+use App\Coupon_user;
 use App\Link;
 use App\Order;
 use App\Order_shop;
@@ -173,13 +174,13 @@ class DingdanController extends Controller
         $uid = \Session::get('id');
         $user = User::find($uid);
         $setting = Setting::first();
-        $yhj = $user->coupons()->get();
+        $yhj = Coupon_user::where('user_id',$uid)->get();
         return view('home/dingdan/create',compact('id','shopcar','shop_id','shops','shuliang','uaddress','uadd','wuliu','zhifu','links','user','setting','yhj'));
     }
 
 
     /**
-     * 前台保存订单
+     * 前台保存未支付订单
      */
     public function baocun(Request $req)
     {   
@@ -195,6 +196,10 @@ class DingdanController extends Controller
             return back()->with('error','请选择收货地址');
         }
         $order_bh = rand(100,999);
+
+        $coupon = Coupon::where('price',$req->yhj_1)->first();
+        $cu = Coupon_user::where('coupon_id',$coupon->id)->where('user_id',\Session::get('id'))->first();
+        $cu->delete();
 
         $dd = new Order;
         $dd -> zhuangtai = 2;
@@ -222,10 +227,6 @@ class DingdanController extends Controller
         $shopcar = Shopcar::where('user_id',\Session::get('id'))->where('shop_id',$v)->delete();
 
         if($a && $os && $shopcar){
-            $user = User::findOrFail(\Session::get('id'));
-            $jifen = $user->jifen;
-            $user->jifen = $jifen + $req->jifen;
-            $user->save();
             return redirect('/home/dingdan')->with('success','生成订单成功');
         }else{
             return back()->with('error','生成订单失败');
@@ -310,6 +311,10 @@ class DingdanController extends Controller
             return back()->with('error','请选择收货地址');
         }
         $order_bh = rand(100,999);
+
+        $coupon = Coupon::where('price',$req->yhj_1)->first();
+        $cu = Coupon_user::where('coupon_id',$coupon->id)->where('user_id',\Session::get('id'))->first();
+        $cu->delete();
 
         $dd = new Order;
         $dd -> zhuangtai = 3;
@@ -404,6 +409,11 @@ class DingdanController extends Controller
         $setting = Setting::first();
 
         $order -> zhuangtai = 3;
+
+        $user = User::findOrFail(\Session::get('id'));
+        $jifen = $user->jifen;
+        $user->jifen = $jifen + $req->jifen;
+        $user->save();
 
         if($order->save()){
             return view('home/dingdan/pay',compact('address','xiangxi','zongjia','uname','phone','user','links','setting'));
