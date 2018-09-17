@@ -280,7 +280,7 @@
                                                             <div class="item-status">
                                                                 <p class="Mystatus">等待付款</p>
                                                                 <p class="order-info">
-                                                                    <a href="#">取消订单</a>
+                                                                    <a href="/home/dingdan/delete/{{$v->id}}" class="132" >取消订单</a>
                                                                 </p>
                                                             </div>
                                                         </li>
@@ -335,7 +335,7 @@
                                                         </li>
                                                         <li class="td td-operation">
                                                             <div class="item-operation">
-                                                                <a href="refund.html">退款</a>
+                                                                <a href="/home/dingdan/delete/{{$v->id}}" class="132" >退款</a>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -507,7 +507,9 @@
                                                         <li class="td td-status">
                                                             <div class="item-status">
                                                                 <p class="Mystatus">等待买家付款</p>
-                                                                <p class="order-info"><a href="#">取消订单</a></p>
+                                                                <p class="order-info">
+                                                                    <a href="/home/dingdan/delete/{{$v->id}}" class="132" >取消订单</a>
+                                                                </p>
                                                             </div>
                                                         </li>
                                                         <li class="td td-change">
@@ -569,7 +571,7 @@
                                                         </li>
                                                         <li class="td td-operation">
                                                             <div class="item-operation">
-                                                                <a href="refund.html">退款</a>
+                                                                <a href="/home/dingdan/delete/{{$v->id}}" class="132" >退款</a>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -781,6 +783,17 @@
                     </div>
                 </div>
             </div>
+            <script type="text/javascript">
+                $('.132').click(function(){
+                    var q = confirm('确认删除该订单');
+
+                    if(q == true){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                })
+            </script>
             <!--底部-->
             @include('layouts.home._foot')
         </div>

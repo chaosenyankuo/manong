@@ -197,10 +197,6 @@ class DingdanController extends Controller
         }
         $order_bh = rand(100,999);
 
-        $coupon = Coupon::where('price',$req->yhj_1)->first();
-        $cu = Coupon_user::where('coupon_id',$coupon->id)->where('user_id',\Session::get('id'))->first();
-        $cu->delete();
-
         $dd = new Order;
         $dd -> zhuangtai = 2;
         $dd -> wuliu_id = $req -> wuliu_id;
@@ -312,9 +308,11 @@ class DingdanController extends Controller
         }
         $order_bh = rand(100,999);
 
-        $coupon = Coupon::where('price',$req->yhj_1)->first();
-        $cu = Coupon_user::where('coupon_id',$coupon->id)->where('user_id',\Session::get('id'))->first();
-        $cu->delete();
+        if($req->yhj_1){
+            $coupon = Coupon::where('price',$req->yhj_1)->first();
+            $cu = Coupon_user::where('coupon_id',$coupon->id)->where('user_id',\Session::get('id'))->first();
+            $cu->delete();
+        }
 
         $dd = new Order;
         $dd -> zhuangtai = 3;
