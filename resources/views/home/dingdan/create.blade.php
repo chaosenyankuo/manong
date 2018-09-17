@@ -124,9 +124,7 @@
                     $(this).siblings().removeAttr('id');
                     $('#wuliu > input').attr('name', 'wuliu_id');
                     $('#wuliu').siblings().removeAttr('name');
-                    console.log($('#wuliu > input').val());
                     $('.m').val($('#wuliu > input').val());
-                    console.log($('.m').val());
                 })
                 $('.pay-list > li').click(function() {
                     $(this).attr('id', 'zhifu');
@@ -245,28 +243,24 @@
                             <div class="buy-agio">
                                 <li class="td td-coupon">
                                     <span class="coupon-title">优惠券</span>
-                                    <select data-am-selected>
-                                        <option value="a">
+                                    <select data-am-selected name="yhj_1" class="yhj">
+                                        <option value="0">不使用</option>
+                                        @foreach($yhj as $v)
+                                        <option value="{{$v->price}}">
                                             <div class="c-price">
-                                                <strong>￥8</strong>
+                                                <strong>￥{{$v->price}}</strong>
                                             </div>
                                             <div class="c-limit">
-                                                【消费满95元可用】
+                                                【{{$v->name}}】
                                             </div>
                                         </option>
-                                        <option value="b" selected>
-                                            <div class="c-price">
-                                                <strong>￥3</strong>
-                                            </div>
-                                            <div class="c-limit">
-                                                【无使用门槛】
-                                            </div>
-                                        </option>
+                                        @endforeach
                                     </select>
                                 </li>
                             </div>
                             <div class="clear"></div>
                         </div>
+                        <input type="hidden" name="jifen" value="" />
                     </form>
                     <form action="/dingdan/pay" method="post" class="pay">
                         {{csrf_field()}}
@@ -281,6 +275,8 @@
                         <input type="hidden" name="wl_id" value="" class="m" />
                         <input type="hidden" name="zf_id" value="" class="l" />
                         <input type="hidden" name="liuyan" value="" class="k" />
+                        <input type="hidden" name="jifen" value="" />
+                        <input type="hidden" name="yhj-2" value="" class="j" />
                     </form>
                     <!--含运费小计 -->
                     <div class="buy-point-discharge ">
@@ -289,12 +285,20 @@
                         </p>
                     </div>
                     <script type="text/javascript">
-                    $('.user-addresslist').click(function() {
-                        $('.z').val($('.12').html()); //总价
-                        $('.x').val($('input[name=uaddress_id]').val());
-                        $('.m').val($('input[name=wuliu_id]').val());
-                        $('.l').val($('input[name=zhifu_id]').val());
-                    });
+                        $('.user-addresslist').click(function() {
+                            $('.z').val($('.12').html()); //总价
+                            $('.x').val($('input[name=uaddress_id]').val());
+                            $('.m').val($('input[name=wuliu_id]').val());
+                            $('.l').val($('input[name=zhifu_id]').val());
+                        })
+                        $('.yhj').change(function(){
+                            var zhi = {{$a+(count($shop_id)*10)}};
+                            $('.12').html(zhi - $('.yhj').val());
+                            $('#J_ActualFee').html(zhi - $('.yhj').val());
+                            $('input[name=jifen]').val({{$a}});
+                            $('.z').val($('.12').html()); //总价
+                            $('.yhj-2').val($('.yhj').val());
+                        })
                     </script>
                     <!--信息 -->
                     <div class="order-go clearfix">
@@ -302,7 +306,7 @@
                             <div class="box">
                                 <div tabindex="0" id="holyshit267" class="realPay"><em class="t">实付款：</em>
                                     <span class="price g_price ">
-                                                        <span>¥</span> <em class="style-large-bold-red " id="J_ActualFee">{{$a+(count($shop_id)*10)}}</em>
+                                        <span>¥</span> <em class="style-large-bold-red " id="J_ActualFee">{{$a+(count($shop_id)*10)}}</em>
                                     </span>
                                 </div>
                                 <div id="holyshit268" class="pay-address">

@@ -208,16 +208,18 @@
                                                             </div>
                                                         </li>
                                                         <li class="td td-change">
-                                                            <a href="/home/pjsp/{{$vv->id}}">
-                                                                <div class="am-btn am-btn-danger anniu">
-                                                                    评价商品</div>
-                                                            </a>
+                                                            <div class="am-btn am-btn-danger anniu asd">评价商品</div>
                                                         </li>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         @endforeach
+                                        <script type="text/javascript">
+                                            $('.asd').click(function(){
+                                                alert('请到待评论列表进行评论');
+                                            })
+                                        </script>
                                         <!--待付款-->
                                         @foreach($order2 as $k=>$v)
                                         <div class="order-status0">
@@ -283,7 +285,7 @@
                                                             </div>
                                                         </li>
                                                         <li class="td td-change">
-                                                            <a href="pay.html">
+                                                            <a href="/home/pay/{{$v->id}}">
                                                                 <div class="am-btn am-btn-danger anniu">
                                                                     一键支付</div>
                                                             </a>
@@ -357,8 +359,9 @@
                                                             </div>
                                                         </li>
                                                         <li class="td td-change">
-                                                            <div class="am-btn am-btn-danger anniu">
-                                                                提醒发货</div>
+                                                            <a href="/dingdan/fahuo/{{$v->id}}">
+                                                                <div class="am-btn am-btn-danger anniu">提醒发货</div>
+                                                            </a>
                                                         </li>
                                                     </div>
                                                 </div>
@@ -429,8 +432,9 @@
                                                             </div>
                                                         </li>
                                                         <li class="td td-change">
-                                                            <div class="am-btn am-btn-danger anniu">
-                                                                确认收货</div>
+                                                            <a href="/dingdan/shouhuo/{{$v->id}}">
+                                                                <div class="am-btn am-btn-danger anniu">确认收货</div>
+                                                            </a>
                                                         </li>
                                                     </div>
                                                 </div>
@@ -507,7 +511,7 @@
                                                             </div>
                                                         </li>
                                                         <li class="td td-change">
-                                                            <a href="pay.html">
+                                                            <a href="/home/pay/{{$v->id}}">
                                                                 <div class="am-btn am-btn-danger anniu">
                                                                     一键支付
                                                                 </div>
@@ -589,8 +593,9 @@
                                                             </div>
                                                         </li>
                                                         <li class="td td-change">
-                                                            <div class="am-btn am-btn-danger anniu">
-                                                                提醒发货</div>
+                                                            <a href="/dingdan/fahuo/{{$v->id}}">
+                                                                <div class="am-btn am-btn-danger anniu">提醒发货</div>
+                                                            </a>
                                                         </li>
                                                     </div>
                                                 </div>
@@ -668,8 +673,9 @@
                                                             </div>
                                                         </li>
                                                         <li class="td td-change">
-                                                            <div class="am-btn am-btn-danger anniu">
-                                                                确认收货</div>
+                                                            <a href="/dingdan/shouhuo/{{$v->id}}">
+                                                                <div class="am-btn am-btn-danger anniu">确认收货</div>
+                                                            </a>
                                                         </li>
                                                     </div>
                                                 </div>

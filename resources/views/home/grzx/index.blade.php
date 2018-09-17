@@ -73,7 +73,7 @@
                             </div>
                             <ul>
                                 <li style="width:203.98px;">
-                                    <a href="order.html"><i><img src="/home/images/pay.png"/></i>
+                                    <a href="/home/dingdan"><i><img src="/home/images/pay.png"/></i>
                                         <span>待付款<em class="m-num">
                                             @if($dfks != 0)
                                                 {{$dfks}}
@@ -82,7 +82,7 @@
                                     </a>
                                 </li>
                                 <li style="width:203.98px;">
-                                    <a href="order.html"><i><img src="/home/images/send.png"/></i>
+                                    <a href="/home/dingdan"><i><img src="/home/images/send.png"/></i>
                                         <span>待发货<em class="m-num">
                                             @if($dfhs != 0)
                                                 {{$dfhs}}
@@ -91,7 +91,7 @@
                                     </a>
                                 </li>
                                 <li style="width:203.98px;">
-                                    <a href="order.html"><i><img src="/home/images/receive.png"/></i>
+                                    <a href="/home/dingdan"><i><img src="/home/images/receive.png"/></i>
                                         <span>待收货<em class="m-num">
                                             @if($dshs != 0)
                                                 {{$dshs}}
@@ -100,7 +100,7 @@
                                     </a>
                                 </li>
                                 <li style="width:203.98px;">
-                                    <a href="order.html"><i><img src="/home/images/comment.png"/></i>
+                                    <a href="/home/dingdan"><i><img src="/home/images/comment.png"/></i>
                                         <span>待评价<em class="m-num">
                                             @if($dpjs != 0)
                                                 {{$dpjs}}
