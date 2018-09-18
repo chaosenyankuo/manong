@@ -382,7 +382,7 @@ class DingdanController extends Controller
     /**
      * 前台订单点击支付
      */
-    public function pays($id)
+    public function pays(Request $req, $id)
     {
         $os = Order_shop::where('order_id',$id)->get();
         foreach ($os as $v){
@@ -408,10 +408,12 @@ class DingdanController extends Controller
 
         $order -> zhuangtai = 3;
 
-        $user = User::findOrFail(\Session::get('id'));
-        $jifen = $user->jifen;
-        $user->jifen = $jifen + $req->jifen;
-        $user->save();
+        if($req->jifen){
+            $user = User::findOrFail(\Session::get('id'));
+            $jifen = $user->jifen;
+            $user->jifen = $jifen + $req->jifen;
+            $user->save();
+        }
 
         if($order->save()){
             return view('home/dingdan/pay',compact('address','xiangxi','zongjia','uname','phone','user','links','setting'));
