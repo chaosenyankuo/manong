@@ -78,8 +78,8 @@
                                 </div>
                                 <div class="item-info">
                                     <div class="info-little">
-                                        <span>颜色：洛阳牡丹</span><br>
-                                        <span>包装：裸装</span>
+                                        <span>口味：{{$os->flavor->fname}}</span><br>
+                                        <span>包装：{{$os->pack->pname}}</span>
                                     </div>
                                     <div class="item-price">
                                         价格：<strong>{{$shop['sprice']}}</strong>
@@ -90,9 +90,20 @@
                             <div class="item-comment">
                                 <textarea  name="content" placeholder="请写下对宝贝的感受吧，对他人帮助很大哦！"></textarea>
                             </div>
+                        <br><br>
+                        <span>商品印象:</span><br><br>
+                        @foreach($ptag as $v)
+
+                        <div style="width:150px;height:30px;background:orange; float:left;padding:5px;margin:5px;">
+                            <input type="checkbox" name="ptag_id[]" value="{{$v['id']}}">{{$v['ptname']}}
                         </div>
+                        @endforeach
+                         </div><br><br><br><br><br><hr>
                         {{csrf_field()}}
+                        
                         <input type="hidden" name="order_id" value="{{$o_id}}">
+                        <input type="hidden" name="pack_id" value="{{$os->pack->id}}">
+                        <input type="hidden" name="flavor_id" value="{{$os->flavor->id}}">
                         <div class="info-btn">
                             <button class="am-btn am-btn-danger">发表评论</button>
                         </div>

@@ -193,6 +193,7 @@ Route::get('/home/dingdan','DingdanController@list');
 
 //订单删除
 Route::post('/home/dingdan/delete/{id}','DingdanController@del');
+Route::get('/home/dingdan/delete/{id}','DingdanController@del');
 
 //点击支付
 Route::get('/home/pay/{id}','DingdanController@pays');
@@ -231,6 +232,7 @@ Route::get('/home/foot','ZujiController@foot');
 
 //删除足迹
 Route::get('/shanzuji','ZujiController@shanzuji');
+
 
 
 

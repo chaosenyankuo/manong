@@ -12,6 +12,8 @@ use App\Setting;
 use App\Shop;
 use App\Tag;
 use App\User;
+use App\Ptag;
+use App\Ptag_shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -115,15 +117,46 @@ class ShopController extends Controller
     {
         $shop = Shop::findOrFail($id);
         //当前商品的评论
-        $comment = Comment::orderBy('id','desc')
+        $comment = Shop::find($id)->comments;
+        if(!empty($comment[0])){
+            $hao = Comment::where('shop_id',$id)
+                            ->where('com_id','1')
+                            ->get();
+            $zhong = Comment::where('shop_id',$id)
+                            ->where('com_id','2')
+                            ->get();
+            $cha = Comment::where('shop_id',$id)
+                            ->where('com_id','3')
+                            ->get();            
+            // 好评度
+            $bilv = ceil(count($hao) / count($comment) * 100);
+            
+        }else{
+            $hao = null;
+            $zhong = null;
+            $cha = null;
+            $bilv = null;
+        }
+
+        //商品印象
+        $ptags = Ptag::all();
+        foreach(Ptag::withCount('shop')->get() as $v){
+            $count[] = $v->shop_count;
+
+        }
+
+        $comments = Comment::orderBy('id','desc')
                 ->where('shop_id',$id)
                 ->paginate(2);
+
         //包装
         $pack = Pack::all();
         //口味
         $flavor = Flavor::all();
         //友情链接
         $links = Link::all();
+
+        $setting = Setting::all();
 
         //获取当前登录人的信息
         $user = null;
@@ -143,7 +176,9 @@ class ShopController extends Controller
         $setting = Setting::first();
         //推荐商品
         $recom = Shop::where('recom','1')->take(3)->orderBy('id','desc')->get();
-        return view('home.shop.index',compact('shop','comment','pack','flavor','recom','links','add','user','setting'));
+
+        return view('home.shop.index',compact('shop','comment','comments','pack','flavor','recom','cates','links','add','user','hao','zhong','cha','bilv','ptags','count','setting'));
+
 
     }
 

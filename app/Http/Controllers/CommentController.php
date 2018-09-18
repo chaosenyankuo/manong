@@ -102,4 +102,23 @@ class CommentController extends Controller
             return back()-with('error','删除失败');
         }
     }
+
+    public function haoping()
+    {
+        $shop_id = $_POST['shop_id'];
+        $hao = $_POST['hao'];
+        $comment = Comment::where('shop_id',$shop_id)
+                    ->where('com_id',$hao)
+                    ->get()->load('user')->load('flavor')->load('pack');
+        // foreach($comment as $v){
+        //     echo $v->user->uname;
+        //     echo $v->user->image;
+        //     echo $v->created_at;
+        //     echo $v->content;
+        //     echo $v->flavor->fname;
+        //     echo $v->pack->pname;
+        // }
+        echo $comment;
+
+    }
 }

@@ -18,6 +18,9 @@ class CreateCommentsTable extends Migration
             $table->integer('user_id')->comment('用户ID')->nullable();
             $table->integer('com_id')->comment('评论ID')->nullable();
             $table->integer('shop_id')->comment('商品ID')->nullable();
+            $table->integer('pack_id')->comment('包装ID')->nullable();
+            $table->integer('flavor_id')->comment('口味ID')->nullable();
+            $table->integer('ptag_id')->comment('印象ID')->nullable();
             $table->text('content')->comment('评价内容')->nullable();
             $table->timestamps();
         });

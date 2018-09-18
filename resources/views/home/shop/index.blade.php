@@ -349,21 +349,15 @@
                         <div class="am-tab-panel am-fade">
                             <div class="actor-new">
                                 <div class="rate">
-                                    <strong>100<span>%</span></strong>
+                                    <strong>{{$bilv}}<span>%</span></strong>
                                     <br> <span>好评度</span>
                                 </div>
                                 <dl>
                                     <dt>买家印象</dt>
                                     <dd class="p-bfc">
-                                        <q class="comm-tags"><span>味道不错</span><em>(2177)</em></q>
-                                        <q class="comm-tags"><span>颗粒饱满</span><em>(1860)</em></q>
-                                        <q class="comm-tags"><span>口感好</span><em>(1823)</em></q>
-                                        <q class="comm-tags"><span>商品不错</span><em>(1689)</em></q>
-                                        <q class="comm-tags"><span>香脆可口</span><em>(1488)</em></q>
-                                        <q class="comm-tags"><span>个个开口</span><em>(1392)</em></q>
-                                        <q class="comm-tags"><span>价格便宜</span><em>(1119)</em></q>
-                                        <q class="comm-tags"><span>特价买的</span><em>(865)</em></q>
-                                        <q class="comm-tags"><span>皮很薄</span><em>(831)</em></q>
+                                        @foreach($ptags as $k => $v)
+                                        <q class="comm-tags"><span>{{$v['ptname']}}</span><em>({{$count[$k]}})</em></q>
+                                        @endforeach
                                     </dd>
                                 </dl>
                             </div>
@@ -373,25 +367,25 @@
                                     <li class="tb-taglist-li tb-taglist-li-current">
                                         <div class="comment-info">
                                             <span>全部评价</span>
-                                            <span class="tb-tbcr-num">(32)</span>
+                                            <span class="tb-tbcr-num">{{count($comment)}}</span>
                                         </div>
                                     </li>
                                     <li class="tb-taglist-li tb-taglist-li-1">
                                         <div class="comment-info">
                                             <span>好评</span>
-                                            <span class="tb-tbcr-num">(32)</span>
+                                            <span class="tb-tbcr-num">{{count($hao)}}</span>
                                         </div>
                                     </li>
                                     <li class="tb-taglist-li tb-taglist-li-0">
                                         <div class="comment-info">
                                             <span>中评</span>
-                                            <span class="tb-tbcr-num">(32)</span>
+                                            <span class="tb-tbcr-num">{{count($zhong)}}</span>
                                         </div>
                                     </li>
                                     <li class="tb-taglist-li tb-taglist-li--1">
                                         <div class="comment-info">
                                             <span>差评</span>
-                                            <span class="tb-tbcr-num">(32)</span>
+                                            <span class="tb-tbcr-num">{{count($cha)}}</span>
                                         </div>
                                     </li>
                                 </ul>
@@ -415,6 +409,10 @@
                                                 <!-- 评论者 -->
                                                 评论于
                                                 <time datetime="">{{$v['created_at']}}</time>
+                                                &nbsp;&nbsp;&nbsp;&nbsp; @if($v->com_id == '1')
+                                                <span>好评</span> @endif @if($v->com_id == '2')
+                                                <span>中评</span> @endif @if($v->com_id == '3')
+                                                <span>差评</span> @endif
                                             </div>
                                         </header>
                                         <div class="am-comment-bd">
@@ -423,7 +421,10 @@
                                                     {{$v['content']}}
                                                 </div>
                                                 <div class="tb-r-act-bar">
-                                                    商品口味：
+                                                    <span style="font-size:8px;">商品口味：{{$v->flavor->fname}}</span>
+                                                </div>
+                                                <div class="tb-r-act-bar">
+                                                    <span style="font-size:8px;">商品包装：{{$v->pack->pname}}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -487,7 +488,7 @@
                             }
                             </style>
                             <!--分页 -->
-                            {{$comment->links()}}
+                            {{$comments->links()}}
                             <div class="clear"></div>
                             <div class="tb-reviewsft">
                             </div>
@@ -528,11 +529,11 @@
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         }
                     });
-                    var shop_id = {{$shop['id']}};
+                    var shop_id = { { $shop['id'] } };
                     $.ajax({
                         url: '/cunzuji',
                         type: 'post',
-                        data: {shop_id:shop_id},
+                        data: { shop_id: shop_id },
                         success: function(data) {
 
                         },

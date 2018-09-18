@@ -16,9 +16,13 @@ class Comment extends Model
     {
     	return $this->belongsTo('App\Shop');
     }
-    public function ptags()
+    public function pack()
     {
-    	return $this->belongsToMany('App\ptag');
+        return $this->belongsTo('App\Pack');
+    }
+    public function flavor()
+    {
+        return $this->belongsTo('App\flavor');
     }
     
 }

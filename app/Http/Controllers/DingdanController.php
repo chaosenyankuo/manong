@@ -307,7 +307,8 @@ class DingdanController extends Controller
             return back()->with('error','请选择收货地址');
         }
         $order_bh = rand(100,999);
-        
+
+
         if($req->yhj_1){
             $coupon = Coupon::where('price',$req->yhj_1)->first();
             $cu = Coupon_user::where('coupon_id',$coupon->id)->where('user_id',\Session::get('id'))->first();
