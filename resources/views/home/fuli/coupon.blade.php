@@ -81,6 +81,7 @@
                                                         <div class="range-item">
                                                             <span class="label">券名：</span>
                                                             <span class="txt">{{$v->coupon->name}}</span>
+
                                                         </div>
                                                     </div>
                                                 </div>
