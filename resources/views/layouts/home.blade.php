@@ -210,10 +210,8 @@
         <div class="shopMain" id="shopmain">
             <!--今日推荐 -->
             <div class="am-g am-g-fixed recommendation">
-                <div class="clock am-u-sm-3">
-                    <img src="/home/images/2016.png "></img>
-                    <p>今日
-                        <br>推荐</p>
+                <div class="am-u-sm-3">
+                    <img src="/home/2018-3.png"></img>
                 </div>
                 @foreach($recom as $v)
                 <div class="am-u-sm-4 am-u-lg-3 ">
