@@ -108,6 +108,9 @@ Route::get('/admin/logout', 'AdminController@logout');
 //前台首页
 Route::get('/','HomeController@index');
 
+//前台搜索
+Route::get('/soso','HomeController@soso');
+
 //前台商品详情
 Route::get('/{id}.html','ShopController@show');
 
@@ -187,6 +190,16 @@ Route::get('/home/dingdan','DingdanController@list');
 
 //订单删除
 Route::post('/home/dingdan/delete/{id}','DingdanController@del');
+Route::get('/home/dingdan/delete/{id}','DingdanController@del');
+
+//点击支付
+Route::get('/home/pay/{id}','DingdanController@pays');
+
+//提醒发货
+Route::get('/dingdan/fahuo/{id}','DingdanController@fahuo');
+
+//确认收货
+Route::get('/dingdan/shouhuo/{id}','DingdanController@shouhuo');
 
 //意见反馈
 Route::resource('/home/yjfk','YjfkController');
@@ -216,5 +229,8 @@ Route::get('/home/foot','ZujiController@foot');
 
 //删除足迹
 Route::get('/shanzuji','ZujiController@shanzuji');
+
+
+
 
 

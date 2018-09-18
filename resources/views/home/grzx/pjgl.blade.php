@@ -85,7 +85,7 @@
                                                 </div>
                                                 <div class="item-info">
                                                     <div>
-                                                        <p class="info-little"><span>口味：12#玛瑙</span> <span>包装：</span> </p>
+                                                        <p class="info-little"><span>口味：{{$v->flavor->fname}}</span> <span>包装：{{$v->pack->pname}}</span> </p>
                                                         <p class="info-time">{{$v['created_at']}}</p>
                                                     </div>
                                                 </div>

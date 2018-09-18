@@ -16,7 +16,7 @@ class UaddressTableSeeder extends Seeder
     {
         for ($i=0; $i <20 ; $i++) { 
         	$uaddress = new Uaddress;
-        	$uaddress -> user_id = rand(1,20);
+        	$uaddress -> user_id = rand(1,5);
         	$uaddress -> uphone = rand(100,200);
         	$uaddress -> xadress = str_random(10);
         	$uaddress -> address = '山西省-吕梁市-孝义市';

@@ -67,8 +67,15 @@ class Shop extends Model
         return $this->hasMany('App\Shop');
     }
 
+    
+    public function ptags()
+    {
+        return $this->belongsToMany('App\Ptag');
+    }
+
     public function zuji()
     {
         return $this->hasMany('App\Zuji');
     }
+
 }

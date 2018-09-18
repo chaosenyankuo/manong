@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommentTagsTable extends Migration
+class CreatePtagShopTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateCommentTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('comment_tags', function (Blueprint $table) {
-            $table->string('comment_id');
-            $table->string('tag_id');
-            $table->timestamps();
+        Schema::create('ptag_shop', function (Blueprint $table) {
+            $table->string('shop_id')->comment('商品id')->nullable;
+            $table->string('ptag_id')->comment('印象id')->nullable;
         });
     }
 
@@ -27,6 +26,6 @@ class CreateCommentTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comment_tags');
+        Schema::dropIfExists('ptag_shop');
     }
 }

@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Ptag extends Model
 {
     //
-    public function comments()
+    public function shop()
     {
-    	return $this->belongsToMany('App\comment');
+    	return $this->belongsToMany('App\Shop');
     }
 }

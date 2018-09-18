@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Coupon;
+use App\Coupon_user;
 use App\Link;
 use App\Order;
 use App\Order_shop;
@@ -100,8 +102,8 @@ class DingdanController extends Controller
      */
     public function edit($id)
     {
-         $dingdan =order::findOrFail($id);
-         $uid = \Session::get('id');
+        $dingdan =order::findOrFail($id);
+        $uid = \Session::get('id');
         $user = User::findOrFail($uid);
         $wuliu = wuliu::all();
 
@@ -147,7 +149,7 @@ class DingdanController extends Controller
      */
     public function destroy($id)
     {
-          $dingdan = order::findOrFail($id);
+        $dingdan = order::findOrFail($id);
 
         if($dingdan->delete()){
             return back()->with('success','删除成功');
@@ -172,12 +174,13 @@ class DingdanController extends Controller
         $uid = \Session::get('id');
         $user = User::find($uid);
         $setting = Setting::first();
-        return view('home/dingdan/create',compact('id','shopcar','shop_id','shops','shuliang','uaddress','uadd','wuliu','zhifu','links','user','setting'));
+        $yhj = Coupon_user::where('user_id',$uid)->get();
+        return view('home/dingdan/create',compact('id','shopcar','shop_id','shops','shuliang','uaddress','uadd','wuliu','zhifu','links','user','setting','yhj'));
     }
 
 
     /**
-     * 前台保存订单
+     * 前台保存未支付订单
      */
     public function baocun(Request $req)
     {   
@@ -305,6 +308,12 @@ class DingdanController extends Controller
         }
         $order_bh = rand(100,999);
 
+        if($req->yhj_1){
+            $coupon = Coupon::where('price',$req->yhj_1)->first();
+            $cu = Coupon_user::where('coupon_id',$coupon->id)->where('user_id',\Session::get('id'))->first();
+            $cu->delete();
+        }
+
         $dd = new Order;
         $dd -> zhuangtai = 3;
         $dd -> wuliu_id = $req -> wl_id;
@@ -332,6 +341,10 @@ class DingdanController extends Controller
         if($a && $os && $shopcar){
 
             $user = User::findOrFail(\Session::get('id'));
+            $jifen = $user->jifen;
+            $user->jifen = $jifen + $req->jifen;
+            $user->save();
+
             $setting = Setting::first();
             $links = Link::all();
             $order = Order::where('user_id',\Session::get('id'))->where('order_bh',$order_bh)->get();
@@ -363,6 +376,79 @@ class DingdanController extends Controller
             return back()->with('success','删除订单成功');
         }else{
             return back()->with('error','删除订单失败');
+        }
+    }
+
+    /**
+     * 前台订单点击支付
+     */
+    public function pays($id)
+    {
+        $os = Order_shop::where('order_id',$id)->get();
+        foreach ($os as $v){
+            $sprice[] = $v->shop->sprice;
+            $shuliang[] = $v->shuliang;
+        }
+        $a = 0;
+        foreach ($sprice as $k=>$v) {
+            $a += ($v*$shuliang[$k]);
+        }
+
+        $zongjia = $a + (count($sprice).'0');
+
+        $order = Order::findOrFail($id);
+        $uadd = $order->uaddress->address;
+        $address = explode('-', $uadd);
+        $xiangxi = $order->uaddress->xadress;
+        $uname = $order->uaddress->name;
+        $phone = $order->uaddress->uphone;
+        $user = User::findOrFail(\Session::get('id'));
+        $links = Link::all();
+        $setting = Setting::first();
+
+        $order -> zhuangtai = 3;
+
+        $user = User::findOrFail(\Session::get('id'));
+        $jifen = $user->jifen;
+        $user->jifen = $jifen + $req->jifen;
+        $user->save();
+
+        if($order->save()){
+            return view('home/dingdan/pay',compact('address','xiangxi','zongjia','uname','phone','user','links','setting'));
+        }else{
+            return back()->with('error','支付失败');
+        }
+    }
+
+    /**
+     * 前台点击发货
+     */
+    public function fahuo($id)
+    {
+        $order = Order::findOrFail($id);
+
+        $order -> zhuangtai = 4;
+
+        if($order->save()){
+            return back()->with('success','提醒发货成功');
+        }else{
+            return back()->with('error','提醒发货失败');
+        }
+    }
+
+    /**
+     * 前台点击收货
+     */
+    public function shouhuo($id)
+    {
+        $order = Order::findOrFail($id);
+
+        $order -> zhuangtai = 1;
+
+        if($order->save()){
+            return back()->with('success','确认收货成功');
+        }else{
+            return back()->with('error','确认收货失败');
         }
     }
 }
