@@ -65,9 +65,9 @@
                                                             <dt><span title="{{$v->cname}}">{{$v->cname}}</span></dt>
                                                             @foreach($tags as $vv) @if($vv->cate_id == $v->id)
                                                             <dd style="float:left;">
-                                                                <a title="{{$vv->tname}}" href="#"><span>
-                                                                            {{$vv -> tname}}
-                                                                        </span></a>
+                                                                <a title="{{$vv->tname}}" href="/tags/{{$vv->id}}">
+                                                                    <span>{{$vv -> tname}}</span>
+                                                                </a>
                                                             </dd>
                                                             @endif @endforeach
                                                         </dl>

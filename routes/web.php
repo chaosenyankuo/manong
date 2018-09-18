@@ -114,6 +114,9 @@ Route::get('/soso','HomeController@soso');
 //前台商品详情
 Route::get('/{id}.html','ShopController@show');
 
+//前台分类标签商品
+Route::get('/tags/{id}','HomeController@tags');
+
 //前台注册
 Route::get('/home/zhuce', 'ZhuceController@zhuce');
 
