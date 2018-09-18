@@ -36,7 +36,7 @@
                     <div class="am-u-sm-12 am-u-md-12">
                         <div class="theme-popover">
                         </div>
-                        <div class="search-content">
+                        <div>
                             <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
                             @foreach($shops as $v)
                                 <li>

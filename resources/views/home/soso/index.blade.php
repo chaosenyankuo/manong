@@ -36,12 +36,12 @@
                     <div class="am-u-sm-12 am-u-md-12">
                         <div class="theme-popover">
                         </div>
-                        <div class="search-content">
+                        <div>
                             <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
-                            @foreach($shops as $v)
+                                @foreach($shops as $v)
                                 <li>
                                     <div class="i-pic limit">
-                                       <a href="/{{$v->id}}.html"> <img src="{{$v['simage']}}" /></a>
+                                        <a href="/{{$v->id}}.html"> <img src="{{$v['simage']}}" /></a>
                                         <p class="title fl">{{$v['sname']}}</p>
                                         <p class="price fl">
                                             <b>¥</b>
@@ -51,26 +51,23 @@
                                             销量<span>{{$v['csales']}}</span>
                                         </p>
                                     </div>
-
                                 </li>
-							@endforeach	
+                                @endforeach
                             </ul>
                         </div>
-                        <div class="clear"></div>
                         <!--分页 -->
-                        
                     </div>
                 </div>
                 @include('layouts.home._foot')
             </div>
         </div>
-        
         <!--菜单 -->
         <script>
         window.jQuery || document.write('<script src="basic/js/jquery-1.9.min.js"><\/script>');
         </script>
         <script type="text/javascript" src="../basic/js/quick_links.js"></script>
         <div class="theme-popover-mask"></div>
+    </div>
 </body>
 
 </html>

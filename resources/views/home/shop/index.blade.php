@@ -155,25 +155,7 @@
                             </li>
                             <div class="clear"></div>
                         </div>
-                        <!--地址-->
-                        <dl class="iteminfo_parameter freight">
-                            <div data-toggle="distpicker">
-                                <dt>配送至:</dt>
-                                <div class="form-group" style="width:500px;">
-                                    @if(!empty($add))
-                                    <select class="form-control" style="height:28px;" id="province1" name="sheng" data-province="{{$add[0]}}">
-                                    </select>
-                                    <select class="form-control" style="height:28px;" id="city1" name="shi" data-city="{{$add[1]}}"></select>
-                                    <select class="form-control" style="height:28px;" id="district1" name="xian" data-district="{{$add[2]}}"></select>
-                                    快递<b class="sys_item_freprice">10</b> 元 @else
-                                    <select class="form-control" style="height:28px;" id="province1" name="sheng" data-province="">
-                                    </select>
-                                    <select class="form-control" style="height:28px;" id="city1" name="shi" data-city=""></select>
-                                    <select class="form-control" style="height:28px;" id="district1" name="xian" data-district=""></select>
-                                    快递<b class="sys_item_freprice"></b> 元 @endif
-                                </div>
-                            </div>
-                        </dl>
+                        <br>
                         <div class="clear"></div>
                         <!--销量-->
                         <ul class="tm-ind-panel">
