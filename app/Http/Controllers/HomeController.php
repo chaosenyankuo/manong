@@ -101,6 +101,18 @@ class HomeController extends Controller
        
     }
 
+    //前台分类标签
+    public function tags($id)
+    {
+        $tags = Tag::findOrFail($id);
+        $id = \Session::get('id');     
+        $user = User::find($id);
+        $setting = Setting::first();
+        $links = Link::all();
+        $shops = $tags->shops()->get();
+       return view('/home.tags.index',compact('user','setting','links','shops'));
+    }
+
 
 }
 

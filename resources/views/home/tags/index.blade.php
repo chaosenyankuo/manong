@@ -4,13 +4,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>搜索页面</title>
+    <title>商品分类</title>
     <link href="/home/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
     <link href="/home/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
-    <link href="home/basic/css/demo.css" rel="stylesheet" type="text/css" />
-    <link href="home/css/seastyle.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="home/basic/js/jquery-1.7.min.js"></script>
-    <script type="text/javascript" src="home/js/script.js"></script>
+    <link href="/home/basic/css/demo.css" rel="stylesheet" type="text/css" />
+    <link href="/home/css/seastyle.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/home/basic/js/jquery-1.7.min.js"></script>
+    <script type="text/javascript" src="/home/js/script.js"></script>
 </head>
 
 <body>
@@ -38,10 +38,10 @@
                         </div>
                         <div>
                             <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
-                                @foreach($shops as $v)
+                            @foreach($shops as $v)
                                 <li>
                                     <div class="i-pic limit">
-                                        <a href="/{{$v->id}}.html"> <img src="{{$v['simage']}}" /></a>
+                                       <a href="/{{$v->id}}.html"> <img src="{{$v['simage']}}" /></a>
                                         <p class="title fl">{{$v['sname']}}</p>
                                         <p class="price fl">
                                             <b>¥</b>
@@ -51,23 +51,26 @@
                                             销量<span>{{$v['csales']}}</span>
                                         </p>
                                     </div>
+
                                 </li>
-                                @endforeach
+							@endforeach	
                             </ul>
                         </div>
+                        <div class="clear"></div>
                         <!--分页 -->
+                        
                     </div>
                 </div>
                 @include('layouts.home._foot')
             </div>
         </div>
+        
         <!--菜单 -->
         <script>
         window.jQuery || document.write('<script src="basic/js/jquery-1.9.min.js"><\/script>');
         </script>
         <script type="text/javascript" src="../basic/js/quick_links.js"></script>
         <div class="theme-popover-mask"></div>
-    </div>
 </body>
 
 </html>

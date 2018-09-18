@@ -65,9 +65,9 @@
                                                             <dt><span title="{{$v->cname}}">{{$v->cname}}</span></dt>
                                                             @foreach($tags as $vv) @if($vv->cate_id == $v->id)
                                                             <dd style="float:left;">
-                                                                <a title="{{$vv->tname}}" href="#"><span>
-                                                                            {{$vv -> tname}}
-                                                                        </span></a>
+                                                                <a title="{{$vv->tname}}" href="/tags/{{$vv->id}}">
+                                                                    <span>{{$vv -> tname}}</span>
+                                                                </a>
                                                             </dd>
                                                             @endif @endforeach
                                                         </dl>
@@ -109,33 +109,6 @@
                 });
             })
             </script>
-            <!--小导航 -->
-            <div class="am-g am-g-fixed smallnav">
-                <div class="am-u-sm-3">
-                    <a href="sort.html">
-                            <img src="/home/images/navsmall.jpg" />
-                            <div class="title">商品分类</div>
-                        </a>
-                </div>
-                <div class="am-u-sm-3">
-                    <a href="#">
-                            <img src="/home/images/huismall.jpg" />
-                            <div class="title">大聚惠</div>
-                        </a>
-                </div>
-                <div class="am-u-sm-3">
-                    <a href="/home/index">
-                            <img src="/home/images/mansmall.jpg" />
-                            <div class="title">个人中心</div>
-                        </a>
-                </div>
-                <div class="am-u-sm-3">
-                    <a href="#">
-                            <img src="/home/images/moneysmall.jpg" />
-                            <div class="title">投资理财</div>
-                        </a>
-                </div>
-            </div>
             <!--走马灯 -->
             <div class="marqueen" style="height:418px;">
                 <span class="marqueen-title">商城头条</span>
