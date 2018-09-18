@@ -383,7 +383,7 @@ class DingdanController extends Controller
     /**
      * 前台订单点击支付
      */
-    public function pays($id)
+    public function pays(Request $req, $id)
     {
         $os = Order_shop::where('order_id',$id)->get();
         foreach ($os as $v){
