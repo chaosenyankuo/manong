@@ -408,11 +408,12 @@ class DingdanController extends Controller
 
         $order -> zhuangtai = 3;
 
-        $user = User::findOrFail(\Session::get('id'));
-        $jifen = $user->jifen;
-        $user->jifen = $jifen + $req->jifen;
-        $user->save();
-
+        if($req->jifen){
+            $user = User::findOrFail(\Session::get('id'));
+            $jifen = $user->jifen;
+            $user->jifen = $jifen + $req->jifen;
+            $user->save();
+        }
         if($order->save()){
             return view('home/dingdan/pay',compact('address','xiangxi','zongjia','uname','phone','user','links','setting'));
         }else{
