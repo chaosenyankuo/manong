@@ -96,9 +96,9 @@
                 <!--物流 -->
                 <div class="logistics">
                     <h3>选择物流方式</h3>
-                    <ul class="pay-list">
+                    <ul class="op_express_delivery_hot">
                         @foreach($wuliu as $v)
-                        <li class="pay card  "><img src="{{$v->image}}" style="width:80px;height:30px;" />&nbsp;&nbsp;&nbsp;{{$v->name}}<span></span>
+                        <li data-value="yuantong" class="OP_LOG_BTN  "><img src="{{$v->image}}" style="width:80px;height:30px;" />&nbsp;&nbsp;&nbsp;{{$v->name}}<span></span>
                             <input type="hidden" value="{{$v->id}}" />
                         </li>
                         @endforeach
