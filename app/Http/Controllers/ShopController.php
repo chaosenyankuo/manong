@@ -271,4 +271,10 @@ class ShopController extends Controller
             return back()->with('error','删除失败');
         }
     }
+
+
+    public function delete()
+    {
+        dd(111);
+    }
 }

@@ -51,9 +51,7 @@
         </div>
         @endif
         <ol class="am-breadcrumb am-breadcrumb-slash">
-            <li><a href="/">首页</a></li>
-            <li><a href="#">分类</a></li>
-            <li class="am-active">内容</li>
+            
         </ol>
         <script type="text/javascript">
         $(function() {});
@@ -71,13 +69,13 @@
                 <div class="flexslider">
                     <ul class="slides">
                         <li>
-                            <img src="/home/images/01.jpg" title="pic" />
+                            <img src="/uploads/shopimages/1.jpg" title="pic" />
                         </li>
                         <li>
-                            <img src="/home/images/02.jpg" />
+                            <img src="/uploads/shopimages/2.jpg" />
                         </li>
                         <li>
-                            <img src="/home/images/03.jpg" />
+                            <img src="/uploads/shopimages/3.jpg" />
                         </li>
                     </ul>
                 </div>
@@ -98,7 +96,7 @@
                     });
                     </script>
                     <div class="tb-booth tb-pic tb-s310">
-                        <img src="{{$shop['simage']}}" style="width:100%;height:100%;" rel="{{$shop['simage']}}" alt="细节展示放大镜特效" class="jqzoom" />
+                        <img src="{{$shop['simage']}}" rel="{{$shop['simage']}}" alt="细节展示放大镜特效" class="jqzoom" />
                     </div>
                     <ul class="tb-thumb" id="thumblist">
                         <li class="tb-selected">
@@ -511,12 +509,12 @@
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         }
                     });
-                    var shop_id = { { $shop['id'] } };
+                    var shop_id = {{$shop['id']}};
                     $.ajax({
                         url: '/cunzuji',
                         type: 'post',
-                        data: { shop_id: shop_id },
-                        success: function(data) {
+                        data: {shop_id: shop_id},
+                        success: function(data){
 
                         },
                         async: false

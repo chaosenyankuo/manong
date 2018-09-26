@@ -15,14 +15,14 @@
             <a href="#">我的交易</a>
             <ul>
                 <li><a href="/home/dingdan">订单管理</a></li>
-                <li> <a href="change.html">退款售后</a></li>
+                
             </ul>
         </li>
         <li class="person">
             <a href="#">我的资产</a>
             <ul>
                 <li> <a href="/home/coupon">优惠券 </a></li>
-                <li> <a href="bill.html">账单明细</a></li>
+             
             </ul>
         </li>
         <li class="person">

@@ -68,7 +68,7 @@
                 
             </div>
             <div id="asset" class="item">
-                <a href="#">
+                <a href="/home/index">
                     <span class="view"></span>
                 </a>
                 <div class="mp_tooltip">
@@ -93,17 +93,6 @@
                 </a>
                 <div class="mp_tooltip">
                     我的收藏
-                    <i class="icon_arrow_right_black"></i>
-                </div>
-            </div>
-            <div id="broadcast" class="item">
-                <a href="#">
-                    <span class="chongzhi">
-                        <img src="/home/images/chongzhi.png" />
-                    </span>
-                </a>
-                <div class="mp_tooltip">
-                    我要充值
                     <i class="icon_arrow_right_black"></i>
                 </div>
             </div>

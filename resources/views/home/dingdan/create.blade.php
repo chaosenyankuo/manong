@@ -65,14 +65,14 @@
                                     </span>
                                     </span>
                                 </div>
-                                <ins class="deftip">默认地址</ins>
+                                
                             </div>
                             <div class="address-right">
                                 <a href="/home/person/address.html"><span class="am-icon-angle-right am-icon-lg"></span></a>
                             </div>
                             <div class="clear"></div>
                             <div class="new-addr-btn">
-                                <a href="#" class="hidden">设为默认</a>
+                                
                                 <span class="new-addr-bar hidden">|</span>
                                 <a href="/home/dzedit/{{$v->id}}">编辑</a>
                                 <span class="new-addr-bar">|</span>
@@ -96,9 +96,9 @@
                 <!--物流 -->
                 <div class="logistics">
                     <h3>选择物流方式</h3>
-                    <ul class="op_express_delivery_hot">
+                    <ul class="pay-list">
                         @foreach($wuliu as $v)
-                        <li data-value="yuantong" class="OP_LOG_BTN  "><img src="{{$v->image}}" width="50" height="50" />{{$v->name}}<span></span>
+                        <li class="pay card  "><img src="{{$v->image}}" style="width:80px;height:30px;" />&nbsp;&nbsp;&nbsp;{{$v->name}}<span></span>
                             <input type="hidden" value="{{$v->id}}" />
                         </li>
                         @endforeach
@@ -111,7 +111,7 @@
                     <ul class="pay-list">
                         @foreach($zhifu as $v)
                         <li class="pay card">
-                            <img src="{{$v->image}}" width="50" height="50" />{{$v->name}}<span></span>
+                            <img src="{{$v->image}}" style="width:80px;height:30px;" />&nbsp;&nbsp;&nbsp;{{$v->name}}<span></span>
                             <input type="hidden" value="{{$v->id}}" />
                         </li>
                         @endforeach

@@ -17,8 +17,7 @@ class ShopCarController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        
+    {   
         $uid = \Session::get('id');
         $shopcar = Shopcar::where('user_id',$uid)->get();
         $shop_id = [];

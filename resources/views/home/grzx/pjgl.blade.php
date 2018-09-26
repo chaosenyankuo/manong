@@ -66,7 +66,7 @@
                                         <ul class="item-list">
                                             <li class="td td-item">
                                                 <div class="item-pic">
-                                                    <a href="#" class="J_MakePoint">
+                                                    <a href="/{{$v->shop->id}}.html" class="J_MakePoint">
                                                         <img src="{{$v->shop->simage2}}" class="itempic">
                                                     </a>
                                                 </div>
@@ -75,7 +75,7 @@
                                                 <div class="item-title">
                                                     <div class="item-opinion">好评</div>
                                                     <div class="item-name">
-                                                        <a href="#">
+                                                        <a href="/{{$v->shop->id}}.html">
                                                             <p class="item-basic-info">{{$v->shop->sname}}</p>
                                                         </a>
                                                     </div>

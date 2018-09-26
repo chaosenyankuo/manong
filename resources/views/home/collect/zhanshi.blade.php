@@ -73,7 +73,7 @@
                                 <div class="s-item">
                                     <div class="s-pic">
                                         <a href="/{{$v->shop->id}}.html" class="s-pic-link">
-                                                <img src="{{$v->shop->simage}}" alt="商品图片" width="80" title=""" class="s-pic-img s-guess-item-img">
+                                                <img src="{{$v->shop->simage}}" alt="商品图片" style="width:186px;height:157.3px;" class="s-pic-img s-guess-item-img">
                                             </a>
                                     </div>
                                     <div class="s-info">

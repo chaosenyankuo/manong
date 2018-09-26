@@ -25,7 +25,7 @@ class UserTableSeeder extends Seeder
         	$user -> email = str_random(15);
             $user -> sex = rand(1,3);
         	$user -> qx = '1';
-        	$user -> image = '/321.jpg';
+        	$user -> image = '/uploads/shopimages/'.rand(1,38).'.jpg';
         	$user -> save();
         }
     }
