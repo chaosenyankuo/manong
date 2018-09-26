@@ -156,7 +156,7 @@
                     </ul>
                     <div style="width:200px;height:100px;">
                         <a href="/{{$v->id}}.html">
-                            <img src="{{$cates[0]['cimage']}}" width="100"/>
+                            <img src="{{$cates[0]['cimage']}}" width="200px" height="100px"/>
                         </a>
                     </div>
                 </div>
@@ -243,12 +243,12 @@
                             <div class="sub-title ">
                                 ¥{{$vv -> sprice}}
                             </div>
-                            <i class="am-icon-shopping-basket am-icon-md seprate "></i>
+                            <a href="/{{$vv->id}}.html"><i class="am-icon-shopping-basket am-icon-md seprate "></i></a>
                         </div>
-                        <a href="/{{$vv->id}}.html"><img src="{{$vv->simage}}" /></a>
+                        <a href="/{{$vv->id}}.html"><img src="{{$vv->simage}}" width="180px" height="180px" /></a>
                     </div>
                     @endforeach
                 </div>
                 <div class="clear "></div>
             </div>
-            @endforeach @include('layouts.home._foot')
+            @endforeach @include('layouts.home._footer')

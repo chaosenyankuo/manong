@@ -42,12 +42,14 @@
                             </tr>
                         </tbody>
                         <tbody>
+                            <?php $i = 1;?>
                           @foreach ($sctt as $v)  
+                          <?php $i++; ?>
                             <tr class="gradeA odd">
                                 <td>
                                     <center>
-                                        <input type="checkbox" id="">
-                                        <label for="test" style="margin-bottom:-10px"></label>
+                                        <input type="checkbox" id="{{$i}}">
+                                        <label for="{{$i}}" style="margin-bottom:-10px"></label>
                                     </center>
                                 </td>
                                 <td class="center">{{$v['id']}}</td>
