@@ -42,7 +42,7 @@
     <div class="nav white">
         <div class="logoBig">
             <a href="/">
-                <li><img src="{{$setting['logo']}}"></li>
+                <li><img src="{{$setting['logo']}}"/></li>
             </a>
         </div>
         <div class="search-bar pr">
