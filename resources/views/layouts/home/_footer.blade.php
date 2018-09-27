@@ -1,19 +1,20 @@
 <div class="footer">
+    
     <div class="footer-hd">
         <p>
             @foreach($links as $v)
-                <a href="{{$v->url}}">{{$v->name}}</a>
+                <a href="http://{{$v->url}}">{{$v->name}}</a>
                 <b>|</b>
             @endforeach
         </p>
     </div>
     <div class="footer-bd">
         <p>
-            <a href="#">关于恒望</a>
+            <a href="/">关于好吃屋</a>
             <a href="#">合作伙伴</a>
             <a href="#">联系我们</a>
             <a href="#">网站地图</a>
-            <em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
+            <em>© {{$setting['banquan']}} 版权所有</em>
         </p>
     </div>
 </div>
@@ -31,7 +32,7 @@
                
                 <div class="ibar_login_box status_login">
                     <div class="avatar_box">
-                        @if(Session::has('id'))
+                        @if(Session::has('homeUser'))
                         <p class="avatar_imgbox">
                             <img src="{{$user['image']}}" style="width:100px;">
                         </p>
@@ -47,7 +48,7 @@
                         </ul>
                         @endif 
 
-                        @if(!Session::has('id'))
+                        @if(!Session::has('homeUser'))
                         <ul class="user_info">
                             <li>用&nbsp;户&nbsp;名：请先登录!!</li>
                         </ul>

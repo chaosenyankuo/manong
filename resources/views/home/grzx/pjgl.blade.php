@@ -58,6 +58,7 @@
                                 <td class="td-inner">商品</td>
                             </div>
                         </div>
+                        @if($comment !== null)
                         @foreach($comment as $v)
                         <div class="am-tabs-bd">
                             <div class="am-tab-panel am-fade am-in am-active" id="tab1">
@@ -67,7 +68,7 @@
                                             <li class="td td-item">
                                                 <div class="item-pic">
                                                     <a href="/{{$v->shop->id}}.html" class="J_MakePoint">
-                                                        <img src="{{$v->shop->simage2}}" class="itempic">
+                                                        <img src="{{$v->shop->simage}}" class="itempic">
                                                     </a>
                                                 </div>
                                             </li>
@@ -96,6 +97,13 @@
                             </div>
                         </div>
                         @endforeach
+                        @endif
+                        @if($comment == null)
+                        <script>
+                            alert('您还没有登录哦!')
+                            history.back();
+                        </script>
+                        @endif
                     </div>
                 </div>
             </div>

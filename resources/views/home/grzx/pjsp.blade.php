@@ -94,7 +94,7 @@
                         <span>商品印象:</span><br><br>
                         @foreach($ptag as $v)
 
-                        <div style="width:150px;height:30px;background:orange; float:left;padding:5px;margin:5px;">
+                        <div style="width:38px;height:23px;background:orange; float:left;padding-bottom:3px;padding-left:3px;margin:2px;">
                             <input type="checkbox" name="ptag_id[]" value="{{$v['id']}}">{{$v['ptname']}}
                         </div>
                         @endforeach

@@ -16,19 +16,18 @@ class ShopTableSeeder extends Seeder
     {
         for ($i=0; $i <100 ; $i++) { 
         	$shop = new Shop;
-
         	$shop -> sname = $faker -> name;
         	$shop -> sprice = rand(100,200);
-        	$shop -> guige = rand(100,200);
-        	$shop -> biaozhun = rand(100,200);
-        	$shop -> shengchan = rand(100,200);
-        	$shop -> eat = str_random(5);
-        	$shop -> save = str_random(5);
+        	$shop -> guige = rand(50,100).'g';
+        	$shop -> biaozhun = 'GB/T'.rand(10000,20000);
+        	$shop -> shengchan = 'QS'.rand(50000,100000);
+        	$shop -> eat = '开袋即食';
+        	$shop -> save = '防置于阴凉干燥处';
         	$shop -> recom = 0;
-       	 	$shop -> date = rand(1,30);
-        	$shop -> peiliao = str_random(10);
-        	$shop -> place = str_random(10);
-        	$shop -> yplace = str_random(10);
+       	 	$shop -> date = rand(30,180).'天';
+        	$shop -> peiliao = '食用盐 食用油 香料';
+        	$shop -> place = '山西省吕梁市';
+        	$shop -> yplace = '巴基斯坦';
         	$shop -> cate_id = rand(1,10);
         	$shop -> scount = rand(100,300);
         	$shop -> msales = rand(10,30);

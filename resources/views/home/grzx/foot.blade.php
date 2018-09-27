@@ -12,11 +12,17 @@
 </head>
 
 <body>
+    @if(!Session::has('homeUser'))
+    <script>
+        alert('您还没有登录哦!')
+        history.back();
+    </script>
+    @endif
     <?php
     use App\Link;
     use App\Setting;
     use App\User;
-    $uid = \Session::get('id');
+    $uid = \Session::get('homeUser')['id'];
     $user = null;
     if($uid !== null){
         $user = User::find($uid);
