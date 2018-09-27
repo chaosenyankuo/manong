@@ -33,13 +33,16 @@
                     </div>
                 </div>
                 <div class="am-g am-g-fixed">
-                    <div class="am-u-sm-12 am-u-md-12">
+                <center>
+                    <div class="am-u-sm-12 am-u-md-12" >
                         <div class="theme-popover">
                         </div>
+                        
                         <div class="search-content">
+                         
                             <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
                             @foreach($shops as $v)
-                                <li>
+                               <li>
                                     <div class="i-pic limit">
                                        <a href="/{{$v->id}}.html"> <img src="{{$v['simage']}}" /></a>
                                         <p class="title fl">{{$v['sname']}}</p>
@@ -53,13 +56,17 @@
                                     </div>
 
                                 </li>
+                                
 							@endforeach	
                             </ul>
+
                         </div>
+                     
                         <div class="clear"></div>
                         <!--分页 -->
                         
                     </div>
+                       </center>
                 </div>
                 @include('layouts.home._foot')
             </div>
