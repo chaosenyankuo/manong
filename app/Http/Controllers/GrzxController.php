@@ -30,28 +30,28 @@ class GrzxController extends Controller
         $collects = Collect::where('user_id',$id)->get();
         $recoms = Shop::where('recom','1')->take(3)->get();
 
-        $dfk = Order::where('zhuangtai','2')->where('user_id',\Session::get('id'))->get();
+        $dfk = Order::where('zhuangtai_id','2')->where('user_id',\Session::get('id'))->get();
         $a = [];
         foreach($dfk as $k=>$v){
             $a[] = $v->order_shop; //待付款
         }
         $dfks = count($a);
 
-        $dfh = Order::where('zhuangtai','3')->where('user_id',\Session::get('id'))->get();
+        $dfh = Order::where('zhuangtai_id','3')->where('user_id',\Session::get('id'))->get();
         $a = [];
         foreach($dfh as $k=>$v){
             $a[] = $v->order_shop; //待发货
         }
         $dfhs = count($a);
 
-        $dsh = Order::where('zhuangtai','4')->where('user_id',\Session::get('id'))->get();
+        $dsh = Order::where('zhuangtai_id','4')->where('user_id',\Session::get('id'))->get();
         $a = [];
         foreach($dsh as $k=>$v){
             $a[] = $v->order_shop; //待收货
         }
         $dshs = count($a);
 
-        $dpj = Order::where('zhuangtai','1')->where('user_id',\Session::get('id'))->get();
+        $dpj = Order::where('zhuangtai_id','1')->where('user_id',\Session::get('id'))->get();
         $a = [];
         foreach($dpj as $k=>$v){
             $a[] = $v->order_shop; //待评价
@@ -295,7 +295,7 @@ class GrzxController extends Controller
                     $hascom[] = $v->hascom;
                 }
                 if(!in_array('0',$hascom)){
-                    $order->zhuangtai = 5;
+                    $order->zhuangtai_id = 5;
                     $order->save();
                 }
             }
