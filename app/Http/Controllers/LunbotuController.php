@@ -93,7 +93,6 @@ class LunbotuController extends Controller
     public function update(Request $request, $id)
     {
         //
-       
         $lunbotu = lunbotu::findOrFail($id);
 
         $lunbotu -> pic = $request->pic;
@@ -102,7 +101,7 @@ class LunbotuController extends Controller
             $lunbotu -> pic = '/'.$request->pic->store('uploads/'.date('Ymd'));
         }else{
             $lunbotu -> pic = '/uploads/1.jpg';
-        } 
+        }
         if($lunbotu -> save()){
             return redirect('/lunbotu')->with('success', '更新成功');
         }else{

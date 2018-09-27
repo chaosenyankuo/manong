@@ -102,7 +102,7 @@ class HomeController extends Controller
        
     }
 
-    //前台分类标签
+    //前台标签下商品
     public function tags($id)
     {
         $tags = Tag::findOrFail($id);
@@ -114,6 +114,19 @@ class HomeController extends Controller
        return view('/home.tags.index',compact('user','setting','links','shops'));
     }
 
+    /**
+     * 前台分类下商品
+     */
+    public function cates($id)
+    {
+        $tags = Cate::findOrFail($id);
+        $id = \Session::get('homeUser')['id'];     
+        $user = User::find($id);
+        $setting = Setting::first();
+        $links = Link::all();
+        $shops = $tags->shops()->get();
+        return view('/home.tags.index',compact('user','setting','links','shops'));
+    }
 
 }
 
