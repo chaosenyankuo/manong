@@ -337,6 +337,12 @@ class DingdanController extends Controller
             $os -> pack_id = ($req -> pack_id)[$k];
             $b = $os -> save();
             $shopcar = Shopcar::where('user_id',\Session::get('homeUser')['id'])->where('shop_id',$v)->delete();
+            //销量
+            $shop = Shop::findOrFail($v);
+            $shop -> csales = $shop->csales + $os->shuliang; //总销量
+            $shop -> scount = $shop->scount - $os->shuliang; //库存
+            $shop -> msales = $shop->msales + $os->shuliang; //月销量
+            $shop ->save();
         }
 
         if($a && $os && $shopcar){
@@ -389,7 +395,18 @@ class DingdanController extends Controller
         foreach ($os as $v){
             $sprice[] = $v->shop->sprice;
             $shuliang[] = $v->shuliang;
+            $shop_id[] = $v->shop_id;
         }
+
+        //销量
+        foreach($shop_id as $k=>$v){
+            $shop = Shop::findOrFail($v); 
+            $shop -> csales = $shop->csales + $shuliang[$k]; //总销量
+            $shop -> scount = $shop->scount - $shuliang[$k]; //库存
+            $shop -> msales = $shop->msales - $shuliang[$k]; //月销量
+            $shop ->save();
+        }
+
         $a = 0;
         foreach ($sprice as $k=>$v) {
             $a += ($v*$shuliang[$k]);
