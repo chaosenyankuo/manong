@@ -51,7 +51,7 @@
                                 <td class="">
                                     @if($v->qx == '1') 管理员 @elseif($v->qx == '2') 银牌会员 @else 金牌 @endif
                                 </td>
-                                <td class=" "><img data-src="{{$v -> image}}" alt="" width="50" height="30"></td>
+                                <td class=" "><img src="{{$v -> image}}" alt="" width="50" height="30"></td>
                                 <td class="center ">{{$v-> birthday}}</td>
                                 <td class="center ">{{$v-> email}}</td>
                                 <td class="center ">{{$v -> created_at}}</td>

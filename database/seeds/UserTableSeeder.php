@@ -13,20 +13,18 @@ class UserTableSeeder extends Seeder
      * @return void
      */
     public function run(Faker $faker)
-    {
-        for ($i=0; $i <5 ; $i++) { 
-        	$user = new User;
-        	$user -> uname = $faker -> name;
-        	$user -> nickname = 'admin';
-        	$user -> paypwd = str_random(6);
-        	$user -> loginpwd = Hash::make('admin');
-        	$user -> birthday = rand(1995,2000);
-        	$user -> phone = rand(10000,200000);
-        	$user -> email = str_random(15);
-            $user -> sex = rand(1,3);
-        	$user -> qx = '1';
-        	$user -> image = '/321.jpg';
-        	$user -> save();
-        }
+    { 
+    	$user = new User;
+    	$user -> uname = 'admin';
+    	$user -> nickname = 'admin';
+    	$user -> paypwd = str_random(6);
+    	$user -> loginpwd = Hash::make('admin');
+    	$user -> birthday = '1997-09-27';
+    	$user -> phone = '1888888888';
+    	$user -> email = '88888888@163.com';
+        $user -> sex = rand(1,3);
+    	$user -> qx = '1';
+    	$user -> image = '/uploads/shopimages/'.rand(1,38).'.jpg';
+    	$user -> save();
     }
 }

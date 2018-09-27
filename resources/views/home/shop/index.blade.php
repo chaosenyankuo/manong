@@ -21,6 +21,11 @@
     <script src="/dizhi/js/distpicker.data.js"></script>
     <script src="/dizhi/js/distpicker.js"></script>
     <script src="/dizhi/js/main.js"></script>
+    <style>
+        .height-10{
+            height:10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -51,9 +56,7 @@
         </div>
         @endif
         <ol class="am-breadcrumb am-breadcrumb-slash">
-            <li><a href="/">首页</a></li>
-            <li><a href="#">分类</a></li>
-            <li class="am-active">内容</li>
+            
         </ol>
         <script type="text/javascript">
         $(function() {});
@@ -71,13 +74,13 @@
                 <div class="flexslider">
                     <ul class="slides">
                         <li>
-                            <img src="/home/images/01.jpg" title="pic" />
+                            <img src="/uploads/shopimages/1.jpg" title="pic" />
                         </li>
                         <li>
-                            <img src="/home/images/02.jpg" />
+                            <img src="/uploads/shopimages/2.jpg" />
                         </li>
                         <li>
-                            <img src="/home/images/03.jpg" />
+                            <img src="/uploads/shopimages/3.jpg" />
                         </li>
                     </ul>
                 </div>
@@ -98,7 +101,7 @@
                     });
                     </script>
                     <div class="tb-booth tb-pic tb-s310">
-                        <img src="{{$shop['simage']}}" style="width:100%;height:100%;" rel="{{$shop['simage']}}" alt="细节展示放大镜特效" class="jqzoom" />
+                        <img src="{{$shop['simage']}}" rel="{{$shop['simage']}}" alt="细节展示放大镜特效" class="jqzoom" />
                     </div>
                     <ul class="tb-thumb" id="thumblist">
                         <li class="tb-selected">
@@ -155,25 +158,7 @@
                             </li>
                             <div class="clear"></div>
                         </div>
-                        <!--地址-->
-                        <dl class="iteminfo_parameter freight">
-                            <div data-toggle="distpicker">
-                                <dt>配送至:</dt>
-                                <div class="form-group" style="width:500px;">
-                                    @if(!empty($add))
-                                    <select class="form-control" style="height:28px;" id="province1" name="sheng" data-province="{{$add[0]}}">
-                                    </select>
-                                    <select class="form-control" style="height:28px;" id="city1" name="shi" data-city="{{$add[1]}}"></select>
-                                    <select class="form-control" style="height:28px;" id="district1" name="xian" data-district="{{$add[2]}}"></select>
-                                    快递<b class="sys_item_freprice">10</b> 元 @else
-                                    <select class="form-control" style="height:28px;" id="province1" name="sheng" data-province="">
-                                    </select>
-                                    <select class="form-control" style="height:28px;" id="city1" name="shi" data-city=""></select>
-                                    <select class="form-control" style="height:28px;" id="district1" name="xian" data-district=""></select>
-                                    快递<b class="sys_item_freprice"></b> 元 @endif
-                                </div>
-                            </div>
-                        </dl>
+                        <br>
                         <div class="clear"></div>
                         <!--销量-->
                         <ul class="tm-ind-panel">
@@ -222,9 +207,11 @@
                                                     @endif @endforeach
                                                 </ul>
                                             </div>
+                                            
                                             <div class="theme-options">
-                                                <div class="cart-title number">数量</div>
-                                                <dd>
+                                                <div class="cart-title ">数量</div>
+                                                <div class="height-10"></div>
+                                                <dd>&nbsp;
                                                     <input id="min" value="-" style="text-align:center" />
                                                     <input id="text_box" name="shuliang" type="text" value="1" style="width:30px;" />
                                                     <input id="add" value="+" style="text-align:center" />
@@ -270,7 +257,7 @@
                         </li>
                         <li>
                             <div class="clearfix tb-btn tb-btn-buy theme-login">
-                                <a id="shou" title="点此按钮加入收藏夹" href="/home/cun?shop_id={{$shop['id']}}&&user_id={{session::get('id')}}" style="width:98px;border:1px solid #F03726;background-color:#F03726;color:white;height:35px;">加入收藏夹</a>
+                                <a id="shou" title="点此按钮加入收藏夹" href="/home/cun?shop_id={{$shop['id']}}&&user_id={{session::get('homeUser')['id']}}" style="width:98px;border:1px solid #F03726;background-color:#F03726;color:white;height:35px;">加入收藏夹</a>
                             </div>
                         </li>
                     </div>
@@ -500,7 +487,7 @@
                                     <li>
                                         <a href="/{{$v['id']}}.html">
                                             <div class="i-pic limit">
-                                                <img src="{{$v['simage']}}" />
+                                                <img src="{{$v['simage']}}" style="width:215px;height:182px;"/>
                                                 <p>{{$v['sname']}}</p>
                                                 <p class="price fl">
                                                     <b>¥</b>
@@ -529,12 +516,12 @@
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         }
                     });
-                    var shop_id = { { $shop['id'] } };
+                    var shop_id = {{$shop['id']}};
                     $.ajax({
                         url: '/cunzuji',
                         type: 'post',
-                        data: { shop_id: shop_id },
-                        success: function(data) {
+                        data: {shop_id: shop_id},
+                        success: function(data){
 
                         },
                         async: false

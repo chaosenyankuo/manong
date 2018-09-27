@@ -2,7 +2,6 @@
 	
 	//获取请求的参数
 	$email = $_POST['email'];
-	var_dump($email);
 	//数据库检测
 	$pdo = new PDO('mysql:host=localhost;dbname=haochichi;charset=utf8','root','');
 	//查询字段值

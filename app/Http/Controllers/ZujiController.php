@@ -105,7 +105,7 @@ class ZujiController extends Controller
     public function cunzuji()
     {
         $shop_id = $_POST['shop_id'];
-        $user_id = \Session::get('id');
+        $user_id = \Session::get('homeUser')['id'];
         $res = Zuji::where('user_id',$user_id)
             ->where('shop_id', $shop_id)
             ->first();
@@ -132,7 +132,7 @@ class ZujiController extends Controller
 
     public function foot()
     {
-        $uid = \Session::get('id');
+        $uid = \Session::get('homeUser')['id'];
         $zuji = Zuji::where('user_id',$uid)->get();
         return view('home.grzx.foot',compact('zuji'));
     }

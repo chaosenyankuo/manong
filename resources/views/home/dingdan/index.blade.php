@@ -87,8 +87,7 @@
                     <h3>选择物流方式</h3>
                     <ul class="op_express_delivery_hot">
                     	@foreach($wuliu as $v)
-                        <li data-value="yuantong" class="OP_LOG_BTN  "><img src="{{$v->image}}" width=
-                        "50" height="50" />{{$v->name}}<span></span></li>
+                        <li data-value="yuantong" class="OP_LOG_BTN  "><img src="{{$v->image}}" width="50" height="50" />{{$v->name}}<span></span></li>
                         @endforeach
                     </ul>
 

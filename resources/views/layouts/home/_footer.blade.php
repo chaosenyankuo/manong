@@ -1,19 +1,22 @@
 <div class="footer">
     <div class="footer-hd">
         <p>
-            @foreach($links as $v)
-                <a href="{{$v->url}}">{{$v->name}}</a>
-                <b>|</b>
-            @endforeach
+            <center>
+                @foreach($links as $v)
+                <a href="http://{{$v->url}}">{{$v->name}}</a>
+                <b>|</b> @endforeach
         </p>
+        </center>
     </div>
     <div class="footer-bd">
         <p>
-            <a href="#">关于恒望</a>
-            <a href="#">合作伙伴</a>
-            <a href="#">联系我们</a>
-            <a href="#">网站地图</a>
-            <em>© {{$setting['banquan']}}版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
+            <center>
+                <a href="/">关于好吃屋</a>
+                <a href="#">合作伙伴</a>
+                <a href="#">联系我们</a>
+                <a href="#">网站地图</a>
+                <em>© {{$setting['banquan']}} 版权所有</em>
+            </center>
         </p>
     </div>
 </div>
@@ -27,27 +30,24 @@
             <div id="prof" class="item">
                 <a href="/home/index">
                     <span class="setting"></span>
-                </a> 
-               
+                </a>
                 <div class="ibar_login_box status_login">
                     <div class="avatar_box">
-                        @if(Session::has('id'))
+                        @if(Session::has('homeUser'))
                         <p class="avatar_imgbox">
                             <img src="{{$user['image']}}" style="width:100px;">
                         </p>
                         <ul class="user_info">
                             <li>用户名:{{$user['nickname']}}</li>
-                             @if($user['qx'] == '1')
-                                        </li>管理员</li>
-                                    @elseif($user['qx'] == '2')
-                                        <li>银牌会员</li>
-                                    @else
-                                        <li>金牌会员</li>
-                                    @endif       
+                            @if($user['qx'] == '1')
+                            </li>管理员</li>
+                            @elseif($user['qx'] == '2')
+                            <li>银牌会员</li>
+                            @else
+                            <li>金牌会员</li>
+                            @endif
                         </ul>
-                        @endif 
-
-                        @if(!Session::has('id'))
+                        @endif @if(!Session::has('homeUser'))
                         <ul class="user_info">
                             <li>用&nbsp;户&nbsp;名：请先登录!!</li>
                         </ul>
@@ -64,11 +64,9 @@
                 <a href="/shopcar">
                     <span class="message"></span>
                 </a>
-                
-                
             </div>
             <div id="asset" class="item">
-                <a href="#">
+                <a href="/home/index">
                     <span class="view"></span>
                 </a>
                 <div class="mp_tooltip">
@@ -93,17 +91,6 @@
                 </a>
                 <div class="mp_tooltip">
                     我的收藏
-                    <i class="icon_arrow_right_black"></i>
-                </div>
-            </div>
-            <div id="broadcast" class="item">
-                <a href="#">
-                    <span class="chongzhi">
-                        <img src="/home/images/chongzhi.png" />
-                    </span>
-                </a>
-                <div class="mp_tooltip">
-                    我要充值
                     <i class="icon_arrow_right_black"></i>
                 </div>
             </div>
@@ -201,10 +188,10 @@ window.jQuery || document.write('<script src="/home/basic/js/jquery.min.js "><\/
 </script>
 <script type="text/javascript " src="/home/basic/js/quick_links.js "></script>
 <script>
-        setTimeout(function() {
-            $('#xiaoshi').css('display', 'none');
-        }, 2000)
-        </script>
+setTimeout(function() {
+    $('#xiaoshi').css('display', 'none');
+}, 2000)
+</script>
 </body>
 
 </html>

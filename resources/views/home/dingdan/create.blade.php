@@ -65,14 +65,14 @@
                                     </span>
                                     </span>
                                 </div>
-                                <ins class="deftip">默认地址</ins>
+                                
                             </div>
                             <div class="address-right">
                                 <a href="/home/person/address.html"><span class="am-icon-angle-right am-icon-lg"></span></a>
                             </div>
                             <div class="clear"></div>
                             <div class="new-addr-btn">
-                                <a href="#" class="hidden">设为默认</a>
+                                
                                 <span class="new-addr-bar hidden">|</span>
                                 <a href="/home/dzedit/{{$v->id}}">编辑</a>
                                 <span class="new-addr-bar">|</span>
@@ -98,7 +98,7 @@
                     <h3>选择物流方式</h3>
                     <ul class="op_express_delivery_hot">
                         @foreach($wuliu as $v)
-                        <li data-value="yuantong" class="OP_LOG_BTN  "><img src="{{$v->image}}" width="50" height="50" />{{$v->name}}<span></span>
+                        <li data-value="yuantong" class="OP_LOG_BTN" style="height:42px;"><img src="{{$v->image}}" style="width:80px;height:42px;" />&nbsp;&nbsp;&nbsp;{{$v->name}}<span></span>
                             <input type="hidden" value="{{$v->id}}" />
                         </li>
                         @endforeach
@@ -111,7 +111,7 @@
                     <ul class="pay-list">
                         @foreach($zhifu as $v)
                         <li class="pay card">
-                            <img src="{{$v->image}}" width="50" height="50" />{{$v->name}}<span></span>
+                            <img src="{{$v->image}}" style="width:80px;height:30px;" />&nbsp;&nbsp;&nbsp;{{$v->name}}<span></span>
                             <input type="hidden" value="{{$v->id}}" />
                         </li>
                         @endforeach
@@ -158,7 +158,8 @@
                             </div>
                         </div>
                         <div class="clear"></div>
-                        <?php $a=0; ?> @foreach($shop_id as $k=>$v)
+                        <?php $a=0; ?> 
+                        @foreach($shop_id as $k=>$v)
                         <tr class="item-list">
                             <div class="bundle  bundle-last">
                                 <div class="bundle-main">
@@ -221,7 +222,8 @@
                         <input type="hidden" name="pack_id[]" value="{{$shopcar[$k]->pack['id']}}" />
                         <input type="hidden" name="shop_id[]" value="{{$v}}" />
                         <input type="hidden" name="shuliang[]" value="{{$shuliang[$k]}}" />
-                        <?php $a += $shuliang[$k] * $shops[$v-1]->sprice; ?> @endforeach
+                        <?php $a += $shuliang[$k] * $shops[$v-1]->sprice; ?> 
+                        @endforeach
                         <div class="clear"></div>
                         </div>
                         </div>
@@ -275,7 +277,7 @@
                         <input type="hidden" name="wl_id" value="" class="m" />
                         <input type="hidden" name="zf_id" value="" class="l" />
                         <input type="hidden" name="liuyan" value="" class="k" />
-                        <input type="hidden" name="jifen" value="" />
+                        <input type="hidden" name="jifen" value="" class="p"/>
                         <input type="hidden" name="yhj_1" value="" class="j" />
                     </form>
                     <!--含运费小计 -->
@@ -285,7 +287,7 @@
                         </p>
                     </div>
                     <script type="text/javascript">
-                        $('.user-addresslist').click(function() {
+                        $('.user-addresslist').click(function(){
                             $('.z').val($('.12').html()); //总价
                             $('.p').val({{$a}});
                             $('.x').val($('input[name=uaddress_id]').val());

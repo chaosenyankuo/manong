@@ -21,7 +21,7 @@ class YjfkController extends Controller
         //
         $setting = Setting::first();
         $links = Link::all();
-        $id = \Session::get('id');
+        $id = \Session::get('homeUser')['id'];
         $user  = User::findOrFail($id);
         return view('home.yjfk.create',compact('user','links','setting'));
     }
@@ -49,7 +49,7 @@ class YjfkController extends Controller
         //
         $setting = Setting::first();
         $links = Link::all();
-        $id = \Session::get('id');
+        $id = \Session::get('homeUser')['id'];
         $user  = User::findOrFail($id);
         $yjfk = new Yjfk;
         $yjfk -> user_id = $id;

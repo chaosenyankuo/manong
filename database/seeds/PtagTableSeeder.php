@@ -14,10 +14,21 @@ class PtagTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i=0; $i <5 ; $i++) { 
-        	$ptag = new Ptag;
-        	$ptag -> ptname = $faker -> name;
-        	$ptag -> save();
-        }
+    	$ptag1 = new Ptag;
+    	$ptag1 -> ptname = '酸';
+    	$ptag1 -> save();
+        $ptag2 = new Ptag;
+        $ptag2 -> ptname = '甜';
+        $ptag2 -> save();
+        $ptag3 = new Ptag;
+        $ptag3 -> ptname = '苦';
+        $ptag3 -> save();
+        $ptag4 = new Ptag;
+        $ptag4 -> ptname = '辣';
+        $ptag4 -> save();
+        $ptag5 = new Ptag;
+        $ptag5 -> ptname = '咸';
+        $ptag5 -> save();
+        
     }
 }

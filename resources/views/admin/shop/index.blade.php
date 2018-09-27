@@ -7,11 +7,8 @@
                 <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
                     <div class="row">
                         <div class="col-sm-6">
-                            <form action="/shop" method="POST">
                                 <a href="/shop/create" class="btn btn-waring dropdown-toggle">添加</a>
-                                <button class="btn btn-danger dropdown-toggle">删除</button>
-                                {{csrf_field()}} {{method_field('DELETE')}}
-                            </form>
+                                <button class="btn btn-danger dropdown-toggle" id="shanchu">删除</button>
                         </div>
                         <div class="col-sm-6">
                             <form action="/shop" method="get">
@@ -49,13 +46,13 @@
                             @foreach($shops as $v)
                             <tr class="gradeA odd">
                                 <td class="center">
-                                        <input type="checkbox" id="test.{{$v['id']}}">
+                                        <input type="checkbox" id="test.{{$v['id']}}" name="id[]" value="{{$v['id']}}">
                                         <label for="test.{{$v['id']}}" style="margin-bottom:-10px"></label>
                                 </td>
                                 <td class="center">{{$v['id']}}</td>
                                 <td class="center">{{$v['sname']}}</td>
                                 <td class="center">{{$v['sprice']}}</td>
-                                <td class="center"><img data-src="{{$v['simage']}}" width="30" height="30" alt=""></td>
+                                <td class="center"><img src="{{$v['simage']}}" width="30" height="30" alt=""></td>
                                 <td class="center">
                                     @foreach($flavors as $vvv)
                                     @if(in_array($vvv->id,$v->flavors->pluck('id')->toArray()))
@@ -99,7 +96,7 @@
                             </tr>
                             @endforeach
                         </tbody>
-                    </table>
+                    </table>           
                     <style>
                         .pagination {
                             padding-left: 0;

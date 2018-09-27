@@ -44,7 +44,7 @@ class HomeController extends Controller
         //校验密码
         if(Hash::check($request->loginpwd, $user->loginpwd)){
             //写入session
-            session(['email'=>$user->email,'qx'=>$user->qx, 'image'=>$user->image, 'nickname'=>$user->nickname, 'id'=>$user->id]);
+            session(['homeUser' => $user]);
             return redirect('/home/index')->with('success','登陆成功');
         }else{
             return back()->with('error','登陆失败!');
@@ -57,7 +57,7 @@ class HomeController extends Controller
 
     public function logout(Request $request)
     {   
-        $request->session()->flush();
+        $request->session('homeUser')->flush();
         return redirect('/home/login')->with('success','退出成功');
     }
 
@@ -70,9 +70,10 @@ class HomeController extends Controller
 
     	$tags = Tag::all();
     	$links = Link::all();
+        $rec = Shop::where('recom','1')->get();
     	$recom = Shop::where('recom','1')->take(3)->orderBy('id','desc')->get();
         $shops = Shop::all();  
-    	$id = \Session::get('id');     
+    	$id = \Session::get('homeUser')['id'];     
         $user = User::find($id);
 
     	$a = 1;
@@ -82,7 +83,7 @@ class HomeController extends Controller
         $sctt = Sctt::all()->take(4);
         $setting = Setting::first();
 
-    	return view('home',compact('cates','tags','links','recom','shops','a','cid','user','lunbotu','sctt','setting'));
+    	return view('home',compact('cates','tags','links','recom','shops','a','cid','user','lunbotu','sctt','setting','rec'));
     }
 
     //前台搜索
@@ -90,7 +91,7 @@ class HomeController extends Controller
     {
         $soso = $_GET['keywords'];
         
-        $id = \Session::get('id');     
+        $id = \Session::get('homeUser')['id'];     
         $user = User::find($id);
         $setting = Setting::first();
         $links = Link::all();
@@ -105,7 +106,7 @@ class HomeController extends Controller
     public function tags($id)
     {
         $tags = Tag::findOrFail($id);
-        $id = \Session::get('id');     
+        $id = \Session::get('homeUser')['id'];     
         $user = User::find($id);
         $setting = Setting::first();
         $links = Link::all();

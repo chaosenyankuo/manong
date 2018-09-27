@@ -74,9 +74,9 @@
                                                     </div>
                                                     <div class="brand-side">
                                                         <dl class="dl-sort">
-                                                            <dt><span>实力商家</span></dt>
-                                                            @foreach($links as $vvv)
-                                                            <dd><a rel="nofollow" title="{{$vvv->name}}" target="_blank" href="#" rel="nofollow"><span  class="red" >{{$vvv->name}}</span></a></dd>
+                                                            <dt><span>热销产品</span></dt>
+                                                            @foreach($rec as $vvv)
+                                                            <dd><a rel="nofollow" title="{{$vvv->sname}}" target="_blank" href="/{{$v['id']}}.html" rel="nofollow"><span  class="red" >{{$vvv->sname}}</span></a></dd>
                                                             @endforeach
                                                         </dl>
                                                     </div>
@@ -109,33 +109,6 @@
                 });
             })
             </script>
-            <!--小导航 -->
-            <div class="am-g am-g-fixed smallnav">
-                <div class="am-u-sm-3">
-                    <a href="sort.html">
-                            <img src="/home/images/navsmall.jpg" />
-                            <div class="title">商品分类</div>
-                        </a>
-                </div>
-                <div class="am-u-sm-3">
-                    <a href="#">
-                            <img src="/home/images/huismall.jpg" />
-                            <div class="title">大聚惠</div>
-                        </a>
-                </div>
-                <div class="am-u-sm-3">
-                    <a href="/home/index">
-                            <img src="/home/images/mansmall.jpg" />
-                            <div class="title">个人中心</div>
-                        </a>
-                </div>
-                <div class="am-u-sm-3">
-                    <a href="#">
-                            <img src="/home/images/moneysmall.jpg" />
-                            <div class="title">投资理财</div>
-                        </a>
-                </div>
-            </div>
             <!--走马灯 -->
             <div class="marqueen" style="height:418px;">
                 <span class="marqueen-title">商城头条</span>
@@ -149,7 +122,7 @@
                                 </a></li>
                 </ul>
                 <div class="mod-vip" style="padding:0px">
-                    @if(Session::has('nickname'))
+                    @if(Session::has('homeUser'))
                     <div class="m-baseinfo">
                         <a href="/home/index">
                             <img src="{{$user['image']}}">
@@ -159,7 +132,7 @@
                             <a href="/home/index"><p>点击进入个人中心</p></a>                             
                         </em>
                     </div>
-                    @endif @if(!Session::has('nickname'))
+                    @endif @if(!Session::has('homeUser'))
                     <div class="m-baseinfo">
                         <div class="m-baseinfo">
                             <a href=" ">
@@ -183,7 +156,7 @@
                     </ul>
                     <div style="width:200px;height:100px;">
                         <a href="/{{$v->id}}.html">
-                            <img src="{{$cates[0]['cimage']}}" width="100"/>
+                            <img src="{{$cates[0]['cimage']}}" width="200px" height="100px"/>
                         </a>
                     </div>
                 </div>
@@ -270,12 +243,12 @@
                             <div class="sub-title ">
                                 ¥{{$vv -> sprice}}
                             </div>
-                            <i class="am-icon-shopping-basket am-icon-md seprate "></i>
+                            <a href="/{{$vv->id}}.html"><i class="am-icon-shopping-basket am-icon-md seprate "></i></a>
                         </div>
-                        <a href="/{{$vv->id}}.html"><img src="{{$vv->simage}}" /></a>
+                        <a href="/{{$vv->id}}.html"><img src="{{$vv->simage}}" width="180px" height="180px" /></a>
                     </div>
                     @endforeach
                 </div>
                 <div class="clear "></div>
             </div>
-            @endforeach @include('layouts.home._foot')
+            <center>@endforeach @include('layouts.home._footer')</center>

@@ -1,4 +1,3 @@
-
 @extends('layouts.admin') @section('title') 添加足迹 @endsection @section('title','添加足迹') @section('content')
 <div id="page-inner">
     <div class="row">

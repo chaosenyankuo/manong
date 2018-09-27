@@ -133,28 +133,32 @@ class CollectController extends Controller
     public function cun(Request $request)
     {
         $uid = $request -> user_id;
-        $res = Collect::where('user_id',$uid)
-            ->where('shop_id', $request->shop_id)
-            ->first();
-        if(!empty($res)){
-            return back()->with('error','该商品已在您的收藏中');
-        }
-        if(empty($res)){
-            $collect = new Collect;
-            $collect -> user_id = $request -> user_id;
-            $collect -> shop_id = $request -> shop_id;
-            if($collect -> save()){
-                return redirect('/home/collect')->with('success','添加收藏成功');
-            }else{
-                return back()->with('error','添加收藏失败');
-            }    
-        }        
+        if(!empty($uid)){
+            $res = Collect::where('user_id',$uid)
+                ->where('shop_id', $request->shop_id)
+                ->first();
+            if(!empty($res)){
+                return back()->with('error','该商品已在您的收藏中');
+            }
+            if(empty($res)){
+                $collect = new Collect;
+                $collect -> user_id = $request -> user_id;
+                $collect -> shop_id = $request -> shop_id;
+                if($collect -> save()){
+                    return redirect('/home/collect')->with('success','添加收藏成功');
+                }else{
+                    return back()->with('error','添加收藏失败');
+                }    
+            }  
+        }else{
+            return back()->with('error','请先登录！');
+        }      
         
     }
 
     public function zhanshi()
     {
-        $uid = \Session::get('id');
+        $uid = \Session::get('homeUser')['id'];
         $user = User::find($uid);
         $links = Link::all();
         $setting = Setting::first();

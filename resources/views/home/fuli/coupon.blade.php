@@ -55,6 +55,7 @@
                         <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">优惠券</strong> / <small>Coupon</small></div>
                     </div>
                     <hr/>
+                    @if(!$coupons == null)
                     <div class="am-tabs-d2 am-tabs  am-margin" data-am-tabs>
                         <div class="am-tabs-bd">
                             <div class="am-tab-panel am-fade am-in am-active" id="tab1">
@@ -96,6 +97,13 @@
                             </div>
                         </div>
                     </div>
+                    @endif
+                    @if($coupons == null)
+                    <script>
+                        alert('您还没有登录哦!!')
+                        history.back();
+                    </script>
+                    @endif
                 </div>
                 <div>
                 </div>

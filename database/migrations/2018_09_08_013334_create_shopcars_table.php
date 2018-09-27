@@ -17,7 +17,6 @@ class CreateShopcarsTable extends Migration
             $table->increments('id');
             $table->integer('shop_id');
             $table->integer('user_id');
-            $table->string('address');
             $table->integer('flavor_id');
             $table->integer('pack_id');
             $table->integer('shuliang');

@@ -119,7 +119,7 @@ class CouponController extends Controller
         $quan = $_POST['quan'];
         $coupon = Coupon::where('name',$quan)->get();
         $cid = $coupon[0]['id'];
-        $uid = \Session::get('id');
+        $uid = \Session::get('homeUser')['id'];
         $user = User::findOrFail($uid);
         $user -> huodong = '1';
         $lingqu = date('Y-m-d H:i:s',time());
@@ -138,9 +138,13 @@ class CouponController extends Controller
 
     public function zhanshi()
     {
-        $uid = \Session::get('id');
-        $user = User::findOrFail($uid);
-        $coupons = $user -> coupon_user;
+        $uid = \Session::get('homeUser')['id'];
+        $user = User::find($uid);
+        if($user){
+            $coupons = $user -> coupon_user;
+        }else{
+            $coupons = null;
+        }
         return view('home.fuli.coupon',compact('coupons','user'));
     }
 
@@ -156,7 +160,7 @@ class CouponController extends Controller
         $coupon = Coupon::where('price',$price)->first();
         $cid = $coupon['id'];
         //改变当前登录人的积分
-        $uid = \Session::get('id');
+        $uid = \Session::get('homeUser')['id'];
         $user = User::findOrFail($uid);
         //如果当前登录人的积分小于优惠券金额 则兑换失败
         if($jifen < $newprice){

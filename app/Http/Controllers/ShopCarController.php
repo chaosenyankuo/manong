@@ -17,9 +17,8 @@ class ShopCarController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        
-        $uid = \Session::get('id');
+    {   
+        $uid = \Session::get('homeUser')['id'];
         $shopcar = Shopcar::where('user_id',$uid)->get();
         $shop_id = [];
         foreach ($shopcar as $v){
@@ -51,30 +50,43 @@ class ShopCarController extends Controller
      */
     public function store(Request $request)
     {
-        $shopcar = new Shopcar;
-        $shopcar->shop_id = $request->shop_id;
-        $uid = \Session::get('id');
-        $user = User::findOrFail($uid);
-        $shopcar->user_id = $uid;
-        $shopcar->address = $request->sheng.'-'.$request->shi.'-'.$request->xian;
-        $shopcar->flavor_id = $request->flavor_id;
-        $shopcar->pack_id = $request->pack_id;
-        $shopcar->shuliang = $request->shuliang;
-        if($uid == null){
-            return back()->with('error','请先登录!!');
-        }
-        if(!$shopcar->flavor_id){
-            return back()->with('error','请选择口味!!');
-        }
+        $uid = \Session::get('homeUser')['id'];
+        $res = Shopcar::where('user_id',$uid)
+                ->where('shop_id',$request->shop_id)
+                ->where('flavor_id',$request->flavor_id)
+                ->where('pack_id',$request->pack_id)
+                ->first();
+        if(!empty($res)){
+            $res -> shuliang += $request->shuliang;
+            if($res->save()){
+                return redirect('/shopcar')->with('success','添加购物车成功');
+            }else{
+                return back()->with('error','添加购物车失败');
+            }
+        };
+        if(empty($res)){
+            $shopcar = new Shopcar;
+            $shopcar->shop_id = $request->shop_id;
+            $shopcar->user_id = $uid;
+            $shopcar->flavor_id = $request->flavor_id;
+            $shopcar->pack_id = $request->pack_id;
+            $shopcar->shuliang = $request->shuliang;
+            if($uid == null){
+                return back()->with('error','请先登录!!');
+            }
+            if(!$shopcar->flavor_id){
+                return back()->with('error','请选择口味!!');
+            }
 
-        if(!$shopcar->pack_id){
-            return back()->with('error','请选择包装!!');
-        }
-        
-        if($shopcar->save()){
-            return redirect('/shopcar')->with('success','添加购物车成功');
-        }else{
-            return back()->with('error','添加购物车失败');
+            if(!$shopcar->pack_id){
+                return back()->with('error','请选择包装!!');
+            }
+            
+            if($shopcar->save()){
+                return redirect('/shopcar')->with('success','添加购物车成功');
+            }else{
+                return back()->with('error','添加购物车失败');
+            }
         }
         
     }

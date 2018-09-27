@@ -44,13 +44,12 @@
                         <div class="m-user">
                             <!--个人信息 -->
                             <div class="m-bg"></div>
+                            @if(Session::has('homeUser'))
                             <div class="m-userinfo">
                                 <div class="m-baseinfo">
                                     <a href="/home/grxx">
-
                                             <img src="{{$user['image']}}">
-
-                                        </a>
+                                    </a>
                                     <em class="s-name">{{$user['nickname']}}<span class="vip1"></em>
                                     <div class="s-prestige am-btn am-round">
                                         @if($user->qx == '1') 管理员 @elseif($user->qx == '2') 银牌会员 @else 金牌会员 @endif
@@ -63,6 +62,25 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
+                            @if(!Session::has('homeUser'))
+                            <div class="m-userinfo">
+                                <div class="m-baseinfo">
+                                    <a href="/home/grxx">
+                                            <img src="/home/images/getAvatar.do.jpg">
+                                    </a>
+                                    <em class="s-name">请先登录哦!!!</em>
+                                    <div class="s-prestige am-btn am-round">
+                                    </div>
+                                    <span class="s-name">积分:0</span>
+                                </div>
+                                <div class="m-right">
+                                    <div class="m-address">
+                                        <a href="/home/shdz" class="i-trigger">我的收货地址</a>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                         </div>
                         <div class="box-container-bottom"></div>
                         <!--订单 -->
@@ -120,7 +138,7 @@
                                     <div class="s-item">
                                         <div class="s-pic">
                                             <a href="/{{$v->shop->id}}.html" class="s-pic-link">
-                                                <img src="{{$v->shop->simage}}" alt="商品图片" width="80" title=""" class="s-pic-img s-guess-item-img">
+                                                <img src="{{$v->shop->simage}}" alt="商品图片" style="width:186px;height:157.3px;" class="s-pic-img s-guess-item-img">
                                             </a>
                                         </div>
                                         <div class="s-info">
@@ -140,7 +158,7 @@
                             <div class="s-content">
                                 <?php
                                 use App\Zuji;
-                                $uid = \Session::get('id');
+                                $uid = \Session::get('homeUser')['id'];
                                 $zuji = Zuji::where('user_id',$uid)->get();
                                 ?>
                                 @foreach($zuji as $v)
@@ -148,7 +166,7 @@
                                     <div class="s-item">
                                         <div class="s-pic">
                                             <a href="/{{$v->shop->id}}.html" class="s-pic-link">
-                                                <img src="{{$v->shop->simage}}" alt="商品图片" width="80" title=""" class="s-pic-img s-guess-item-img">
+                                                <img src="{{$v->shop->simage}}" alt="商品图片" style="width:186px;height:157.3px;" class="s-pic-img s-guess-item-img">
                                             </a>
                                         </div>
                                         <div class="s-info">
