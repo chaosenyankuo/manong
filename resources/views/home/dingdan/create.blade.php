@@ -168,8 +168,8 @@
                                             <li class="td td-item">
                                                 <div class="item-pic">
                                                     <a href="#" class="J_MakePoint">
-                                                                <img src="{{$shops[$v-1]->simage}}" width="100" class="itempic J_ItemImg">
-                                                            </a>
+                                                        <img src="{{$shops[$v-1]->simage}}" width="100" class="itempic J_ItemImg">
+                                                    </a>
                                                 </div>
                                                 <div class="item-info">
                                                     <div class="item-basic-info">
@@ -234,7 +234,7 @@
                                 <div class="order-user-info">
                                     <div id="holyshit257" class="memo">
                                         <label>买家留言：</label>
-                                        <input type="text" title="选填,对本次交易的说明（建议填写已经和卖家达成一致的说明）" placeholder="选填,建议填写和卖家达成一致的说明" class="memo-input J_MakePoint c2c-text-default memo-close p" name="liuyan">
+                                        <input type="text" title="选填,对本次交易的说明（建议填写已经和卖家达成一致的说明）" placeholder="选填,建议填写和卖家达成一致的说明" class="memo-input J_MakePoint c2c-text-default memo-close " name="liuyan">
                                         <div class="msg hidden J-msg">
                                             <p class="error">最多输入500个字符</p>
                                         </div>
@@ -263,6 +263,7 @@
                             <div class="clear"></div>
                         </div>
                         <input type="hidden" name="jifen" value="" class="p"/>
+                        <input type="hidden" name="zongjia" value="" class="z"/>
                     </form>
                     <form action="/dingdan/pay" method="post" class="pay">
                         {{csrf_field()}}
@@ -296,8 +297,12 @@
                         })
                         $('.yhj').change(function(){
                             var zhi = {{$a+(count($shop_id)*10)}};
-                            $('.12').html(zhi - $('.yhj').val());
-                            $('#J_ActualFee').html(zhi - $('.yhj').val());
+                            var zongjia = zhi - $('.yhj').val();
+                            if(zongjia < 0){
+                                zongjia = 0;
+                            }
+                            $('.12').html(zongjia);
+                            $('#J_ActualFee').html(zongjia);
                             $('input[name=jifen]').val({{$a}});
                             $('.z').val($('.12').html()); //总价
                             $('.j').val($('.yhj').val());

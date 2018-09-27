@@ -43,4 +43,9 @@ class Order extends Model
     {
         return $this->belongsTo('App\Uaddress');
     }
+
+    public function zhuangtai()
+    {
+        return $this->belongsTo('App\Zhuangtai');
+    }
 }

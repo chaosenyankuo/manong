@@ -5,7 +5,7 @@
             <form class="col s12 form-inline" action="/uaddress" method="post">
                 <div class="row">
                     <div class="input-field col s4">
-                        <span style="font-size: 15px;">用户:</span>
+                        <span style="font-size: 15px;">所属用户:</span>
                         <div class="btn-group">
                             <select data-toggle="dropdown" class="btn btn-primary dropdown-toggle" name="user_id">
                                 <option value="">请选择用户</option>
@@ -31,11 +31,15 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s4">
+                    <div class="input-field col s3">
+                        <input id="last_name" type="text" class="validate" name="name">
+                        <label for="last_name">收货人</label>
+                    </div>
+                    <div class="input-field col s3">
                         <input id="last_name" type="text" class="validate" name="uphone">
                         <label for="last_name">电话</label>
                     </div>
-                    <div class="input-field col s8">
+                    <div class="input-field col s6">
                         <input id="last_name" type="text" class="validate" name="xadress">
                         <label for="last_name" class="">详细地址</label>
                     </div>

@@ -212,7 +212,7 @@
                             <a href="# ">{{$vv->tname}}</a> @endforeach
                         </div>
                         <span class="more ">
-                            <a href="http://taobao.com">更多美味<i class="am-icon-angle-right " style="padding-left:10px ; " ></i></a>
+                            <a href="/cates/{{$v}}">更多美味<i class="am-icon-angle-right " style="padding-left:10px ; " ></i></a>
                         </span>
                     </div>
                 </div>

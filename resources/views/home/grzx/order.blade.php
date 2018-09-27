@@ -74,13 +74,13 @@
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
+                                                                <a href="/{{$vv->id}}.html" class="J_MakePoint">
                                                                     <img src="{{$vv->simage}}" class="itempic J_ItemImg">
                                                                 </a>
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="item-basic-info">
-                                                                    <a href="#">
+                                                                    <a href="/{{$vv->id}}.html">
                                                                         <p>{{$vv->sname}}</p>
                                                                         <p class="info-little">口味：{{$os5[$k][$kk]->flavor->fname}}
                                                                             <br/>包装：{{$os5[$k][$kk]->pack->pname}} </p>
@@ -108,10 +108,15 @@
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
-                                                            <?php $a=0; ?> @foreach($v->order_shop as $kk=>$vv)
-                                                            <?php $a += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?> @endforeach 合计：{{$a}}
+                                                            合计：{{$v->cjj}}
                                                             <p>含运费：
-                                                                <span>{{count($v->order_shop)}}0.00</span>
+                                                                <span>
+                                                                    @if($v->cjj < 10)
+                                                                        0.00
+                                                                    @else
+                                                                        {{count($v->order_shop)}}0.00
+                                                                    @endif
+                                                                </span>
                                                             </p>
                                                         </div>
                                                     </li>
@@ -158,13 +163,13 @@
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
+                                                                <a href="/{{$vv->id}}.html" class="J_MakePoint">
                                                                     <img src="{{$vv->simage}}" class="itempic J_ItemImg">
                                                                 </a>
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="item-basic-info">
-                                                                    <a href="#">
+                                                                    <a href="/{{$vv->id}}.html">
                                                                         <p>{{$vv->sname}}</p>
                                                                         <p class="info-little">口味：{{$os1[$k][$kk]->flavor->fname}}
                                                                             <br/>包装：{{$os1[$k][$kk]->pack->pname}} </p>
@@ -192,10 +197,15 @@
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
-                                                            <?php $a=0; ?> @foreach($v->order_shop as $kk=>$vv)
-                                                            <?php $a += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?> @endforeach 合计：{{$a}}
+                                                            合计：{{$v->cjj}}
                                                             <p>含运费：
-                                                                <span>{{count($v->order_shop)}}0.00</span>
+                                                                <span>
+                                                                    @if($v->cjj < 10)
+                                                                        0.00
+                                                                    @else
+                                                                        {{count($v->order_shop)}}0.00
+                                                                    @endif
+                                                                </span>
                                                             </p>
                                                         </div>
                                                     </li>
@@ -234,13 +244,13 @@
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
+                                                                <a href="/{{$vv->id}}.html" class="J_MakePoint">
                                                                     <img src="{{$vv->simage}}" class="itempic J_ItemImg">
                                                                 </a>
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="item-basic-info">
-                                                                    <a href="#">
+                                                                    <a href="/{{$vv->id}}.html">
                                                                         <p>{{$vv->sname}}</p>
                                                                         <p class="info-little">口味:{{$os2[$k][$kk]->flavor->fname}}
                                                                             <br/>包装：{{$os2[$k][$kk]->pack->pname}} </p>
@@ -268,10 +278,15 @@
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
-                                                            <?php $b=0; ?> @foreach($v->order_shop as $kk=>$vv)
-                                                            <?php $b += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?> @endforeach 合计：{{$b}}
+                                                            合计：{{$v->cjj}}
                                                             <p>含运费：
-                                                                <span>{{count($v->order_shop)}}0.00</span>
+                                                                <span>
+                                                                    @if($v->cjj < 10)
+                                                                        0.00
+                                                                    @else
+                                                                        {{count($v->order_shop)}}0.00
+                                                                    @endif
+                                                                </span>
                                                             </p>
                                                         </div>
                                                     </li>
@@ -309,13 +324,13 @@
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
+                                                                <a href="/{{$vv->id}}.html" class="J_MakePoint">
                                                                     <img src="{{$vv->simage}}" class="itempic J_ItemImg">
                                                                 </a>
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="item-basic-info">
-                                                                    <a href="#">
+                                                                    <a href="/{{$vv->id}}.html">
                                                                         <p>{{$vv->sname}}</p>
                                                                         <p class="info-little">颜色：{{$os3[$k][$kk]->flavor->fname}}
                                                                             <br/>包装：{{$os3[$k][$kk]->pack->pname}} </p>
@@ -344,10 +359,15 @@
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
-                                                            <?php $c=0; ?> @foreach($v->order_shop as $kk=>$vv)
-                                                            <?php $c += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?> @endforeach 合计：{{$c}}
+                                                            合计：{{$v->cjj}}
                                                             <p>含运费：
-                                                                <span>{{count($v->order_shop)}}0.00</span>
+                                                                <span>
+                                                                    @if($v->cjj < 10)
+                                                                        0.00
+                                                                    @else
+                                                                        {{count($v->order_shop)}}0.00
+                                                                    @endif
+                                                                </span>
                                                             </p>
                                                         </div>
                                                     </li>
@@ -382,13 +402,13 @@
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
+                                                                <a href="/{{$vv->id}}.html" class="J_MakePoint">
                                                                     <img src="{{$vv->simage}}" class="itempic J_ItemImg">
                                                                 </a>
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="item-basic-info">
-                                                                    <a href="#">
+                                                                    <a href="/{{$vv->id}}.html">
                                                                         <p>{{$vv->sname}}</p>
                                                                         <p class="info-little">颜色：{{$os4[$k][$kk]->flavor->fname}}
                                                                             <br/>包装：{{$os4[$k][$kk]->pack->pname}} </p>
@@ -408,7 +428,7 @@
                                                         </li>
                                                         <li class="td td-operation">
                                                             <div class="item-operation">
-                                                                <a href="refund.html">退款/退货</a>
+                                                                <a href="/home/dingdan/delete/{{$v->id}}">退款/退货</a>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -417,9 +437,16 @@
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
-                                                            <?php $d=0; ?> @foreach($v->order_shop as $kk=>$vv)
-                                                            <?php $d += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?> @endforeach 合计：{{$d}}
-                                                            <p>含运费：<span>{{count($v->order_shop)}}0.00</span></p>
+                                                            合计：{{$v->cjj}}
+                                                            <p>含运费：
+                                                                <span>
+                                                                    @if($v->cjj < 10)
+                                                                        0.00
+                                                                    @else
+                                                                        {{count($v->order_shop)}}0.00
+                                                                    @endif
+                                                                </span>
+                                                            </p>
                                                         </div>
                                                     </li>
                                                     <div class="move-right">
@@ -462,13 +489,13 @@
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
+                                                                <a href="/{{$vv->id}}.html" class="J_MakePoint">
                                                                     <img src="{{$vv->simage}}" class="itempic J_ItemImg">
                                                                 </a>
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="item-basic-info">
-                                                                    <a href="#">
+                                                                    <a href="/{{$vv->id}}.html">
                                                                         <p>{{$vv->sname}}</p>
                                                                         <p class="info-little">颜色：{{$os2[$k][$kk]->flavor->fname}}
                                                                             <br/>包装：{{$os2[$k][$kk]->pack->pname}} </p>
@@ -496,10 +523,15 @@
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
-                                                            <?php $e=0; ?> @foreach($v->order_shop as $kk=>$vv)
-                                                            <?php $e += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?> @endforeach 合计：{{$e}}
+                                                            合计：{{$v->cjj}}
                                                             <p>含运费：
-                                                                <span>{{count($v->order_shop)}}0.00</span>
+                                                                <span>
+                                                                    @if($v->cjj < 10)
+                                                                        0.00
+                                                                    @else
+                                                                        {{count($v->order_shop)}}0.00
+                                                                    @endif
+                                                                </span>
                                                             </p>
                                                         </div>
                                                     </li>
@@ -545,13 +577,13 @@
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
+                                                                <a href="/{{$vv->id}}.html" class="J_MakePoint">
                                                                     <img src="{{$vv->simage}}" class="itempic J_ItemImg">
                                                                 </a>
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="item-basic-info">
-                                                                    <a href="#">
+                                                                    <a href="/{{$vv->id}}.html">
                                                                         <p>{{$vv->sname}}</p>
                                                                         <p class="info-little">颜色：{{$os3[$k][$kk]->flavor->fname}}
                                                                             <br/>包装：{{$os3[$k][$kk]->pack->pname}} </p>
@@ -580,10 +612,15 @@
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
-                                                            <?php $f=0; ?> @foreach($v->order_shop as $kk=>$vv)
-                                                            <?php $f += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?> @endforeach 合计：{{$f}}
+                                                            合计：{{$v->cjj}}
                                                             <p>含运费：
-                                                                <span>{{count($v->order_shop)}}0.00</span>
+                                                                <span>
+                                                                    @if($v->cjj < 10)
+                                                                        0.00
+                                                                    @else
+                                                                        {{count($v->order_shop)}}0.00
+                                                                    @endif
+                                                                </span>
                                                             </p>
                                                         </div>
                                                     </li>
@@ -625,13 +662,13 @@
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
+                                                                <a href="/{{$vv->id}}.html" class="J_MakePoint">
                                                                     <img src="{{$vv->simage}}" class="itempic J_ItemImg">
                                                                 </a>
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="item-basic-info">
-                                                                    <a href="#">
+                                                                    <a href="/{{$vv->id}}.html">
                                                                         <p>{{$vv->sname}}</p>
                                                                         <p class="info-little">颜色：{{$os4[$k][$kk]->flavor->fname}}
                                                                             <br/>包装：{{$os4[$k][$kk]->pack->pname}} </p>
@@ -651,7 +688,7 @@
                                                         </li>
                                                         <li class="td td-operation">
                                                             <div class="item-operation">
-                                                                <a href="refund.html">退款/退货</a>
+                                                                <a href="/home/dingdan/delete/{{$v->id}}">退款/退货</a>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -660,9 +697,16 @@
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
-                                                            <?php $g=0; ?> @foreach($v->order_shop as $kk=>$vv)
-                                                            <?php $g += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?> @endforeach 合计：{{$g}}
-                                                            <p>含运费：<span>{{count($v->order_shop)}}0.00</span></p>
+                                                            合计：{{$v->cjj}}
+                                                            <p>含运费：
+                                                                <span>
+                                                                    @if($v->cjj < 10)
+                                                                        0.00
+                                                                    @else
+                                                                        {{count($v->order_shop)}}0.00
+                                                                    @endif
+                                                                </span>
+                                                            </p>
                                                         </div>
                                                     </li>
                                                     <div class="move-right">
@@ -704,13 +748,13 @@
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
+                                                                <a href="/{{$vv->id}}.html" class="J_MakePoint">
                                                                     <img src="{{$vv->simage}}" class="itempic J_ItemImg">
                                                                 </a>
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="item-basic-info">
-                                                                    <a href="#">
+                                                                    <a href="/{{$vv->id}}.html">
                                                                         <p>{{$vv->sname}}</p>
                                                                         <p class="info-little">颜色：{{$os1[$k][$kk]->flavor->fname}}
                                                                             <br/>包装：{{$os1[$k][$kk]->pack->pname}} </p>
@@ -738,10 +782,15 @@
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
-                                                            <?php $h=0; ?>
-                                                            <?php $h = ($v->order_shop[$kk]->shuliang)*($v->shop[$kk]->sprice)+($v->order_shop[$kk]->shuliang * 10); ?> 合计：{{$h}}
+                                                            合计：{{$v->cjj}}
                                                             <p>含运费：
-                                                                <span>{{$v->order_shop[$kk]->shuliang}}0.00</span>
+                                                                <span>
+                                                                    @if($v->cjj < 10)
+                                                                        0.00
+                                                                    @else
+                                                                        {{count($v->order_shop)}}0.00
+                                                                    @endif
+                                                                </span>
                                                             </p>
                                                         </div>
                                                     </li>
