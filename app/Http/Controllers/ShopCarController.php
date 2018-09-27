@@ -17,9 +17,8 @@ class ShopCarController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        
-        $uid = \Session::get('id');
+    {   
+        $uid = \Session::get('homeUser')['id'];
         $shopcar = Shopcar::where('user_id',$uid)->get();
         $shop_id = [];
         foreach ($shopcar as $v){
@@ -51,7 +50,7 @@ class ShopCarController extends Controller
      */
     public function store(Request $request)
     {
-        $uid = \Session::get('id');
+        $uid = \Session::get('homeUser')['id'];
         $res = Shopcar::where('user_id',$uid)
                 ->where('shop_id',$request->shop_id)
                 ->where('flavor_id',$request->flavor_id)

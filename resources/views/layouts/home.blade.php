@@ -74,9 +74,9 @@
                                                     </div>
                                                     <div class="brand-side">
                                                         <dl class="dl-sort">
-                                                            <dt><span>实力商家</span></dt>
-                                                            @foreach($links as $vvv)
-                                                            <dd><a rel="nofollow" title="{{$vvv->name}}" target="_blank" href="#" rel="nofollow"><span  class="red" >{{$vvv->name}}</span></a></dd>
+                                                            <dt><span>热销产品</span></dt>
+                                                            @foreach($rec as $vvv)
+                                                            <dd><a rel="nofollow" title="{{$vvv->sname}}" target="_blank" href="/{{$v['id']}}.html" rel="nofollow"><span  class="red" >{{$vvv->sname}}</span></a></dd>
                                                             @endforeach
                                                         </dl>
                                                     </div>
@@ -122,7 +122,7 @@
                                 </a></li>
                 </ul>
                 <div class="mod-vip" style="padding:0px">
-                    @if(Session::has('nickname'))
+                    @if(Session::has('homeUser'))
                     <div class="m-baseinfo">
                         <a href="/home/index">
                             <img src="{{$user['image']}}">
@@ -132,7 +132,7 @@
                             <a href="/home/index"><p>点击进入个人中心</p></a>                             
                         </em>
                     </div>
-                    @endif @if(!Session::has('nickname'))
+                    @endif @if(!Session::has('homeUser'))
                     <div class="m-baseinfo">
                         <div class="m-baseinfo">
                             <a href=" ">
@@ -156,7 +156,7 @@
                     </ul>
                     <div style="width:200px;height:100px;">
                         <a href="/{{$v->id}}.html">
-                            <img src="{{$cates[0]['cimage']}}" width="100"/>
+                            <img src="{{$cates[0]['cimage']}}" width="200px" height="100px"/>
                         </a>
                     </div>
                 </div>
@@ -243,9 +243,9 @@
                             <div class="sub-title ">
                                 ¥{{$vv -> sprice}}
                             </div>
-                            <i class="am-icon-shopping-basket am-icon-md seprate "></i>
+                            <a href="/{{$vv->id}}.html"><i class="am-icon-shopping-basket am-icon-md seprate "></i></a>
                         </div>
-                        <a href="/{{$vv->id}}.html"><img src="{{$vv->simage}}" /></a>
+                        <a href="/{{$vv->id}}.html"><img src="{{$vv->simage}}" width="180px" height="180px" /></a>
                     </div>
                     @endforeach
                 </div>

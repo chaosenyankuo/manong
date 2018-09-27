@@ -11,24 +11,25 @@ use Illuminate\Support\Facades\Hash;
 class ZhuceController extends Controller
 {
     //
-      public function zhuce()
+    public function zhuce()
     {	
     	$links = Link::all();
     	$setting = Setting::first();
     	return view('home.zhuce.zhuce',['links' => $links,'setting'=>$setting]);
     }
-      public function store(Request $request)
+
+    public function store(Request $request)
     {
-       	$users = new User; 
+       	$user = new User; 
         if($request->password == null){
             return back()->with('error','请输入密码!!');
         }     
-        $users -> loginpwd = Hash::make($request->password);
-        $users -> email = $request->email;
-        $users -> qx = $request->qx;
+        $user -> loginpwd = Hash::make($request->password);
+        $user -> email = $request->email;
+        $user -> qx = $request->qx;
 
-        if($users -> save()){
-            session(['phone'=>$users->phone, 'qx'=>$request->qx, 'email'=>$users->email ,'id' => $users->id]);
+        if($user -> save()){
+            session(['homeUser'=>$user]);
             return redirect('/home/grzl')->with('success', '注册成功');
         }else{
             return back()->with('error','注册失败');

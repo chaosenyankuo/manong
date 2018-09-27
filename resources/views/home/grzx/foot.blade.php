@@ -12,11 +12,17 @@
 </head>
 
 <body>
+    @if(!Session::has('homeUser'))
+    <script>
+        alert('您还没有登录哦!')
+        history.back();
+    </script>
+    @endif
     <?php
     use App\Link;
     use App\Setting;
     use App\User;
-    $uid = \Session::get('id');
+    $uid = \Session::get('homeUser')['id'];
     $user = null;
     if($uid !== null){
         $user = User::find($uid);
@@ -88,7 +94,7 @@
                                 <div class="goods-pic">
                                     <div class="goods-pic-box">
                                         <a class="goods-pic-link" target="_blank" href="/{{$v->shop->id}}.html" title="">
-                                            <img src="{{$v->shop->simage}}" class="goods-img"></a>
+                                            <img src="{{$v->shop->simage}}" style="width:186px;height:157.3px;" class="goods-img"></a>
                                     </div>
                                     <a class="goods-delete" href="/shanzuji?zuji_id={{$v['id']}}"><i class="am-icon-trash"></i></a>
                                 </div>

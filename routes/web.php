@@ -94,7 +94,10 @@ Route::group(['middleware'=>'login'],function(){
 	Route::resource('sctt','ScttController');
 	
 	//优惠券管理
-	Route::resource('coupon','CouponController');		
+	Route::resource('coupon','CouponController');	
+
+	//用户批量删除
+	Route::post('/shop/delete','ShopController@delete');	
 });
 /*
  *前台路由

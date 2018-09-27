@@ -25,7 +25,7 @@
 </style>
 <body>
     <div class="login-boxtitle">
-        <a href="home/demo.html"><img alt="" src="/home/images/logobig.png" /></a>
+        <a href="/"><img alt="" src="/logo.png" /></a>
     </div>
     <div class="res-banner">
         <div class="res-main">

@@ -23,35 +23,34 @@ class GrzxController extends Controller
 
     public function index()
     {	
-        $id = \Session::get('id');
+        $id = \Session::get('homeUser')['id'];
     	$links = Link::all();
+        $user = User::find($id);
         $setting = Setting::first();
-    	$user  = User::findOrFail($id);
         $collects = Collect::where('user_id',$id)->get();
         $recoms = Shop::where('recom','1')->take(3)->get();
-
-        $dfk = Order::where('zhuangtai','2')->where('user_id',\Session::get('id'))->get();
+        $dfk = Order::where('zhuangtai','2')->where('user_id',$id)->get();
         $a = [];
         foreach($dfk as $k=>$v){
             $a[] = $v->order_shop; //待付款
         }
         $dfks = count($a);
 
-        $dfh = Order::where('zhuangtai','3')->where('user_id',\Session::get('id'))->get();
+        $dfh = Order::where('zhuangtai','3')->where('user_id',$id)->get();
         $a = [];
         foreach($dfh as $k=>$v){
             $a[] = $v->order_shop; //待发货
         }
         $dfhs = count($a);
 
-        $dsh = Order::where('zhuangtai','4')->where('user_id',\Session::get('id'))->get();
+        $dsh = Order::where('zhuangtai','4')->where('user_id',$id)->get();
         $a = [];
         foreach($dsh as $k=>$v){
             $a[] = $v->order_shop; //待收货
         }
         $dshs = count($a);
 
-        $dpj = Order::where('zhuangtai','1')->where('user_id',\Session::get('id'))->get();
+        $dpj = Order::where('zhuangtai','1')->where('user_id',$id)->get();
         $a = [];
         foreach($dpj as $k=>$v){
             $a[] = $v->order_shop; //待评价
@@ -65,14 +64,14 @@ class GrzxController extends Controller
     {	
     	$links = Link::all();
         $setting = Setting::first();
-    	$id = \Session::get('id');
+    	$id = \Session::get('homeUser')['id'];
 		$user  = User::findOrFail($id);
     	return view('home.grzx.grzl',compact('links','user','setting'));
     }
 
     public function grzla(request $request)
     {       
-    	$id = \Session::get('id');	
+    	$id = \Session::get('homeUser')['id'];	
     	$users = User::find($id);
         $users -> nickname = $request->nickname;
         $users -> sex = $request->sex;
@@ -85,7 +84,7 @@ class GrzxController extends Controller
             $users -> image = '/uploads/1.jpg';
         } 
         if($users -> save()){
-            $request->session()->flush();
+            $request->session('homeUser')->flush();
             return redirect('/home/login')->with('success', '添加用户成功');
         }else{
             return back()->with('error','用户添加失败');
@@ -99,7 +98,7 @@ class GrzxController extends Controller
 
     	$links = Link::all();
         $setting = Setting::first();
-    	$id = \Session::get('id');
+    	$id = \Session::get('homeUser')['id'];
     	$user = User::find($id);
     	return view('home.grzx.grxx',compact('user','links','setting'));
     }
@@ -108,7 +107,7 @@ class GrzxController extends Controller
     public function xggrxx(Request $request)
     {
 
-    	$id = \Session::get('id');
+    	$id = \Session::get('homeUser')['id'];
     	$user = User::findOrFail($id);
 
         $user -> nickname = $request -> nickname;
@@ -130,8 +129,12 @@ class GrzxController extends Controller
     {	
     	$links = Link::all();
         $setting = Setting::first();
-    	$id = \Session::get('id');
-		$user  = User::findOrFail($id);
+    	$id = \Session::get('homeUser')['id'];
+        if($id !== null){
+		    $user  = User::find($id);
+        }else{
+            $user = null;
+        }
     	return view('home.grzx.aqsz',compact('links','user','setting'));
     }
     //修改密码
@@ -139,13 +142,15 @@ class GrzxController extends Controller
     {	
     	$links = Link::all();
         $setting = Setting::first();
-        $user = User::findOrFail(session('id'));
+        $uid = \Session::get('homeUser')['id'];
+        $user = User::findOrFail($uid);
     	return view('home.aqsz.xgma',['links'=>$links,'setting'=>$setting,'user'=>$user]);
     }
 
     public function xgmacz(Request $req)
     {
-    	$user = User::findOrFail(session('id'));
+        $uid = \Session::get('homeUser')['id'];
+    	$user = User::findOrFail($uid);
         if (!Hash::check($req->jiupass,$user->loginpwd)){
             return back()->with('error','修改失败');
         }
@@ -168,17 +173,21 @@ class GrzxController extends Controller
     //收货地址增加
     public function shdz()
     {	
-        $uid = \Session::get('id');
+        $uid = \Session::get('homeUser')['id'];
     	$links = Link::all();
         $setting = Setting::first();
     	$uaddress = Uaddress::where('user_id',$uid)->get();        
-        $user  = User::findOrFail($uid);
+        if($uid !== null){
+            $user  = User::find($uid);
+        }else{
+            $uid = null;
+        }
     	return view('home.grzx.shdz',compact('links','uaddress','setting','user'));
     }
 
     public function shdza(Request $request)
     {   
-        $uid = \Session::get('id');
+        $uid = \Session::get('homeUser')['id'];
         $uaddresses = new Uaddress;
         $uaddresses -> user_id = $uid;
         $uaddresses -> name = $request -> name;
@@ -198,7 +207,7 @@ class GrzxController extends Controller
      */
     public function dzedit($id)
     {
-        $uid = \Session::get('id');
+        $uid = \Session::get('homeUser')['id'];
         $links = Link::all();
         $setting = Setting::first();
         $uaddress = Uaddress::where('user_id',$uid)->get();        
@@ -212,7 +221,7 @@ class GrzxController extends Controller
     {
         $uaddress = Uaddress::findOrFail($id);
 
-        $uid = \Session::get('id');
+        $uid = \Session::get('homeUser')['id'];
 
         $uaddress -> user_id = $uid;
         $uaddress -> name = $req -> name;
@@ -245,9 +254,13 @@ class GrzxController extends Controller
     {   
         $links = Link::all();
         $setting = Setting::first();
-        $id = \Session::get('id');
-        $user  = User::findOrFail($id);
-        $comment = $user->comment;
+        $id = \Session::get('homeUser')['id'];
+        $user  = User::find($id);
+        if($user){
+            $comment = $user->comment;
+        }else{
+            $comment = null;
+        }
         return view('home.grzx.pjgl',compact('links','setting','user','comment','pack'));
     }
 //评价商品
@@ -259,7 +272,7 @@ class GrzxController extends Controller
         $os = Order_shop::where('order_id',$o_id)->where('shop_id',$id)->first();
         $links = Link::all();
         $setting = Setting::first();
-        $uid = \Session::get('id');
+        $uid = \Session::get('homeUser')['id'];
         $user  = User::findOrFail($uid);
         $shop = Shop::findOrFail($id);
 
@@ -275,7 +288,7 @@ class GrzxController extends Controller
         //将值存入到数据库
         $comment = new Comment;
         $shop = Shop::findOrFail($id);
-        $uid = \Session::get('id');
+        $uid = \Session::get('homeUser')['id'];
         $user  = User::findOrFail($uid);
 
         $comment -> user_id = $user['id'];

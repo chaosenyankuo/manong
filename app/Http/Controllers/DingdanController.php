@@ -24,7 +24,7 @@ class DingdanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {  $uid = \Session::get('id');
+    {  $uid = \Session::get('adminUser')['id'];
         $user = User::findOrFail($uid);
         $zhifu =zhifu::all();
         $wuliu = wuliu::all();
@@ -45,7 +45,7 @@ class DingdanController extends Controller
      */
     public function create()
     {      
-        $uid = \Session::get('id');
+        $uid = \Session::get('adminUser')['id'];
         $user = User::findOrFail($uid); 
          //读取支付信息
         $zhifu = zhifu::all();
@@ -103,7 +103,7 @@ class DingdanController extends Controller
     public function edit($id)
     {
         $dingdan =order::findOrFail($id);
-        $uid = \Session::get('id');
+        $uid = \Session::get('adminUser')['id'];
         $user = User::findOrFail($uid);
         $wuliu = wuliu::all();
 
@@ -171,7 +171,7 @@ class DingdanController extends Controller
         $zhifu = Zhifu::all();
         $links = Link::all();
         $shops = Shop::all();
-        $uid = \Session::get('id');
+        $uid = \Session::get('homeUser')['id'];
         $user = User::find($uid);
         $setting = Setting::first();
         $yhj = Coupon_user::where('user_id',$uid)->get();
@@ -202,13 +202,13 @@ class DingdanController extends Controller
         $dd -> wuliu_id = $req -> wuliu_id;
         $dd -> uaddress_id = $req -> uaddress_id;
         $dd -> order_bh = $order_bh;
-        $dd -> user_id = \Session::get('id');
+        $dd -> user_id = \Session::get('homeUser')['id'];
         $dd -> zhifu_id = $req -> zhifu_id;
         
         $a = $dd->save();
 
         foreach($req-> shop_id as $k=>$v){
-            $ddd = Order::where('user_id',\Session::get('id'))->where('order_bh',$order_bh)->get();
+            $ddd = Order::where('user_id',\Session::get('homeUser')['id'])->where('order_bh',$order_bh)->get();
             $os = new Order_shop;
             $os -> order_id = $ddd[0]->id;
             $os -> shop_id = $v;
@@ -220,7 +220,7 @@ class DingdanController extends Controller
             $os -> save();
         }
 
-        $shopcar = Shopcar::where('user_id',\Session::get('id'))->where('shop_id',$v)->delete();
+        $shopcar = Shopcar::where('user_id',\Session::get('homeUser')['id'])->where('shop_id',$v)->delete();
 
         if($a && $os && $shopcar){
             return redirect('/home/dingdan')->with('success','生成订单成功');
@@ -235,15 +235,15 @@ class DingdanController extends Controller
     public function list()
     {   
         //待评价
-        $order1 = Order::where('zhuangtai','1')->where('user_id',\Session::get('id'))->get();
+        $order1 = Order::where('zhuangtai','1')->where('user_id',\Session::get('homeUser')['id'])->get();
         //代付款
-        $order2 = Order::where('zhuangtai','2')->where('user_id',\Session::get('id'))->get();
+        $order2 = Order::where('zhuangtai','2')->where('user_id',\Session::get('homeUser')['id'])->get();
         //代发货
-        $order3 = Order::where('zhuangtai','3')->where('user_id',\Session::get('id'))->get();
+        $order3 = Order::where('zhuangtai','3')->where('user_id',\Session::get('homeUser')['id'])->get();
         //待收货
-        $order4 = Order::where('zhuangtai','4')->where('user_id',\Session::get('id'))->get();
+        $order4 = Order::where('zhuangtai','4')->where('user_id',\Session::get('homeUser')['id'])->get();
         //交易成功
-        $order5 = Order::where('zhuangtai','5')->where('user_id',\Session::get('id'))->get();
+        $order5 = Order::where('zhuangtai','5')->where('user_id',\Session::get('homeUser')['id'])->get();
 
         if(!empty($order1[0])){
             foreach($order1 as $k=>$v){
@@ -281,8 +281,8 @@ class DingdanController extends Controller
             $os5 = [];
         }
 
-        $uid = \Session::get('id');
-        $user = User::findOrFail($uid);
+        $uid = \Session::get('homeUser')['id'];
+        $user = User::find($uid);
 
         $links = Link::all();
         $setting = Setting::first();
@@ -311,7 +311,7 @@ class DingdanController extends Controller
 
         if($req->yhj_1){
             $coupon = Coupon::where('price',$req->yhj_1)->first();
-            $cu = Coupon_user::where('coupon_id',$coupon->id)->where('user_id',\Session::get('id'))->first();
+            $cu = Coupon_user::where('coupon_id',$coupon->id)->where('user_id',\Session::get('homeUser')['id'])->first();
             $cu->delete();
         }
 
@@ -320,14 +320,14 @@ class DingdanController extends Controller
         $dd -> wuliu_id = $req -> wl_id;
         $dd -> uaddress_id = $req -> uadd_id;
         $dd -> order_bh = $order_bh;
-        $dd -> user_id = \Session::get('id');
+        $dd -> user_id = \Session::get('homeUser')['id'];
         $dd -> zhifu_id = $req -> zf_id;
         $dd -> liuyan = $req -> liuyan;
 
         $a = $dd->save();
 
         foreach($req-> shop_id as $k=>$v){
-            $ddd = Order::where('user_id',\Session::get('id'))->where('order_bh',$order_bh)->take(1)->get();
+            $ddd = Order::where('user_id',\Session::get('homeUser')['id'])->where('order_bh',$order_bh)->take(1)->get();
             $os = new Order_shop;
             $os -> order_id = $ddd[0]->id;
             $os -> shop_id = $v;
@@ -336,19 +336,25 @@ class DingdanController extends Controller
             $os -> flavor_id = ($req -> flavor_id)[$k];
             $os -> pack_id = ($req -> pack_id)[$k];
             $b = $os -> save();
-            $shopcar = Shopcar::where('user_id',\Session::get('id'))->where('shop_id',$v)->delete();
+            $shopcar = Shopcar::where('user_id',\Session::get('homeUser')['id'])->where('shop_id',$v)->delete();
+            //销量
+            $shop = Shop::findOrFail($v);
+            $shop -> csales = $shop->csales + $os->shuliang; //总销量
+            $shop -> scount = $shop->scount - $os->shuliang; //库存
+            $shop -> msales = $shop->msales + $os->shuliang; //月销量
+            $shop ->save();
         }
 
         if($a && $os && $shopcar){
 
-            $user = User::findOrFail(\Session::get('id'));
+            $user = User::findOrFail(\Session::get('homeUser')['id']);
             $jifen = $user->jifen;
             $user->jifen = $jifen + $req->jifen;
             $user->save();
 
             $setting = Setting::first();
             $links = Link::all();
-            $order = Order::where('user_id',\Session::get('id'))->where('order_bh',$order_bh)->get();
+            $order = Order::where('user_id',\Session::get('homeUser')['id'])->where('order_bh',$order_bh)->get();
             $uadd = $order[0]->uaddress;
             $address = explode('-', $uadd->address);
             $xiangxi = $uadd -> xadress;
@@ -383,13 +389,24 @@ class DingdanController extends Controller
     /**
      * 前台订单点击支付
      */
-    public function pays(Request $req, $id)
+    public function pays(Request $req,$id)
     {
         $os = Order_shop::where('order_id',$id)->get();
         foreach ($os as $v){
             $sprice[] = $v->shop->sprice;
             $shuliang[] = $v->shuliang;
+            $shop_id[] = $v->shop_id;
         }
+
+        //销量
+        foreach($shop_id as $k=>$v){
+            $shop = Shop::findOrFail($v); 
+            $shop -> csales = $shop->csales + $shuliang[$k]; //总销量
+            $shop -> scount = $shop->scount - $shuliang[$k]; //库存
+            $shop -> msales = $shop->msales - $shuliang[$k]; //月销量
+            $shop ->save();
+        }
+
         $a = 0;
         foreach ($sprice as $k=>$v) {
             $a += ($v*$shuliang[$k]);
@@ -403,14 +420,14 @@ class DingdanController extends Controller
         $xiangxi = $order->uaddress->xadress;
         $uname = $order->uaddress->name;
         $phone = $order->uaddress->uphone;
-        $user = User::findOrFail(\Session::get('id'));
+        $user = User::findOrFail(\Session::get('homeUser')['id']);
         $links = Link::all();
         $setting = Setting::first();
 
         $order -> zhuangtai = 3;
 
         if($req->jifen){
-            $user = User::findOrFail(\Session::get('id'));
+            $user = User::findOrFail(\Session::get('homeUser')['id']);
             $jifen = $user->jifen;
             $user->jifen = $jifen + $req->jifen;
             $user->save();

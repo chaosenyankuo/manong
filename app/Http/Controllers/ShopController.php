@@ -30,7 +30,7 @@ class ShopController extends Controller
         $tags = Tag::all();
         $flavors = Flavor::all();
         $packs = Pack::all();
-        $uid = \Session::get('id');
+        $uid = \Session::get('adminUser')['id'];
         $user = User::find($uid);
         $shops = Shop::orderBy('id','desc')
             ->where('sname','like','%'.request()->keywords.'%')
@@ -179,8 +179,8 @@ class ShopController extends Controller
 
         //获取当前登录人的信息
         $user = null;
-        if(\Session::has('id')){
-            $id = \Session::get('id');
+        if(\Session::has('homeUser')){
+            $id = \Session::get('homeUser')['id'];
             $user = User::find($id);
             
             //获取当前登录人的地址信息
@@ -289,5 +289,11 @@ class ShopController extends Controller
         }else{
             return back()->with('error','删除失败');
         }
+    }
+
+
+    public function delete()
+    {
+        dd(111);
     }
 }
