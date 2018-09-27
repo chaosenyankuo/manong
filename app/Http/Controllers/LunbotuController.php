@@ -14,7 +14,7 @@ class LunbotuController extends Controller
      */
     public function index()
     {
-        $lunbotu = Lunbotu::orderBy('id','asc')->paginate(3);
+        $lunbotu = Lunbotu::orderBy('id','asc')->paginate(4);
             
             
        return view('admin.lunbotu.index',compact('lunbotu'));

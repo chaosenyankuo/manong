@@ -158,7 +158,7 @@ class CollectController extends Controller
 
     public function zhanshi()
     {
-        $uid = \Session::get('id');
+        $uid = \Session::get('homeUser')['id'];
         $user = User::find($uid);
         $links = Link::all();
         $setting = Setting::first();

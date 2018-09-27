@@ -54,9 +54,9 @@
                                 </td>
                                 <td class="center">{{$v['id']}}</td>
                                 <td class="center">{{$v['scth']}}</td>
-                                <td class="center">{{$v['scth_url']}}</td>
+                                <td class="center">{{$v['scth_url']}} <a href="{{$v['scth_url']}}" style="color:black;"><button>点击跳转</button></a></td>
                                 <td class="center">{{$v['scgg']}}</td>
-                                <td class="center">{{$v['scgg_url']}}</td>
+                                <td class="center">{{$v['scgg_url']}} <a href="{{$v['scgg_url']}}" style="color: black;"><button>点击跳转</button></a></td>
                                 <td width="20px">
                                     <form action="/sctt/{{$v['id']}}" method="post">
                                     <a href="/sctt/{{$v['id']}}/edit" style="float:left " class="waves-effect waves-light btn">编辑</a>

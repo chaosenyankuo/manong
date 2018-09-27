@@ -16,7 +16,7 @@ class TagController extends Controller
     {
         $tags = Tag::orderBy('id','desc')
             ->where('tname','like','%'.request()->keywords.'%')
-            ->paginate(5);
+            ->paginate(15);
         return view('admin.tag.index',compact('tags'));
     }
 

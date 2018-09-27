@@ -59,7 +59,7 @@
                     <ul class="am-avg-sm-1 am-avg-md-3 am-thumbnails" style="width:255px;height:150px;margin-bottom:50px;margin-right:0px;margin-left:10px;float:left;" >
                         
                         <li class="user-addresslist">
-                            <span class="new-option-r"><i class="am-icon-check-circle"></i>设为默认</span>
+                            <span class="new-option-r"><i class="am-icon-check-circle"></i></span>
                             <p class="new-tit new-p-re">
                                 <span class="new-txt">{{$v['name']}}</span>
                                 <span class="new-txt-rd2">{{$v['uphone']}}</span>
@@ -150,7 +150,7 @@
                                             $('.phones').show().html('<center><span style="color:red;font-size:10px;" >请输入11位手机号</span><center/>');
                                             CPHONE = false;
                                         }else{
-                                            $('.phones').show().html('<span style="color:green;font-size:12px;font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✔</span>');
+                                            $('.phones').show().html('<span style="color:green;font-size:12px;font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✔</span>');
                                             CPHONE = true;
                                         }
                                     });

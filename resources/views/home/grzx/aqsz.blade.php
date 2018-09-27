@@ -49,7 +49,7 @@
 							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">账户安全</strong> / <small>Set&nbsp;up&nbsp;Safety</small></div>
 						</div>
 						<hr/>
-
+						@if($user !== null)
 						<!--头像 -->
 						<div class="user-infoPic">
 
@@ -69,7 +69,13 @@
 								
 							</div>
 						</div>
-
+						@endif
+						@if($user == null)
+						<script>
+							alert('您还没有登录哦!');
+							history.back();
+						</script>
+						@endif
 						<div class="check">
 							<ul>
 								<li>

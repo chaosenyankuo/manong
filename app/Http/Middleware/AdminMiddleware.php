@@ -18,8 +18,8 @@ class AdminMiddleware
     public function handle($request, Closure $next)
     {
 
-        if(\Session::has('id')){
-            $user = User::findOrFail(\Session::get('id'));
+        if(\Session::has('adminUser')){
+            $user = User::findOrFail(\Session::get('adminUser')['id']);
             if($user['qx']==2){
                  return back()->with('error','权限不足');
             }

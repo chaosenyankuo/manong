@@ -41,7 +41,7 @@
         use App\Link;
         use App\Setting;
         use App\User;
-        $uid = \Session::get('id');
+        $uid = \Session::get('homeUser')['id'];
         $user = null;
         if($uid !== null){
             $user = User::findOrFail($uid);
@@ -108,7 +108,8 @@
                 <div>
                     @if($user == null)
                     <script> 
-                        alert('请先登录哦!!!');     
+                        alert('请先登录哦!!!');
+                        window.location.href='/';
                     </script>
                     @endif
                     <button id="start">点击立即抽奖</button>
@@ -164,6 +165,7 @@
                             async: false
                         })
                         $('#name').text(quan);
+                        stop.attr('disabled', 'disabled');
                     });
                 </script>
                 <hr>

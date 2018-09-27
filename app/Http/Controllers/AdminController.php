@@ -37,7 +37,7 @@ class AdminController extends Controller
         //校验密码
         if(Hash::check($request->loginpwd, $user->loginpwd)){
             //写入session
-            session(['nickname'=>$user->nickname,  'id'=>$user->id]);
+            session(['adminUser'=>$user]);
             return redirect('/admin')->with('success','登陆成功');
         }else{
             return back()->with('error','登陆失败!');
@@ -95,7 +95,7 @@ class AdminController extends Controller
 	 */
 	public function logout(Request $request)
 	{
-		$request->session()->flush();
+		$request->session('adminUser')->flush();
 		return redirect('/admin/login')->with('success','退出成功');
 	}
 
