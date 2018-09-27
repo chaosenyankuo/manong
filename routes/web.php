@@ -230,6 +230,11 @@ Route::get('/home/foot','ZujiController@foot');
 //删除足迹
 Route::get('/shanzuji','ZujiController@shanzuji');
 
+//采集数据
+Route::get('/caiji','LingShiController@single');
+
+//列表采集
+Route::get('/caiji/list', 'LingShiController@list');
 
 
 

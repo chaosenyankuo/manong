@@ -314,9 +314,9 @@
                                     <li title="">产地:&nbsp;{{$shop['place']}}</li>
                                     <li title="">配料表:&nbsp;{{$shop['peiliao']}}</li>
                                     <li title="">产品规格:&nbsp;{{$shop['guige']}}</li>
-                                    <li title="">保质期:&nbsp;{{$shop['date']}}天</li>
                                     <li title="">产品标准号:&nbsp;{{$shop['biaozhun']}}</li>
-                                    <li title="">生产许可证编号：&nbsp;{{$shop['shengchan']}}</li>
+                                    <li title="">生产日期：&nbsp;{{$shop['shengchan']}}</li>
+                                    <li title="">保质期:&nbsp;{{$shop['date']}}</li>
                                     <li title="">储存方法：&nbsp;{{$shop['save']}}</li>
                                     <li title="">食用方法：&nbsp;{{$shop['eat']}}</li>
                                 </ul>
@@ -488,7 +488,7 @@
                                         <a href="/{{$v['id']}}.html">
                                             <div class="i-pic limit">
                                                 <img src="{{$v['simage']}}" style="width:215px;height:182px;"/>
-                                                <p>{{$v['sname']}}</p>
+                                                <p><?php echo Mb_substr($v['sname'],0,10,'utf-8');?></p>
                                                 <p class="price fl">
                                                     <b>¥</b>
                                                     <strong>{{$v['sprice']}}</strong>
