@@ -338,7 +338,10 @@
                                     <dt>买家印象</dt>
                                     <dd class="p-bfc">
                                         @foreach($ptags as $k => $v)
-                                        <q class="comm-tags"><span>{{$v['ptname']}}</span><em>({{$count[$k]}})</em></q>
+                                        <q class="comm-tags">
+                                            <span>{{$v['ptname']}}</span> 
+                                            <em>({{$shuliang[$k]}})</em>
+                                        </q>
                                         @endforeach
                                     </dd>
                                 </dl>

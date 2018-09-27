@@ -101,7 +101,7 @@
                             var v = $(this).val();
                             var reg = /^\w{6,20}$/;
                             if(!reg.test(v)){
-                                $('.password').show().html('<center><span style="color:red;font-size:10px;" >请输入8-20位非空白字符</span><center/>');
+                                $('.password').show().html('<center><span style="color:red;font-size:10px;" >请输入6-20位非空白字符</span><center/>');
                                 PASS = false;
                             }else{
                                 $('.password').show().html('<span style="color:green;font-size:12px;font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✔</span>');

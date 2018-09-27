@@ -140,11 +140,37 @@ class ShopController extends Controller
 
         //商品印象
         $ptags = Ptag::all();
-        foreach(Ptag::withCount('shop')->get() as $v){
-            $count[] = $v->shop_count;
+        $a = $shop->ptags()->get();
+        $b = [];
+        $c = [];
+        $d = [];
+        $e = [];
+        $f = [];
+        if(!empty($a[0])){
+
+            foreach($a as $v){
+                if($v->id == 1){
+                    $b[] = $v->id;
+                }else if($v->id == 2){
+                    $c[] = $v->id;
+                }else if($v->id == 3){
+                    $d[] = $v->id;
+                }else if($v->id == 4){
+                    $e[] = $v->id;
+                }else if($v->id == 5){
+                    $f[] = $v->id;
+                }
+            }
+        }
+        $shuliang = [count($b),count($c),count($d),count($e),count($f)];
+
+        
+
+        foreach(Shop::withCount('ptags')->where('id',$id)->get() as $v){
+            // $count[] = $v->ptags_count;
+            // dd($v->ptags_count);
 
         }
-
         $comments = Comment::orderBy('id','desc')
                 ->where('shop_id',$id)
                 ->paginate(2);
@@ -177,7 +203,7 @@ class ShopController extends Controller
         //推荐商品
         $recom = Shop::where('recom','1')->take(3)->orderBy('id','desc')->get();
 
-        return view('home.shop.index',compact('shop','comment','comments','pack','flavor','recom','cates','links','add','user','hao','zhong','cha','bilv','ptags','count','setting'));
+        return view('home.shop.index',compact('shop','comment','comments','pack','flavor','recom','cates','links','add','user','hao','zhong','cha','bilv','ptags','count','setting','shuliang'));
 
 
     }

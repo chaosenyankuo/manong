@@ -45,6 +45,11 @@
                         <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">发表评论</strong> / <small>Make&nbsp;Comments</small></div>
                     </div>
                     <hr/>
+                    <div class="info-btn">
+                    @if(Session::has('error'))
+                            <button id="xiaoshi"class="am-btn am-btn-danger">{{Session::get('error')}}</button>
+                    @endif
+                        </div>
                     <form action="/home/plsp/{{$shop['id']}}" method="post">
                     <div class="comment-main">
                         <div class="comment-list">
@@ -120,6 +125,11 @@
                     </div>
                 </div>
             </div>
+            <script>
+                setTimeout(function() {
+                    $('#xiaoshi').css('display', 'none');
+                }, 2000)
+                </script>
             <!--底部-->
             @include('layouts.home._foot')
         </div>

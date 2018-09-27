@@ -75,7 +75,7 @@
                                                 <div class="item-title">
                                                     <div class="item-opinion">好评</div>
                                                     <div class="item-name">
-                                                        <a href="#">
+                                                        <a href="/{{$v->shop->id}}.html">
                                                             <p class="item-basic-info">{{$v->shop->sname}}</p>
                                                         </a>
                                                     </div>
