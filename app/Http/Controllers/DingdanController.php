@@ -204,12 +204,13 @@ class DingdanController extends Controller
         $order_bh = rand(100,999);
 
         $dd = new Order;
-        $dd -> zhuangtai_id_id = 2;
+        $dd -> zhuangtai_id = 2;
         $dd -> wuliu_id = $req -> wuliu_id;
         $dd -> uaddress_id = $req -> uaddress_id;
         $dd -> order_bh = $order_bh;
         $dd -> user_id = \Session::get('homeUser')['id'];
         $dd -> zhifu_id = $req -> zhifu_id;
+        $dd -> cjj = $req -> zongjia;
         
         $a = $dd->save();
 
@@ -241,15 +242,15 @@ class DingdanController extends Controller
     public function list()
     {   
         //待评价
-        $order1 = Order::where('zhuangtai','1')->where('user_id',\Session::get('homeUser')['id'])->get();
+        $order1 = Order::where('zhuangtai_id','1')->where('user_id',\Session::get('homeUser')['id'])->get();
         //代付款
-        $order2 = Order::where('zhuangtai','2')->where('user_id',\Session::get('homeUser')['id'])->get();
+        $order2 = Order::where('zhuangtai_id','2')->where('user_id',\Session::get('homeUser')['id'])->get();
         //代发货
-        $order3 = Order::where('zhuangtai','3')->where('user_id',\Session::get('homeUser')['id'])->get();
+        $order3 = Order::where('zhuangtai_id','3')->where('user_id',\Session::get('homeUser')['id'])->get();
         //待收货
-        $order4 = Order::where('zhuangtai','4')->where('user_id',\Session::get('homeUser')['id'])->get();
+        $order4 = Order::where('zhuangtai_id','4')->where('user_id',\Session::get('homeUser')['id'])->get();
         //交易成功
-        $order5 = Order::where('zhuangtai','5')->where('user_id',\Session::get('homeUser')['id'])->get();
+        $order5 = Order::where('zhuangtai_id','5')->where('user_id',\Session::get('homeUser')['id'])->get();
 
         if(!empty($order1[0])){
             foreach($order1 as $k=>$v){
@@ -329,6 +330,7 @@ class DingdanController extends Controller
         $dd -> user_id = \Session::get('homeUser')['id'];
         $dd -> zhifu_id = $req -> zf_id;
         $dd -> liuyan = $req -> liuyan;
+        $dd -> cjj = $req -> zongjia;
 
         $a = $dd->save();
 
@@ -413,14 +415,8 @@ class DingdanController extends Controller
             $shop ->save();
         }
 
-        $a = 0;
-        foreach ($sprice as $k=>$v) {
-            $a += ($v*$shuliang[$k]);
-        }
-
-        $zongjia = $a + (count($sprice).'0');
-
         $order = Order::findOrFail($id);
+        $zongjia = $order -> cjj;
         $uadd = $order->uaddress->address;
         $address = explode('-', $uadd);
         $xiangxi = $order->uaddress->xadress;
