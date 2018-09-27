@@ -14,9 +14,10 @@ class UaddressTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i <20 ; $i++) { 
+        for ($i=0; $i < 5 ; $i++) { 
         	$uaddress = new Uaddress;
-        	$uaddress -> user_id = '1';
+            $uaddress -> user_id = '1';
+        	$uaddress -> name = 'admin';
         	$uaddress -> uphone = '1888888888';
         	$uaddress -> xadress = '振兴街88号';
         	$uaddress -> address = '山西省-吕梁市-孝义市';

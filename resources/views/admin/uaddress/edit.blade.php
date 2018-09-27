@@ -45,11 +45,15 @@
                 </div>
 
                 <div class="row">
-                    <div class="input-field col s4">
+                    <div class="input-field col s3">
+                        <input id="last_name" type="text" class="validate" name="name" value="{{$uaddress->name}}">
+                        <label for="last_name">收货人</label>
+                    </div>
+                    <div class="input-field col s3">
                         <input id="last_name" type="text" class="validate" name="uphone" value="{{$uaddress->uphone}}">
                         <label for="last_name">电话</label>
                     </div>
-                    <div class="input-field col s8">
+                    <div class="input-field col s6">
                         <input id="last_name" type="text" class="validate" name="xadress" value="{{$uaddress->xadress}}">
                         <label for="last_name" class="">详细地址</label>
                     </div>

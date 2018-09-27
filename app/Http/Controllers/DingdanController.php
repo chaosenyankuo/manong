@@ -14,6 +14,7 @@ use App\Uaddress;
 use App\User;
 use App\Wuliu;
 use App\Zhifu;
+use App\Zhuangtai;
 use Illuminate\Http\Request;
 
 class DingdanController extends Controller
@@ -24,18 +25,14 @@ class DingdanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {  $uid = \Session::get('adminUser')['id'];
-        $user = User::findOrFail($uid);
-        $zhifu =zhifu::all();
-        $wuliu = wuliu::all();
-
-          //读取数据库 获取订单数据
-        $dingdan = order::orderBy('id','desc')
-                ->paginate(4);
-            
+    {  
+        //读取数据库 获取订单数据
+        $os = Order_shop::orderBy('id','desc')
+                ->where('order_bh','like', '%'.request()->keywords.'%')
+                ->paginate(5);
             
         //解析模板显示用户数据
-        return view('admin.dingdan.index', ['dingdan'=>$dingdan,'zhifu'=>$zhifu,'wuliu'=>$wuliu,'user'=>$user]);
+        return view('admin.dingdan.index', compact('os'));
     }
 
     /**
@@ -102,14 +99,17 @@ class DingdanController extends Controller
      */
     public function edit($id)
     {
+        $os = Order_shop::findOrFail($id);
+        $flavor = $os->shop->flavors()->get();
+        $pack = $os->shop->packs()->get();
         $dingdan =order::findOrFail($id);
         $uid = \Session::get('adminUser')['id'];
         $user = User::findOrFail($uid);
         $wuliu = wuliu::all();
-
         $zhifu = zhifu::all();
+        $uaddress = Uaddress::where('user_id',$uid)->get();
 
-        return view('admin.dingdan.edit', compact('dingdan','zhifu','wuliu','user'));
+        return view('admin.dingdan.edit', compact('os','zhifu','wuliu','flavor','pack','uaddress'));
     }
 
     /**
@@ -119,21 +119,21 @@ class DingdanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $req, $id)
     { //获取订单详情
 
-        $dingdan = order::findOrFail($id);
+        $os = Order_shop::findOrFail($id);
+        $order = Order::findOrFail($os->order_id);
 
         //更新
+        $order -> wuliu_id = $req -> wuliu_id;
+        $order -> zhifu_id = $req -> zhifu_id;
+        $order -> uaddress_id = $req -> uaddress_id;
+        $os -> flavor_id = $req -> flavor_id;
+        $os -> pack_id = $req -> pack_id;
+        $os -> shuliang = $req -> shuliang;
 
-        $dingdan -> wuliu_id = $request-> wuliu_id;
-        $dingdan -> shop_id = $request-> shop_id;
-        $dingdan -> uaddress_id = $request-> uaddress_id;
-        $dingdan -> order_bh = $request-> order_bh;
-        $dingdan -> user_id = $request-> user_id;
-        $dingdan -> zhifu_id = $request-> zhifu_id;
-
-        if($dingdan->save()){
+        if($os->save() && $order->save()){
             return redirect('/dingdan')->with('success','更新成功');
         }else{
             return back()->with('error','更新失败');
@@ -149,10 +149,16 @@ class DingdanController extends Controller
      */
     public function destroy($id)
     {
-        $dingdan = order::findOrFail($id);
+        $order = Order::findOrFail($id);
 
-        if($dingdan->delete()){
-            return back()->with('success','删除成功');
+        $os = $order->order_shop()->get();
+
+        foreach($os as $v){
+            $v->delete();
+        }
+
+        if($order->delete()){
+            return redirect('/dingdan')->with('success','删除成功');
         }else{
             return back()->with('error','删除失败');
         }
@@ -198,7 +204,7 @@ class DingdanController extends Controller
         $order_bh = rand(100,999);
 
         $dd = new Order;
-        $dd -> zhuangtai = 2;
+        $dd -> zhuangtai_id_id = 2;
         $dd -> wuliu_id = $req -> wuliu_id;
         $dd -> uaddress_id = $req -> uaddress_id;
         $dd -> order_bh = $order_bh;
@@ -316,7 +322,7 @@ class DingdanController extends Controller
         }
 
         $dd = new Order;
-        $dd -> zhuangtai = 3;
+        $dd -> zhuangtai_id = 3;
         $dd -> wuliu_id = $req -> wl_id;
         $dd -> uaddress_id = $req -> uadd_id;
         $dd -> order_bh = $order_bh;
@@ -424,7 +430,7 @@ class DingdanController extends Controller
         $links = Link::all();
         $setting = Setting::first();
 
-        $order -> zhuangtai = 3;
+        $order -> zhuangtai_id = 3;
 
         if($req->jifen){
             $user = User::findOrFail(\Session::get('homeUser')['id']);
@@ -446,7 +452,7 @@ class DingdanController extends Controller
     {
         $order = Order::findOrFail($id);
 
-        $order -> zhuangtai = 4;
+        $order -> zhuangtai_id = 4;
 
         if($order->save()){
             return back()->with('success','提醒发货成功');
@@ -462,7 +468,7 @@ class DingdanController extends Controller
     {
         $order = Order::findOrFail($id);
 
-        $order -> zhuangtai = 1;
+        $order -> zhuangtai_id = 1;
 
         if($order->save()){
             return back()->with('success','确认收货成功');

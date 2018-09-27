@@ -15,7 +15,7 @@ class Scttcontroller extends Controller
     public function index()
     {
         //
-        $sctt = Sctt::orderBy('id','asc')->paginate(3);
+        $sctt = Sctt::orderBy('id','asc')->paginate(5);
         // dd($sctt);
          return view('admin.Sctt.index',compact('sctt'));
     }

@@ -74,13 +74,13 @@
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
+                                                                <a href="/{{$vv->id}}.html" class="J_MakePoint">
                                                                     <img src="{{$vv->simage}}" class="itempic J_ItemImg">
                                                                 </a>
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="item-basic-info">
-                                                                    <a href="#">
+                                                                    <a href="/{{$vv->id}}.html">
                                                                         <p>{{$vv->sname}}</p>
                                                                         <p class="info-little">口味：{{$os5[$k][$kk]->flavor->fname}}
                                                                             <br/>包装：{{$os5[$k][$kk]->pack->pname}} </p>
@@ -158,13 +158,13 @@
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
+                                                                <a href="/{{$vv->id}}.html" class="J_MakePoint">
                                                                     <img src="{{$vv->simage}}" class="itempic J_ItemImg">
                                                                 </a>
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="item-basic-info">
-                                                                    <a href="#">
+                                                                    <a href="/{{$vv->id}}.html">
                                                                         <p>{{$vv->sname}}</p>
                                                                         <p class="info-little">口味：{{$os1[$k][$kk]->flavor->fname}}
                                                                             <br/>包装：{{$os1[$k][$kk]->pack->pname}} </p>
@@ -234,13 +234,13 @@
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
+                                                                <a href="/{{$vv->id}}.html" class="J_MakePoint">
                                                                     <img src="{{$vv->simage}}" class="itempic J_ItemImg">
                                                                 </a>
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="item-basic-info">
-                                                                    <a href="#">
+                                                                    <a href="/{{$vv->id}}.html">
                                                                         <p>{{$vv->sname}}</p>
                                                                         <p class="info-little">口味:{{$os2[$k][$kk]->flavor->fname}}
                                                                             <br/>包装：{{$os2[$k][$kk]->pack->pname}} </p>
@@ -309,13 +309,13 @@
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
+                                                                <a href="/{{$vv->id}}.html" class="J_MakePoint">
                                                                     <img src="{{$vv->simage}}" class="itempic J_ItemImg">
                                                                 </a>
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="item-basic-info">
-                                                                    <a href="#">
+                                                                    <a href="/{{$vv->id}}.html">
                                                                         <p>{{$vv->sname}}</p>
                                                                         <p class="info-little">颜色：{{$os3[$k][$kk]->flavor->fname}}
                                                                             <br/>包装：{{$os3[$k][$kk]->pack->pname}} </p>
@@ -382,13 +382,13 @@
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
+                                                                <a href="/{{$vv->id}}.html" class="J_MakePoint">
                                                                     <img src="{{$vv->simage}}" class="itempic J_ItemImg">
                                                                 </a>
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="item-basic-info">
-                                                                    <a href="#">
+                                                                    <a href="/{{$vv->id}}.html">
                                                                         <p>{{$vv->sname}}</p>
                                                                         <p class="info-little">颜色：{{$os4[$k][$kk]->flavor->fname}}
                                                                             <br/>包装：{{$os4[$k][$kk]->pack->pname}} </p>
@@ -408,7 +408,7 @@
                                                         </li>
                                                         <li class="td td-operation">
                                                             <div class="item-operation">
-                                                                <a href="refund.html">退款/退货</a>
+                                                                <a href="/home/dingdan/delete/{{$v->id}}">退款/退货</a>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -462,13 +462,13 @@
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
+                                                                <a href="/{{$vv->id}}.html" class="J_MakePoint">
                                                                     <img src="{{$vv->simage}}" class="itempic J_ItemImg">
                                                                 </a>
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="item-basic-info">
-                                                                    <a href="#">
+                                                                    <a href="/{{$vv->id}}.html">
                                                                         <p>{{$vv->sname}}</p>
                                                                         <p class="info-little">颜色：{{$os2[$k][$kk]->flavor->fname}}
                                                                             <br/>包装：{{$os2[$k][$kk]->pack->pname}} </p>
@@ -545,13 +545,13 @@
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
+                                                                <a href="/{{$vv->id}}.html" class="J_MakePoint">
                                                                     <img src="{{$vv->simage}}" class="itempic J_ItemImg">
                                                                 </a>
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="item-basic-info">
-                                                                    <a href="#">
+                                                                    <a href="/{{$vv->id}}.html">
                                                                         <p>{{$vv->sname}}</p>
                                                                         <p class="info-little">颜色：{{$os3[$k][$kk]->flavor->fname}}
                                                                             <br/>包装：{{$os3[$k][$kk]->pack->pname}} </p>
@@ -625,13 +625,13 @@
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
+                                                                <a href="/{{$vv->id}}.html" class="J_MakePoint">
                                                                     <img src="{{$vv->simage}}" class="itempic J_ItemImg">
                                                                 </a>
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="item-basic-info">
-                                                                    <a href="#">
+                                                                    <a href="/{{$vv->id}}.html">
                                                                         <p>{{$vv->sname}}</p>
                                                                         <p class="info-little">颜色：{{$os4[$k][$kk]->flavor->fname}}
                                                                             <br/>包装：{{$os4[$k][$kk]->pack->pname}} </p>
@@ -651,7 +651,7 @@
                                                         </li>
                                                         <li class="td td-operation">
                                                             <div class="item-operation">
-                                                                <a href="refund.html">退款/退货</a>
+                                                                <a href="/home/dingdan/delete/{{$v->id}}">退款/退货</a>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -704,13 +704,13 @@
                                                     <ul class="item-list">
                                                         <li class="td td-item">
                                                             <div class="item-pic">
-                                                                <a href="#" class="J_MakePoint">
+                                                                <a href="/{{$vv->id}}.html" class="J_MakePoint">
                                                                     <img src="{{$vv->simage}}" class="itempic J_ItemImg">
                                                                 </a>
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="item-basic-info">
-                                                                    <a href="#">
+                                                                    <a href="/{{$vv->id}}.html">
                                                                         <p>{{$vv->sname}}</p>
                                                                         <p class="info-little">颜色：{{$os1[$k][$kk]->flavor->fname}}
                                                                             <br/>包装：{{$os1[$k][$kk]->pack->pname}} </p>

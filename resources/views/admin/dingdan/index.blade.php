@@ -7,7 +7,6 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <form action="/dingdan" method="POST">
-                                <a href="/dingdan/create" class="btn btn-waring dropdown-toggle">添加</a>
                                 <button class="btn btn-danger dropdown-toggle">删除</button>
                                 {{csrf_field()}} {{method_field('DELETE')}}
                             </form>
@@ -33,18 +32,21 @@
                                         <label for="test9999999" style="margin-bottom:-10px"></label>
                                     </center>
                                 </th>
-                                <th class=" center ">id</th>
-                                <th class=" center ">用户id</th>
-                                <th class="center">商品id</th>
+                                <th class="center">订单ID</th>
+                                <th class="center">所属用户</th>
+                                <th class="center">商品名</th>
+                                <th class="center">商品口味</th>
+                                <th class="center">商品包装</th>
+                                <th class="center">商品数量</th>
                                 <th class="center">物流方式</th>
                                 <th class="center">支付方式</th>
-                                <th class="center">购物车id</th>
                                 <th class="center">订单编号</th>
                                 <th class="center">收货地址</th>
+                                <th class="center">订单状态</th>
                                 <th class="center">操作</th>
                             </tr>
                         </tbody>
-                        @foreach($dingdan as $v)
+                        @foreach($os as $v)
                         <tbody>
                             <td>
                                 <center>
@@ -52,76 +54,96 @@
                                     <label for="test{{$v['id']}}" style="margin-bottom:-10px"></label>
                                 </center>
                             </td>
-                            <td>{{$v['id']}}</td>
-                            <td>{{$v['user_id']}}</td>
-                            <td>{{$v['shop_id']}}</td>
-                            <td>{{$v->wuliu->name}}</td>
-                            <td>{{$v->zhifu->name}}</td>
-                            <td>{{$v['shopcar_id']}}</td>
-                            <td>{{$v['order_bh']}}</td>
-                            <td width="300px">{{$v['uaddress_id']}}</td>
+                            <td>{{$v->order_id}}</td>
+                            <td>{{$v->order->user->uname}}</td>
+                            <td>{{$v->shop->sname}}</td>
+                            <td>{{$v->flavor->fname}}</td>
+                            <td>{{$v->pack->pname}}</td>
+                            <td>{{$v->shuliang}}</td>
+                            <td>{{$v->order->wuliu->name}}</td>
+                            <td>{{$v->order->zhifu->name}}</td>
+                            <td>{{$v->order_bh}}</td>
+                            <td width="210px">{{$v->order->uaddress->address.$v->order->uaddress->xadress}}</td>
+                            <td>{{$v->order->zhuangtai->zhuangtai}}</td>
                             <td width="140px">
-                                <a href="/dingdan/{{$v['id']}}/edit" style="float:left " class="waves-effect waves-light btn">编辑</a>
-                                <form action="/dingdan/{{$v['id']}}" method="post">
+                                <a href="/dingdan/{{$v->id}}/edit" style="float:left " class="waves-effect waves-light btn update">编辑</a>
+                                <form action="/dingdan/{{$v->order_id}}" method="post">
                                     {{method_field('DELETE')}} {{csrf_field()}}
-                                    <button class="btn btn-danger dropdown-toggle" style="float:right">删除</button>
+                                    <button class="btn btn-danger dropdown-toggle delete" style="float:right">删除</button>
                                 </form>
                             </td>
                             </thody>
                             @endforeach
                     </table>
+                    <script type="text/javascript">
+                        $('.update').click(function(){
+                            var a = $(this).parent().prev().html();
+                            if(a != '待支付' && a != '待发货'){
+                                alert('对不起!商品已发出,不可更改!');
+                                return false;
+                            }
+                        })
+                        $('.delete').click(function(){
+                            var b = $(this).parent().parent().prev().html();
+                            console.log(b);
+                            if(b != '交易成功'){
+                                alert('交易未成功,不可删除!');
+                                return false;
+                            }
+                        })
+                    </script>
                     <style>
-                    .pagination {
-                        padding-left: 0;
-                        margin: 1.5rem 0;
-                        list-style: none;
-                        color: #999;
-                        text-align: left;
-                        padding: 0;
-                    }
+                        .pagination {
+                            padding-left: 0;
+                            margin: 1.5rem 0;
+                            list-style: none;
+                            color: #999;
+                            text-align: left;
+                            padding: 0;
+                        }
 
-                    .pagination li {
-                        display: inline-block;
-                    }
+                        .pagination li {
+                            display: inline-block;
+                        }
 
-                    .pagination li a,
-                    .pagination li span {
-                        color: #23abf0;
-                        border-radius: 3px;
-                        padding: 6px 12px;
-                        position: relative;
-                        display: block;
-                        text-decoration: none;
-                        line-height: 1.2;
-                        background-color: #fff;
-                        border: 1px solid #ddd;
-                        border-radius: 0;
-                        margin-bottom: 5px;
-                        margin-right: 5px;
-                    }
+                        .pagination li a,
+                        .pagination li span {
+                            color: #23abf0;
+                            border-radius: 3px;
+                            padding: 6px 12px;
+                            position: relative;
+                            display: block;
+                            text-decoration: none;
+                            line-height: 1.2;
+                            background-color: #fff;
+                            border: 1px solid #ddd;
+                            border-radius: 0;
+                            margin-bottom: 5px;
+                            margin-right: 5px;
+                        }
 
-                    .pagination .active span {
-                        color: #23abf0;
-                        border-radius: 3px;
-                        padding: 6px 12px;
-                        position: relative;
-                        display: block;
-                        text-decoration: none;
-                        line-height: 1.2;
-                        background-color: #fff;
-                        border: 1px solid #ddd;
-                        border-radius: 0;
-                        margin-bottom: 5px;
-                        margin-right: 5px;
-                        background: #23abf0;
-                        color: #fff;
-                        border: 1px solid #23abf0;
-                        padding: 6px 12px;
-                    }
+                        .pagination .active span {
+                            color: #23abf0;
+                            border-radius: 3px;
+                            padding: 6px 12px;
+                            position: relative;
+                            display: block;
+                            text-decoration: none;
+                            line-height: 1.2;
+                            background-color: #fff;
+                            border: 1px solid #ddd;
+                            border-radius: 0;
+                            margin-bottom: 5px;
+                            margin-right: 5px;
+                            background: #23abf0;
+                            color: #fff;
+                            border: 1px solid #23abf0;
+                            padding: 6px 12px;
+                        }
                     </style>
                     <div class="am-cf">
                         <div class="am-fr" style="margin-right">
-                            {{ $dingdan->appends(request()->all())->links() }}
+                            {{ $os->appends(request()->all())->links() }}
                         </div>
                     </div>
                     <div class="row">

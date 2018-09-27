@@ -14,9 +14,10 @@ class ShopTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+        $a = 0;
         for ($i=0; $i <100 ; $i++) { 
         	$shop = new Shop;
-        	$shop -> sname = $faker -> name;
+        	$shop -> sname = $a++;
         	$shop -> sprice = rand(100,200);
         	$shop -> guige = rand(50,100).'g';
         	$shop -> biaozhun = 'GB/T'.rand(10000,20000);
