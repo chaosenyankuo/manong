@@ -340,7 +340,7 @@
                                         @foreach($ptags as $k => $v)
                                         <q class="comm-tags">
                                             <span>{{$v['ptname']}}</span> 
-                                            <em>({{$shuliang[$k]}})</em>
+                                            <em>({{$cishu[$k]}})</em>
                                         </q>
                                         @endforeach
                                     </dd>

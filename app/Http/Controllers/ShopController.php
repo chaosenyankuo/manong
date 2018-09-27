@@ -162,15 +162,8 @@ class ShopController extends Controller
                 }
             }
         }
-        $shuliang = [count($b),count($c),count($d),count($e),count($f)];
-
+        $cishu = [count($b),count($c),count($d),count($e),count($f)];
         
-
-        foreach(Shop::withCount('ptags')->where('id',$id)->get() as $v){
-            // $count[] = $v->ptags_count;
-            // dd($v->ptags_count);
-
-        }
         $comments = Comment::orderBy('id','desc')
                 ->where('shop_id',$id)
                 ->paginate(2);
@@ -203,7 +196,7 @@ class ShopController extends Controller
         //推荐商品
         $recom = Shop::where('recom','1')->take(3)->orderBy('id','desc')->get();
 
-        return view('home.shop.index',compact('shop','comment','comments','pack','flavor','recom','cates','links','add','user','hao','zhong','cha','bilv','ptags','count','setting','shuliang'));
+        return view('home.shop.index',compact('shop','comment','comments','pack','flavor','recom','cates','links','add','user','hao','zhong','cha','bilv','ptags','count','setting','cishu'));
 
 
     }
