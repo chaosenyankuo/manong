@@ -107,7 +107,7 @@ class DingdanController extends Controller
         $user = User::findOrFail($uid);
         $wuliu = wuliu::all();
         $zhifu = zhifu::all();
-        $uaddress = Uaddress::where('user_id',$uid)->get();
+        $uaddress = Uaddress::where('user_id',$dingdan->user_id)->get();
 
         return view('admin.dingdan.edit', compact('os','zhifu','wuliu','flavor','pack','uaddress'));
     }

@@ -37,7 +37,7 @@
                         <input class="with-gap" name="sex" type="radio" id="test3" value="3" checked>
                         <label for="test3">保密</label>
                         @else
-                        <input class="with-gap" name="sex" type="radio" id="test3" value="3" checked>
+                        <input class="with-gap" name="sex" type="radio" id="test3" value="3">
                         <label for="test3">保密</label>
                         @endif
                     </div>
@@ -65,7 +65,7 @@
                         <label for="qx3">金牌会员</label>
                         @endif
                     </div>
-                    <div class="input-field col s12" style="float:right;">
+                    <div class="input-field col s12" style="float:right;margin-top: 20px;">
                         <input type="text" id="input4" placeholder="生日" value="{{$user -> birthday}}" name="birthday"> 
                     </div>
                 </div>
@@ -85,11 +85,12 @@
                         <label for="last_name">积分</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="file" type="file" class="validate" name="image">
-                        <img src="{{$user -> image}}" width="80" style="margin-top:0px;">
-                        <label for="file" data-error="wrong" data-success="right" 头像></label>
+                        <label>用户头像</label>
+                        <input style="margin-left: 75px;margin-top: 10px;width: 200px; float:left;" class="btn btn-primary dropdown-toggle" type="file" name="image">
+                        <img src="{{$user -> image}}" width="80" style="margin-top:0px; float:left;" class="col s3">
                     </div>
                 </div>
+                <div style="clear: both;"></div>
                 <div class="row">
                     <div class="input-field col s6">
                         <input id="last_name" type="password" class="validate" name="lpass">

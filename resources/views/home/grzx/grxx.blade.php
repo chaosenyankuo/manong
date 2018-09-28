@@ -14,6 +14,12 @@
 </head>
 
 <body>
+    @if(!Session::has('homeUser'))
+        <script>
+            alert('您还没有登录哦!');
+            history.back();
+        </script>
+    @endif
     <!--头 -->
     <header>
         <article>

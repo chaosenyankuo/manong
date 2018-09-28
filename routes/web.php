@@ -21,7 +21,7 @@ Route::post('/admin/login', 'AdminController@dologin');
 Route::get('/admin/logout', 'AdminController@logout');
 
 //后台路由
-// Route::group(['middleware'=>'login'],function(){
+Route::group(['middleware'=>'login'],function(){
 
 	//后台主页
 	Route::get('/admin','AdminController@index');
@@ -98,7 +98,7 @@ Route::get('/admin/logout', 'AdminController@logout');
 
 	//用户批量删除
 	Route::post('/shop/delete','ShopController@delete');	
-// });
+});
 /*
  *前台路由
  */
@@ -155,8 +155,20 @@ Route::post('/home/xgmacz','GrzxController@xgmacz');
 //忘记密码
 Route::get('/home/wjma', 'ZhuceController@wjma');
 
+//邮箱验证
+Route::get('/home/youxiang1','ZhuceController@send');
+
+//ajax验证码路由
+Route::post('/sendemail','ZhuceController@sendemail');
+
+//效验验证码
+Route::post('/sendl','ZhuceController@sendl');
+
 //忘记密码操作
 Route::post('/home/wjmal', 'ZhuceController@wjmal');
+
+//忘记密码修改保存
+Route::post('/home/wjmima','ZhuceController@wjmima');
 
 //评论管理
 Route::get('/home/pjgl','GrzxController@pjgl');

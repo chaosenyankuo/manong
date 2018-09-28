@@ -37,36 +37,35 @@
                         <input class="with-gap" name="qx" type="radio" id="qx3" value="3">
                         <label for="qx3">金牌会员</label>
                     </div>
-                    <div class="input-field col s12" style="float:right;">
-                        <input type="text" id="input4" placeholder="生日" name="birthday">
-                    </div>
                 </div>
                
                 <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s6" style="float:right;">
+                        <input type="text" id="input4" placeholder="生日" name="birthday">
+                    </div>
+                    <div class="input-field col s6">
                         <input id="password" type="password" class="validate" name="loginpwd">
                         <label for="password">登录密码</label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s12">
-                        邮箱
-                        <div class="input-field inline">
-                            <input id="email" type="email" class="validate" name="email">
-                            <label for="email" data-error="wrong" data-success="right">Email</label>
-                        </div>&nbsp;&nbsp;&nbsp;&nbsp; 电话
-                        <div class="input-field inline">
-                            <input id="email" type="text" class="validate" name="phone">
-                            <label for="email" data-error="wrong" data-success="right">Phone</label>
-                        </div>&nbsp;&nbsp;&nbsp;&nbsp; 积分
-                        <div class="input-field inline">
-                            <input id="jfen" type="number" class="validate" name="jifen">
-                            <label for="jfen" data-error="wrong" data-success="right">JiFen</label>
-                        </div>&nbsp;&nbsp;&nbsp;&nbsp; 头像
-                        <div class="input-field inline">
-                            <input id="file" type="file" class="validate" name="image">
-                            <label for="file" data-error="wrong" data-success="right"></label>
-                        </div>
+                    <div class="input-field inline col s6">
+                        <input id="email" type="email" class="validate" name="email">
+                        <label for="email" data-error="wrong" data-success="right">邮箱</label>
+                    </div>
+                    <div class="input-field inline col s6">
+                        <input id="email" type="text" class="validate" name="phone">
+                        <label for="email" data-error="wrong" data-success="right">电话</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field inline col s6">
+                        <input id="jfen" type="number" class="validate" name="jifen">
+                        <label for="jfen" data-error="wrong" data-success="right">积分</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <label>用户头像</label>
+                        <input style="margin-left: 75px;margin-top: 10px;" class="btn btn-primary dropdown-toggle" type="file" name="image">
                     </div>
                 </div>
                 {{csrf_field()}}

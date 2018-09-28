@@ -32,7 +32,11 @@ class HomeController extends Controller
 	public function dologin(Request $request)
 	{	
 
-
+ // dd($request->loginpwd);
+    if($request->loginpwd == null)
+        {
+            return back()->with('error','登陆失败!');
+        }
 		//获取用户的数据
 		$user = User::where('email', $request->email)->first();
 		
@@ -40,6 +44,7 @@ class HomeController extends Controller
         if(!$user){
             return back()->with('error','登陆失败!');
         }
+        
 
         //校验密码
         if(Hash::check($request->loginpwd, $user->loginpwd)){
@@ -57,7 +62,7 @@ class HomeController extends Controller
 
     public function logout(Request $request)
     {   
-        $request->session('homeUser')->flush();
+        $request->session()->forget('homeUser');
         return redirect('/home/login')->with('success','退出成功');
     }
 

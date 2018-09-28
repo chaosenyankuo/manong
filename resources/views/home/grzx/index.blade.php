@@ -69,10 +69,11 @@
                                     <a href="/home/grxx">
                                             <img src="/home/images/getAvatar.do.jpg">
                                     </a>
-                                    <em class="s-name">请先登录哦!!!</em>
-                                    <div class="s-prestige am-btn am-round">
-                                    </div>
-                                    <span class="s-name">积分:0</span>
+                                   <a href="/home/login">
+                                        <em class="s-name">点击登录</em>
+                                        <div class="s-prestige am-btn am-round"></div>
+                                        <span class="s-name">积分:0</span>
+                                    </a>
                                 </div>
                                 <div class="m-right">
                                     <div class="m-address">

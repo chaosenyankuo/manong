@@ -34,7 +34,7 @@ class ShopController extends Controller
         $user = User::find($uid);
         $shops = Shop::orderBy('id','desc')
             ->where('sname','like','%'.request()->keywords.'%')
-            ->paginate(5);
+            ->paginate(8);
         return view('admin.shop.index',compact('shops','cates','tags','flavors','user','packs'));
     }
 
