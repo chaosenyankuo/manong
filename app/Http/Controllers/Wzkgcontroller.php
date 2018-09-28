@@ -36,10 +36,10 @@ class Wzkgcontroller extends Controller
     public function store(Request $request)
     {
         //
-         $path = 'E:\xampp\htdocs\manong\storage\framework/down';
+         $path = 'F:\xampp\htdocs\javascript\shangcheng\manong\storage\framework/down';
         if(!is_file($path))
         {
-            File::copy('E:\xampp\htdocs\manong\storage\framework/adown', 'E:\xampp\htdocs\manong\storage\framework\down');
+            File::copy('F:\xampp\htdocs\javascript\shangcheng\manong\storage\framework/adown', 'F:\xampp\htdocs\javascript\shangcheng\manong\storage\framework\down');
             
             return redirect('/wzkg')->with('success','网站关闭成功!!!');
         }
@@ -92,10 +92,10 @@ class Wzkgcontroller extends Controller
     {
         //
 
-        $path = 'E:\xampp\htdocs\manong\storage\framework/down';
+        $path = 'F:\xampp\htdocs\javascript\shangcheng\manong\storage\framework/down';
         if(is_file($path))
         {
-            File::delete('E:\xampp\htdocs\manong\storage\framework/down');
+            File::delete('F:\xampp\htdocs\javascript\shangcheng\manong\storage\framework/down');
 
            
              return redirect('/wzkg')->with('success','恭喜维护完成!!!');
