@@ -40,7 +40,7 @@
                         </div>
                         <div>
                             <input type="checkbox" style="width:10px;height:10px; float-left;"> 记住密码
-                            <a href="/home/wjma" style="margin-left:150px;">忘记密码</a>
+                            <a href="/home/youxiang1" style="margin-left:150px;">忘记密码</a>
                         </div>
                         {{csrf_field()}}
                         <div class="am-cf">

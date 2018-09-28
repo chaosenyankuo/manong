@@ -1,14 +1,13 @@
 <div class="footer">
-    
     <div class="footer-hd">
         <p>
             <center>
                 @foreach($links as $v)
-                    <a href="http://{{$v->url}}">{{$v->name}}</a>
-                    <b>|</b>
-                @endforeach
+                <a href="http://{{$v->url}}">{{$v->name}}</a>
+                <b>|</b> @endforeach
             </center>
         </p>
+        </center>
     </div>
     <div class="footer-bd">
         <p>
@@ -32,8 +31,7 @@
             <div id="prof" class="item">
                 <a href="/home/index">
                     <span class="setting"></span>
-                </a> 
-               
+                </a>
                 <div class="ibar_login_box status_login">
                     <div class="avatar_box">
                         @if(Session::has('homeUser'))
@@ -42,17 +40,15 @@
                         </p>
                         <ul class="user_info">
                             <li>用户名:{{$user['nickname']}}</li>
-                             @if($user['qx'] == '1')
-                                        </li>管理员</li>
-                                    @elseif($user['qx'] == '2')
-                                        <li>银牌会员</li>
-                                    @else
-                                        <li>金牌会员</li>
-                                    @endif       
+                            @if($user['qx'] == '1')
+                            </li>管理员</li>
+                            @elseif($user['qx'] == '2')
+                            <li>银牌会员</li>
+                            @else
+                            <li>金牌会员</li>
+                            @endif
                         </ul>
-                        @endif 
-
-                        @if(!Session::has('homeUser'))
+                        @endif @if(!Session::has('homeUser'))
                         <ul class="user_info">
                             <li>用&nbsp;户&nbsp;名：请先登录!!</li>
                         </ul>
@@ -69,8 +65,6 @@
                 <a href="/shopcar">
                     <span class="message"></span>
                 </a>
-                
-                
             </div>
             <div id="asset" class="item">
                 <a href="/home/index">
@@ -195,10 +189,10 @@ window.jQuery || document.write('<script src="/home/basic/js/jquery.min.js "><\/
 </script>
 <script type="text/javascript " src="/home/basic/js/quick_links.js "></script>
 <script>
-        setTimeout(function() {
-            $('#xiaoshi').css('display', 'none');
-        }, 2000)
-        </script>
+setTimeout(function() {
+    $('#xiaoshi').css('display', 'none');
+}, 2000)
+</script>
 </body>
 
 </html>

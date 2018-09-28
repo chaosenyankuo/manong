@@ -251,4 +251,4 @@
                 </div>
                 <div class="clear "></div>
             </div>
-            @endforeach @include('layouts.home._footer')
+            <center>@endforeach @include('layouts.home._footer')</center>
