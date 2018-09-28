@@ -46,12 +46,10 @@ class ZhuceController extends Controller
     //忘记密码操作
     public function send(Request $req)
     {
-
-
         $links = Link::all();
         $setting = Setting::first();
         
-        return view('home.zhuce.youxiang',['links' => $links,'setting'=>$setting]);
+        return view('home.zhuce.youxiang1',['links' => $links,'setting'=>$setting]);
     }
 
     public function sendl()
@@ -85,12 +83,13 @@ class ZhuceController extends Controller
 
     public function wjmima(Request $req)
     {
-        $links = Link::all();
-        $setting = Setting::first();
         $user = User::where('email',$req->email)->first();
         $user -> loginpwd = hash::make($req -> password);
-        $user -> save();
-
-        return view('home.denglu.login',compact('links','setting'));
+        // dd(111);
+        if($user -> save()){
+            return redirect('/home/login');
+        }else{
+            return back()->with('error','重置失败');
+        }
     }
 }

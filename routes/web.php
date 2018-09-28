@@ -156,7 +156,7 @@ Route::post('/home/xgmacz','GrzxController@xgmacz');
 Route::get('/home/wjma', 'ZhuceController@wjma');
 
 //邮箱验证
-Route::get('/home/youxiang','ZhuceController@send');
+Route::get('/home/youxiang1','ZhuceController@send');
 
 //ajax验证码路由
 Route::post('/sendemail','ZhuceController@sendemail');
