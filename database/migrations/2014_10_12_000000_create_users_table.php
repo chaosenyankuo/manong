@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('autoid')->comment('第三方登录ID')->nullable();
             $table->string('uname')->comment('姓名')->nullable();
             $table->string('nickname')->comment('昵称')->nullable();
             $table->integer('sex')->comment('性别')->nullable();
