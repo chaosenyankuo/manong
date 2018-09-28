@@ -45,6 +45,7 @@ class UaddressController extends Controller
         $uaddress = new Uaddress;
 
         $uaddress -> user_id = $req->user_id;
+        $uaddress -> name = $req->name;
         $uaddress -> uphone = $req->uphone;
         $uaddress -> address = $req->sheng.'-'.$req->shi.'-'.$req->xian; //地址
         $uaddress -> xadress = $req->xadress; //详细地址
@@ -95,6 +96,7 @@ class UaddressController extends Controller
         $uaddress = Uaddress::findOrFail($id);
 
         $uaddress -> user_id = $req->user_id;
+        $uaddress -> name = $req->name;
         $uaddress -> uphone = $req->uphone;
         $uaddress -> address = $req->sheng.'-'.$req->shi.'-'.$req->xian; //地址
         $uaddress -> xadress = $req->xadress; //详细地址

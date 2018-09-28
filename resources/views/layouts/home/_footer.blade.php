@@ -5,6 +5,7 @@
                 @foreach($links as $v)
                 <a href="http://{{$v->url}}">{{$v->name}}</a>
                 <b>|</b> @endforeach
+            </center>
         </p>
         </center>
     </div>

@@ -111,8 +111,11 @@ Route::get('/soso','HomeController@soso');
 //前台商品详情
 Route::get('/{id}.html','ShopController@show');
 
-//前台分类标签商品
+//前台标签下商品
 Route::get('/tags/{id}','HomeController@tags');
+
+//前台分类下商品
+Route::get('/cates/{id}','HomeController@cates');
 
 //前台注册
 Route::get('/home/zhuce', 'ZhuceController@zhuce');
@@ -230,6 +233,11 @@ Route::get('/home/foot','ZujiController@foot');
 //删除足迹
 Route::get('/shanzuji','ZujiController@shanzuji');
 
+//采集数据
+Route::get('/caiji','LingShiController@single');
+
+//列表采集
+Route::get('/caiji/list', 'LingShiController@list');
 
 
 
