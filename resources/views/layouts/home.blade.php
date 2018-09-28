@@ -4,6 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta  charset="utf-8" http-equiv="Content-Type" content="text/html; charset=UTF-8" property="wb:webmaster" content="b27db84c116f5d54">
     <title>@yield('title')</title>
     <link href="/home/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
     <link href="/home/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
@@ -12,6 +13,8 @@
     <link href="/home/css/skin.css" rel="stylesheet" type="text/css" />
     <script src="/home/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
     <script src="/home/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
+    
+
 </head>
 
 <body>

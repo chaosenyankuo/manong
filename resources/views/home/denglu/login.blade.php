@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/home/AmazeUI-2.4.2/assets/css/amazeui.css" />
     <link href="/home/css/dlstyle.css" rel="stylesheet" type="text/css">
     <script src="/home/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+     <meta  charset="utf-8" http-equiv="Content-Type" content="text/html; charset=UTF-8" property="wb:webmaster" content="b27db84c116f5d54">
 </head>
 
 <body>
@@ -53,7 +54,7 @@
                     <h3>合作账号</h3>
                     <div class="am-btn-group">
                         <li><a href="#"><i class="am-icon-qq am-icon-sm"></i><span>QQ登录</span></a></li>
-                        <li><a href="#"><i class="am-icon-weibo am-icon-sm"></i><span>微博登录</span> </a></li>
+                        <li><a href="/auth/weibo"><i class="am-icon-weibo am-icon-sm"></i><span>微博登录</span> </a></li>
                         <li><a href="#"><i class="am-icon-weixin am-icon-sm"></i><span>微信登录</span> </a></li>
                     </div>
                 </div>
