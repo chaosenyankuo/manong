@@ -23,43 +23,47 @@ class LingShiController extends Controller
         	Log::info($e->getMessage());
 		}
 		//获取响应状态码
-		$type = $res->getHeader('content-type');
-        $parsed = Psr7\parse_header($type);
-        $original_body = (string)$res->getBody();
-        $body = mb_convert_encoding($original_body, "UTF-8", "GBK");
-        //获取标题
-		preg_match('/<h3 class="name">(.*)<\/h3>/isU', $body, $sname);
-		//获取价格
-		preg_match('/<span id="shopprice">(.*)<\/span>/isU', $body, $sprice);
-		//商品主图
-		preg_match('/<img class="bzoom" src="(.*)" width="460" height="460" \/>/isU', $body, $simage);
-		//图片下载加缩略
-		if(!empty($simage[1])){
-			$img = file_get_contents($simage[1]);
-			$filename = './uploads/shujuimages/';
-			if(!file_exists($filename)){
-				mkdir($filename,0777,true);
+		try{
+			$type = $res->getHeader('content-type');
+	        $parsed = Psr7\parse_header($type);
+	        $original_body = (string)$res->getBody();
+	        $body = mb_convert_encoding($original_body, "UTF-8", "GBK");
+	        //获取标题
+			preg_match('/<h3 class="name">(.*)<\/h3>/isU', $body, $sname);
+			//获取价格
+			preg_match('/<span id="shopprice">(.*)<\/span>/isU', $body, $sprice);
+			//商品主图
+			preg_match('/<img class="bzoom" src="(.*)" width="460" height="460" \/>/isU', $body, $simage);
+			//图片下载加缩略
+			if(!empty($simage[1])){
+				$img = file_get_contents($simage[1]);
+				$filename = './uploads/shujuimages/';
+				if(!file_exists($filename)){
+					mkdir($filename,0777,true);
+				}
+				$time = date('Ymd');
+				$path = $filename.$time.rand(10000000,99999999).'.jpg';
+				file_put_contents($path,$img);
+				$newpath = $filename.$time.'s_'.rand(10000000,99999999).'.jpg';
+				Image::make($path)->resize(1024, 866, function ($constraint) {$constraint->aspectRatio();})->save($newpath);
+				$arr = explode('/',$newpath);
+				$arr2 = array_shift($arr);
+				$newpath2 = implode('/',$arr);
+				$newpath3 = '/'.$newpath2;
 			}
-			$time = date('Ymd');
-			$path = $filename.$time.rand(10000000,99999999).'.jpg';
-			file_put_contents($path,$img);
-			$newpath = $filename.$time.'s_'.rand(10000000,99999999).'.jpg';
-			Image::make($path)->resize(1024, 866, function ($constraint) {$constraint->aspectRatio();})->save($newpath);
-			$arr = explode('/',$newpath);
-			$arr2 = array_shift($arr);
-			$newpath2 = implode('/',$arr);
-			$newpath3 = '/'.$newpath2;
+			//商品规格
+			preg_match('/<td>毛重: (.*)<\/td>/isU', $body, $guige);
+			//食用方法
+			preg_match('/<td>食用方法：(.*)<\/td>/isU', $body, $eat);
+			//生产日期
+			preg_match('/<td>生产日期：(.*)<\/td>/isU', $body, $shengchan);
+			//保质期
+			preg_match('/<td>保质期：(.*)<\/td>/isU', $body, $date);
+			//储存方法：
+			preg_match('/<td>储存方法：(.*)<\/td>/isU', $body, $save);
+		}catch(\Exception $e){
+			Log::info($e->getMessage());
 		}
-		//商品规格
-		preg_match('/<td>毛重: (.*)<\/td>/isU', $body, $guige);
-		//食用方法
-		preg_match('/<td>食用方法：(.*)<\/td>/isU', $body, $eat);
-		//生产日期
-		preg_match('/<td>生产日期：(.*)<\/td>/isU', $body, $shengchan);
-		//保质期
-		preg_match('/<td>保质期：(.*)<\/td>/isU', $body, $date);
-		//储存方法：
-		preg_match('/<td>储存方法：(.*)<\/td>/isU', $body, $save);
         try{
             $shop = new Shop;
         	$shop -> sname = $sname[1];
