@@ -57,7 +57,7 @@ class HomeController extends Controller
 
     public function logout(Request $request)
     {   
-        $request->session('homeUser')->flush();
+        $request->session()->forget('homeUser');
         return redirect('/home/login')->with('success','退出成功');
     }
 

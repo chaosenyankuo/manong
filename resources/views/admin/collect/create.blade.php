@@ -19,7 +19,7 @@
                         <div class="row">
                             <div class=" col s6">
                                 <div class="btn-group">
-                                    <label for="first_name">选择板块</label>
+                                    <label for="first_name">选择分类</label>
                                     <select data-toggle="dropdown" class="btn btn-primary dropdown-toggle" aria-expanded="true" name="cate_id" id="first"><span class="caret"></span>
                                         <option value="0">请选择</option>
                                         @foreach($cates as $v)

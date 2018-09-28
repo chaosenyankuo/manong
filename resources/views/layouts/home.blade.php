@@ -209,7 +209,7 @@
                         <h3>{{$cates[$k] -> intro}}</h3>
                         <div class="today-brands ">
                             @foreach($cates[$k]->tags()->get() as $vv)
-                            <a href="# ">{{$vv->tname}}</a> @endforeach
+                            <a href="/tags/{{$vv->id}}">{{$vv->tname}}</a> @endforeach
                         </div>
                         <span class="more ">
                             <a href="/cates/{{$v}}">更多美味<i class="am-icon-angle-right " style="padding-left:10px ; " ></i></a>
@@ -226,7 +226,7 @@
                                 </span>
                             </a> @endforeach
                         </div>
-                        <a href="# ">
+                        <a href="/cates/{{$v}}">
                             <div class="outer-con ">
                                 <div class="title ">{{$cates[$k] -> intro}}</div>
                             </div>

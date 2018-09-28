@@ -95,7 +95,7 @@ class AdminController extends Controller
 	 */
 	public function logout(Request $request)
 	{
-		$request->session('adminUser')->flush();
+		$request->session()->forget('adminUser');
 		return redirect('/admin/login')->with('success','退出成功');
 	}
 

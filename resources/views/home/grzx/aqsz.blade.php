@@ -16,6 +16,12 @@
 	</head>
 
 	<body>
+		@if(!Session::has('homeUser'))
+		    <script>
+		        alert('您还没有登录哦!');
+		        history.back();
+		    </script>
+	    @endif
 		<!--头 -->
 		<header>
 			<article>
@@ -26,6 +32,7 @@
 				</div>
 			</article>
 		</header>
+
             <div class="nav-table">
 					   <div class="long-title"><span class="all-goods">全部分类</span></div>
 					   <div class="nav-cont">
@@ -70,12 +77,7 @@
 							</div>
 						</div>
 						@endif
-						@if($user == null)
-						<script>
-							alert('您还没有登录哦!');
-							history.back();
-						</script>
-						@endif
+						
 						<div class="check">
 							<ul>
 								<li>
