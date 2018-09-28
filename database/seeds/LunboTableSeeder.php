@@ -13,7 +13,7 @@ class LunboTableSeeder extends Seeder
     public function run(Faker $faker)
     { 
         $lunbo1 = new Lunbotu;
-        $lunbo1 -> pic = '/uploads/shopimages/'.rand(1,38).'.jpg';                
+        $lunbo1 -> pic = '/uploads/shopimages/102.jpg';
     	$lunbo1 -> url = $faker ->url;
         $lunbo1 -> save(); 
         $lunbo2 = new Lunbotu;
