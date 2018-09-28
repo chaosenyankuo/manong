@@ -10,6 +10,8 @@
     <link href="/home/basic/css/demo.css" rel="stylesheet" type="text/css" />
     <link type="text/css" href="/home/css/optstyle.css" rel="stylesheet" />
     <link type="text/css" href="/home/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
     <script type="text/javascript" src="/home/basic/js/jquery-1.7.min.js"></script>
     <script type="text/javascript" src="/home/basic/js/quick_links.js"></script>
     <script type="text/javascript" src="/home/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
@@ -22,9 +24,9 @@
     <script src="/dizhi/js/distpicker.js"></script>
     <script src="/dizhi/js/main.js"></script>
     <style>
-        .height-10{
-            height:10px;
-        }
+    .height-10 {
+        height: 10px;
+    }
     </style>
 </head>
 
@@ -56,7 +58,6 @@
         </div>
         @endif
         <ol class="am-breadcrumb am-breadcrumb-slash">
-            
         </ol>
         <script type="text/javascript">
         $(function() {});
@@ -207,7 +208,6 @@
                                                     @endif @endforeach
                                                 </ul>
                                             </div>
-                                            
                                             <div class="theme-options">
                                                 <div class="cart-title ">数量</div>
                                                 <div class="height-10"></div>
@@ -260,6 +260,9 @@
                                 <a id="shou" title="点此按钮加入收藏夹" href="/home/cun?shop_id={{$shop['id']}}&&user_id={{session::get('homeUser')['id']}}" style="width:98px;border:1px solid #F03726;background-color:#F03726;color:white;height:35px;">加入收藏夹</a>
                             </div>
                         </li>
+                    </div>
+                    <div class="newsview" style="padding:50px;float:right">
+                        <div class="share-component" data-disabled="google,twitter,facebook" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣"></div>
                     </div>
                 </form>
             </div>
@@ -314,9 +317,9 @@
                                     <li title="">产地:&nbsp;{{$shop['place']}}</li>
                                     <li title="">配料表:&nbsp;{{$shop['peiliao']}}</li>
                                     <li title="">产品规格:&nbsp;{{$shop['guige']}}</li>
-                                    <li title="">保质期:&nbsp;{{$shop['date']}}天</li>
                                     <li title="">产品标准号:&nbsp;{{$shop['biaozhun']}}</li>
-                                    <li title="">生产许可证编号：&nbsp;{{$shop['shengchan']}}</li>
+                                    <li title="">生产日期：&nbsp;{{$shop['shengchan']}}</li>
+                                    <li title="">保质期:&nbsp;{{$shop['date']}}</li>
                                     <li title="">储存方法：&nbsp;{{$shop['save']}}</li>
                                     <li title="">食用方法：&nbsp;{{$shop['eat']}}</li>
                                 </ul>
@@ -344,7 +347,7 @@
                                     <dd class="p-bfc">
                                         @foreach($ptags as $k => $v)
                                         <q class="comm-tags">
-                                            <span>{{$v['ptname']}}</span> 
+                                            <span>{{$v['ptname']}}</span>
                                             <em>({{$cishu[$k]}})</em>
                                         </q>
                                         @endforeach
@@ -490,8 +493,10 @@
                                     <li>
                                         <a href="/{{$v['id']}}.html">
                                             <div class="i-pic limit">
-                                                <img src="{{$v['simage']}}" style="width:215px;height:182px;"/>
-                                                <p>{{$v['sname']}}</p>
+                                                <img src="{{$v['simage']}}" style="width:215px;height:182px;" />
+                                                <p>
+                                                    <?php echo Mb_substr($v['sname'],0,10,'utf-8');?>
+                                                </p>
                                                 <p class="price fl">
                                                     <b>¥</b>
                                                     <strong>{{$v['sprice']}}</strong>
@@ -519,12 +524,12 @@
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         }
                     });
-                    var shop_id = {{$shop['id']}};
+                    var shop_id = { { $shop['id'] } };
                     $.ajax({
                         url: '/cunzuji',
                         type: 'post',
-                        data: {shop_id: shop_id},
-                        success: function(data){
+                        data: { shop_id: shop_id },
+                        success: function(data) {
 
                         },
                         async: false

@@ -33,30 +33,32 @@
                     </div>
                 </div>
                 <div class="am-g am-g-fixed">
-                    <div class="am-u-sm-12 am-u-md-12">
-                        <div class="theme-popover">
+                    <center>
+                        <div class="am-u-sm-12 am-u-md-12">
+                            <div class="theme-popover">
+                            </div>
+                            <div>
+                                <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
+                                    @foreach($shops as $v)
+                                    <li>
+                                        <div class="i-pic limit">
+                                            <a href="/{{$v->id}}.html"> <img src="{{$v['simage']}}" /></a>
+                                            <p class="title fl">{{$v['sname']}}</p>
+                                            <p class="price fl">
+                                                <b>¥</b>
+                                                <strong>{{$v['sprice']}}</strong>
+                                            </p>
+                                            <p class="number fl">
+                                                销量<span>{{$v['csales']}}</span>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <!--分页 -->
                         </div>
-                        <div>
-                            <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
-                                @foreach($shops as $v)
-                                <li>
-                                    <div class="i-pic limit">
-                                        <a href="/{{$v->id}}.html"> <img src="{{$v['simage']}}" /></a>
-                                        <p class="title fl">{{$v['sname']}}</p>
-                                        <p class="price fl">
-                                            <b>¥</b>
-                                            <strong>{{$v['sprice']}}</strong>
-                                        </p>
-                                        <p class="number fl">
-                                            销量<span>{{$v['csales']}}</span>
-                                        </p>
-                                    </div>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <!--分页 -->
-                    </div>
+                    </center>
                 </div>
                 @include('layouts.home._foot')
             </div>

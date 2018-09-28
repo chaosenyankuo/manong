@@ -108,10 +108,15 @@
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
-                                                            <?php $a=0; ?> @foreach($v->order_shop as $kk=>$vv)
-                                                            <?php $a += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?> @endforeach 合计：{{$a}}
+                                                            合计：{{$v->cjj}}
                                                             <p>含运费：
-                                                                <span>{{count($v->order_shop)}}0.00</span>
+                                                                <span>
+                                                                    @if($v->cjj < 10)
+                                                                        0.00
+                                                                    @else
+                                                                        {{count($v->order_shop)}}0.00
+                                                                    @endif
+                                                                </span>
                                                             </p>
                                                         </div>
                                                     </li>
@@ -192,10 +197,15 @@
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
-                                                            <?php $a=0; ?> @foreach($v->order_shop as $kk=>$vv)
-                                                            <?php $a += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?> @endforeach 合计：{{$a}}
+                                                            合计：{{$v->cjj}}
                                                             <p>含运费：
-                                                                <span>{{count($v->order_shop)}}0.00</span>
+                                                                <span>
+                                                                    @if($v->cjj < 10)
+                                                                        0.00
+                                                                    @else
+                                                                        {{count($v->order_shop)}}0.00
+                                                                    @endif
+                                                                </span>
                                                             </p>
                                                         </div>
                                                     </li>
@@ -268,10 +278,15 @@
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
-                                                            <?php $b=0; ?> @foreach($v->order_shop as $kk=>$vv)
-                                                            <?php $b += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?> @endforeach 合计：{{$b}}
+                                                            合计：{{$v->cjj}}
                                                             <p>含运费：
-                                                                <span>{{count($v->order_shop)}}0.00</span>
+                                                                <span>
+                                                                    @if($v->cjj < 10)
+                                                                        0.00
+                                                                    @else
+                                                                        {{count($v->order_shop)}}0.00
+                                                                    @endif
+                                                                </span>
                                                             </p>
                                                         </div>
                                                     </li>
@@ -344,10 +359,15 @@
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
-                                                            <?php $c=0; ?> @foreach($v->order_shop as $kk=>$vv)
-                                                            <?php $c += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?> @endforeach 合计：{{$c}}
+                                                            合计：{{$v->cjj}}
                                                             <p>含运费：
-                                                                <span>{{count($v->order_shop)}}0.00</span>
+                                                                <span>
+                                                                    @if($v->cjj < 10)
+                                                                        0.00
+                                                                    @else
+                                                                        {{count($v->order_shop)}}0.00
+                                                                    @endif
+                                                                </span>
                                                             </p>
                                                         </div>
                                                     </li>
@@ -417,9 +437,16 @@
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
-                                                            <?php $d=0; ?> @foreach($v->order_shop as $kk=>$vv)
-                                                            <?php $d += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?> @endforeach 合计：{{$d}}
-                                                            <p>含运费：<span>{{count($v->order_shop)}}0.00</span></p>
+                                                            合计：{{$v->cjj}}
+                                                            <p>含运费：
+                                                                <span>
+                                                                    @if($v->cjj < 10)
+                                                                        0.00
+                                                                    @else
+                                                                        {{count($v->order_shop)}}0.00
+                                                                    @endif
+                                                                </span>
+                                                            </p>
                                                         </div>
                                                     </li>
                                                     <div class="move-right">
@@ -496,10 +523,15 @@
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
-                                                            <?php $e=0; ?> @foreach($v->order_shop as $kk=>$vv)
-                                                            <?php $e += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?> @endforeach 合计：{{$e}}
+                                                            合计：{{$v->cjj}}
                                                             <p>含运费：
-                                                                <span>{{count($v->order_shop)}}0.00</span>
+                                                                <span>
+                                                                    @if($v->cjj < 10)
+                                                                        0.00
+                                                                    @else
+                                                                        {{count($v->order_shop)}}0.00
+                                                                    @endif
+                                                                </span>
                                                             </p>
                                                         </div>
                                                     </li>
@@ -580,10 +612,15 @@
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
-                                                            <?php $f=0; ?> @foreach($v->order_shop as $kk=>$vv)
-                                                            <?php $f += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?> @endforeach 合计：{{$f}}
+                                                            合计：{{$v->cjj}}
                                                             <p>含运费：
-                                                                <span>{{count($v->order_shop)}}0.00</span>
+                                                                <span>
+                                                                    @if($v->cjj < 10)
+                                                                        0.00
+                                                                    @else
+                                                                        {{count($v->order_shop)}}0.00
+                                                                    @endif
+                                                                </span>
                                                             </p>
                                                         </div>
                                                     </li>
@@ -660,9 +697,16 @@
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
-                                                            <?php $g=0; ?> @foreach($v->order_shop as $kk=>$vv)
-                                                            <?php $g += ($vv->shuliang)*($v->shop[$kk]->sprice)+10; ?> @endforeach 合计：{{$g}}
-                                                            <p>含运费：<span>{{count($v->order_shop)}}0.00</span></p>
+                                                            合计：{{$v->cjj}}
+                                                            <p>含运费：
+                                                                <span>
+                                                                    @if($v->cjj < 10)
+                                                                        0.00
+                                                                    @else
+                                                                        {{count($v->order_shop)}}0.00
+                                                                    @endif
+                                                                </span>
+                                                            </p>
                                                         </div>
                                                     </li>
                                                     <div class="move-right">
@@ -738,10 +782,15 @@
                                                 <div class="order-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount">
-                                                            <?php $h=0; ?>
-                                                            <?php $h = ($v->order_shop[$kk]->shuliang)*($v->shop[$kk]->sprice)+($v->order_shop[$kk]->shuliang * 10); ?> 合计：{{$h}}
+                                                            合计：{{$v->cjj}}
                                                             <p>含运费：
-                                                                <span>{{$v->order_shop[$kk]->shuliang}}0.00</span>
+                                                                <span>
+                                                                    @if($v->cjj < 10)
+                                                                        0.00
+                                                                    @else
+                                                                        {{count($v->order_shop)}}0.00
+                                                                    @endif
+                                                                </span>
                                                             </p>
                                                         </div>
                                                     </li>

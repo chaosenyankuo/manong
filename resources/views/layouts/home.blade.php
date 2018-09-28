@@ -76,7 +76,7 @@
                                                         <dl class="dl-sort">
                                                             <dt><span>热销产品</span></dt>
                                                             @foreach($rec as $vvv)
-                                                            <dd><a rel="nofollow" title="{{$vvv->sname}}" target="_blank" href="/{{$v['id']}}.html" rel="nofollow"><span  class="red" >{{$vvv->sname}}</span></a></dd>
+                                                            <dd><a rel="nofollow" title="{{$vvv->sname}}" target="_blank" href="/{{$v['id']}}.html" rel="nofollow"><span  class="red" ><?php echo Mb_substr($vvv['sname'],0,10,'utf-8');?></span></a></dd>
                                                             @endforeach
                                                         </dl>
                                                     </div>
@@ -191,7 +191,7 @@
                 @foreach($recom as $v)
                 <div class="am-u-sm-4 am-u-lg-3 ">
                     <div class="info ">
-                        <h3>{{$v -> sname}}</h3>
+                        <h3><?php echo Mb_substr($v['sname'],0,10,'utf-8');?></h3>
                         <h4>{{$v->cate->cname}}</h4>
                     </div>
                     <div class="recommendationMain one ">
@@ -212,7 +212,7 @@
                             <a href="# ">{{$vv->tname}}</a> @endforeach
                         </div>
                         <span class="more ">
-                            <a href="# ">更多美味<i class="am-icon-angle-right " style="padding-left:10px ; " ></i></a>
+                            <a href="/cates/{{$v}}">更多美味<i class="am-icon-angle-right " style="padding-left:10px ; " ></i></a>
                         </span>
                     </div>
                 </div>
@@ -220,7 +220,7 @@
                     <div class="am-u-sm-5 am-u-md-4 text-one list ">
                         <div class="word ">
                             @foreach($cates[$k]->tags()->take(6)->get() as $vv)
-                            <a class="outer " href="# ">
+                            <a class="outer " href="/tags/{{$vv->id}}">
                                 <span class="inner ">
                                     <b class="text ">{{$vv->tname}}</b>
                                 </span>
@@ -238,17 +238,17 @@
                     <div class="am-u-sm-7 am-u-md-4 text-two" style="float:left;">
                         <div class="outer-con ">
                             <div class="title ">
-                                {{$vv->sname}}
+                                <?php echo Mb_substr($vv['sname'],0,10,'utf-8');?>
                             </div>
                             <div class="sub-title ">
                                 ¥{{$vv -> sprice}}
                             </div>
                             <a href="/{{$vv->id}}.html"><i class="am-icon-shopping-basket am-icon-md seprate "></i></a>
                         </div>
-                        <a href="/{{$vv->id}}.html"><img src="{{$vv->simage}}" width="180px" height="180px" /></a>
+                        <a href="/{{$vv->id}}.html"><img src="{{$vv->simage}}" width="170px" height="170px" /></a>
                     </div>
                     @endforeach
                 </div>
                 <div class="clear "></div>
             </div>
-            @endforeach @include('layouts.home._footer')
+            <center>@endforeach @include('layouts.home._footer')</center>
