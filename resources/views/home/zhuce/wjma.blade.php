@@ -47,7 +47,7 @@
                         <label for="user-old-password" class="am-form-label">邮箱帐号</label>
 
                         <div class="am-form-content">
-                            <input type="password" id="user-old-password" placeholder="请输入注册时使用的邮箱帐号">
+                            <input type="email" id="user-old-password" placeholder="请输入注册时使用的邮箱帐号">
 
                         </div>
                     </div>
