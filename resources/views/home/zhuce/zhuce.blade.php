@@ -128,7 +128,6 @@
                             $('form').submit(function(){
                                 //触发错误提醒
                                 $('input').trigger('blur');
-                                console.log(CUSER);
                                 //判断输入值是否都正确
                                 if(CUSER  && PASS && CPASS) {
                                     return true;
