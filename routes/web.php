@@ -21,7 +21,7 @@ Route::post('/admin/login', 'AdminController@dologin');
 Route::get('/admin/logout', 'AdminController@logout');
 
 //后台路由
-// Route::group(['middleware'=>'login'],function(){
+Route::group(['middleware'=>'login'],function(){
 
 	//后台主页
 	Route::get('/admin','AdminController@index');
@@ -98,7 +98,7 @@ Route::get('/admin/logout', 'AdminController@logout');
 
 	//用户批量删除
 	Route::post('/shop/delete','ShopController@delete');	
-// });
+});
 /*
  *前台路由
  */
