@@ -258,14 +258,17 @@
                         <li>
                             <div class="clearfix tb-btn tb-btn-buy theme-login">
                                 <a id="shou" title="点此按钮加入收藏夹" href="/home/cun?shop_id={{$shop['id']}}&&user_id={{session::get('homeUser')['id']}}" style="width:98px;border:1px solid #F03726;background-color:#F03726;color:white;height:35px;">加入收藏夹</a>
+                                <div class="newsview" style="padding:50px;float:right">
+                                    <div class="share-component" data-disabled="google,twitter,facebook" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣"></div>
+                                </div>
                             </div>
                         </li>
                     </div>
-                    <div class="newsview" style="padding:50px;float:right">
-                        <div class="share-component" data-disabled="google,twitter,facebook" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣"></div>
-                    </div>
+                    
                 </form>
+
             </div>
+
             <div class="clear"></div>
         </div>
         <div class="clear"></div>
