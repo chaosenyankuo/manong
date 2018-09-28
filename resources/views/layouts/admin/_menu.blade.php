@@ -29,6 +29,11 @@
     </a>
 </li>
 <li>
+    <a href="/caiji/list" class="waves-effect waves-dark">
+        <i class="fa fa-sitemap"></i>数据采集
+    </a>
+</li>
+<li>
     <a href="/cate" class="waves-effect waves-dark">
         <i class="fa fa-sitemap"></i>商品分类管理
     </a>
