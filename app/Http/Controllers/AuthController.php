@@ -26,7 +26,7 @@ class AuthController extends Controller
         // dd($id);
  		// $user = new User;
  		
- 		$user = DB::table('users') -> where('autoid','=',$id)->first();
+ 		$user = User::where('autoid',$id)->first();
 		
  		// if (!empty($res)) {
  		// 	session(['username'=>$res->username, 'id'=>$res->id,'password'=>$res->password,'name'=>$res->name]);
