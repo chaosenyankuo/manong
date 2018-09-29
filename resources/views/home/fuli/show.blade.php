@@ -172,7 +172,7 @@
                 <div class="user-coupon">
                     <!--标题 -->
                     <div class="am-cf am-padding">
-                        <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">积分兑换</strong> / <small>JiFen</small> &nbsp;&nbsp;&nbsp;我的积分:{{$user['jifen']}}</div>
+                        <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">积分兑换</strong> / <small>JiFen</small> &nbsp;&nbsp;&nbsp;我的积分:{{$user['jifen']}}&nbsp;&nbsp;&nbsp;&nbsp;兑换比例为10:1</div>
                     </div>
                     <hr/>
                     <div class="am-tabs-d2 am-tabs  am-margin" data-am-tabs>

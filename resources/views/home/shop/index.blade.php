@@ -194,7 +194,7 @@
                                                 <div class="cart-title">口味</div>
                                                 <ul>&nbsp; @foreach($flavor as $v) @if(in_array($v->id,$shop->flavors->pluck('id')->toArray()))
                                                     <li class="sku-line">
-                                                        <input type="radio" name="flavor_id" value="{{$v['id']}}">{{$v['fname']}}
+                                                        <input type="hidden" name="flavor_id" value="{{$v['id']}}">{{$v['fname']}}
                                                     </li>
                                                     @endif @endforeach
                                                 </ul>
@@ -203,7 +203,7 @@
                                                 <div class="cart-title">包装</div>
                                                 <ul>&nbsp; @foreach($pack as $v) @if(in_array($v->id,$shop->packs->pluck('id')->toArray()))
                                                     <li class="sku-line">
-                                                        <input type="radio" name="pack_id" value="{{$v['id']}}">{{$v['pname']}}
+                                                        <input type="hidden" name="pack_id" value="{{$v['id']}}">{{$v['pname']}}
                                                     </li>
                                                     @endif @endforeach
                                                 </ul>
@@ -220,9 +220,9 @@
                                                 <script>
                                                 $('input[name=shuliang]').change(function() {
                                                     var a = $('input[name=shuliang]').val();
-                                                    if (a > { { $shop['scount'] } }) {
+                                                    if (a > {{$shop['scount']}}) {
                                                         alert('对不起,库存不足');
-                                                        $('input[name=shuliang]').val({ { $shop['scount'] } });
+                                                        $('input[name=shuliang]').val({{$shop['scount']}});
                                                     };
                                                 });
                                                 </script>
@@ -527,11 +527,11 @@
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         }
                     });
-                    var shop_id = { { $shop['id'] } };
+                    var shop_id = {{$shop['id']}};
                     $.ajax({
                         url: '/cunzuji',
                         type: 'post',
-                        data: { shop_id: shop_id },
+                        data: {shop_id: shop_id},
                         success: function(data) {
 
                         },

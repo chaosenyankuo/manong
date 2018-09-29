@@ -67,7 +67,7 @@ class LingShiController extends Controller
         try{
             $shop = new Shop;
         	$shop -> sname = $sname[1];
-        	$shop -> sprice = $sprice[1];
+        	$shop -> sprice = ceil($sprice[1])+20;
         	$shop -> guige = $guige[1];
         	$shop -> biaozhun = 'GB/T'.rand(10000,20000);
         	$shop -> shengchan = '2018-0'.rand(1,9);

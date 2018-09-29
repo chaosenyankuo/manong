@@ -19,7 +19,7 @@
                         <div class="row">
                             <div class=" col s6">
                                 <div class="btn-group">
-                                    <label for="first_name">选择分类</label>
+                                    <label for="first_name">选择板块</label>
                                     <select data-toggle="dropdown" class="btn btn-primary dropdown-toggle" aria-expanded="true" name="cate_id" id="first"><span class="caret"></span>
                                         <option value="0">请选择</option>
                                         @foreach($cates as $v)
@@ -64,7 +64,7 @@
                                 data: { cate: cate },
                                 success: function(data) {
                                     var res = JSON.parse(data); //将json数据转为数组
-                                    if (res != 0) {
+                                    if (res != 0) {6
                                         for (var i = 0; i < res.length; i++) {
                                             var shopId = res[i]['id'];
                                             var shopName = res[i]['sname'];

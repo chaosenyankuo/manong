@@ -60,24 +60,17 @@ class ZhuceController extends Controller
 
     public function sendemail()
     {
-        // if(\Session::has('emailCode')){
-        //     session(['emailCode'=>null]);
-        // }
-        // dd(111);
         $code = rand(1000,9999);
-        // var_dump($code);
         session(['emailCode'=>$code]);
-        // dd(session('emailCode'));
         Mail::send('emails.send', ['code'=>$code], function ($message) {
             $zhi =  $_POST['val'];
             $zhii = $zhi.'m';
             $xzhi = Mb_substr($zhii,0,-1,'UTF-8');
-           // dd($xzhi);
             $message->subject('验证码');
             //接收者
             $message->to($xzhi);
 
-
+            // dd($message);
         });
     }
 
