@@ -26,11 +26,12 @@ class DingdanController extends Controller
      */
     public function index()
     {  
+        // dd(111);
         //读取数据库 获取订单数据
         $os = Order_shop::orderBy('id','desc')
                 ->where('order_bh','like', '%'.request()->keywords.'%')
                 ->paginate(5);
-            
+        // dd($os);
         //解析模板显示用户数据
         return view('admin.dingdan.index', compact('os'));
     }

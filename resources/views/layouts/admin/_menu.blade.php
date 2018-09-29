@@ -48,12 +48,6 @@
         <i class="fa fa-sitemap"></i>商品包装管理
     </a>
 </li>
-
-<li>
-    <a href="/com" class="waves-effect waves-dark">
-        <i class="fa fa-sitemap"></i> 商品好中差管理
-    </a>
-</li>
 <li>
     <a href="/ptag" class="waves-effect waves-dark">
         <i class="fa fa-sitemap"></i> 买家印象管理

@@ -50,6 +50,7 @@ class ShopCarController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->flavor_id);
         $uid = \Session::get('homeUser')['id'];
         $res = Shopcar::where('user_id',$uid)
                 ->where('shop_id',$request->shop_id)
