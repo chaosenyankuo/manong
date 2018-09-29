@@ -192,22 +192,43 @@
                                         <div class="theme-signin-left">
                                             <div class="theme-options">
                                                 <div class="cart-title">口味</div>
-                                                <ul>&nbsp; @foreach($flavor as $v) @if(in_array($v->id,$shop->flavors->pluck('id')->toArray()))
-                                                    <li class="sku-line">
-                                                        <input type="hidden" name="flavor_id" value="{{$v['id']}}">{{$v['fname']}}
-                                                    </li>
-                                                    @endif @endforeach
+                                                <ul class="flavor">&nbsp; 
+                                                    @foreach($flavor as $v) 
+                                                        @if(in_array($v->id,$shop->flavors->pluck('id')->toArray()))
+                                                            <li class="sku-line">
+                                                                <input type="hidden" value="{{$v['id']}}">{{$v['fname']}}
+                                                            </li>
+                                                        @endif 
+                                                    @endforeach
+                                                    <input type="hidden" name="flavor_id" value="" class="f">
                                                 </ul>
                                             </div>
+                                           
                                             <div class="theme-options">
                                                 <div class="cart-title">包装</div>
-                                                <ul>&nbsp; @foreach($pack as $v) @if(in_array($v->id,$shop->packs->pluck('id')->toArray()))
-                                                    <li class="sku-line">
-                                                        <input type="hidden" name="pack_id" value="{{$v['id']}}">{{$v['pname']}}
-                                                    </li>
-                                                    @endif @endforeach
+                                                <ul class="pack_id">&nbsp; 
+                                                    @foreach($pack as $v) 
+                                                        @if(in_array($v->id,$shop->packs->pluck('id')->toArray()))
+                                                            <li class="sku-line">
+                                                                <input type="hidden" value="{{$v['id']}}">{{$v['pname']}}
+                                                            </li>
+                                                        @endif 
+                                                    @endforeach
+                                                    <input type="hidden" name="pack_id" value="" class="p">
                                                 </ul>
                                             </div>
+                                             <script type="text/javascript">
+                                                $('.flavor > li').click(function(){
+                                                    $(this).attr('id','flavor_id');
+                                                    $(this).siblings().removeAttr('id');
+                                                    $('.f').val($('#flavor_id > input').val());
+                                                })
+                                                $('.pack_id > li').click(function(){
+                                                    $(this).attr('id','pack_id');
+                                                    $(this).siblings().removeAttr('id');
+                                                    $('.p').val($('#pack_id > input').val());
+                                                })
+                                            </script>
                                             <div class="theme-options">
                                                 <div class="cart-title ">数量</div>
                                                 <div class="height-10"></div>
